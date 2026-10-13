@@ -494,6 +494,7 @@ object ReligionAutomation {
             .filter {
                 (it.type == beliefType || beliefType == BeliefType.Any)
                     && !additionalBeliefsToExclude.contains(it)
+                    && com.unciv.logic.kotakula.FactionRules.canUse(civInfo, it) // Kotakula: own faction only
                     && civInfo.religionManager.getReligionWithBelief(it) == null
                     && it.getMatchingUniques(UniqueType.OnlyAvailable, GameContext.IgnoreConditionals)
                         .none { unique -> !unique.conditionalsApply(civInfo.state) }

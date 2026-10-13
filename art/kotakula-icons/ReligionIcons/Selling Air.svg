@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Продажа воздуха: пустая банка с ценником -->
+  <rect x="24" y="4" width="40" height="10" rx="3" fill="#000"/>
+  <path d="M20 16 H68 V22 C76 26 80 34 80 44 V86 C80 92 74 96 68 96 H20 C14 96 8 92 8 86 V44 C8 34 12 26 20 22 Z" fill="#000"/>
+  <path d="M16 42 C16 34 22 28 28 28 H60 C66 28 72 34 72 42 V84 C72 87 70 88 68 88 H20 C18 88 16 87 16 84 Z" fill="#fff"/>
+  <g stroke="#000" stroke-width="3" fill="none" stroke-linecap="round"><path d="M26 50 C34 46 40 54 48 50"/><path d="M34 64 C42 60 48 68 56 64"/></g>
+  <path d="M58 60 H84 L96 72 L84 84 H58 Z" fill="#000" stroke="#fff" stroke-width="3"/>
+  <circle cx="86" cy="72" r="3" fill="#fff"/>
+</svg>

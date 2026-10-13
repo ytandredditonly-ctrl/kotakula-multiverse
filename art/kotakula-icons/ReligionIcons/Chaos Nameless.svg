@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Безымянный бог Хаоса: звезда хаоса со стрелами -->
+  <g stroke="#000" stroke-width="7" stroke-linecap="round"><path d="M50 8 V92"/><path d="M8 50 H92"/><path d="M20 20 L80 80"/><path d="M80 20 L20 80"/></g>
+  <g fill="#000">
+    <path d="M50 0 L58 12 H42 Z"/><path d="M50 100 L42 88 H58 Z"/><path d="M0 50 L12 42 V58 Z"/><path d="M100 50 L88 58 V42 Z"/>
+    <path d="M14 14 L28 18 L18 28 Z"/><path d="M86 86 L72 82 L82 72 Z"/><path d="M86 14 L82 28 L72 18 Z"/><path d="M14 86 L18 72 L28 82 Z"/>
+  </g>
+  <circle cx="50" cy="50" r="16" fill="#000"/>
+  <text x="43" y="57" font-size="20" font-weight="bold" font-family="sans-serif" fill="#fff">?</text>
+</svg>

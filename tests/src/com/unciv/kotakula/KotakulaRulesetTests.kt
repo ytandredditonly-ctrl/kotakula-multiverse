@@ -54,6 +54,19 @@ class KotakulaRulesetTests {
         Assert.assertTrue("Unique objects without an icon: $withoutIcon", withoutIcon.isEmpty())
     }
 
+    /** Bug report: units gained XP but could never be promoted (G&K promotions named G&K unit types only) */
+    @Test
+    fun everyMilitaryUnitCanBePromoted() {
+        val ruleset = RulesetCache.getComplexRuleset(linkedSetOf(), KotakulaTestSupport.MOD.also { KotakulaTestSupport.ensureLoaded() })
+        val withoutPromotions = ruleset.units.values
+            .filter { it.isMilitary && it.unitType != "Missile" && !it.hasUnique(com.unciv.models.ruleset.unique.UniqueType.NuclearWeapon) }
+            .filter { unit -> ruleset.unitPromotions.values.none { unit.unitType in it.unitTypes && it.prerequisites.isEmpty() } }
+            .map { "${it.name} (${it.unitType})" }
+        Assert.assertTrue("No promotion for: $withoutPromotions", withoutPromotions.isEmpty())
+        // The submarines keep what makes them submarines
+        Assert.assertTrue(ruleset.unitTypes["WaterSubmarine"]!!.uniques.any { it.startsWith("Invisible to non-adjacent units") })
+    }
+
     @Test
     fun rulesetHasFactions() {
         val ruleset = RulesetCache.getComplexRuleset(linkedSetOf(), KotakulaTestSupport.MOD.also { KotakulaTestSupport.ensureLoaded() })

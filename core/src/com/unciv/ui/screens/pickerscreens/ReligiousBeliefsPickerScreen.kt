@@ -199,6 +199,7 @@ class ReligiousBeliefsPickerScreen (
         rightSelection.clear()
         val availableBeliefs = ruleset.beliefs.values
             .filter { it.type == beliefType || beliefType == BeliefType.Any }
+            .filter { com.unciv.logic.kotakula.FactionRules.canUse(currentReligion.foundingCiv, it) } // Kotakula: own faction only
 
         val civReligionManager = currentReligion.foundingCiv.religionManager
 

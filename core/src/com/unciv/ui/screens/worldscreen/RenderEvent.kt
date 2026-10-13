@@ -49,7 +49,9 @@ class RenderEvent(
         isValid = choices != null
         if (isValid) {
             if (event.text.isNotEmpty()) {
-                add(WrappableLabel(event.text, labelWidth).apply {
+                // Kotakula: the God's Whim names the god of the player
+                val text = com.unciv.logic.kotakula.FactionPantheons.eventText(event.text, gameInfo.currentPlayerCiv)
+                add(WrappableLabel(text, labelWidth).apply {
                     wrap = true
                     setAlignment(Align.center)
                     optimizePrefWidth()

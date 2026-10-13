@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Бесплатный пробный период: подарок с песочными часами -->
+  <rect x="6" y="40" width="64" height="54" rx="3" fill="#000"/>
+  <rect x="2" y="30" width="72" height="14" rx="3" fill="#000"/>
+  <rect x="33" y="30" width="10" height="64" fill="#fff"/>
+  <path d="M38 30 C30 14 14 16 18 26 C20 30 30 30 38 30 C46 14 62 16 58 26 C56 30 46 30 38 30 Z" fill="#000"/>
+  <rect x="70" y="40" width="28" height="5" rx="2" fill="#000"/>
+  <rect x="70" y="88" width="28" height="5" rx="2" fill="#000"/>
+  <path d="M74 45 H94 C94 56 86 60 84 66 C86 72 94 76 94 88 H74 C74 76 82 72 84 66 C82 60 74 56 74 45 Z" fill="#000"/>
+  <path d="M78 84 C80 78 82 76 84 74 C86 76 88 78 90 84 Z" fill="#fff"/>
+</svg>

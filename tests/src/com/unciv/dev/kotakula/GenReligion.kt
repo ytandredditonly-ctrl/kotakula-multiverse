@@ -35,15 +35,14 @@ fun GenContext.generateReligion(vanillaRussian: Map<String, String>) {
     writeJson("Religions.json", vanillaReligions + corporations.map { it.first })
     for ((id, name) in corporations) translations.add(id, name)
 
-    // Vanilla beliefs stay common; Technocrats see them as LLCs and directives (9.3)
+    // Vanilla beliefs stay common; Technocrats see them as directives (9.3). The vanilla pantheons are gone:
+    // the factions have their gods and startups instead (gods-and-startups.md, 1.1)
     translations.section("Beliefs (section 9.3, 9.5)")
-    val beliefs = vanilla("Beliefs.json").map { adaptVanillaUniques(it) }.toMutableList()
+    val beliefs = vanilla("Beliefs.json").filter { it["type"] != "Pantheon" }.map { adaptVanillaUniques(it) }.toMutableList()
     for (belief in beliefs) {
         val name = belief["name"] as String
         val russian = vanillaRussian[name] ?: continue
-        val technocratName = FactionWording.forTechnocrat(russian)
-        val template = if (belief["type"] == "Pantheon") "ООО «$technocratName»" else "Директива «$technocratName»"
-        translations.add("$name#Technocrat", template)
+        translations.add("$name#Technocrat", "Директива «${FactionWording.forTechnocrat(russian)}»")
     }
 
     val rows = spec.table("### 9.5.")
@@ -52,6 +51,7 @@ fun GenContext.generateReligion(vanillaRussian: Map<String, String>) {
         ?: throw IllegalArgumentException("No description for belief $russian")
     for (row in rows) {
         val type = beliefTypes[row["Тип"]]!!
+        if (type == "Pantheon") continue // moved to gods-and-startups.md
         for ((faction, nameColumn, effectIndex) in listOf(Triple("Technocrat", "Технари", 2), Triple("Humanist", "Гумы", 4))) {
             val russian = row[nameColumn]
             val id = beliefIds[russian]!!
@@ -73,6 +73,7 @@ fun GenContext.generateReligion(vanillaRussian: Map<String, String>) {
             )
         }
     }
+    beliefs += generatePantheons()
     writeJson("Beliefs.json", beliefs)
 
     // 9.4 faith actions
@@ -104,4 +105,51 @@ fun GenContext.generateReligion(vanillaRussian: Map<String, String>) {
         }
     }
     writeJson("FactionActions.json", actions)
+}
+
+/** Gods and startups (docs/kotakula/gods-and-startups.md): 13 gods of the Humanists and 13 startups of the Technocrats */
+fun GenContext.generatePantheons(): List<JObj> {
+    val gods = SpecDoc(java.io.File(KotakulaModGenerator.GODS_PATH))
+    translations.section("Gods and startups (gods-and-startups.md)")
+    val result = ArrayList<JObj>()
+    for ((heading, faction) in listOf("### 2.1." to "Humanist", "### 2.2." to "Technocrat")) {
+        val rows = gods.table(heading)
+        require(rows.size == 13) { "$heading must list 13 pantheons" }
+        for (row in rows) {
+            val id = SpecDoc.id(row["ID"])
+            translations.add(id, row["Название"])
+            val descriptionKey = "Description: $id"
+            translations.add(descriptionKey, row["Описание"])
+            result += jobj(
+                "name" to id,
+                "type" to "Pantheon",
+                "faction" to faction,
+                "uniques" to pantheonUniques(row.raw[2]),
+                "civilopediaText" to listOf(jobj("text" to descriptionKey)),
+            )
+        }
+    }
+    return result
+}
+
+/** The effect column: `uniques`, "то же для `[X]` и `[Y]`" (the previous tile unique for other tiles) and notes */
+fun GenContext.pantheonUniques(effect: String): List<String> {
+    val parts = effect.split("то же для")
+    val uniques = SpecDoc.backticked(parts[0]).toMutableList()
+    for (part in parts.drop(1)) {
+        val base = uniques.last()
+        for (filter in SpecDoc.backticked(part))
+            uniques += Regex("""\[[^\]]+] tiles""").replaceFirst(base, "$filter tiles")
+    }
+    val lifetime = Regex("""живёт (\d+) ход""").find(effect)?.groupValues?.get(1)
+    return uniques.map { unique ->
+        var u = fixUnique(unique)
+        // The notation of the addendum, written as the matching Unciv uniques
+        if (u == "Receive [+100]% Gold from Barbarian encampments") u += " and pillaging Cities"
+        u = Regex("""^(\[[^\]]+]) from (\[[^\]]+]) tiles (\[[^\]]+]) <when not improved>$""").replace(u, "$1 from $2 tiles without [improved] $3")
+        u = Regex("""^\[([+-]\d+)]% tile improvement construction time$""").replace(u, "[$1]% construction time for [All] improvements")
+        if (effect.contains("масштабируется скоростью") && u.startsWith("Gain [")) u += " <(modified by game speed)>"
+        if (lifetime != null && u.startsWith("KM: Summons")) u += " <KM: Expires after [$lifetime] turns>"
+        u
+    }
 }

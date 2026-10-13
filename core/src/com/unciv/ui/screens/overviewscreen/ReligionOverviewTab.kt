@@ -19,6 +19,7 @@ import com.unciv.ui.components.extensions.disable
 import com.unciv.ui.components.input.onClick
 import com.unciv.ui.components.extensions.setFontSize
 import com.unciv.ui.components.extensions.toLabel
+import com.unciv.ui.components.extensions.toTextButton
 import com.unciv.view.CivView
 import kotlin.math.max
 
@@ -98,6 +99,34 @@ class ReligionOverviewTab(
 
         add("Religious status:".toLabel()).left()
         add(manager.religionState.toString().toLabel()).right().row()
+
+        addPivotButton()
+    }
+
+    /** Kotakula (gods and startups): the one pivot of a startup, until the corporation is founded */
+    private fun Table.addPivotButton() {
+        val civ = viewingPlayer.getCiv()
+        val pantheons = com.unciv.logic.kotakula.FactionPantheons
+        if (civ.faction != com.unciv.logic.kotakula.Faction.Technocrat || civ.factionState.pivotUsed) return
+        if (pantheons.pantheonOf(civ) == null || !civ.hasUnique(com.unciv.models.ruleset.unique.UniqueType.KMPivot)) return
+        if (civ.religionManager.religionState >= com.unciv.logic.civilization.managers.ReligionState.Religion) return
+        val button = "Pivot ([${pantheons.pivotCost(civ)}] Faith)".toTextButton()
+        if (!pantheons.canPivot(civ) || !com.unciv.GUI.isAllowedChangeState()) button.disable()
+        button.onClick {
+            val popup = com.unciv.ui.popups.Popup(overviewScreen)
+            popup.addGoodSizedLabel("Replace your startup by a free one. It can be done only once").row()
+            for (belief in pantheons.freePantheons(civ)) {
+                popup.addButton(belief.name) {
+                    if (pantheons.pivot(civ, belief)) {
+                        popup.close()
+                        overviewScreen.game.popScreen()
+                    }
+                }.row()
+            }
+            popup.addCloseButton()
+            popup.open()
+        }
+        add(button).colspan(2).row()
     }
 
     private fun loadReligionButtons() {

@@ -161,7 +161,7 @@ enum class UniqueType(
     RoadMaintenance("[relativeAmount]% maintenance on road & railroads", UniqueTarget.Global,
         docDescription = MULTIPLICATIVE_BONUS_EXPLANATION),
     NoImprovementMaintenanceInSpecificTiles("No Maintenance costs for improvements in [tileFilter] tiles", UniqueTarget.Global),
-    SpecificImprovementTime("[relativeAmount]% construction time for [improvementFilter] improvements", UniqueTarget.Global, UniqueTarget.Unit),
+    SpecificImprovementTime("[relativeAmount]% construction time for [improvementFilter] improvements", UniqueTarget.Global, UniqueTarget.Unit, UniqueTarget.FollowerBelief),
     ImprovementTimeIncrease("Can build [improvementFilter] improvements at a [relativeAmount]% rate", UniqueTarget.Global, UniqueTarget.Unit),
 
     /// Building Maintenance
@@ -263,7 +263,7 @@ enum class UniqueType(
 
     /// Barbarian Encampments, Pillaging them & Converting Units
     NotifiedOfBarbarianEncampments("Notified of new Barbarian encampments", UniqueTarget.Global),
-    GoldFromEncampmentsAndCities("Receive [relativeAmount]% Gold from Barbarian encampments and pillaging Cities", UniqueTarget.Global),
+    GoldFromEncampmentsAndCities("Receive [relativeAmount]% Gold from Barbarian encampments and pillaging Cities", UniqueTarget.Global, UniqueTarget.FollowerBelief),
     GainFromEncampment("When conquering an encampment, earn [amount] Gold and recruit a Barbarian unit", UniqueTarget.Global),
     GainFromDefeatingUnit("When defeating a [mapUnitFilter] unit, earn [amount] Gold and recruit it", UniqueTarget.Global),
 
@@ -441,7 +441,7 @@ enum class UniqueType(
     AutomationPrimaryAction("Automation is a primary action", UniqueTarget.Unit, flags = UniqueFlag.setOfHiddenToUsers),
 
     // Strength bonuses
-    Strength("[relativeAmount]% Strength", UniqueTarget.Unit, UniqueTarget.Global,
+    Strength("[relativeAmount]% Strength", UniqueTarget.Unit, UniqueTarget.Global, UniqueTarget.FollowerBelief,
         docDescription = ADDITIVE_BONUS_EXPLANATION),
     StrengthAmount("[relativeAmount] Strength", UniqueTarget.Unit, UniqueTarget.Global),
     StrengthNearCapital("[relativeAmount]% Strength decreasing with distance from the capital", UniqueTarget.Unit, UniqueTarget.Global),
@@ -452,7 +452,7 @@ enum class UniqueType(
 
     // Stat bonuses
     AdditionalAttacks("[amount] additional attacks per turn", UniqueTarget.Unit, UniqueTarget.Global),
-    Movement("[amount] Movement", UniqueTarget.Unit, UniqueTarget.Global),
+    Movement("[amount] Movement", UniqueTarget.Unit, UniqueTarget.Global, UniqueTarget.FollowerBelief),
     Sight("[amount] Sight", UniqueTarget.Unit, UniqueTarget.Global, UniqueTarget.Terrain, UniqueTarget.Improvement),
     Range("[amount] Range", UniqueTarget.Unit, UniqueTarget.Global),
     AirInterceptionRange("[relativeAmount] Air Interception Range", UniqueTarget.Unit, UniqueTarget.Global),
@@ -1149,7 +1149,7 @@ enum class UniqueType(
     KMGainStatOnOpposingCityConquered("KM: Gain [amount] [civWideStat] when conquering a city of the opposing faction", UniqueTarget.Global),
     KMTrophy("KM: Trophy: gain [positiveAmount]% of building cost as [civWideStat]", UniqueTarget.Building,
         docDescription = "When this building of another faction is destroyed by a conquest, the conqueror gets this instead of the default trophy (25% as Science)"),
-    KMSummons("KM: Summons best [unitType] unit every [positiveAmount] turns", UniqueTarget.Global,
+    KMSummons("KM: Summons best [unitType] unit every [positiveAmount] turns", UniqueTarget.Global, UniqueTarget.FollowerBelief,
         docDescription = "In the capital (or the city with the source building) the strongest unit of the type the civilization can build appears. " +
             "Add <KM: Expires after [N] turns> to limit its lifetime"),
     KMSummoned("KM: Summoned", UniqueTarget.Unit,
@@ -1159,7 +1159,7 @@ enum class UniqueType(
         docDescription = "Discounts stack, but the total is limited to -50%"),
     KMFaithActionSlots("KM: [relativeAmount] Faith action slots", UniqueTarget.Global),
     KMCountsAsVictoryParts("KM: Counts as [positiveAmount] parts for faction victory project", UniqueTarget.Building, UniqueTarget.Unit),
-    KMPillagingYields("KM: Pillaging yields [positiveAmount]x", UniqueTarget.Global),
+    KMPillagingYields("KM: Pillaging yields [positiveAmount]x", UniqueTarget.Global, UniqueTarget.FollowerBelief),
     KMSetFaction("KM: Set faction [faction]", UniqueTarget.Triggerable),
     KMGainFreeBelief("KM: Gain a free [beliefType] belief", UniqueTarget.Triggerable),
     KMHolyCityBonus("KM: Holy city bonus", UniqueTarget.Global,
@@ -1168,8 +1168,26 @@ enum class UniqueType(
         docDescription = "Only in faith actions: gives a share of the Faith spent on the action"),
     KMInfluenceWithChosenCityState("KM: [amount] Influence with chosen city-state", UniqueTarget.Triggerable,
         docDescription = "Only in faith actions: the player picks a known city-state"),
-    KMCityStrength("[amount] City Strength [cityFilter]", UniqueTarget.Global),
+    KMCityStrength("[amount] City Strength [cityFilter]", UniqueTarget.Global, UniqueTarget.FollowerBelief),
     KMHealAllUnits("KM: All units fully heal", UniqueTarget.Triggerable),
+
+    // Gods and startups (pantheons of the factions)
+    KMSmite("KM: Smite [positiveAmount] damage with [positiveAmount]% chance", UniqueTarget.Global, UniqueTarget.FollowerBelief,
+        docDescription = "At the start of each turn every unit of the opposing faction within 3 tiles of your cities may take the damage. It never dies from it (1 HP left)"),
+    KMChaosGift("KM: Chaos gift every [positiveAmount] turns", UniqueTarget.Global, UniqueTarget.FollowerBelief,
+        docDescription = "Every N turns a random stat of Production, Gold, Culture, Science, Faith: 25 x (era number + 1) of it"),
+    KMFreeTrial("KM: Free trial [stats] for [positiveAmount] turns then [stats]", UniqueTarget.FollowerBelief,
+        docDescription = "In the cities following the pantheon: the first stats for N turns after the pantheon was taken, then the second ones forever"),
+    KMStatsPerFactionCiv("KM: [stats] in all cities per other living civilization of your faction", UniqueTarget.Global, UniqueTarget.FollowerBelief),
+    KMPivot("KM: Pivot", UniqueTarget.Global,
+        docDescription = "Once per game, before founding a religion, the pantheon can be replaced by any free one of the faction"),
+    KMGodsWhimGift("KM: Bring a gift to the god", UniqueTarget.Triggerable,
+        docDescription = "Pays 30 x (era number + 1) Faith for [+20]% [Faith] [in all cities] during 10 turns"),
+    KMGodsWhimIgnored("KM: Pretend not to hear the god", UniqueTarget.Triggerable,
+        docDescription = "[-2 Happiness] during 10 turns"),
+    KMTakeInvestorMoney("KM: Take the investors' money", UniqueTarget.Triggerable,
+        docDescription = "Gold equal to 50% of the current Faith, and 25% of the Faith is lost"),
+    ConditionalKMCanAffordGodsGift("KM: when the gift to the god is affordable", UniqueTarget.Conditional),
 
     // endregion
 

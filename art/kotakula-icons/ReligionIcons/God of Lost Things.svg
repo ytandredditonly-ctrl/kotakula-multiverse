@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Бог Потерянных Вещей: мешок с ключом, носком и монетой -->
+  <path d="M30 34 C10 48 6 72 14 86 C18 94 30 98 50 98 C70 98 82 94 86 86 C94 72 90 48 70 34 Z" fill="#000"/>
+  <path d="M30 34 L24 24 H76 L70 34 Z" fill="#000"/>
+  <path d="M40 22 C34 8 40 2 46 6 L50 22 Z" fill="#000"/>
+  <path d="M58 22 C58 10 70 4 76 10 L74 16 C70 12 64 14 64 22 Z" fill="#000"/>
+  <g fill="none" stroke="#fff" stroke-width="4"><circle cx="38" cy="66" r="8"/></g>
+  <path d="M46 66 H70 M64 66 V74 M58 66 V72" stroke="#fff" stroke-width="4"/>
+  <path d="M56 84 C56 80 62 80 62 84 C62 88 56 88 56 84 Z" fill="#fff"/>
+  <text x="34" y="56" font-size="14" font-weight="bold" font-family="sans-serif" fill="#fff">?</text>
+</svg>

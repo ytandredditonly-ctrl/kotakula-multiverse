@@ -124,6 +124,7 @@ object Conditionals {
 
             UniqueType.ConditionalCivFilter -> checkOnCiv { matchesFilter(conditional.params[0], state) }
             UniqueType.ConditionalFaction -> checkOnCiv { com.unciv.logic.kotakula.FactionRules.contentFaction(this)?.name == conditional.params[0] }
+            UniqueType.ConditionalKMCanAffordGodsGift -> checkOnCiv { com.unciv.logic.kotakula.FactionPantheons.canAffordGift(this) }
             UniqueType.ConditionalWar -> checkOnCiv { isAtWar() }
             UniqueType.ConditionalNotWar -> checkOnCiv { !isAtWar() }
             UniqueType.ConditionalWithResource -> state.getResourceAmount(conditional.params[0]) > 0

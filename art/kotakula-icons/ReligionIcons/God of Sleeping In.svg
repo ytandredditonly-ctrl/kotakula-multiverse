@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Бог Сна Без Будильника: полумесяц на подушке и зачёркнутый будильник -->
+  <path d="M46 6 C30 8 20 22 20 36 C20 52 34 64 50 62 C38 56 32 46 32 36 C32 22 38 12 46 6 Z" fill="#000"/>
+  <g fill="#000" font-family="sans-serif" font-weight="bold"><text x="44" y="24" font-size="14">z</text><text x="54" y="14" font-size="11">z</text></g>
+  <path d="M6 78 C6 68 16 64 30 66 H70 C84 64 94 68 94 78 C94 88 84 92 70 90 H30 C16 92 6 88 6 78 Z" fill="#000"/>
+  <path d="M18 78 C30 74 70 74 82 78" stroke="#fff" stroke-width="3" fill="none"/>
+  <circle cx="76" cy="38" r="14" fill="#000"/>
+  <circle cx="76" cy="38" r="9" fill="#fff"/>
+  <path d="M76 38 V32 M76 38 L80 40" stroke="#000" stroke-width="2.5"/>
+  <path d="M60 24 L92 54" stroke="#000" stroke-width="5" stroke-linecap="round"/>
+</svg>

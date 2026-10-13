@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Богиня бардов: лира с нимбом и нотой -->
+  <ellipse cx="44" cy="8" rx="20" ry="5" fill="none" stroke="#000" stroke-width="4.5"/>
+  <path d="M18 22 C6 34 8 62 24 76 L28 92 H60 L64 76 C80 62 82 34 70 22 C66 38 64 50 54 60 H34 C24 50 22 38 18 22 Z" fill="#000"/>
+  <rect x="24" y="30" width="40" height="6" rx="2" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5"><path d="M36 62 V88"/><path d="M44 62 V88"/><path d="M52 62 V88"/></g>
+  <g fill="#000"><ellipse cx="86" cy="62" rx="7" ry="5" transform="rotate(-20 86 62)"/><rect x="90" y="34" width="3" height="28"/><path d="M93 34 L99 38 V44 L93 42 Z"/></g>
+</svg>

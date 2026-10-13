@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Найм под проект: меч и контракт с часами -->
+  <rect x="44" y="6" width="50" height="62" rx="3" fill="#000"/>
+  <g stroke="#fff" stroke-width="4"><path d="M52 18 H86"/><path d="M52 28 H86"/><path d="M52 38 H74"/></g>
+  <circle cx="76" cy="54" r="9" fill="#fff"/>
+  <path d="M76 54 V48 M76 54 L80 56" stroke="#000" stroke-width="2.5"/>
+  <g transform="rotate(-45 30 62)">
+    <path d="M26 18 H34 L35 76 H25 Z" fill="#000" stroke="#fff" stroke-width="2"/>
+    <rect x="14" y="76" width="32" height="8" rx="3" fill="#000"/>
+    <rect x="26.5" y="84" width="7" height="12" fill="#000"/>
+    <circle cx="30" cy="99" r="5" fill="#000"/>
+  </g>
+</svg>

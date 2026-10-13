@@ -234,6 +234,20 @@ class CityStats(val city: City) {
                 addUniqueStats(unique)
         }
 
+        // Kotakula (gods and startups): "KM: Free trial [stats] for [N] turns then [stats]", counted from the day
+        // the civ that holds the pantheon took it
+        city.forEachMatchingUnique(UniqueType.KMFreeTrial) { unique ->
+            val holder = city.religion.getMajorityReligion()?.foundingCiv
+            val active = com.unciv.logic.kotakula.FactionPantheons.isFreeTrialActive(holder, unique.params[1].toInt())
+            val stats = Stats.parse(if (active) unique.params[0] else unique.params[2])
+            sourceToStats.addStats(stats, unique.getSourceNameForUser(), unique.sourceObjectName ?: "")
+        }
+        // "KM: [stats] in all cities per other living civilization of your faction"
+        city.forEachMatchingUnique(UniqueType.KMStatsPerFactionCiv) { unique ->
+            val others = com.unciv.logic.kotakula.FactionPantheons.otherLivingCivsOfFaction(city.civ)
+            if (others > 0) sourceToStats.addStats(unique.stats.times(others), unique.getSourceNameForUser(), unique.sourceObjectName ?: "")
+        }
+
 
 
         return sourceToStats

@@ -647,6 +647,9 @@ class Civilization : IsPartOfGameInfoSerialization {
         yieldAll(cityStateFunctions.getUniquesProvidedByCityStates(uniqueType, gameContext))
         if (religionManager.religion != null)
             yieldAll(religionManager.religion!!.founderBeliefUniqueMap.getMatchingUniques(uniqueType, gameContext))
+        // Kotakula: civ-wide effects of the own pantheon (gods and startups)
+        if (religionManager.religion != null)
+            yieldAll(religionManager.religion!!.pantheonCivUniqueMap.getMatchingUniques(uniqueType, gameContext))
 
         yieldAll(civResourcesUniqueMap.getMatchingUniques(uniqueType, gameContext))
         yieldAll(gameInfo.getGlobalUniques().getMatchingUniques(uniqueType, gameContext))
@@ -663,6 +666,7 @@ class Civilization : IsPartOfGameInfoSerialization {
         getEra().forEachMatchingUnique(uniqueType, gameContext, op)
         cityStateFunctions.forEachUniqueProvidedByCityStates(uniqueType, gameContext, op)
         religionManager.religion?.founderBeliefUniqueMap?.forEachMatchingUnique(uniqueType, gameContext, op)
+        religionManager.religion?.pantheonCivUniqueMap?.forEachMatchingUnique(uniqueType, gameContext, op) // Kotakula
         civResourcesUniqueMap.forEachMatchingUnique(uniqueType, gameContext, op)
         gameInfo.getGlobalUniques().forEachMatchingUnique(uniqueType, gameContext, op)
     }

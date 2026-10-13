@@ -52,6 +52,9 @@ class TechPickerScreen(
     private var lines = NonTransformGroup().apply { touchable = Touchable.disabled }
     private var orderIndicators = NonTransformGroup().apply { touchable = Touchable.disabled }
     private var eraLabels = ArrayList<Label>()
+    /** Kotakula: the grid, kept to route the connecting lines through free lanes (see [addConnectingLines]) */
+    private var techMatrix = arrayOf<Array<Technology?>>()
+    private var cellTables = arrayOf<Array<Table?>>()
 
     /** We need this to be a separate table, and NOT the topTable, because *inhales*
      * When call setConnectingLines we need to pack() the table so that the lines will align correctly, BUT
@@ -103,6 +106,10 @@ class TechPickerScreen(
 
         rightSideButton.setText(if (freeTechPick) "Pick a free tech".tr() else "Pick a tech".tr())
         rightSideButton.onClick(UncivSound.Paper) { tryExit() }
+        // Kotakula: the bottom pane keeps one size whatever the description and the button say, otherwise the
+        // split moves on every selection and the whole tree jumps up and down
+        pickerPane.bottomTable.getCell(descriptionScroll)?.height(130f)
+        pickerPane.bottomTable.getCell(pickerPane.rightSideGroup)?.minWidth(360f)
 
         // per default show current/recent technology,
         // and possibly select it to show description,
@@ -155,7 +162,8 @@ class TechPickerScreen(
         if (allTechs.isEmpty()) return
         val columns = allTechs.maxOf { it.column!!.columnNumber } + 1
         val rows = allTechs.maxOf { it.row } + 1
-        val techMatrix = Array<Array<Technology?>>(columns) { arrayOfNulls(rows) } // Divided into columns, then rows
+        techMatrix = Array<Array<Technology?>>(columns) { arrayOfNulls(rows) } // Divided into columns, then rows
+        cellTables = Array(columns) { arrayOfNulls<Table>(rows) }
 
         for (technology in allTechs) {
             techMatrix[technology.column!!.columnNumber][technology.row - 1] = technology
@@ -203,6 +211,7 @@ class TechPickerScreen(
                 val tech = techMatrix[columnIndex][rowIndex]
 
                 val table = Table().pad(2f).padRight(60f).padLeft(20f)
+                cellTables[columnIndex][rowIndex] = table
                 if (rowIndex == 0)
                     table.padTop(7f)
 
@@ -309,67 +318,25 @@ class TechPickerScreen(
                     else -> 2f
                 }
 
-                if (techButtonCoords.y != prerequisiteCoords.y) {
-
-                    val r = 6f
-
-                    val deltaX = techButtonCoords.x - prerequisiteCoords.x
-                    val deltaY = techButtonCoords.y - prerequisiteCoords.y
-                    val halfLength = deltaX / 2f
-
-                    val line = ImageGetter.getWhiteDot().apply {
-                        width = halfLength - r - lineSize/2
-                        height = lineSize
-                        x = prerequisiteCoords.x
-                        y = prerequisiteCoords.y - lineSize / 2
+                // Kotakula: a prerequisite can be several columns away and the grid is shared by both factions,
+                // so the vanilla "half way" elbow would cross the cards in between. Route through free lanes instead
+                for (segment in routeLine(prerequisite, tech.name, prerequisiteCoords, techButtonCoords)) {
+                    val (from, to) = segment
+                    val piece = ImageGetter.getWhiteDot().apply {
+                        if (from.y == to.y) {
+                            width = abs(to.x - from.x) + lineSize
+                            height = lineSize
+                            x = minOf(from.x, to.x) - lineSize / 2
+                            y = from.y - lineSize / 2
+                        } else {
+                            width = lineSize
+                            height = abs(to.y - from.y) + lineSize
+                            x = from.x - lineSize / 2
+                            y = minOf(from.y, to.y) - lineSize / 2
+                        }
+                        color = lineColor
                     }
-                    val line1 = ImageGetter.getWhiteDot().apply {
-                        width = halfLength - r - lineSize/2
-                        height = lineSize
-                        x = techButtonCoords.x - width
-                        y = techButtonCoords.y - lineSize / 2
-                    }
-                    val line2 = ImageGetter.getWhiteDot().apply {
-                        width = lineSize
-                        height = abs(deltaY) - 2*r - lineSize
-                        x = techButtonCoords.x - halfLength - lineSize / 2
-                        y = techButtonCoords.y + (if (deltaY > 0f) -height-r-lineSize/2 else r+lineSize/2)
-                    }
-
-                    var line3: Image?
-                    var line4: Image?
-
-                    if (deltaY < 0) {
-                        /* -\ */ line3 = ImageGetter.getLine(line2.x+lineSize/2+0.3f, line2.y + line2.height-lineSize/2,line.x + line.width-lineSize/2, line.y+lineSize/2+0.3f, lineSize)
-                        /* \- */ line4 = ImageGetter.getLine(line2.x+lineSize/2-0.3f, line2.y+lineSize/2, line1.x+lineSize/2, line1.y+lineSize/2-0.3f, lineSize)
-                    } else {
-                        /* -/ */ line3 = ImageGetter.getLine(line2.x+lineSize/2+0.3f, line2.y+lineSize/2, line.x + line.width-lineSize/2, line.y+lineSize/2-0.3f, lineSize)
-                        /* /- */ line4 = ImageGetter.getLine(line2.x+lineSize/2-0.3f, line2.y + line2.height-lineSize/2, line1.x+lineSize/2, line1.y+lineSize/2+0.3f, lineSize)
-                    }
-
-                    line.color = lineColor
-                    line1.color = lineColor
-                    line2.color = lineColor
-                    line3.color = lineColor
-                    line4.color = lineColor
-
-                    lines.addActor(line)
-                    lines.addActor(line1)
-                    lines.addActor(line2)
-                    lines.addActor(line3)
-                    lines.addActor(line4)
-
-                } else {
-
-                    val line = ImageGetter.getWhiteDot().apply {
-                        width = techButtonCoords.x - prerequisiteCoords.x
-                        height = lineSize
-                        x = prerequisiteCoords.x
-                        y = prerequisiteCoords.y - lineSize / 2
-                    }
-                    line.color = lineColor
-
-                    lines.addActor(line)
+                    lines.addActor(piece)
                 }
             }
         }
@@ -378,6 +345,58 @@ class TechPickerScreen(
             .forEach { it.toFront() }
 
         lines.setSize(techTable.width, techTable.height)
+    }
+
+    /**
+     * Kotakula: axis-aligned segments from the right edge of [prerequisite] ([start]) to the left edge of [tech] ([end]).
+     * Vertical parts run in the empty gap between two columns (the padding of the cells); a horizontal part crossing
+     * other columns uses the prerequisite row, the tech row or the nearest row that has no card in those columns.
+     */
+    private fun routeLine(prerequisite: String, tech: String, start: Vector2, end: Vector2): List<Pair<Vector2, Vector2>> {
+        val from = ruleset.technologies[prerequisite]!!
+        val to = ruleset.technologies[tech]!!
+        val fromColumn = from.column!!.columnNumber
+        val toColumn = to.column!!.columnNumber
+        val segments = ArrayList<Pair<Vector2, Vector2>>()
+        fun segment(a: Vector2, b: Vector2) { if (a.x != b.x || a.y != b.y) segments += a to b }
+        // Middle of the 80 px gap after a column: 60 px right padding of its cells + 20 px left padding of the next
+        fun laneAfter(column: Int): Float {
+            val cell = cellTables[column].firstOrNull { it != null } ?: return start.x + 10f
+            return cell.x + cell.width - 20f
+        }
+        fun rowCenter(row: Int): Float {
+            val cell = cellTables[fromColumn][row] ?: return start.y
+            return cell.y + cell.height / 2
+        }
+
+        if (toColumn <= fromColumn + 1) {
+            val lane = if (toColumn > fromColumn) laneAfter(fromColumn) else (start.x + end.x) / 2
+            segment(start, Vector2(lane, start.y))
+            segment(Vector2(lane, start.y), Vector2(lane, end.y))
+            segment(Vector2(lane, end.y), end)
+            return segments
+        }
+
+        val fromRow = from.row - 1
+        val toRow = to.row - 1
+        val between = (fromColumn + 1) until toColumn
+        fun isFree(row: Int) = between.all { techMatrix[it].getOrNull(row) == null }
+        val row = listOf(fromRow, toRow).firstOrNull { isFree(it) }
+            ?: techMatrix[fromColumn].indices.filter { isFree(it) }.minByOrNull { abs(it - fromRow) + abs(it - toRow) }
+            ?: fromRow
+        val y = when (row) {
+            fromRow -> start.y
+            toRow -> end.y
+            else -> rowCenter(row)
+        }
+        val laneOut = laneAfter(fromColumn)
+        val laneIn = laneAfter(toColumn - 1)
+        segment(start, Vector2(laneOut, start.y))
+        segment(Vector2(laneOut, start.y), Vector2(laneOut, y))
+        segment(Vector2(laneOut, y), Vector2(laneIn, y))
+        segment(Vector2(laneIn, y), Vector2(laneIn, end.y))
+        segment(Vector2(laneIn, end.y), end)
+        return segments
     }
 
     private fun addOrderIndicators() {

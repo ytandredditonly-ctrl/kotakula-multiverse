@@ -713,7 +713,7 @@
 		"uniques": [
 			"[+1] Sight",
 			"[+10]% Strength <when attacking>",
-			"Can see invisible [Submarine] units",
+			"Can see invisible [WaterSubmarine] units",
 			"[40]% chance to intercept air attacks",
 			"Withdraws before melee combat <with [80]% chance>"
 		],
@@ -1594,7 +1594,7 @@
 		"uniques": [
 			"[+1] Sight",
 			"[+15]% Strength <when defending>",
-			"Can see invisible [Submarine] units",
+			"Can see invisible [WaterSubmarine] units",
 			"[40]% chance to intercept air attacks",
 			"Withdraws before melee combat <with [80]% chance>"
 		],

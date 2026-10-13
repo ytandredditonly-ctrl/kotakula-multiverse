@@ -141,14 +141,15 @@ fun GenContext.generateEvents() {
             ),
         ),
     )
-    writeJson("Events.json", listOf(choose) + vanilla("Events.json"))
+    writeJson("Events.json", listOf(choose) + godsAndStartupsEvents() + vanilla("Events.json"))
 }
 
 /** GlobalUniques.json (section 9.1 holy city bonus), ModOptions.json, Personalities.json and plain vanilla copies */
 @Suppress("UNCHECKED_CAST")
 fun GenContext.generateMisc() {
     val global = JsonText.read(File(vanillaDir, "GlobalUniques.json")) as JObj
-    global["uniques"] = (global["uniques"] as List<String>) + "KM: Holy city bonus"
+    // gods-and-startups.md 3: the pivot of the startups
+    global["uniques"] = (global["uniques"] as List<String>) + "KM: Holy city bonus" + "KM: Pivot <for [Technocrat] faction>"
     writeJson("GlobalUniques.json", global)
 
     writeJson("ModOptions.json", jobj(
@@ -179,16 +180,106 @@ fun GenContext.generateMisc() {
     writeJson("Personalities.json", personalities)
 
     for (file in listOf("Speeds.json", "Difficulties.json", "Terrains.json", "Quests.json", "Specialists.json",
-            "UnitTypes.json", "CityStateTypes.json", "Ruins.json", "UnitNameGroups.json"))
+            "CityStateTypes.json", "Ruins.json", "UnitNameGroups.json"))
         writeJson(file, vanilla(file).map { adaptVanillaUniques(it) })
+
+    // Section 6.1 names the unit types of the original Civ V ruleset (Melee, Ranged, Armor, WaterMelee...). In
+    // Gods & Kings they are bare deprecated entries: give them the uniques of their G&K counterparts
+    val unitTypes = vanilla("UnitTypes.json").map { adaptVanillaUniques(it) }
+    val typesByName = unitTypes.associateBy { it["name"] as String }
+    for ((legacy, current) in specUnitTypeOf) {
+        val target = typesByName[current] ?: continue
+        val source = typesByName[legacy] ?: continue
+        if (target["uniques"] == null && source["uniques"] != null)
+            target["uniques"] = (source["uniques"] as List<*>).map { renameUnitTypesInUnique(it as String) }
+        if (target["civilopediaText"] == null && source["civilopediaText"] != null) target["civilopediaText"] = source["civilopediaText"]
+    }
+    writeJson("UnitTypes.json", unitTypes)
 
     // Section 6.6: statuses of summoned and expiring units
     translations.section("Summoned units (section 6.6)")
     translations.add("Summoned", "Призванный")
     translations.add("Expiring", "Временный")
-    val promotions = vanilla("UnitPromotions.json").map { adaptVanillaUniques(it) } + listOf(
+    // Promotions of G&K are given to G&K unit types: add the section 6.1 types, or no unit of the mod could be promoted
+    @Suppress("UNCHECKED_CAST")
+    val vanillaPromotions = vanilla("UnitPromotions.json").map { adaptVanillaUniques(it) }.onEach { promotion ->
+        val types = promotion["unitTypes"] as List<String>? ?: return@onEach
+        promotion["unitTypes"] = (types + types.mapNotNull { specUnitTypeOf[it] }).distinct()
+    }
+    val promotions = vanillaPromotions + listOf(
         jobj("name" to "Summoned", "uniques" to listOf("KM: Summoned")),
         jobj("name" to "Expiring"),
     )
     writeJson("UnitPromotions.json", promotions)
+}
+
+/** Gods & Kings unit type -> the unit type of section 6.1 that stands for it in the mod */
+val specUnitTypeOf = mapOf(
+    "Sword" to "Melee", "Gunpowder" to "Melee", "Archery" to "Ranged", "Ranged Gunpowder" to "Ranged",
+    "Armored" to "Armor", "Civilian Water" to "WaterCivilian", "Melee Water" to "WaterMelee", "Ranged Water" to "WaterRanged",
+    "Submarine" to "WaterSubmarine", "Aircraft Carrier" to "WaterAircraftCarrier", "Atomic Bomber" to "AtomicBomber",
+)
+
+private val unitTypeFilter = Regex("""\[(${specUnitTypeOf.keys.joinToString("|") { Regex.escape(it) }})] units""")
+
+/** "[Armored] units" -> "[Armor] units" and so on, in any unique or conditional */
+fun renameUnitTypesInUnique(unique: String): String =
+    unitTypeFilter.replace(unique) { "[${specUnitTypeOf[it.groupValues[1]]}] units" }
+
+/** Last pass over the generated jsons: unit filters naming G&K unit types now name the section 6.1 ones */
+fun renameUnitTypeFilters(jsonDir: java.io.File) {
+    for (file in jsonDir.listFiles { f -> f.extension == "json" }.orEmpty()) {
+        val text = file.readText(Charsets.UTF_8)
+        val renamed = renameUnitTypesInUnique(text)
+        if (renamed != text) file.writeText(renamed, Charsets.UTF_8)
+    }
+}
+
+/** Gods and startups, section 3: the God's Whim (Humanists) and the Investor Round (Technocrats), every 25 turns */
+fun GenContext.godsAndStartupsEvents(): List<JObj> {
+    val gods = SpecDoc(File(KotakulaModGenerator.GODS_PATH))
+    val mechanics = gods.table("## 3.").associateBy { it["Механика"] }
+    fun quoted(text: String, prefix: String) = Regex("""$prefix «([^»]+)»""").find(text)?.groupValues?.get(1)
+        ?: throw IllegalArgumentException("No «» text after $prefix in: $text")
+    val whim = mechanics["Каприз бога"]!!["Как работает"]
+    val round = mechanics["Раунд инвестиций"]!!["Как работает"]
+    translations.section("Gods and startups: events (gods-and-startups.md, 3)")
+
+    // The God's Whim text names the god: "[Бог]" of the addendum is filled in by FactionPantheons.eventText
+    val whimText = "[pantheon] looks at you from a cloud. The expression on its face is like a cat's in front of a vase"
+    translations.add(whimText, quoted(whim, "Текст:").replace("""\[Бог\]""", "[pantheon]").replace("[Бог]", "[pantheon]"))
+    translations.add("Bring a gift", quoted(whim, "Выбор 1"))
+    translations.add("Pretend you did not hear", quoted(whim, "Выбор 2"))
+    translations.add("Gift: 30 x (era number + 1) Faith. +20% Faith in all cities for 10 turns", "Дар: 30 × (номер эпохи + 1) веры. +20% веры во всех городах на 10 ходов")
+    translations.add("-2 Happiness for 10 turns", "−2 к счастью на 10 ходов")
+    val roundText = "Investors are ready to invest. The terms are 300 pages long, no time to read"
+    translations.add(roundText, quoted(round, "Текст:"))
+    translations.add("Take the money", quoted(round, "Выбор 1"))
+    translations.add("We are doing fine anyway", quoted(round, "Выбор 2"))
+    translations.add("Gold equal to 50% of the Faith, and 25% of the Faith is lost", "Золото в размере 50% веры, 25% веры теряется")
+
+    return listOf(
+        jobj(
+            "name" to "GodsWhim",
+            "text" to whimText,
+            "choices" to listOf(
+                jobj("text" to "Bring a gift",
+                    "civilopediaText" to listOf(jobj("text" to "Gift: 30 x (era number + 1) Faith. +20% Faith in all cities for 10 turns")),
+                    "uniques" to listOf("KM: Bring a gift to the god <hidden from users>", "Only available <KM: when the gift to the god is affordable>")),
+                jobj("text" to "Pretend you did not hear",
+                    "civilopediaText" to listOf(jobj("text" to "-2 Happiness for 10 turns")),
+                    "uniques" to listOf("KM: Pretend not to hear the god <hidden from users>")),
+            ),
+        ),
+        jobj(
+            "name" to "InvestorRound",
+            "text" to roundText,
+            "choices" to listOf(
+                jobj("text" to "Take the money",
+                    "civilopediaText" to listOf(jobj("text" to "Gold equal to 50% of the Faith, and 25% of the Faith is lost")),
+                    "uniques" to listOf("KM: Take the investors' money <hidden from users>")),
+                jobj("text" to "We are doing fine anyway"),
+            ),
+        ),
+    )
 }

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Нейросеть для котиков: голова кота из узлов сети -->
+  <g stroke="#000" stroke-width="4" fill="none">
+    <path d="M22 10 L18 46 M22 10 L40 30 M78 10 L82 46 M78 10 L60 30 M40 30 H60 M18 46 L30 80 M82 46 L70 80 M30 80 H70 M18 46 L50 56 L82 46 M40 30 L50 56 L60 30 M30 80 L50 56 L70 80"/>
+  </g>
+  <g fill="#000"><circle cx="22" cy="10" r="7"/><circle cx="78" cy="10" r="7"/><circle cx="40" cy="30" r="6"/><circle cx="60" cy="30" r="6"/><circle cx="18" cy="46" r="7"/><circle cx="82" cy="46" r="7"/><circle cx="50" cy="56" r="8"/><circle cx="30" cy="80" r="7"/><circle cx="70" cy="80" r="7"/></g>
+  <g stroke="#000" stroke-width="3"><path d="M12 62 H0"/><path d="M12 70 H2"/><path d="M88 62 H100"/><path d="M88 70 H98"/></g>
+</svg>

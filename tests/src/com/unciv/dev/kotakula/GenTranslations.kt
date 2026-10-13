@@ -39,6 +39,13 @@ fun GenContext.addEngineTranslations() {
     t.add("Belongs to another faction", "Принадлежит другой фракции")
     t.add("Other faction", "Другая фракция")
     t.add("[modName] mod version: [version]", "Версия мода [modName]: [version]")
+    t.section("Engine: gods and startups (gods-and-startups.md)")
+    t.add("Thunder Grandpa is displeased with [unitName]", "Громовой Дед недоволен: [unitName]")
+    t.add("Lightning struck our [unitName]", "Молния ударила в наш юнит [unitName]")
+    t.add("Chaos gave you [amount] [stat]. Or took it away - it is not sure itself", "Хаос подарил вам [amount] [stat]. Или отнял — он сам не уверен")
+    t.add("We are no longer [oldPantheon]. Now we are [newPantheon]. The investors did not notice", "Мы больше не [oldPantheon]. Теперь мы [newPantheon]. Инвесторы ничего не заметили")
+    t.add("Pivot ([amount] Faith)", "Пивот ([amount] веры)")
+    t.add("Replace your startup by a free one. It can be done only once", "Замените свой стартап на любой свободный. Это можно сделать только один раз")
 
     t.section("Engine: capture, espionage, summoning (KC-13, KC-14, KC-21)")
     t.add("[cityName] has been liberated from the Technocrats. Found [amount] broken computers. Recycled into [science] Science",

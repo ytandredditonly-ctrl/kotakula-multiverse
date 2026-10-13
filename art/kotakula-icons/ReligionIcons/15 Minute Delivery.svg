@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Доставка за 15 минут: коробка с секундомером и полосками скорости -->
+  <path d="M30 40 L60 30 L94 40 L64 50 Z" fill="#000"/>
+  <path d="M30 40 L64 50 V90 L30 80 Z" fill="#000"/>
+  <path d="M94 40 L64 50 V90 L94 80 Z" fill="#000"/>
+  <path d="M64 50 V90" stroke="#fff" stroke-width="2.5"/>
+  <circle cx="46" cy="64" r="11" fill="#fff"/>
+  <path d="M46 64 V57 M46 64 L52 66" stroke="#000" stroke-width="3"/>
+  <g stroke="#000" stroke-width="5" stroke-linecap="round"><path d="M4 50 H22"/><path d="M10 64 H24"/><path d="M4 78 H22"/></g>
+  <rect x="42" y="18" width="8" height="6" rx="1" fill="#000"/>
+</svg>

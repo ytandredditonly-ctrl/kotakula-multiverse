@@ -9,7 +9,8 @@
 		"Cannot build [Settler] units <when below [-10] [Happiness]>",
 		"Rebel units may spawn <when below [-20] [Happiness]>",
 		"[-1] Sight <for [Embarked] units>",
-		"KM: Holy city bonus"
+		"KM: Holy city bonus",
+		"KM: Pivot <for [Technocrat] faction>"
 	],
 	"civilopediaText": [
 		{

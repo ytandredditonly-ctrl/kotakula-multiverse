@@ -26,6 +26,9 @@ class Religion() : INamed, IsPartOfGameInfoSerialization {
     var founderBeliefUniqueMap = UniqueMap()
     @Transient
     var followerBeliefUniqueMap = UniqueMap()
+    /** Kotakula: pantheon uniques acting on units or the whole civ, for the civ that took the pantheon (see FactionPantheons.civWideTypes) */
+    @Transient
+    var pantheonCivUniqueMap = UniqueMap()
 
     @Transient
     lateinit var gameInfo: GameInfo
@@ -75,6 +78,8 @@ class Religion() : INamed, IsPartOfGameInfoSerialization {
     private fun updateUniqueMaps(){
         followerBeliefUniqueMap = UniqueMap(mapToExistingBeliefs(followerBeliefs).flatMap { it.uniqueObjects })
         founderBeliefUniqueMap = UniqueMap(mapToExistingBeliefs(founderBeliefs).flatMap { it.uniqueObjects })
+        pantheonCivUniqueMap = UniqueMap(mapToExistingBeliefs(followerBeliefs).filter { it.type == BeliefType.Pantheon }
+            .flatMap { it.uniqueObjects }.filter { it.type in com.unciv.logic.kotakula.FactionPantheons.civWideTypes })
     }
 
     fun addBeliefs(beliefs: Iterable<Belief>){
@@ -89,6 +94,13 @@ class Religion() : INamed, IsPartOfGameInfoSerialization {
     }
 
     fun addBelief(belief: Belief) = addBeliefs(listOf(belief))
+
+    /** Kotakula (pivot): [old] gives its place to [new] of the same kind */
+    fun replaceBelief(old: Belief, new: Belief) {
+        followerBeliefs.remove(old.name)
+        founderBeliefs.remove(old.name)
+        addBelief(new)
+    }
     fun addBelief(beliefName: String) = gameInfo.ruleset.beliefs[beliefName]?.let { addBelief(it) }
 
     @Readonly

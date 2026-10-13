@@ -147,6 +147,7 @@ class ReligionManager : IsPartOfGameInfoSerialization {
         }
         religion = Religion(beliefName, civInfo.gameInfo, civInfo)
         civInfo.gameInfo.religions[beliefName] = religion!!
+        com.unciv.logic.kotakula.FactionPantheons.onPantheonTaken(civInfo) // Kotakula: the free trial starts
         for (city in civInfo.cities)
             city.religion.addPressure(beliefName, 200 * city.population.population)
 
@@ -285,9 +286,11 @@ class ReligionManager : IsPartOfGameInfoSerialization {
     @Readonly
     fun numberOfBeliefsAvailable(type: BeliefType): Int {
         val gameInfo = civInfo.gameInfo
-        val numberOfBeliefs = if (type == BeliefType.Any) gameInfo.ruleset.beliefs.values.count()
-        else gameInfo.ruleset.beliefs.values.count { it.type == type }
-        return numberOfBeliefs - gameInfo.religions.flatMap { it.value.getBeliefs(type) }.distinct().count()
+        // Kotakula: only the beliefs of the civ's own faction count, taken or not
+        val usable = { belief: Belief -> com.unciv.logic.kotakula.FactionRules.canUse(civInfo, belief) }
+        val numberOfBeliefs = if (type == BeliefType.Any) gameInfo.ruleset.beliefs.values.count(usable)
+        else gameInfo.ruleset.beliefs.values.count { it.type == type && usable(it) }
+        return numberOfBeliefs - gameInfo.religions.flatMap { it.value.getBeliefs(type) }.distinct().count(usable)
         // We need to do the distinct above, as pantheons and religions founded out of those pantheons might share beliefs
     }
 

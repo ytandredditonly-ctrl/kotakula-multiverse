@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Кракен-покровитель: голова кракена с нимбом -->
+  <ellipse cx="50" cy="8" rx="20" ry="5" fill="none" stroke="#000" stroke-width="4.5"/>
+  <path d="M50 16 C68 16 78 30 76 48 C74 58 66 62 62 64 H38 C34 62 26 58 24 48 C22 30 32 16 50 16 Z" fill="#000"/>
+  <g fill="#fff"><circle cx="40" cy="44" r="5"/><circle cx="60" cy="44" r="5"/></g>
+  <g fill="none" stroke="#000" stroke-width="7" stroke-linecap="round">
+    <path d="M30 60 C18 66 10 78 16 88"/><path d="M40 64 C36 76 34 86 40 94"/><path d="M60 64 C64 76 66 86 60 94"/><path d="M70 60 C82 66 90 78 84 88"/>
+  </g>
+</svg>

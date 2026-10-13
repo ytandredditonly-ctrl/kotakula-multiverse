@@ -30,6 +30,12 @@ class FactionCivState : IsPartOfGameInfoSerialization {
     /** KC-11: the free follower belief for entering the Industrial era was already granted */
     var industrialBeliefGranted = false
 
+    /** Gods and startups: turn the current pantheon was taken (free trial), -1 without a pantheon */
+    var pantheonTurn = -1
+
+    /** Gods and startups: the one pivot of the game was used */
+    var pivotUsed = false
+
     fun clone(): FactionCivState {
         val toReturn = FactionCivState()
         toReturn.activeFaithActions.putAll(activeFaithActions)
@@ -39,6 +45,8 @@ class FactionCivState : IsPartOfGameInfoSerialization {
         toReturn.factionChoiceAnnounced = factionChoiceAnnounced
         toReturn.truceEndAnnounced = truceEndAnnounced
         toReturn.industrialBeliefGranted = industrialBeliefGranted
+        toReturn.pantheonTurn = pantheonTurn
+        toReturn.pivotUsed = pivotUsed
         return toReturn
     }
 }

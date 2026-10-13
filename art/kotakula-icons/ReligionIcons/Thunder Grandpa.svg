@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Громовой Дед: туча с бородой и молнией -->
+  <path d="M18 44 C4 44 2 26 16 24 C16 10 34 4 42 14 C48 2 70 4 72 18 C86 14 98 26 90 40 C96 44 92 52 84 52 H22 Z" fill="#000"/>
+  <g fill="#fff"><path d="M34 30 L44 32 L34 36 Z"/><path d="M66 30 L56 32 L66 36 Z"/></g>
+  <path d="M28 52 C30 66 40 72 50 72 C60 72 70 66 72 52 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5"><path d="M40 54 V66"/><path d="M50 54 V70"/><path d="M60 54 V66"/></g>
+  <path d="M60 64 L52 80 H62 L54 98 L76 72 H64 L70 64 Z" fill="#000" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

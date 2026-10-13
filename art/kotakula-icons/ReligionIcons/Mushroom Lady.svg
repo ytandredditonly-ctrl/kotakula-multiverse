@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Владычица Грибов: большой гриб с короной -->
+  <path d="M6 54 C6 30 26 16 50 16 C74 16 94 30 94 54 Z" fill="#000"/>
+  <g fill="#fff"><circle cx="30" cy="38" r="6"/><circle cx="52" cy="28" r="5"/><circle cx="72" cy="40" r="7"/><circle cx="44" cy="46" r="3.5"/></g>
+  <path d="M38 54 H62 C62 70 66 84 70 94 H30 C34 84 38 70 38 54 Z" fill="#000"/>
+  <path d="M36 14 L32 2 L42 8 L50 0 L58 8 L68 2 L64 14 Z" fill="#000"/>
+  <path d="M8 96 C14 86 22 86 26 94 M74 94 C78 86 86 86 92 96" stroke="#000" stroke-width="4" fill="none"/>
+</svg>

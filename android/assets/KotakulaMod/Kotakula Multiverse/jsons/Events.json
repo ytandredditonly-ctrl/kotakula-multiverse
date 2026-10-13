@@ -39,6 +39,51 @@
 		]
 	},
 	{
+		"name": "GodsWhim",
+		"text": "[pantheon] looks at you from a cloud. The expression on its face is like a cat's in front of a vase",
+		"choices": [
+			{
+				"text": "Bring a gift",
+				"civilopediaText": [
+					{
+						"text": "Gift: 30 x (era number + 1) Faith. +20% Faith in all cities for 10 turns"
+					}
+				],
+				"uniques": [
+					"KM: Bring a gift to the god <hidden from users>",
+					"Only available <KM: when the gift to the god is affordable>"
+				]
+			},
+			{
+				"text": "Pretend you did not hear",
+				"civilopediaText": [
+					{
+						"text": "-2 Happiness for 10 turns"
+					}
+				],
+				"uniques": ["KM: Pretend not to hear the god <hidden from users>"]
+			}
+		]
+	},
+	{
+		"name": "InvestorRound",
+		"text": "Investors are ready to invest. The terms are 300 pages long, no time to read",
+		"choices": [
+			{
+				"text": "Take the money",
+				"civilopediaText": [
+					{
+						"text": "Gold equal to 50% of the Faith, and 25% of the Faith is lost"
+					}
+				],
+				"uniques": ["KM: Take the investors' money <hidden from users>"]
+			},
+			{
+				"text": "We are doing fine anyway"
+			}
+		]
+	},
+	{
 		"name": "Tutorial Task: [Move unit]",
 		"presentation": "Floating",
 		"civilopediaText": [

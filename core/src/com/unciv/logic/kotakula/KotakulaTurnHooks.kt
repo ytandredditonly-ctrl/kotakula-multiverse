@@ -15,6 +15,7 @@ object KotakulaTurnHooks {
         NewbieTruce.onTurnStart(civ)
         FactionEspionage.onTurnStart(civ)
         Summoning.onTurnStart(civ)
+        FactionPantheons.onTurnStart(civ)
     }
 
     /** End of [civ]'s turn, before victory is checked */

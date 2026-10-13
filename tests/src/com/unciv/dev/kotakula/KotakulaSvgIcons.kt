@@ -50,6 +50,14 @@ object KotakulaSvgIcons {
             ImageIO.write(image, "png", out)
             rendered += target to image
         }
+        // These folders only hold rendered SVGs: a PNG without a target any more (renamed or removed object) goes
+        for (folder in targets.map { it.folder }.toSet()) {
+            val keep = rendered.filter { it.first.folder == folder }.map { "${it.first.name}.png" }.toSet()
+            File(modDir, "Images/$folder").listFiles { f -> f.extension == "png" && f.name !in keep }?.forEach {
+                println("Removed stale ${folder}/${it.name}")
+                it.delete()
+            }
+        }
         writeContactSheets(rendered)
         // Targets that have a vanilla icon of the same ID: a sheet to decide whether the vanilla one already fits the spec
         val vanilla = targets.mapNotNull { target ->

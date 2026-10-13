@@ -13,6 +13,8 @@ import java.io.File
  */
 object KotakulaModGenerator {
     const val MOD_PATH = "KotakulaMod/Kotakula Multiverse"
+    /** The addendum "gods and startups" (pantheons of the factions) */
+    const val GODS_PATH = "../../docs/kotakula/gods-and-startups.md"
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -39,6 +41,7 @@ object KotakulaModGenerator {
             generateVictories()
             generateEvents()
             generateMisc()
+            renameUnitTypeFilters(File(outDir, "jsons"))
             generateIconPlaceholders(File("../.."))
             addEngineTranslations()
             addFactionVariants(vanillaRussian)

@@ -155,6 +155,13 @@ object UniqueTriggerActivation {
                 for (ourUnit in civInfo.units.getCivUnits()) ourUnit.healBy(100)
                 true
             }
+            // Gods and startups: the choices of the God's Whim and Investor Round events
+            UniqueType.KMGodsWhimGift -> {
+                if (!com.unciv.logic.kotakula.FactionPantheons.canAffordGift(civInfo)) return null
+                return { com.unciv.logic.kotakula.FactionPantheons.bringGift(civInfo) }
+            }
+            UniqueType.KMGodsWhimIgnored -> return { com.unciv.logic.kotakula.FactionPantheons.ignoreGod(civInfo) }
+            UniqueType.KMTakeInvestorMoney -> return { com.unciv.logic.kotakula.FactionPantheons.takeInvestorMoney(civInfo) }
             // Only meaningful inside faith actions, see FaithActions
             UniqueType.KMGainPercentOfActionCost, UniqueType.KMInfluenceWithChosenCityState -> return null
             // endregion

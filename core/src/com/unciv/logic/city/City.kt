@@ -363,7 +363,8 @@ class City : IsPartOfGameInfoSerialization, INamed {
     @Readonly fun getStrength(): Float {
         var strength = cityConstructions.getBuiltBuildings().sumOf { it.cityStrength }.toFloat()
         // Kotakula: "[amount] City Strength [cityFilter]" (Babylon's Heritage)
-        civ.forEachMatchingUnique(UniqueType.KMCityStrength) { unique ->
+        // city uniques = civ + local, so a pantheon followed by this city counts too (Schrodinger Security)
+        forEachMatchingUnique(UniqueType.KMCityStrength) { unique ->
             if (matchesFilter(unique.params[1])) strength += unique.params[0].toFloat()
         }
         return strength
