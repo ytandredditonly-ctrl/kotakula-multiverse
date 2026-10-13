@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Гильдия алхимиков: весы с золотым слитком -->
+  <rect x="47" y="10" width="6" height="76" fill="#000"/>
+  <circle cx="50" cy="10" r="6" fill="#000"/>
+  <rect x="10" y="20" width="80" height="5" rx="2" fill="#000"/>
+  <path d="M16 24 L6 54 M16 24 L26 54 M84 24 L74 54 M84 24 L94 54" stroke="#000" stroke-width="2.5"/>
+  <path d="M2 54 H30 C28 62 22 66 16 66 C10 66 4 62 2 54 Z" fill="#000"/>
+  <path d="M70 54 H98 C96 62 90 66 84 66 C78 66 72 62 70 54 Z" fill="#000"/>
+  <path d="M8 52 L12 42 H24 L28 52 Z" fill="#000" stroke="#fff" stroke-width="2"/>
+  <path d="M84 40 C88 46 88 48 86 52 H82 C80 48 80 46 84 40 Z" fill="#000"/>
+  <path d="M28 86 H72 L76 96 H24 Z" fill="#000"/>
+</svg>

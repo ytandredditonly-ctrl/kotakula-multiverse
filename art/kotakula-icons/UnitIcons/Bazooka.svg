@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Базучник: базука -->
+  <g transform="rotate(-20 50 50)">
+    <rect x="2" y="40" width="84" height="14" rx="3" fill="#000"/>
+    <path d="M78 36 H96 V58 H78 Z" fill="#000"/>
+    <path d="M2 38 H10 V56 H2 Z" fill="#000"/>
+    <path d="M36 54 H46 L44 72 H36 Z" fill="#000"/>
+    <path d="M54 54 H64 L66 66 H58 Z" fill="#000"/>
+    <rect x="30" y="30" width="16" height="10" rx="2" fill="#000"/>
+    <g stroke="#fff" stroke-width="2.5"><path d="M20 40 V54"/><path d="M70 40 V54"/></g>
+  </g>
+</svg>

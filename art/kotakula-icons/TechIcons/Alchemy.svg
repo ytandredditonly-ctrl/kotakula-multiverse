@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Алхимия: бурлящая колба -->
+  <path d="M38 30 V46 L14 84 C11 90 15 96 22 96 H78 C85 96 89 90 86 84 L62 46 V30 Z" fill="#000"/>
+  <rect x="34" y="24" width="32" height="8" rx="2" fill="#000"/>
+  <path d="M24 72 C36 66 48 78 76 70 L82 84 C84 88 82 90 78 90 H22 C18 90 16 88 18 84 Z" fill="#fff"/>
+  <g fill="#000"><circle cx="38" cy="82" r="4"/><circle cx="56" cy="80" r="3"/><circle cx="66" cy="84" r="2.5"/></g>
+  <g fill="#000"><circle cx="46" cy="14" r="5"/><circle cx="58" cy="8" r="4"/><circle cx="54" cy="18" r="3"/></g>
+</svg>

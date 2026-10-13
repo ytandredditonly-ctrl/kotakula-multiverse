@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Руна кузнеца: наковальня с руной -->
+  <path d="M4 48 H80 C80 58 72 64 62 66 L58 80 H70 V92 H20 V80 H32 L28 66 H18 C10 64 4 58 4 48 Z" fill="#000"/>
+  <path d="M80 48 L98 52 L80 58 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M44 4 V40"/><path d="M32 14 L44 24 L56 14"/></g>
+</svg>

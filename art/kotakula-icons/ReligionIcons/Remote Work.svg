@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Удалёнка: ноутбук на диване -->
+  <path d="M30 22 H70 L66 52 H34 Z" fill="#000"/>
+  <path d="M38 28 H62 L60 46 H40 Z" fill="#fff"/>
+  <path d="M24 52 H76 L80 58 H20 Z" fill="#000"/>
+  <path d="M4 50 C4 44 14 44 14 50 V60 H86 V50 C86 44 96 44 96 50 V84 H4 Z" fill="#000"/>
+  <path d="M14 68 H86" stroke="#fff" stroke-width="3"/>
+  <rect x="8" y="84" width="8" height="10" fill="#000"/><rect x="84" y="84" width="8" height="10" fill="#000"/>
+</svg>

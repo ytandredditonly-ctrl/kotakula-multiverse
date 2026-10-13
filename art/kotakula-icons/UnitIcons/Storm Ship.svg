@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Корабль бурь: корабль с тучей над мачтой -->
+  <path d="M22 26 C12 26 10 14 20 12 C20 4 34 0 40 8 C46 0 62 2 64 12 C74 10 82 18 76 26 Z" fill="#000"/>
+  <path d="M40 26 L34 38 H42 L38 48 L50 34 H42 L46 26 Z" fill="#000"/>
+  <rect x="58" y="30" width="5" height="40" fill="#000"/>
+  <path d="M36 36 H56 V66 H40 C44 56 44 46 36 36 Z" fill="#000"/>
+  <path d="M66 38 H86 C80 48 80 58 84 66 H66 Z" fill="#000"/>
+  <path d="M8 70 H94 L84 86 H18 Z" fill="#000"/>
+  <path d="M2 94 C12 88 22 98 32 92 C42 86 52 98 62 92 C72 86 82 98 98 92" stroke="#000" stroke-width="4" fill="none"/>
+</svg>

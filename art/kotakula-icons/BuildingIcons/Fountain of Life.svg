@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Источник жизни: фонтан с листом -->
+  <path d="M4 76 H96 V84 C96 90 90 94 84 94 H16 C10 94 4 90 4 84 Z" fill="#000"/>
+  <rect x="44" y="50" width="12" height="26" fill="#000"/>
+  <path d="M22 50 H78 C76 58 66 62 50 62 C34 62 24 58 22 50 Z" fill="#000"/>
+  <path d="M50 46 C30 46 24 30 32 22 C34 32 40 38 50 40 Z" fill="#000"/>
+  <path d="M50 46 C70 46 76 30 68 22 C66 32 60 38 50 40 Z" fill="#000"/>
+  <path d="M50 40 C36 30 38 12 50 2 C62 12 64 30 50 40 Z" fill="#000"/>
+  <path d="M50 36 V10" stroke="#fff" stroke-width="2.5"/>
+  <path d="M50 26 L56 20 M50 20 L44 14" stroke="#fff" stroke-width="2"/>
+</svg>

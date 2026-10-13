@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Боевые ритуалы: пентаграмма с мечом -->
+  <circle cx="50" cy="50" r="40" fill="none" stroke="#000" stroke-width="5"/>
+  <path d="M50 12 L72 80 L14 38 H86 L28 80 Z" fill="none" stroke="#000" stroke-width="4.5" stroke-linejoin="round"/>
+  <g>
+    <path d="M46 2 L54 2 L55 74 L45 74 Z" fill="#fff"/>
+    <path d="M47.5 4 L52.5 4 L53 72 L47 72 Z" fill="#000"/>
+    <rect x="34" y="72" width="32" height="7" rx="2" fill="#000" stroke="#fff" stroke-width="1.5"/>
+    <rect x="46.5" y="79" width="7" height="13" fill="#000"/>
+    <circle cx="50" cy="94" r="5" fill="#000"/>
+  </g>
+</svg>

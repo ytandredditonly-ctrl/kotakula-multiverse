@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Кровавая магия: капля с руной -->
+  <path d="M50 2 C62 22 84 44 84 64 C84 84 68 96 50 96 C32 96 16 84 16 64 C16 44 38 22 50 2 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="7" stroke-linecap="round" fill="none"><path d="M50 40 V84"/><path d="M50 54 L34 44"/><path d="M50 54 L66 44"/></g>
+</svg>

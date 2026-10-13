@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Гастрафет: арбалет с упором для живота -->
+  <path d="M6 30 C30 14 70 14 94 30 L92 36 C70 24 30 24 8 36 Z" fill="#000"/>
+  <path d="M8 34 L50 46 L92 34" stroke="#000" stroke-width="2.5" fill="none"/>
+  <rect x="44" y="16" width="12" height="62" rx="2" fill="#000"/>
+  <path d="M28 76 C28 70 36 68 50 68 C64 68 72 70 72 76 V86 C72 92 66 94 50 94 C34 94 28 92 28 86 Z" fill="#000"/>
+  <path d="M34 80 C42 76 58 76 66 80" stroke="#fff" stroke-width="3" fill="none"/>
+  <path d="M50 4 L56 16 H44 Z" fill="#000"/>
+  <path d="M56 52 L64 56 L56 60" fill="#000"/>
+</svg>

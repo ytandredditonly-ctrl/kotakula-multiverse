@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Десятина: мешочек с нимбом -->
+  <ellipse cx="50" cy="10" rx="20" ry="6" fill="none" stroke="#000" stroke-width="5"/>
+  <path d="M36 32 C14 46 8 70 16 84 C20 92 32 96 50 96 C68 96 80 92 84 84 C92 70 86 46 64 32 Z" fill="#000"/>
+  <path d="M36 32 L30 22 H70 L64 32 Z" fill="#000"/>
+  <path d="M50 46 V84 M38 58 H62" stroke="#fff" stroke-width="7"/>
+</svg>

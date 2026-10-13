@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Свиток Армагеддона: свиток с черепом на печати -->
+  <rect x="18" y="14" width="64" height="66" fill="#000"/>
+  <rect x="10" y="6" width="80" height="14" rx="7" fill="#000"/>
+  <rect x="10" y="74" width="80" height="14" rx="7" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5"><path d="M26 28 H74"/><path d="M26 36 H62"/></g>
+  <path d="M56 52 L66 98 L58 94 L52 98 Z" fill="#000" stroke="#fff" stroke-width="2"/>
+  <path d="M44 52 L34 98 L42 94 L48 98 Z" fill="#000" stroke="#fff" stroke-width="2"/>
+  <circle cx="50" cy="56" r="17" fill="#fff"/>
+  <circle cx="50" cy="56" r="14" fill="#000"/>
+  <path d="M50 46 C57 46 60 50 60 55 C60 59 57 61 56 62 V66 H44 V62 C43 61 40 59 40 55 C40 50 43 46 50 46 Z" fill="#fff"/>
+  <g fill="#000"><circle cx="46" cy="55" r="2.5"/><circle cx="54" cy="55" r="2.5"/><rect x="47" y="63" width="2" height="3"/><rect x="51" y="63" width="2" height="3"/></g>
+</svg>

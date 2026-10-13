@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Инженерия: арка моста и циркуль -->
+  <path d="M4 92 V62 H96 V92 H84 C84 74 70 66 50 66 C30 66 16 74 16 92 Z" fill="#000"/>
+  <rect x="4" y="54" width="92" height="6" fill="#000"/>
+  <g fill="#000">
+    <circle cx="50" cy="10" r="6"/>
+    <path d="M47 14 L53 14 L34 52 L28 50 Z"/>
+    <path d="M47 14 L53 14 L72 50 L66 52 Z"/>
+    <path d="M36 36 Q50 42 64 36 L63 40 Q50 46 37 40 Z"/>
+  </g>
+</svg>

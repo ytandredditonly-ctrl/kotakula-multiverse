@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Нумерология: семёрка в круге -->
+  <circle cx="50" cy="50" r="44" fill="#000"/>
+  <circle cx="50" cy="50" r="36" fill="#fff"/>
+  <path d="M30 28 H72 V36 L48 78 H37 L60 37 H30 Z" fill="#000"/>
+  <rect x="40" y="50" width="24" height="6" fill="#000"/>
+</svg>

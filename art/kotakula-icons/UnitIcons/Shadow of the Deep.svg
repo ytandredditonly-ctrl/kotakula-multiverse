@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Тень глубин: силуэт с глазами под водой -->
+  <path d="M2 30 C12 24 22 34 32 28 C42 22 52 34 62 28 C72 22 82 34 98 26" stroke="#000" stroke-width="4" fill="none"/>
+  <path d="M10 98 C10 70 26 44 50 44 C74 44 90 70 90 98 Z" fill="#000"/>
+  <path d="M12 98 C16 88 20 84 26 82 M88 98 C84 88 80 84 74 82" stroke="#000" stroke-width="5" fill="none"/>
+  <path d="M30 66 L44 70 L32 76 Z" fill="#fff"/>
+  <path d="M70 66 L56 70 L68 76 Z" fill="#fff"/>
+  <g fill="#000"><circle cx="20" cy="40" r="2"/><circle cx="76" cy="36" r="2.5"/><circle cx="64" cy="14" r="2"/></g>
+</svg>

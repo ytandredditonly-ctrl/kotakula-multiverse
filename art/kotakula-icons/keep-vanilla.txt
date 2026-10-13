@@ -1,0 +1,36 @@
+# Objects of the mod that keep the vanilla Unciv icon of the same ID: it already shows what section 13 asks for.
+# Everything else unique to the mod is drawn here as SVG (see KotakulaSvgIcons).
+UnitIcons/Catapult
+UnitIcons/Pikeman
+UnitIcons/Knight
+UnitIcons/Crossbowman
+UnitIcons/Trebuchet
+UnitIcons/Caravel
+UnitIcons/Galleass
+UnitIcons/Musketeer
+UnitIcons/Cannon
+UnitIcons/Frigate
+UnitIcons/Rifleman
+UnitIcons/Artillery
+UnitIcons/Ironclad
+UnitIcons/Tank
+UnitIcons/Destroyer
+UnitIcons/Fighter
+UnitIcons/Bomber
+UnitIcons/Rocket Artillery
+UnitIcons/Jet Fighter
+UnitIcons/Carrier
+UnitIcons/Nuclear Submarine
+BuildingIcons/Market
+BuildingIcons/Aqueduct
+BuildingIcons/Forge
+BuildingIcons/Bank
+BuildingIcons/University
+BuildingIcons/Observatory
+BuildingIcons/Factory
+BuildingIcons/Stock Exchange
+BuildingIcons/Hospital
+BuildingIcons/Broadcast Tower
+BuildingIcons/Military Base
+BuildingIcons/Nuclear Plant
+BuildingIcons/Great Firewall

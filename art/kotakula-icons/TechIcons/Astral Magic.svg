@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Астральная магия: звезда в спирали -->
+  <path d="M50 50 m0 -6 C60 -6 96 10 94 50 C92 84 60 98 36 90 C14 82 6 58 14 40 C22 22 44 16 58 24 C72 32 74 50 66 60 C58 70 44 68 40 60" stroke="#000" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M50 36 L54 46 L64 48 L56 54 L58 64 L50 58 L42 64 L44 54 L36 48 L46 46 Z" fill="#000"/>
+</svg>

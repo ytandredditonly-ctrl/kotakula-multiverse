@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Сады Эфира: парящий сад -->
+  <path d="M10 56 H90 C86 66 76 70 66 74 C60 82 56 92 50 98 C44 92 40 82 34 74 C24 70 14 66 10 56 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5"><path d="M30 64 L38 72"/><path d="M70 64 L62 72"/><path d="M50 62 V88"/></g>
+  <path d="M24 56 V40" stroke="#000" stroke-width="4"/><circle cx="24" cy="34" r="10" fill="#000"/>
+  <path d="M50 56 V30" stroke="#000" stroke-width="5"/><circle cx="50" cy="22" r="16" fill="#000"/>
+  <path d="M76 56 V42" stroke="#000" stroke-width="4"/><circle cx="76" cy="36" r="9" fill="#000"/>
+  <g fill="#fff"><circle cx="44" cy="18" r="2.5"/><circle cx="56" cy="26" r="2.5"/><circle cx="20" cy="32" r="2"/><circle cx="80" cy="34" r="2"/></g>
+  <g stroke="#000" stroke-width="3" stroke-linecap="round"><path d="M8 74 C4 80 4 86 8 90"/><path d="M92 74 C96 80 96 86 92 90"/></g>
+</svg>

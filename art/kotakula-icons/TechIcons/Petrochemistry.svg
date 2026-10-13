@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Нефтехимия: капля нефти и колба -->
+  <path d="M30 6 C40 24 52 36 52 52 C52 66 42 76 30 76 C18 76 8 66 8 52 C8 36 20 24 30 6 Z" fill="#000"/>
+  <path d="M20 50 C20 44 24 38 26 36" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M64 30 V52 L48 84 C46 90 50 96 56 96 H86 C92 96 96 90 94 84 L78 52 V30 Z" fill="#000"/>
+  <rect x="60" y="24" width="22" height="8" rx="2" fill="#000"/>
+  <path d="M58 76 H84 L88 86 C89 89 87 91 84 91 H58 C55 91 53 89 54 86 Z" fill="#fff"/>
+</svg>

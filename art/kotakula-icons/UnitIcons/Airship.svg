@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Дирижабль -->
+  <ellipse cx="46" cy="38" rx="42" ry="22" fill="#000"/>
+  <path d="M82 38 L98 20 L98 56 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="3" fill="none"><path d="M14 38 H80"/><path d="M30 18 C26 28 26 48 30 58"/><path d="M60 18 C64 28 64 48 60 58"/></g>
+  <path d="M30 58 L36 70 M62 58 L56 70" stroke="#000" stroke-width="3"/>
+  <rect x="30" y="68" width="32" height="14" rx="3" fill="#000"/>
+  <g fill="#fff"><rect x="35" y="72" width="5" height="5"/><rect x="44" y="72" width="5" height="5"/><rect x="53" y="72" width="5" height="5"/></g>
+  <path d="M64 75 H70 M70 69 V81" stroke="#000" stroke-width="3"/>
+</svg>

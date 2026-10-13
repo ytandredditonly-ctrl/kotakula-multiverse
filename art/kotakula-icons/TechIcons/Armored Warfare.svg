@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Бронетехника: паровой танк сбоку -->
+  <rect x="8" y="64" width="84" height="24" rx="12" fill="#000"/>
+  <g fill="#fff"><circle cx="22" cy="76" r="6"/><circle cx="40" cy="76" r="6"/><circle cx="58" cy="76" r="6"/><circle cx="76" cy="76" r="6"/></g>
+  <path d="M14 64 L20 40 H78 L86 64 Z" fill="#000"/>
+  <rect x="30" y="28" width="30" height="14" rx="3" fill="#000"/>
+  <rect x="60" y="32" width="34" height="6" rx="2" fill="#000"/>
+  <rect x="34" y="8" width="10" height="22" fill="#000"/>
+  <g fill="#000"><circle cx="34" cy="6" r="4"/><circle cx="26" cy="4" r="3"/></g>
+  <g fill="#fff"><circle cx="28" cy="52" r="2.5"/><circle cx="44" cy="52" r="2.5"/><circle cx="60" cy="52" r="2.5"/></g>
+</svg>

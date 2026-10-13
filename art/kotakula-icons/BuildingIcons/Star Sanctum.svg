@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Святилище звёзд: банка со звездой внутри -->
+  <rect x="30" y="4" width="40" height="12" rx="3" fill="#000"/>
+  <path d="M26 18 H74 V24 C82 28 86 36 86 46 V86 C86 92 80 96 74 96 H26 C20 96 14 92 14 86 V46 C14 36 18 28 26 24 Z" fill="#000"/>
+  <path d="M22 44 C22 36 28 30 34 30 H66 C72 30 78 36 78 44 V84 C78 87 76 88 74 88 H26 C24 88 22 87 22 84 Z" fill="#fff"/>
+  <path d="M50 38 L56 54 L74 56 L60 66 L64 84 L50 74 L36 84 L40 66 L26 56 L44 54 Z" fill="#000"/>
+  <path d="M30 40 V58" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+</svg>

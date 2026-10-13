@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Вечный котёл: котёл с бесконечным паром -->
+  <path d="M8 50 H92 V56 H86 C86 78 70 92 50 92 C30 92 14 78 14 56 H8 Z" fill="#000"/>
+  <path d="M24 62 C34 66 66 66 76 62" stroke="#fff" stroke-width="3" fill="none"/>
+  <rect x="20" y="88" width="8" height="10" fill="#000"/><rect x="72" y="88" width="8" height="10" fill="#000"/>
+  <path d="M50 40 C40 30 26 30 26 22 C26 14 38 12 44 20 L56 32 C62 40 74 38 74 30 C74 22 60 22 50 32 C40 42 26 42 26 30" stroke="#000" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M30 16 C34 8 44 6 50 10" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

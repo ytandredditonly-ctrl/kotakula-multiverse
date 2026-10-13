@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Чертог Kotakula: зал с троном-когтеточкой -->
+  <path d="M4 30 L50 4 L96 30 Z" fill="#000"/>
+  <rect x="6" y="30" width="88" height="6" fill="#000"/>
+  <g fill="#000"><rect x="8" y="36" width="8" height="54"/><rect x="84" y="36" width="8" height="54"/></g>
+  <rect x="2" y="90" width="96" height="8" fill="#000"/>
+  <path d="M34 58 V44 L38 38 L42 44 H58 L62 38 L66 44 V58 H72 V82 H28 V58 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2"><path d="M36 50 L44 54"/><path d="M36 56 L44 60"/><path d="M56 50 L64 54"/><path d="M56 56 L64 60"/></g>
+  <rect x="38" y="64" width="24" height="5" fill="#fff"/>
+  <rect x="32" y="82" width="6" height="8" fill="#000"/><rect x="62" y="82" width="6" height="8" fill="#000"/>
+  <path d="M50 14 L52 19 L57 20 L53 23 L54 28 L50 25 L46 28 L47 23 L43 20 L48 19 Z" fill="#fff"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Фантомы: призрак -->
+  <path d="M14 96 V44 C14 22 30 6 50 6 C70 6 86 22 86 44 V96 L74 86 L62 96 L50 86 L38 96 L26 86 Z" fill="#000"/>
+  <g fill="#fff"><ellipse cx="36" cy="42" rx="7" ry="10"/><ellipse cx="64" cy="42" rx="7" ry="10"/><ellipse cx="50" cy="66" rx="8" ry="6"/></g>
+</svg>

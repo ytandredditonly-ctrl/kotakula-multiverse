@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Призыв волков: голова волка -->
+  <path d="M18 4 L34 30 L50 24 L66 30 L82 4 L88 40 C92 54 84 66 70 74 L58 94 H42 L30 74 C16 66 8 54 12 40 Z" fill="#000"/>
+  <path d="M28 46 L42 50 L32 56 Z M72 46 L58 50 L68 56 Z" fill="#fff"/>
+  <path d="M44 76 H56 L50 84 Z" fill="#fff"/>
+</svg>

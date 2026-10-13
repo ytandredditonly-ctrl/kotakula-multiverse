@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Колосс хаоса: огромная фигура из осколков -->
+  <path d="M40 4 L58 2 L62 18 L46 22 Z" fill="#000"/>
+  <path d="M26 24 L50 20 L74 26 L70 44 L52 50 L30 44 Z" fill="#000"/>
+  <path d="M30 48 L50 54 L68 48 L66 64 L34 64 Z" fill="#000"/>
+  <path d="M8 22 L22 26 L24 48 L12 60 L4 44 Z" fill="#000"/>
+  <path d="M92 22 L78 28 L76 48 L88 58 L96 42 Z" fill="#000"/>
+  <path d="M32 68 L48 66 L46 82 L40 96 H26 L30 80 Z" fill="#000"/>
+  <path d="M54 66 L68 68 L72 80 L76 96 H60 L56 82 Z" fill="#000"/>
+  <g fill="#fff"><path d="M46 10 L52 9 L52 13 Z"/><path d="M54 10 L56 12 L54 14 Z"/></g>
+  <g fill="#000"><path d="M2 70 L8 66 L10 74 Z"/><path d="M90 72 L98 70 L94 78 Z"/><path d="M18 8 L24 4 L24 12 Z"/><path d="M80 6 L88 8 L82 14 Z"/></g>
+</svg>

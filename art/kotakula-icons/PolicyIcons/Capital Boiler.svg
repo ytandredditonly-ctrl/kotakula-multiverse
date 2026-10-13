@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Котёл столицы: котёл с короной -->
+  <rect x="12" y="44" width="66" height="44" rx="18" fill="#000"/>
+  <rect x="16" y="88" width="10" height="10" fill="#000"/><rect x="64" y="88" width="10" height="10" fill="#000"/>
+  <path d="M22 36 L18 10 L34 24 L46 6 L58 24 L74 10 L70 36 Z" fill="#000"/>
+  <g fill="#000"><circle cx="86" cy="40" r="7"/><circle cx="92" cy="26" r="5"/></g>
+</svg>

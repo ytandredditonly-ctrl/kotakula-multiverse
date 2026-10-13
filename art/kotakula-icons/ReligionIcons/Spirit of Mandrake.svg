@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Дух мандрагоры: корень-человечек с листьями -->
+  <path d="M50 30 C40 16 30 10 18 10 C26 18 34 26 44 32 Z" fill="#000"/>
+  <path d="M50 30 C60 16 70 8 84 6 C76 16 66 24 56 32 Z" fill="#000"/>
+  <path d="M50 30 C48 20 48 10 50 2 C52 10 52 20 50 30 Z" fill="#000"/>
+  <path d="M50 30 C64 30 72 40 70 54 C68 62 64 66 62 70 L70 96 H60 L54 76 H46 L40 96 H30 L38 70 C36 66 32 62 30 54 C28 40 36 30 50 30 Z" fill="#000"/>
+  <path d="M30 50 L12 60 M70 50 L88 60" stroke="#000" stroke-width="6" stroke-linecap="round"/>
+  <g fill="#fff"><circle cx="43" cy="46" r="3.5"/><circle cx="57" cy="46" r="3.5"/><ellipse cx="50" cy="58" rx="5" ry="4"/></g>
+</svg>

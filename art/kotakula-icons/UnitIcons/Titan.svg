@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Титан: гигант в доспехе -->
+  <path d="M38 4 H62 L64 24 H36 Z" fill="#000"/>
+  <path d="M46 4 L50 0 L54 4 V12 H46 Z" fill="#fff"/>
+  <rect x="40" y="13" width="20" height="4" fill="#fff"/>
+  <path d="M12 26 C20 22 30 24 34 28 H66 C70 24 80 22 88 26 L92 40 L78 44 L76 58 H24 L22 44 L8 40 Z" fill="#000"/>
+  <path d="M10 42 H22 L20 72 H8 Z" fill="#000"/><path d="M90 42 H78 L80 72 H92 Z" fill="#000"/>
+  <path d="M26 58 H74 L70 70 H30 Z" fill="#000"/>
+  <path d="M30 70 H48 L46 96 H26 Z" fill="#000"/><path d="M52 70 H70 L74 96 H54 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5" fill="none"><path d="M36 34 C42 42 58 42 64 34"/><path d="M50 40 V56"/><path d="M28 64 H72"/></g>
+</svg>

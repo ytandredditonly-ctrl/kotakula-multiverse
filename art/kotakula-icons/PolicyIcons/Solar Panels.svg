@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Солнечные панели -->
+  <circle cx="80" cy="18" r="12" fill="#000"/>
+  <g stroke="#000" stroke-width="4" stroke-linecap="round"><path d="M80 0 V2"/><path d="M60 18 H62"/><path d="M66 4 L67 5"/></g>
+  <path d="M6 56 L30 34 H90 L70 56 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="3"><path d="M16 46 H80"/><path d="M50 34 L30 56"/><path d="M70 34 L50 56"/></g>
+  <rect x="42" y="56" width="8" height="30" fill="#000"/>
+  <rect x="24" y="86" width="44" height="10" rx="2" fill="#000"/>
+</svg>

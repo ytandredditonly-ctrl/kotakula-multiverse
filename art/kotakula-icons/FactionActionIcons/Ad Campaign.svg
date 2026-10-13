@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Рекламная кампания: билборд -->
+  <rect x="4" y="8" width="92" height="54" rx="3" fill="#000"/>
+  <rect x="12" y="16" width="76" height="38" fill="#fff"/>
+  <path d="M22 46 L40 26 L52 38 L60 30 L78 46 Z" fill="#000"/>
+  <circle cx="70" cy="24" r="5" fill="#000"/>
+  <rect x="20" y="62" width="8" height="34" fill="#000"/><rect x="72" y="62" width="8" height="34" fill="#000"/>
+</svg>

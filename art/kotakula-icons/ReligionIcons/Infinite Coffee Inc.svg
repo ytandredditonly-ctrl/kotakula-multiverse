@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Бесконечный Кофе Инк.: кружка со знаком ∞ -->
+  <path d="M10 30 H74 V78 C74 88 66 96 56 96 H28 C18 96 10 88 10 78 Z" fill="#000"/>
+  <path d="M74 42 H82 C92 42 96 50 96 58 C96 68 90 74 80 74 H74 V64 H80 C84 64 86 62 86 58 C86 54 84 52 80 52 H74 Z" fill="#000"/>
+  <path d="M42 62 C36 52 22 52 22 62 C22 72 36 72 42 62 C48 52 62 52 62 62 C62 72 48 72 42 62 Z" fill="none" stroke="#fff" stroke-width="5"/>
+  <g stroke="#000" stroke-width="5" fill="none" stroke-linecap="round"><path d="M30 22 C26 16 34 12 30 4"/><path d="M50 22 C46 16 54 12 50 4"/></g>
+</svg>

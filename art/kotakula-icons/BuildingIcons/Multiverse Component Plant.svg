@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Завод мультиверс-компонентов: ангар с порталом -->
+  <path d="M4 96 V50 C4 28 24 14 50 14 C76 14 96 28 96 50 V96 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2" fill="none"><path d="M14 30 C26 22 74 22 86 30"/></g>
+  <ellipse cx="50" cy="66" rx="24" ry="28" fill="#fff"/>
+  <ellipse cx="50" cy="66" rx="18" ry="22" fill="#000"/>
+  <path d="M50 66 m0 -3 C56 -3 60 62 54 72 C48 80 38 72 42 62 C46 52 58 54 60 62" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M50 66 C46 60 48 54 54 54" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

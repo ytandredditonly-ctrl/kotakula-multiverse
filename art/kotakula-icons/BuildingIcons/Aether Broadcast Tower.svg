@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Башня Эфирного Вещания: антенна с кольцами -->
+  <path d="M50 34 L66 98 H56 L50 66 L44 98 H34 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="3"><path d="M44 58 H56"/><path d="M40 76 H60"/><path d="M44 58 L60 76"/><path d="M56 58 L40 76"/></g>
+  <rect x="48" y="12" width="4" height="24" fill="#000"/>
+  <circle cx="50" cy="10" r="5" fill="#000"/>
+  <g fill="none" stroke="#000" stroke-width="4">
+    <ellipse cx="50" cy="24" rx="14" ry="4"/>
+    <ellipse cx="50" cy="24" rx="28" ry="8"/>
+    <ellipse cx="50" cy="24" rx="44" ry="12" stroke-dasharray="8 5"/>
+  </g>
+</svg>

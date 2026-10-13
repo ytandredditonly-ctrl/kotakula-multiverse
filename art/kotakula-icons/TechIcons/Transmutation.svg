@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Абсолютная трансмутация: свинцовый куб, наполовину золотой -->
+  <path d="M50 8 L90 28 L50 48 L10 28 Z" fill="#000"/>
+  <path d="M10 28 L50 48 V94 L10 74 Z" fill="#000"/>
+  <path d="M90 28 L50 48 V94 L90 74 Z" fill="#000"/>
+  <path d="M30 18 L70 38 L70 84 L50 94 V48 L10 28 Z" fill="#fff" opacity="0"/>
+  <g stroke="#fff" stroke-width="2.5" fill="none"><path d="M10 28 L50 48 L90 28"/><path d="M50 48 V94"/></g>
+  <g fill="#fff">
+    <path d="M56 54 L84 40 V52 L56 66 Z"/><path d="M56 72 L84 58 V70 L56 84 Z"/>
+    <path d="M30 26 L50 16 L64 23 L44 33 Z"/>
+  </g>
+  <g stroke="#000" stroke-width="3" stroke-linecap="round"><path d="M92 6 L86 12"/><path d="M96 18 H88"/><path d="M80 2 V8"/></g>
+</svg>

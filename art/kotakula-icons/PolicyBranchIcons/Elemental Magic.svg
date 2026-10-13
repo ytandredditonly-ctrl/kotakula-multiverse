@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Стихийная магия: четыре стихии -->
+  <path d="M28 4 C36 14 40 18 38 28 C36 34 22 34 20 28 C18 22 22 18 24 12 C26 16 28 16 28 4 Z" fill="#000"/>
+  <path d="M74 4 C82 16 86 20 86 28 C86 34 80 36 74 36 C68 36 62 34 62 28 C62 20 68 16 74 4 Z" fill="#000"/>
+  <path d="M8 94 L22 66 L30 78 L38 66 L48 94 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="6" fill="none" stroke-linecap="round"><path d="M56 70 H82 C90 70 90 60 82 60"/><path d="M56 82 H90"/><path d="M56 94 H78 C86 94 86 100 80 100"/></g>
+  <path d="M50 8 V92 M8 50 H92" stroke="#000" stroke-width="3" stroke-dasharray="4 4"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Порох: бочонок с фитилём -->
+  <path d="M18 34 C14 50 14 74 18 90 H70 C74 74 74 50 70 34 Z" fill="#000"/>
+  <ellipse cx="44" cy="34" rx="26" ry="7" fill="#000"/>
+  <g stroke="#fff" stroke-width="3.5" fill="none"><path d="M17 46 H71"/><path d="M16 78 H72"/></g>
+  <ellipse cx="44" cy="34" rx="20" ry="4" fill="#fff"/>
+  <path d="M50 32 C58 22 64 24 70 18 C74 14 76 10 80 10" stroke="#000" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M84 2 L86 8 L92 6 L88 11 L94 14 L87 15 L88 21 L83 16 L78 20 L79 13 L73 11 L80 9 Z" fill="#000"/>
+</svg>

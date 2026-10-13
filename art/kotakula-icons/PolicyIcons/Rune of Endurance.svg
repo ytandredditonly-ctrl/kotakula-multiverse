@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Руна стойкости: щит с руной -->
+  <path d="M50 4 L90 16 C90 54 78 80 50 96 C22 80 10 54 10 16 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M36 26 V74"/><path d="M64 26 V74"/><path d="M36 30 L64 54"/></g>
+</svg>

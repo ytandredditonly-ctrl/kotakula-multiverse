@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <!-- Рой фей: облако маленьких фей -->
+  <defs>
+    <g id="fairy">
+      <ellipse cx="-8" cy="-6" rx="9" ry="6" transform="rotate(-30 -8 -6)" fill="#000"/>
+      <ellipse cx="8" cy="-6" rx="9" ry="6" transform="rotate(30 8 -6)" fill="#000"/>
+      <ellipse cx="-6" cy="5" rx="6" ry="4" transform="rotate(30 -6 5)" fill="#000"/>
+      <ellipse cx="6" cy="5" rx="6" ry="4" transform="rotate(-30 6 5)" fill="#000"/>
+      <ellipse cx="0" cy="2" rx="2.8" ry="9" fill="#fff"/>
+      <ellipse cx="0" cy="2" rx="2" ry="8" fill="#000"/>
+      <circle cx="0" cy="-10" r="3.5" fill="#000"/>
+    </g>
+  </defs>
+  <use xlink:href="#fairy" transform="translate(30 30) scale(1.3)"/>
+  <use xlink:href="#fairy" transform="translate(72 26) scale(1)"/>
+  <use xlink:href="#fairy" transform="translate(56 64) scale(1.2)"/>
+  <use xlink:href="#fairy" transform="translate(20 74) scale(0.8)"/>
+  <use xlink:href="#fairy" transform="translate(86 72) scale(0.7)"/>
+  <g fill="#000"><circle cx="50" cy="12" r="2"/><circle cx="12" cy="48" r="2"/><circle cx="90" cy="48" r="2.5"/><circle cx="40" cy="92" r="2"/></g>
+</svg>

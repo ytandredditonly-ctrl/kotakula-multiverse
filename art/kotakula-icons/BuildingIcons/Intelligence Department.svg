@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Отдел разведки: монитор с глазом -->
+  <rect x="4" y="10" width="92" height="62" rx="5" fill="#000"/>
+  <rect x="11" y="17" width="78" height="48" rx="2" fill="#fff"/>
+  <path d="M20 41 C30 26 70 26 80 41 C70 56 30 56 20 41 Z" fill="#000"/>
+  <circle cx="50" cy="41" r="10" fill="#fff"/>
+  <circle cx="50" cy="41" r="5" fill="#000"/>
+  <path d="M42 72 H58 L62 86 H38 Z" fill="#000"/>
+  <rect x="26" y="86" width="48" height="8" rx="2" fill="#000"/>
+</svg>

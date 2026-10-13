@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Кузня небесных реликвий: наковальня с нимбом -->
+  <ellipse cx="44" cy="16" rx="26" ry="7" fill="none" stroke="#000" stroke-width="6"/>
+  <path d="M6 44 H78 C78 54 70 60 60 62 L56 76 H68 V86 H22 V76 H34 L30 62 H20 C12 60 6 54 6 44 Z" fill="#000"/>
+  <path d="M78 44 L96 48 L78 54 Z" fill="#000"/>
+  <rect x="16" y="86" width="58" height="10" rx="2" fill="#000"/>
+  <g stroke="#000" stroke-width="3" stroke-linecap="round"><path d="M44 28 V36"/><path d="M30 30 L34 36"/><path d="M58 30 L54 36"/></g>
+  <path d="M20 48 H66" stroke="#fff" stroke-width="2.5"/>
+</svg>

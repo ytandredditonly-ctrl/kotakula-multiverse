@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Железные дороги: рельсы в перспективе -->
+  <path d="M42 6 L46 6 L22 96 L8 96 Z" fill="#000"/>
+  <path d="M54 6 L58 6 L92 96 L78 96 Z" fill="#000"/>
+  <g fill="#000">
+    <rect x="40" y="12" width="20" height="3"/><rect x="36" y="24" width="28" height="4"/><rect x="31" y="38" width="38" height="5"/>
+    <rect x="25" y="55" width="50" height="6"/><rect x="17" y="75" width="66" height="8"/>
+  </g>
+</svg>

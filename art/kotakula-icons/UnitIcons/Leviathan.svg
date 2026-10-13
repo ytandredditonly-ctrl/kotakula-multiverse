@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Левиафан: морской гигант с кристаллом во лбу -->
+  <path d="M4 70 C10 44 30 30 52 30 C72 30 86 40 94 54 C90 62 80 66 70 66 C78 72 86 80 88 92 C76 84 64 80 52 80 H40 C26 80 12 78 4 70 Z" fill="#000"/>
+  <path d="M30 24 L38 8 L46 24 L38 32 Z" fill="#000" stroke="#fff" stroke-width="2"/>
+  <circle cx="22" cy="54" r="4" fill="#fff"/>
+  <path d="M6 66 C14 64 22 66 30 62" stroke="#fff" stroke-width="2.5" fill="none"/>
+  <g stroke="#fff" stroke-width="2.5" fill="none"><path d="M50 44 C56 50 56 60 50 66"/><path d="M62 42 C68 50 68 58 62 64"/></g>
+  <path d="M2 92 C12 86 22 96 32 90 C42 84 52 96 62 90 C72 84 82 96 98 90" stroke="#000" stroke-width="4" fill="none"/>
+</svg>

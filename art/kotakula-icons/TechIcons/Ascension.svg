@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Вознесение: фигура с нимбом летит вверх -->
+  <ellipse cx="50" cy="8" rx="14" ry="4" fill="none" stroke="#000" stroke-width="4"/>
+  <circle cx="50" cy="22" r="9" fill="#000"/>
+  <path d="M38 36 H62 L80 14 L86 18 L66 46 L62 70 L56 92 H44 L38 70 L34 46 L14 18 L20 14 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="3.5" stroke-linecap="round"><path d="M30 76 V96"/><path d="M70 76 V96"/><path d="M22 86 V98"/><path d="M78 86 V98"/></g>
+</svg>

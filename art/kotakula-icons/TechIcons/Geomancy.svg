@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Геомантия: пласт земли с лей-линией -->
+  <path d="M4 40 L30 30 L56 38 L80 26 L96 34 V92 H4 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="3" fill="none"><path d="M4 58 C30 52 64 62 96 54"/><path d="M4 76 C34 70 62 80 96 72"/></g>
+  <path d="M10 66 C24 62 30 70 44 66 C58 62 64 70 78 64 C84 62 90 64 94 62" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="2 6"/>
+  <g fill="#000"><path d="M20 22 L23 14 L26 22 L34 25 L26 28 L23 36 L20 28 L12 25 Z"/><path d="M66 12 L68 6 L70 12 L76 14 L70 16 L68 22 L66 16 L60 14 Z"/></g>
+</svg>

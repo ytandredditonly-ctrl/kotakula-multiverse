@@ -57,8 +57,12 @@ private val actionIcons = mapOf(
 fun GenContext.generateIconPlaceholders(forkRoot: File) {
     val placeholders = LinkedHashMap<String, String>()
     val reasons = LinkedHashMap<String, String>()
+    // Icons drawn as SVG (art/kotakula-icons, see KotakulaSvgIcons) need no placeholder
+    val drawn = File(forkRoot, "art/kotakula-icons")
+    val keepVanilla = File(drawn, "keep-vanilla.txt").takeIf { it.exists() }?.readLines()?.map { it.trim() }?.toSet().orEmpty()
     fun add(name: String, fallback: String, why: String) {
         if (name == fallback) return
+        if (File(drawn, "$name.svg").exists() || name in keepVanilla) return
         placeholders[name] = fallback
         reasons[name] = why
     }
@@ -124,7 +128,15 @@ fun GenContext.generateIconPlaceholders(forkRoot: File) {
     md.append("Таблица соответствий лежит в `jsons/IconPlaceholders.json` мода и генерируется командой `./gradlew :tests:kotakulaMod`. ")
     md.append("Заглушка действует, только пока в папке `Images` мода нет файла с таким именем: нарисованная иконка заменяет её автоматически.\n\n")
     md.append("Уже нарисованы (P1): иконки маны и корпоративности, 2 иконки фракций, 2 иллюстрации окна выбора, 10 новых ресурсов, 9 новых улучшений, глаз шпионажа.\n\n")
-    md.append("| Иконка | Заглушка | Почему |\n| --- | --- | --- |\n")
+    val svgCount = drawn.walkTopDown().count { it.extension == "svg" }
+    md.append("Векторные иконки (P2, P3): $svgCount файлов SVG в `art/kotakula-icons` — все технологии, юниты, здания, чудеса, ветки и политики, корпорации, верования и действия веры, уникальные для мода. ")
+    md.append("Они рендерятся в PNG командой `./gradlew :tests:kotakulaSvgIcons`. ")
+    md.append("Объекты с ванильным ID, чья ванильная иконка уже совпадает с описанием в разделе 13, перечислены в `art/kotakula-icons/keep-vanilla.txt`.\n\n")
+    if (placeholders.isEmpty()) md.append("Заглушек не осталось.\n")
+    else {
+        md.append("Ниже — только псевдонимы: общие объекты, которые в моде названы иначе, чем в ванили, и показывают ту же самую ванильную иконку.\n\n")
+        md.append("| Иконка | Берётся из | Почему |\n| --- | --- | --- |\n")
+    }
     for ((name, fallback) in placeholders) md.append("| `$name` | `$fallback` | ${reasons[name]} |\n")
     File(forkRoot, "PLACEHOLDERS.md").writeText(md.toString(), Charsets.UTF_8)
 }

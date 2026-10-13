@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Нанотехнологии: крошечный робот на кончике пальца -->
+  <path d="M30 98 V54 C30 44 38 38 48 38 C58 38 66 44 66 54 V98 Z" fill="#000"/>
+  <path d="M38 52 C38 46 42 44 48 44 C54 44 58 46 58 52 V60 H38 Z" fill="#fff"/>
+  <path d="M36 70 H60 M36 80 H60" stroke="#fff" stroke-width="2.5"/>
+  <rect x="38" y="14" width="20" height="16" rx="3" fill="#000"/>
+  <rect x="47" y="6" width="2" height="8" fill="#000"/><circle cx="48" cy="5" r="2.5" fill="#000"/>
+  <g fill="#fff"><circle cx="44" cy="21" r="2.5"/><circle cx="52" cy="21" r="2.5"/></g>
+  <path d="M42 30 L40 38 M54 30 L56 38" stroke="#000" stroke-width="3"/>
+  <g stroke="#000" stroke-width="3" stroke-linecap="round"><path d="M74 12 L82 6"/><path d="M76 24 H86"/><path d="M22 12 L14 6"/><path d="M20 24 H10"/></g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Метеоритный ритуалист: фигура, призывающая метеор -->
+  <circle cx="76" cy="18" r="13" fill="#000"/>
+  <g stroke="#000" stroke-width="4" stroke-linecap="round"><path d="M66 28 L50 42"/><path d="M60 22 L46 34"/><path d="M70 34 L58 46"/></g>
+  <circle cx="72" cy="15" r="3" fill="#fff"/><circle cx="80" cy="22" r="2" fill="#fff"/>
+  <circle cx="30" cy="40" r="8" fill="#000"/>
+  <path d="M20 52 H40 L48 34 L54 36 L46 60 L48 96 H12 L14 60 L6 36 L12 34 Z" fill="#000"/>
+  <path d="M30 60 V92" stroke="#fff" stroke-width="2.5"/>
+</svg>

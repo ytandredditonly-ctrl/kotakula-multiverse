@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Бизнес-центр: стеклянная башня -->
+  <path d="M28 98 V22 L50 4 L72 22 V98 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2"><path d="M28 34 H72"/><path d="M28 46 H72"/><path d="M28 58 H72"/><path d="M28 70 H72"/><path d="M28 82 H72"/><path d="M42 22 V98"/><path d="M58 22 V98"/></g>
+  <path d="M34 26 L46 16" stroke="#fff" stroke-width="3"/>
+  <rect x="8" y="64" width="20" height="34" fill="#000"/><rect x="72" y="52" width="20" height="46" fill="#000"/>
+  <g fill="#fff"><rect x="12" y="70" width="5" height="5"/><rect x="19" y="70" width="5" height="5"/><rect x="12" y="80" width="5" height="5"/><rect x="19" y="80" width="5" height="5"/><rect x="76" y="58" width="5" height="5"/><rect x="83" y="58" width="5" height="5"/><rect x="76" y="68" width="5" height="5"/><rect x="83" y="68" width="5" height="5"/></g>
+</svg>

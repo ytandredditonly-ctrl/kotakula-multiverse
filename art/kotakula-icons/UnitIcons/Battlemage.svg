@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Боевой маг: посох с молнией -->
+  <rect x="34" y="34" width="9" height="64" rx="3" fill="#000"/>
+  <path d="M38.5 30 C26 30 22 14 30 6 C30 16 36 18 40 16 C40 8 46 4 50 4 C46 10 52 18 50 24 C48 28 44 30 38.5 30 Z" fill="#000"/>
+  <circle cx="38" cy="20" r="4" fill="#fff"/>
+  <path d="M60 10 L50 40 H62 L52 72 L84 32 H70 L80 10 Z" fill="#000" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

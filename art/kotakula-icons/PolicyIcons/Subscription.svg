@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Подписка: календарь с кружочком -->
+  <rect x="6" y="14" width="88" height="80" rx="6" fill="#000"/>
+  <rect x="22" y="4" width="10" height="20" rx="3" fill="#000" stroke="#fff" stroke-width="3"/>
+  <rect x="68" y="4" width="10" height="20" rx="3" fill="#000" stroke="#fff" stroke-width="3"/>
+  <rect x="6" y="30" width="88" height="5" fill="#fff"/>
+  <path d="M36 66 A16 16 0 1 0 50 50" stroke="#fff" stroke-width="7" fill="none"/>
+  <path d="M44 42 L56 50 L44 58 Z" fill="#fff"/>
+</svg>

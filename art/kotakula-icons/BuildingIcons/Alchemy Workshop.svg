@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Алхимическая мастерская: котёл на огне -->
+  <path d="M10 30 H90 V36 H84 C84 58 70 70 50 70 C30 70 16 58 16 36 H10 Z" fill="#000"/>
+  <path d="M24 42 C34 46 66 46 76 42" stroke="#fff" stroke-width="3" fill="none"/>
+  <g fill="#000"><circle cx="38" cy="22" r="6"/><circle cx="52" cy="16" r="5"/><circle cx="62" cy="24" r="4"/><circle cx="46" cy="8" r="3"/></g>
+  <path d="M30 98 C24 90 28 82 34 78 C34 84 38 86 40 82 C40 76 44 74 48 70 C48 78 54 80 56 76 C58 82 62 84 64 78 C70 82 74 92 68 98 Z" fill="#000"/>
+  <rect x="14" y="68" width="6" height="28" fill="#000"/><rect x="80" y="68" width="6" height="28" fill="#000"/>
+</svg>

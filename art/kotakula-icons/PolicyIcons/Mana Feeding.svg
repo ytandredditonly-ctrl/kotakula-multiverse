@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Магическая подпитка: кристалл маны и стрелка -->
+  <path d="M40 6 L62 32 L52 94 H28 L18 32 Z" fill="#000"/>
+  <path d="M18 32 H62 M40 6 L36 32 L40 94" stroke="#fff" stroke-width="4" fill="none"/>
+  <path d="M70 70 V30 H62 L80 6 L98 30 H90 V70 Z" fill="#000"/>
+</svg>

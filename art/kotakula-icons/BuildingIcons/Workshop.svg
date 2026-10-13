@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Мастерская: верстак и тиски -->
+  <rect x="4" y="48" width="92" height="10" rx="2" fill="#000"/>
+  <rect x="10" y="58" width="8" height="38" fill="#000"/><rect x="82" y="58" width="8" height="38" fill="#000"/>
+  <rect x="10" y="78" width="80" height="6" fill="#000"/>
+  <rect x="22" y="24" width="14" height="24" rx="2" fill="#000"/>
+  <rect x="44" y="24" width="14" height="24" rx="2" fill="#000"/>
+  <rect x="36" y="32" width="8" height="8" fill="#000"/>
+  <rect x="58" y="34" width="28" height="5" rx="2" fill="#000"/>
+  <rect x="84" y="28" width="5" height="18" rx="2" fill="#000"/>
+  <rect x="26" y="14" width="28" height="10" rx="2" fill="#000"/>
+  <path d="M62 8 L82 12 L80 18 L66 14 Z" fill="#000"/>
+</svg>

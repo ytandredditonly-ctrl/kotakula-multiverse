@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Мантикора: лев с хвостом скорпиона -->
+  <path d="M6 46 C6 32 16 24 28 26 C36 28 40 34 40 42 L70 44 C76 44 80 50 80 56 V90 H72 L70 70 H44 L40 90 H32 L30 66 C20 66 12 62 10 56 Z" fill="#000"/>
+  <path d="M4 40 C2 28 12 18 24 18 C34 18 42 26 42 38 C36 30 30 28 22 30 C14 32 8 36 4 40 Z" fill="#000"/>
+  <circle cx="18" cy="42" r="3" fill="#fff"/>
+  <path d="M10 52 L18 54" stroke="#fff" stroke-width="2"/>
+  <path d="M78 48 C88 44 92 34 88 24 C84 14 76 12 70 16" stroke="#000" stroke-width="6" fill="none" stroke-linecap="round" stroke-dasharray="7 2"/>
+  <path d="M70 16 L60 10 L66 22 Z" fill="#000"/>
+</svg>

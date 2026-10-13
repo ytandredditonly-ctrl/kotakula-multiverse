@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Лозоходство: раздвоенная лоза -->
+  <path d="M50 66 C40 50 30 30 14 8" stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <path d="M50 66 C60 50 70 30 86 8" stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <path d="M50 64 L50 90" stroke="#000" stroke-width="9" stroke-linecap="round"/>
+  <path d="M22 18 C14 18 10 24 10 30 C18 30 22 24 22 18 Z" fill="#000"/>
+  <path d="M78 18 C86 18 90 24 90 30 C82 30 78 24 78 18 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="3.5" fill="none" stroke-linecap="round">
+    <path d="M36 94 C42 88 58 88 64 94"/><path d="M28 86 C38 78 62 78 72 86"/>
+  </g>
+</svg>

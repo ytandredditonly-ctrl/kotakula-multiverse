@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- ЧВК Kotakula: каска с кошачьими ушами -->
+  <path d="M20 40 L16 14 L34 28 Z M80 40 L84 14 L66 28 Z" fill="#000"/>
+  <path d="M12 70 C12 40 30 24 50 24 C70 24 88 40 88 70 Z" fill="#000"/>
+  <path d="M4 70 H96 C96 78 88 82 80 82 H20 C12 82 4 78 4 70 Z" fill="#000"/>
+  <path d="M38 50 L48 54 L38 58 Z M62 50 L52 54 L62 58 Z" fill="#fff"/>
+</svg>

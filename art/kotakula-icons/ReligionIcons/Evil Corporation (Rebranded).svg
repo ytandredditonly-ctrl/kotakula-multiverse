@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Корпорация Зла (ребрендинг): улыбающийся рогатый смайл -->
+  <path d="M22 26 L10 2 L36 18 Z M78 26 L90 2 L64 18 Z" fill="#000"/>
+  <circle cx="50" cy="54" r="42" fill="#000"/>
+  <g fill="#fff"><path d="M28 40 L44 46 L30 54 Z"/><path d="M72 40 L56 46 L70 54 Z"/></g>
+  <path d="M26 64 C34 82 66 82 74 64" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

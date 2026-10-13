@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Слияние и поглощение: большая рыба глотает маленькую -->
+  <path d="M4 50 C14 26 44 18 64 30 L82 14 V86 L64 70 C44 82 14 74 4 50 Z" fill="#000"/>
+  <path d="M4 50 L30 44 L30 56 Z" fill="#fff"/>
+  <circle cx="22" cy="38" r="4" fill="#fff"/>
+  <path d="M84 50 C88 42 96 42 98 50 C96 58 88 58 84 50 Z" fill="#000"/>
+  <path d="M84 50 L78 44 V56 Z" fill="#000"/>
+  <path d="M40 62 C46 58 54 58 60 62" stroke="#fff" stroke-width="3" fill="none"/>
+</svg>

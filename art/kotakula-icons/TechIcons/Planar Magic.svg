@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Планарная магия: лестница из плоскостей -->
+  <path d="M6 84 L30 76 L54 84 L30 92 Z" fill="#000"/>
+  <path d="M24 64 L48 56 L72 64 L48 72 Z" fill="#000"/>
+  <path d="M42 44 L66 36 L90 44 L66 52 Z" fill="#000"/>
+  <path d="M60 24 L80 17 L98 24 L80 31 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="2.5" stroke-dasharray="3 3"><path d="M30 76 L48 72"/><path d="M48 56 L66 52"/><path d="M66 36 L80 31"/></g>
+  <path d="M86 4 L88 9 L93 11 L88 13 L86 18 L84 13 L79 11 L84 9 Z" fill="#000"/>
+</svg>

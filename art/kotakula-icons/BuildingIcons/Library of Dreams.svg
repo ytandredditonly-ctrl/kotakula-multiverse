@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Библиотека снов: книжные полки в облаке -->
+  <path d="M14 76 C2 76 0 58 12 54 C8 40 22 32 32 38 C34 22 54 16 64 28 C72 20 90 26 88 42 C100 46 98 70 86 76 Z" fill="#000"/>
+  <rect x="24" y="42" width="52" height="34" fill="#fff"/>
+  <g fill="#000">
+    <rect x="28" y="46" width="5" height="12"/><rect x="35" y="48" width="4" height="10"/><rect x="41" y="45" width="6" height="13"/><rect x="49" y="47" width="4" height="11"/><path d="M56 58 L60 46 L64 47 L60 58 Z"/><rect x="66" y="46" width="6" height="12"/>
+    <rect x="24" y="58" width="52" height="3"/>
+    <rect x="28" y="63" width="6" height="11"/><rect x="36" y="64" width="4" height="10"/><rect x="42" y="62" width="5" height="12"/><rect x="50" y="64" width="6" height="10"/><rect x="58" y="63" width="4" height="11"/><rect x="64" y="62" width="8" height="12"/>
+  </g>
+  <g fill="#000" font-family="sans-serif" font-weight="bold"><text x="70" y="16" font-size="12">z</text><text x="80" y="10" font-size="9">z</text></g>
+  <path d="M30 86 C38 92 62 92 70 86" stroke="#000" stroke-width="3" fill="none"/>
+</svg>

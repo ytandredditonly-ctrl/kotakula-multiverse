@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Лазерный стрелок: лазерная винтовка -->
+  <path d="M6 44 H22 L26 38 H62 V52 H40 L36 64 H26 L28 52 H18 L10 62 H4 Z" fill="#000"/>
+  <rect x="62" y="41" width="18" height="8" rx="2" fill="#000"/>
+  <circle cx="44" cy="45" r="4" fill="#fff"/>
+  <rect x="30" y="30" width="22" height="8" rx="3" fill="#000"/>
+  <path d="M80 45 H98" stroke="#000" stroke-width="3" stroke-dasharray="4 2"/>
+  <g stroke="#000" stroke-width="2.5" stroke-linecap="round"><path d="M84 36 L90 32"/><path d="M84 54 L90 58"/></g>
+</svg>

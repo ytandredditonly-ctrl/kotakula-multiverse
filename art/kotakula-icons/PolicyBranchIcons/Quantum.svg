@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Квант: кот в коробке -->
+  <path d="M10 48 L50 36 L90 48 L50 60 Z" fill="#000"/>
+  <path d="M10 48 L50 60 V96 L10 84 Z" fill="#000"/>
+  <path d="M90 48 L50 60 V96 L90 84 Z" fill="#000"/>
+  <path d="M50 60 V96" stroke="#fff" stroke-width="3"/>
+  <path d="M32 46 L28 18 L42 30 H58 L72 18 L68 46 Z" fill="#000" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+  <g fill="#fff"><circle cx="42" cy="38" r="3.5"/><circle cx="58" cy="38" r="3.5"/></g>
+  <path d="M10 48 L2 30 L34 22 M90 48 L98 30 L66 22" stroke="#000" stroke-width="4" fill="none"/>
+</svg>

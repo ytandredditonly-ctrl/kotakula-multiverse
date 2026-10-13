@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Хакатон: пицца и ноутбук -->
+  <path d="M8 14 H58 L54 52 H12 Z" fill="#000"/>
+  <path d="M16 20 H50 L47 46 H19 Z" fill="#fff"/>
+  <path d="M22 28 L30 34 L22 40 M34 40 H42" stroke="#000" stroke-width="3.5" fill="none"/>
+  <path d="M2 52 H66 L70 60 H-2 Z" fill="#000"/>
+  <path d="M56 96 L98 66 C94 56 84 52 76 54 Z" fill="#000"/>
+  <path d="M60 92 L92 68" stroke="#fff" stroke-width="3"/>
+  <g fill="#fff"><circle cx="78" cy="70" r="4"/><circle cx="70" cy="80" r="3.5"/><circle cx="84" cy="62" r="2.5"/></g>
+</svg>

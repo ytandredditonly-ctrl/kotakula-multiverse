@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Кот Шрёдингера: голова кота наполовину пунктиром -->
+  <path d="M50 30 L28 30 L20 8 L14 40 C10 50 10 64 18 76 C26 88 38 94 50 94 Z" fill="#000"/>
+  <path d="M50 30 H72 L80 8 L86 40 C90 50 90 64 82 76 C74 88 62 94 50 94" fill="none" stroke="#000" stroke-width="6" stroke-dasharray="8 5"/>
+  <path d="M28 56 L42 60 L30 66 Z" fill="#fff"/>
+  <g stroke="#000" stroke-width="6" stroke-linecap="round"><path d="M60 56 L70 66"/><path d="M70 56 L60 66"/></g>
+</svg>

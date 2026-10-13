@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Гидромантия: капля с руной -->
+  <path d="M50 4 C62 24 82 44 82 64 C82 82 68 96 50 96 C32 96 18 82 18 64 C18 44 38 24 50 4 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M50 40 V84"/><path d="M50 52 L36 42"/><path d="M50 52 L64 42"/><path d="M50 66 L38 76"/><path d="M50 66 L62 76"/>
+  </g>
+</svg>

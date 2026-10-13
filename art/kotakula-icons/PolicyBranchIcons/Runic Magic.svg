@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Рунная магия: руна -->
+  <path d="M10 92 L14 30 C16 14 30 6 50 6 C70 6 84 14 86 30 L90 92 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M40 24 V80"/><path d="M40 30 L62 44 L40 58"/><path d="M40 58 L62 76"/>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Хрустальная сфера: сфера на постаменте -->
+  <circle cx="50" cy="32" r="28" fill="#000"/>
+  <path d="M34 24 C36 16 44 10 52 10" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <g stroke="#fff" stroke-width="2" fill="none"><path d="M24 34 C36 40 64 40 76 34"/><path d="M50 6 C42 18 42 46 50 58"/></g>
+  <path d="M36 58 H64 L60 70 H40 Z" fill="#000"/>
+  <rect x="40" y="70" width="20" height="14" fill="#000"/>
+  <path d="M26 84 H74 L80 96 H20 Z" fill="#000"/>
+  <path d="M42 76 H58" stroke="#fff" stroke-width="2"/>
+</svg>

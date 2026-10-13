@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Атомная бомба: бомба со знаком радиации -->
+  <path d="M50 10 C66 10 76 26 76 52 C76 70 66 80 50 80 C34 80 24 70 24 52 C24 26 34 10 50 10 Z" fill="#000"/>
+  <path d="M40 78 H60 L64 92 H36 Z" fill="#000"/>
+  <path d="M30 86 L42 82 M70 86 L58 82" stroke="#000" stroke-width="4"/>
+  <path d="M26 92 H44 M56 92 H74" stroke="#000" stroke-width="5"/>
+  <circle cx="50" cy="46" r="20" fill="#fff"/>
+  <circle cx="50" cy="46" r="4" fill="#000"/>
+  <path d="M50 46 L41 30.4 A18 18 0 0 1 59 30.4 Z" fill="#000"/>
+  <path d="M50 46 L68 46 A18 18 0 0 1 59 61.6 Z" fill="#000"/>
+  <path d="M50 46 L41 61.6 A18 18 0 0 1 32 46 Z" fill="#000"/>
+  <circle cx="50" cy="46" r="6" fill="#fff"/>
+  <circle cx="50" cy="46" r="3.5" fill="#000"/>
+</svg>

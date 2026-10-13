@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Банковское дело: сейф с монетами -->
+  <rect x="6" y="8" width="70" height="74" rx="6" fill="#000"/>
+  <rect x="13" y="15" width="56" height="60" rx="3" fill="#fff"/>
+  <rect x="16" y="18" width="50" height="54" rx="2" fill="#000"/>
+  <circle cx="41" cy="45" r="15" fill="#fff"/>
+  <circle cx="41" cy="45" r="11" fill="#000"/>
+  <g stroke="#fff" stroke-width="3"><line x1="41" y1="34" x2="41" y2="56"/><line x1="30" y1="45" x2="52" y2="45"/></g>
+  <rect x="12" y="82" width="10" height="8" fill="#000"/><rect x="60" y="82" width="10" height="8" fill="#000"/>
+  <g fill="#000" stroke="#fff" stroke-width="2.5">
+    <ellipse cx="82" cy="90" rx="14" ry="6"/><ellipse cx="82" cy="82" rx="14" ry="6"/><ellipse cx="82" cy="74" rx="14" ry="6"/>
+  </g>
+</svg>

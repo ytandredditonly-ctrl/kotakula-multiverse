@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Всадник на единороге: голова единорога -->
+  <path d="M30 96 C26 78 26 62 32 48 L22 66 C18 72 8 70 8 62 L22 32 C26 22 34 14 44 12 L42 4 L52 12 C66 14 76 26 76 44 C76 62 70 80 72 96 Z" fill="#000"/>
+  <path d="M40 16 L60 -2 L46 22 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="1.5"><path d="M48 12 L52 8"/><path d="M45 16 L50 11"/></g>
+  <circle cx="40" cy="30" r="4" fill="#fff"/>
+  <path d="M56 16 C68 22 74 38 70 56 C76 46 80 30 70 18 C84 26 88 46 80 64 C90 48 92 30 82 16 Z" fill="#000"/>
+  <path d="M60 22 C68 32 70 44 66 58" stroke="#fff" stroke-width="3" fill="none"/>
+</svg>

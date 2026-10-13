@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Хрустальный шар: шар на подставке -->
+  <circle cx="50" cy="42" r="36" fill="#000"/>
+  <path d="M30 30 C34 20 44 14 54 14" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <circle cx="28" cy="40" r="3" fill="#fff"/>
+  <path d="M24 72 H76 L84 88 H16 Z" fill="#000"/>
+  <rect x="10" y="88" width="80" height="8" rx="2" fill="#000"/>
+  <path d="M30 80 H70" stroke="#fff" stroke-width="2.5"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Арена чародеев: арена с вспышками -->
+  <ellipse cx="50" cy="66" rx="46" ry="26" fill="#000"/>
+  <ellipse cx="50" cy="64" rx="30" ry="13" fill="#fff"/>
+  <ellipse cx="50" cy="64" rx="24" ry="9" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5" fill="none"><ellipse cx="50" cy="65" rx="38" ry="19"/></g>
+  <path d="M50 4 L55 22 L72 16 L60 30 L76 38 L58 38 L60 56 L50 42 L40 56 L42 38 L24 38 L40 30 L28 16 L45 22 Z" fill="#000" stroke="#fff" stroke-width="2"/>
+</svg>

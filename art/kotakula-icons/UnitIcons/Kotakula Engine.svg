@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Двигатель Kotakula: сопло с логотипом-котом -->
+  <rect x="28" y="4" width="44" height="40" rx="5" fill="#000"/>
+  <path d="M34 44 H66 L84 92 H16 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="3" fill="none"><path d="M28 64 H72"/><path d="M22 80 H78"/></g>
+  <path d="M38 34 L36 12 L44 18 H56 L64 12 L62 34 Z" fill="#fff"/>
+  <g fill="#000"><circle cx="45" cy="25" r="2.2"/><circle cx="55" cy="25" r="2.2"/><path d="M48 30 H52 L50 32 Z"/></g>
+  <path d="M30 94 C36 98 44 98 50 94 C56 98 64 98 70 94" stroke="#000" stroke-width="3" fill="none"/>
+</svg>

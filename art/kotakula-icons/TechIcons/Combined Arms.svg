@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Общевойсковой бой: скрещённые крыло и гусеница -->
+  <g transform="rotate(45 50 50)">
+    <rect x="2" y="38" width="96" height="24" rx="12" fill="#000"/>
+    <rect x="8" y="44" width="84" height="12" rx="6" fill="#fff"/>
+    <g fill="#000"><circle cx="20" cy="50" r="5"/><circle cx="36" cy="50" r="5"/><circle cx="64" cy="50" r="5"/><circle cx="80" cy="50" r="5"/></g>
+  </g>
+  <g transform="rotate(-45 50 50)">
+    <path d="M4 50 C20 34 60 30 96 40 L96 48 C70 46 60 50 54 56 L44 56 C40 52 20 52 4 58 Z" fill="#000" stroke="#fff" stroke-width="3"/>
+    <g stroke="#fff" stroke-width="2.5"><path d="M30 42 L34 54"/><path d="M50 38 L52 54"/><path d="M70 38 L70 48"/></g>
+  </g>
+</svg>

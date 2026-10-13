@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Гравитанк: парящий танк -->
+  <path d="M6 58 L16 42 H84 L94 58 L84 66 H16 Z" fill="#000"/>
+  <rect x="34" y="28" width="30" height="16" rx="5" fill="#000"/>
+  <rect x="60" y="32" width="38" height="6" rx="2" fill="#000"/>
+  <path d="M16 54 H84" stroke="#fff" stroke-width="2.5"/>
+  <g fill="none" stroke="#000" stroke-width="4" stroke-linecap="round">
+    <path d="M22 76 H40"/><path d="M60 76 H78"/><path d="M28 86 H36"/><path d="M64 86 H72"/>
+  </g>
+  <g fill="#000"><ellipse cx="30" cy="68" rx="10" ry="3"/><ellipse cx="70" cy="68" rx="10" ry="3"/></g>
+</svg>

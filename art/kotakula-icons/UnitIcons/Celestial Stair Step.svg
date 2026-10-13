@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Ступень небесной лестницы: ступень на облаке -->
+  <path d="M10 98 C0 98 0 80 12 78 C10 66 26 62 32 70 C36 60 54 58 58 70 C64 62 80 64 80 76 C94 74 98 96 86 98 Z" fill="#000"/>
+  <path d="M20 62 H80 V72 H20 Z" fill="#000"/>
+  <path d="M30 46 H90 V56 H30 Z" fill="#000" opacity="0.6"/>
+  <path d="M40 30 H98 V40 H40 Z" fill="#000" opacity="0.35"/>
+  <path d="M24 66 H76" stroke="#fff" stroke-width="2"/>
+  <path d="M60 4 L62 10 L68 12 L62 14 L60 20 L58 14 L52 12 L58 10 Z" fill="#000"/>
+</svg>

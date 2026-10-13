@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Конвейер танков: танк на ленте -->
+  <rect x="4" y="76" width="92" height="16" rx="8" fill="#000"/>
+  <g fill="#fff"><circle cx="16" cy="84" r="4"/><circle cx="38" cy="84" r="4"/><circle cx="62" cy="84" r="4"/><circle cx="84" cy="84" r="4"/></g>
+  <path d="M14 70 L20 50 H74 L80 70 Z" fill="#000"/>
+  <rect x="30" y="36" width="28" height="16" rx="4" fill="#000"/>
+  <rect x="54" y="40" width="40" height="7" rx="2" fill="#000"/>
+  <rect x="12" y="68" width="70" height="6" rx="3" fill="#000"/>
+</svg>

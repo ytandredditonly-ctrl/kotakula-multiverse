@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Каменный голем -->
+  <path d="M38 4 H62 L66 22 H34 Z" fill="#000"/>
+  <g fill="#fff"><rect x="42" y="12" width="5" height="4"/><rect x="53" y="12" width="5" height="4"/></g>
+  <path d="M24 24 H76 L80 58 L66 62 H34 L20 58 Z" fill="#000"/>
+  <path d="M8 26 H24 L22 64 L10 70 L4 62 Z" fill="#000"/><path d="M92 26 H76 L78 64 L90 70 L96 62 Z" fill="#000"/>
+  <path d="M30 62 H48 L46 96 H26 Z" fill="#000"/><path d="M52 62 H70 L74 96 H54 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5" fill="none"><path d="M36 30 L46 42 L40 54"/><path d="M60 32 L56 46 L66 54"/><path d="M10 40 L20 44"/><path d="M84 46 L92 42"/><path d="M30 78 L44 80"/><path d="M58 76 L70 82"/></g>
+</svg>

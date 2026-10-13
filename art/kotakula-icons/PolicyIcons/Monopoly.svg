@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Монополия: цилиндр и монокль -->
+  <path d="M26 8 H74 V60 H26 Z" fill="#000"/>
+  <rect x="26" y="46" width="48" height="8" fill="#fff"/>
+  <path d="M6 60 H94 C94 70 84 74 50 74 C16 74 6 70 6 60 Z" fill="#000"/>
+  <circle cx="64" cy="88" r="9" fill="none" stroke="#000" stroke-width="5"/>
+  <path d="M55 88 C40 88 34 80 34 74" stroke="#000" stroke-width="3" fill="none"/>
+</svg>

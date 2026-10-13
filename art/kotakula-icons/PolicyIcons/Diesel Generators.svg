@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Дизельные генераторы: генератор с молнией -->
+  <rect x="6" y="30" width="72" height="54" rx="6" fill="#000"/>
+  <rect x="20" y="16" width="20" height="16" fill="#000"/>
+  <rect x="10" y="84" width="10" height="10" fill="#000"/><rect x="64" y="84" width="10" height="10" fill="#000"/>
+  <path d="M46 38 L30 62 H42 L36 80 L56 54 H44 L50 38 Z" fill="#fff"/>
+  <path d="M78 46 H90 V64 H78" stroke="#000" stroke-width="7" fill="none"/>
+  <g fill="#000"><circle cx="40" cy="8" r="6"/><circle cx="52" cy="6" r="5"/></g>
+</svg>

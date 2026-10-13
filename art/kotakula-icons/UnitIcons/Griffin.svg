@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Грифон: летящий грифон -->
+  <path d="M44 50 C30 40 14 22 4 6 C22 14 38 24 52 40 Z" fill="#000"/>
+  <path d="M50 46 C56 30 72 14 96 8 C86 24 72 38 58 50 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2"><path d="M16 14 L34 34"/><path d="M26 16 L42 36"/><path d="M86 14 L62 38"/><path d="M76 16 L58 36"/></g>
+  <path d="M30 60 C36 48 48 44 60 48 L74 46 C82 46 86 52 82 56 L72 58 C70 66 62 74 50 74 L42 92 H34 L38 72 C32 70 28 66 30 60 Z" fill="#000"/>
+  <path d="M82 50 L92 52 L84 56 Z" fill="#000"/>
+  <circle cx="74" cy="51" r="2" fill="#fff"/>
+  <path d="M30 62 C20 64 12 70 8 80 C16 76 22 74 30 72 Z" fill="#000"/>
+</svg>

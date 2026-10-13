@@ -63,6 +63,15 @@ tasks {
         jvmArgs("-Djava.awt.headless=true")
     }
 
+    register<JavaExec>("kotakulaSvgIcons") {
+        group = "kotakula"
+        description = "Render the SVG icons of art/kotakula-icons into the Images folder of Kotakula Multiverse"
+        mainClass.set("com.unciv.dev.kotakula.KotakulaSvgIcons")
+        classpath = sourceSets["test"].runtimeClasspath
+        workingDir = file("../android/assets")
+        jvmArgs("-Djava.awt.headless=true")
+    }
+
     register<JavaExec>("kotakulaAtlas") {
         group = "kotakula"
         description = "Pack the Images of Kotakula Multiverse into game.atlas and write the install index (run after kotakulaIcons)"
@@ -70,7 +79,7 @@ tasks {
         classpath = sourceSets["test"].runtimeClasspath
         workingDir = file("../android/assets")
         jvmArgs("-Djava.awt.headless=true")
-        mustRunAfter("kotakulaMod", "kotakulaIcons")
+        mustRunAfter("kotakulaMod", "kotakulaIcons", "kotakulaSvgIcons")
     }
 
     register<JavaExec>("kotakulaAutoplay") {

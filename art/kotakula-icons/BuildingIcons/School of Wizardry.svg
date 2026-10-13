@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Школа волшебства: книга со шляпой -->
+  <path d="M4 66 C20 60 36 62 49 70 V96 C36 88 20 86 4 92 Z" fill="#000"/>
+  <path d="M96 66 C80 60 64 62 51 70 V96 C64 88 80 86 96 92 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5" fill="none"><path d="M12 76 C22 72 32 72 42 76"/><path d="M58 76 C68 72 78 72 88 76"/></g>
+  <path d="M56 4 C48 18 42 34 38 54 H70 C66 42 62 32 68 22 C60 22 58 14 56 4 Z" fill="#000"/>
+  <ellipse cx="54" cy="58" rx="34" ry="8" fill="#000"/>
+  <path d="M40 48 H68 L69 53 H39 Z" fill="#fff"/>
+  <path d="M54 26 L56 32 L62 34 L56 36 L54 42 L52 36 L46 34 L52 32 Z" fill="#fff"/>
+</svg>

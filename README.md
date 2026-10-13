@@ -78,7 +78,8 @@
 ## Для разработчиков
 
 - ТЗ: [docs/kotakula/spec.md](docs/kotakula/spec.md), отклонения и открытые вопросы: [docs/kotakula/OPEN_QUESTIONS.md](docs/kotakula/OPEN_QUESTIONS.md), заглушки иконок: [PLACEHOLDERS.md](PLACEHOLDERS.md).
-- Сборка мода из ТЗ: `./gradlew :tests:kotakulaMod :tests:kotakulaIcons :tests:kotakulaAtlas` (результат — `android/assets/KotakulaMod/Kotakula Multiverse`).
+- Сборка мода из ТЗ: `./gradlew :tests:kotakulaMod :tests:kotakulaIcons :tests:kotakulaSvgIcons :tests:kotakulaAtlas` (результат — `android/assets/KotakulaMod/Kotakula Multiverse`).
+- Иконки: векторные исходники лежат в `art/kotakula-icons/<Папка>/<ID>.svg`. Чёрное — силуэт, белое поверх — вырезы. Рендер в PNG нужного цвета делает `:tests:kotakulaSvgIcons`, листы для просмотра пишутся в `tests/build/kotakula-icons-*.png`. Чтобы заменить иконку, поправьте SVG и пересоберите атлас.
 - Автотесты T1–T13 и проверка переводов: `./gradlew :tests:test --tests "com.unciv.kotakula.*"`. Та же проверка переводов без Gradle: `python3 tools/check_translations.py` (пустой отчёт — проверка пройдена).
 - Автоигры ИИ с метриками раздела 14.3: `KOTAKULA_ARGS="--games 50 --size medium" ./gradlew :tests:kotakulaAutoplay`, отчёт — `tests/build/kotakula-autoplay.md`.
 - Сборки: `./gradlew desktop:dist` (Windows и Linux, `desktop/build/libs/Unciv.jar`), `./gradlew android:assembleRelease` (Android).

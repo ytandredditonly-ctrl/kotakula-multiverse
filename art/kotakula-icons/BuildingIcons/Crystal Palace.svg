@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Хрустальный дворец: стеклянный павильон -->
+  <path d="M4 92 V54 C4 36 24 26 50 26 C76 26 96 36 96 54 V92 Z" fill="#000"/>
+  <path d="M30 26 C30 14 40 8 50 8 C60 8 70 14 70 26 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2" fill="none">
+    <path d="M4 60 H96"/><path d="M4 76 H96"/>
+    <path d="M18 34 V92"/><path d="M34 28 V92"/><path d="M50 26 V92"/><path d="M66 28 V92"/><path d="M82 34 V92"/>
+    <path d="M40 12 V26"/><path d="M60 12 V26"/><path d="M30 18 H70"/>
+  </g>
+  <path d="M44 92 V80 C44 74 56 74 56 80 V92 Z" fill="#fff"/>
+  <rect x="2" y="92" width="96" height="6" fill="#000"/>
+</svg>

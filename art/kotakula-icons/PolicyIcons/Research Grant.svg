@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Грант: конверт с монетой -->
+  <rect x="4" y="30" width="80" height="56" rx="4" fill="#000"/>
+  <path d="M4 32 L44 62 L84 32" stroke="#fff" stroke-width="5" fill="none"/>
+  <circle cx="76" cy="26" r="20" fill="#000" stroke="#fff" stroke-width="4"/>
+  <circle cx="76" cy="26" r="9" fill="#fff"/>
+</svg>

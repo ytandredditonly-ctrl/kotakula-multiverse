@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Небоскрёб Kotakula: небоскрёб с кошачьими ушами на крыше -->
+  <path d="M30 98 V18 L36 2 L44 14 H56 L64 2 L70 18 V98 Z" fill="#000"/>
+  <g fill="#fff">
+    <rect x="36" y="24" width="8" height="6"/><rect x="56" y="24" width="8" height="6"/>
+    <rect x="36" y="36" width="8" height="6"/><rect x="56" y="36" width="8" height="6"/>
+    <rect x="36" y="48" width="8" height="6"/><rect x="56" y="48" width="8" height="6"/>
+    <rect x="36" y="60" width="8" height="6"/><rect x="56" y="60" width="8" height="6"/>
+    <rect x="36" y="72" width="8" height="6"/><rect x="56" y="72" width="8" height="6"/>
+    <rect x="44" y="86" width="12" height="12"/>
+  </g>
+  <path d="M46 20 L50 24 L54 20" stroke="#fff" stroke-width="2" fill="none"/>
+  <rect x="8" y="64" width="20" height="34" fill="#000"/><rect x="72" y="56" width="20" height="42" fill="#000"/>
+</svg>

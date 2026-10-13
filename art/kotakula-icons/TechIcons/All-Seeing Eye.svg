@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Всевидящее око: глаз в треугольнике -->
+  <path d="M50 6 L96 90 H4 Z" fill="#000"/>
+  <path d="M50 22 L82 82 H18 Z" fill="#fff"/>
+  <path d="M28 64 C36 50 64 50 72 64 C64 78 36 78 28 64 Z" fill="#000"/>
+  <circle cx="50" cy="64" r="8" fill="#fff"/>
+  <circle cx="50" cy="64" r="4" fill="#000"/>
+  <g stroke="#000" stroke-width="3"><path d="M50 32 V44"/><path d="M38 40 L42 48"/><path d="M62 40 L58 48"/></g>
+</svg>

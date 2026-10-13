@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Гигантская Шестерёнка: шестерня размером с гору -->
+  <path d="M2 98 L20 72 L30 80 L42 64 L58 84 L70 72 L98 98 Z" fill="#000"/>
+  <circle cx="50" cy="44" r="38" fill="none" stroke="#000" stroke-width="14" stroke-dasharray="11 9"/>
+  <circle cx="50" cy="44" r="34" fill="#000"/>
+  <circle cx="50" cy="44" r="22" fill="#fff"/>
+  <circle cx="50" cy="44" r="10" fill="#000"/>
+  <g stroke="#000" stroke-width="5"><path d="M50 22 V66"/><path d="M28 44 H72"/></g>
+</svg>

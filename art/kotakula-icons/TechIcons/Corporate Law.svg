@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Корпоративное право: портфель с печатью -->
+  <path d="M34 22 V14 C34 10 37 8 40 8 H60 C63 8 66 10 66 14 V22 H58 V16 H42 V22 Z" fill="#000"/>
+  <rect x="6" y="22" width="88" height="62" rx="6" fill="#000"/>
+  <rect x="6" y="44" width="88" height="4" fill="#fff"/>
+  <circle cx="50" cy="66" r="15" fill="#fff"/>
+  <circle cx="50" cy="66" r="12" fill="#000"/>
+  <path d="M50 57 L52.6 63 L59 63.5 L54 67.5 L55.6 74 L50 70.5 L44.4 74 L46 67.5 L41 63.5 L47.4 63 Z" fill="#fff"/>
+  <rect x="44" y="40" width="12" height="12" rx="2" fill="#000" stroke="#fff" stroke-width="2.5"/>
+</svg>

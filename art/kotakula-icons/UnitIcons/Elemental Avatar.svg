@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Аватар стихий: фигура, разделённая на четыре стихии -->
+  <circle cx="50" cy="14" r="10" fill="#000"/>
+  <path d="M30 28 H70 L84 54 L78 58 L66 42 L68 96 H32 L34 42 L22 58 L16 54 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5"><path d="M50 26 V96"/><path d="M33 60 H67"/></g>
+  <path d="M42 34 C46 40 46 44 44 48 C42 50 38 50 38 46 C38 42 40 40 42 34 Z" fill="#fff"/>
+  <path d="M58 34 C62 40 64 42 64 46 C64 50 56 50 56 46 C56 42 58 40 58 34 Z" fill="#fff"/>
+  <path d="M38 88 L42 76 L46 82 L48 72" stroke="#fff" stroke-width="2.5" fill="none"/>
+  <g stroke="#fff" stroke-width="2.5" fill="none"><path d="M54 74 H62 C66 74 66 70 62 70"/><path d="M54 82 H64"/></g>
+</svg>

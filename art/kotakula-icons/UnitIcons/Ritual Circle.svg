@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Ритуальный круг: круг из свечей -->
+  <ellipse cx="50" cy="66" rx="44" ry="20" fill="none" stroke="#000" stroke-width="4"/>
+  <g fill="#000">
+    <rect x="6" y="52" width="8" height="16" rx="1"/><path d="M10 40 C14 46 14 50 10 50 C6 50 6 46 10 40 Z"/>
+    <rect x="86" y="52" width="8" height="16" rx="1"/><path d="M90 40 C94 46 94 50 90 50 C86 50 86 46 90 40 Z"/>
+    <rect x="22" y="38" width="8" height="16" rx="1"/><path d="M26 26 C30 32 30 36 26 36 C22 36 22 32 26 26 Z"/>
+    <rect x="70" y="38" width="8" height="16" rx="1"/><path d="M74 26 C78 32 78 36 74 36 C70 36 70 32 74 26 Z"/>
+    <rect x="46" y="32" width="8" height="16" rx="1"/><path d="M50 20 C54 26 54 30 50 30 C46 30 46 26 50 20 Z"/>
+    <rect x="20" y="74" width="9" height="18" rx="1"/><path d="M24.5 60 C29 67 29 72 24.5 72 C20 72 20 67 24.5 60 Z"/>
+    <rect x="71" y="74" width="9" height="18" rx="1"/><path d="M75.5 60 C80 67 80 72 75.5 72 C71 72 71 67 75.5 60 Z"/>
+    <rect x="45.5" y="78" width="9" height="18" rx="1"/><path d="M50 64 C54.5 71 54.5 76 50 76 C45.5 76 45.5 71 50 64 Z"/>
+  </g>
+  <path d="M50 50 L58 66 L42 66 Z M50 70 L42 56 H58 Z" fill="none" stroke="#000" stroke-width="2.5"/>
+</svg>

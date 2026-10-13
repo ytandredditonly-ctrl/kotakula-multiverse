@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Невидимая армия: пунктирный щит с мечом -->
+  <path d="M50 4 L90 16 C90 54 78 80 50 96 C22 80 10 54 10 16 Z" fill="none" stroke="#000" stroke-width="7" stroke-dasharray="9 6"/>
+  <path d="M46 18 H54 V64 H46 Z" fill="#000"/>
+  <rect x="34" y="62" width="32" height="8" rx="3" fill="#000"/>
+  <rect x="46" y="70" width="8" height="12" fill="#000"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Лабораторный журнал: блокнот с колбой -->
+  <rect x="12" y="8" width="70" height="88" rx="5" fill="#000"/>
+  <g fill="#000"><rect x="4" y="18" width="16" height="7" rx="3"/><rect x="4" y="40" width="16" height="7" rx="3"/><rect x="4" y="62" width="16" height="7" rx="3"/></g>
+  <path d="M42 24 V40 L30 66 C28 72 32 76 36 76 H62 C66 76 70 72 68 66 L56 40 V24 Z" fill="#fff"/>
+  <path d="M34 60 H64 L66 66 C67 69 65 70 62 70 H36 C33 70 31 69 32 66 Z" fill="#000"/>
+</svg>

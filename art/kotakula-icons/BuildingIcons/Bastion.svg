@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Бастион: бетонный бастион -->
+  <path d="M2 94 L12 40 H88 L98 94 Z" fill="#000"/>
+  <g fill="#000"><rect x="12" y="28" width="14" height="14"/><rect x="34" y="28" width="14" height="14"/><rect x="56" y="28" width="14" height="14"/><rect x="78" y="28" width="12" height="14"/></g>
+  <g fill="#fff"><rect x="24" y="58" width="16" height="6" rx="2"/><rect x="60" y="58" width="16" height="6" rx="2"/></g>
+  <g stroke="#fff" stroke-width="2"><path d="M8 74 H92"/><path d="M30 74 V94"/><path d="M50 40 V74"/><path d="M70 74 V94"/></g>
+</svg>

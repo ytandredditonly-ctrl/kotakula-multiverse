@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Галера сирен: галера с хвостом сирены на носу -->
+  <path d="M4 62 H80 L90 50 C96 46 98 54 94 58 L86 74 C80 82 68 84 56 84 H24 C12 84 6 74 4 62 Z" fill="#000"/>
+  <path d="M90 50 C86 40 92 32 98 30 C92 38 96 42 98 46 C94 44 92 46 90 50 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="3" stroke-linecap="round"><path d="M24 84 L18 96"/><path d="M36 84 L30 96"/><path d="M48 84 L42 96"/><path d="M60 84 L54 96"/><path d="M72 82 L66 94"/></g>
+  <rect x="44" y="8" width="5" height="54" fill="#000"/>
+  <path d="M24 14 H70 L64 50 H30 Z" fill="#000"/>
+  <path d="M36 22 C42 30 50 30 56 22 C54 34 50 40 46 42 C42 40 38 34 36 22 Z" fill="#fff"/>
+  <g fill="#fff"><circle cx="20" cy="70" r="2.5"/><circle cx="32" cy="70" r="2.5"/><circle cx="44" cy="70" r="2.5"/><circle cx="56" cy="70" r="2.5"/><circle cx="68" cy="70" r="2.5"/></g>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Магия воздуха: вихрь -->
+  <g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round">
+    <path d="M6 30 H62 C74 30 78 14 66 10 C58 8 54 14 56 20"/>
+    <path d="M6 52 H80 C94 52 96 72 82 74 C74 76 70 68 74 62"/>
+    <path d="M18 74 H46 C56 74 58 88 50 92"/>
+  </g>
+</svg>

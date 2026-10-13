@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Великое Эхо: колокол со звуковыми кольцами -->
+  <path d="M50 14 C64 14 70 26 70 40 C70 56 74 66 82 72 H18 C26 66 30 56 30 40 C30 26 36 14 50 14 Z" fill="#000"/>
+  <rect x="46" y="6" width="8" height="10" rx="3" fill="#000"/>
+  <circle cx="50" cy="80" r="7" fill="#000"/>
+  <path d="M40 30 C38 40 38 50 40 58" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <g stroke="#000" stroke-width="4.5" fill="none" stroke-linecap="round">
+    <path d="M12 30 C6 40 6 54 12 64"/><path d="M88 30 C94 40 94 54 88 64"/>
+    <path d="M22 88 C40 96 60 96 78 88"/>
+  </g>
+</svg>

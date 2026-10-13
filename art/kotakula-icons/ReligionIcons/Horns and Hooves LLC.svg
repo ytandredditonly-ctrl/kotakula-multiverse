@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- ООО Рога и Копыта: рога и подкова -->
+  <path d="M30 40 C14 34 6 20 10 4 C16 18 26 24 38 28 Z" fill="#000"/>
+  <path d="M70 40 C86 34 94 20 90 4 C84 18 74 24 62 28 Z" fill="#000"/>
+  <path d="M22 96 V62 C22 42 34 32 50 32 C66 32 78 42 78 62 V96 H64 V62 C64 52 58 46 50 46 C42 46 36 52 36 62 V96 Z" fill="#000"/>
+  <g fill="#fff"><circle cx="29" cy="62" r="3"/><circle cx="29" cy="78" r="3"/><circle cx="71" cy="62" r="3"/><circle cx="71" cy="78" r="3"/><circle cx="40" cy="40" r="2.5"/><circle cx="60" cy="40" r="2.5"/></g>
+</svg>

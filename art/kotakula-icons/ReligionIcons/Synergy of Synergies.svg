@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Синергия Синергий: две стрелки по кругу -->
+  <path d="M50 10 A40 40 0 0 1 88 40" stroke="#000" stroke-width="12" fill="none"/>
+  <path d="M74 38 H98 L88 56 Z" fill="#000"/>
+  <path d="M50 90 A40 40 0 0 1 12 60" stroke="#000" stroke-width="12" fill="none"/>
+  <path d="M26 62 H2 L12 44 Z" fill="#000"/>
+  <path d="M88 60 A40 40 0 0 1 60 88 M12 40 A40 40 0 0 1 40 12" stroke="#000" stroke-width="5" fill="none" stroke-dasharray="4 4"/>
+  <circle cx="50" cy="50" r="12" fill="#000"/>
+</svg>

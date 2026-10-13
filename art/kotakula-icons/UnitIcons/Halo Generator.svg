@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Нимб-генератор: машина, выпускающая нимб -->
+  <ellipse cx="50" cy="16" rx="26" ry="8" fill="none" stroke="#000" stroke-width="6"/>
+  <g stroke="#000" stroke-width="3" stroke-linecap="round"><path d="M50 28 V36"/><path d="M36 30 L40 36"/><path d="M64 30 L60 36"/></g>
+  <path d="M30 40 H70 L74 50 H26 Z" fill="#000"/>
+  <rect x="16" y="50" width="68" height="40" rx="4" fill="#000"/>
+  <circle cx="36" cy="70" r="10" fill="#fff"/><circle cx="36" cy="70" r="6" fill="#000"/>
+  <g fill="#fff"><rect x="54" y="60" width="22" height="5"/><rect x="54" y="70" width="22" height="5"/><rect x="54" y="80" width="12" height="5"/></g>
+  <rect x="20" y="90" width="12" height="8" fill="#000"/><rect x="68" y="90" width="12" height="8" fill="#000"/>
+</svg>

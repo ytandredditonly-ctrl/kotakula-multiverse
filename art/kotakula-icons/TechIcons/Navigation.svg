@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Навигация: компас и секстант -->
+  <circle cx="36" cy="62" r="32" fill="#000"/>
+  <circle cx="36" cy="62" r="25" fill="#fff"/>
+  <path d="M36 40 L42 62 L36 84 L30 62 Z" fill="#000"/>
+  <circle cx="36" cy="62" r="3" fill="#fff"/>
+  <path d="M60 6 L94 40" stroke="#000" stroke-width="6"/>
+  <path d="M60 6 L72 46" stroke="#000" stroke-width="5"/>
+  <path d="M70 40 Q84 38 94 40" stroke="#000" stroke-width="6" fill="none"/>
+  <circle cx="60" cy="6" r="4" fill="#000"/>
+</svg>

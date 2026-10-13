@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Высшая големантия: голова голема с руной -->
+  <path d="M22 18 L40 8 H62 L80 18 L88 42 L82 80 L66 94 H34 L18 80 L12 42 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5" fill="none"><path d="M22 18 L34 34 L62 30 L80 18"/><path d="M12 42 L28 50"/><path d="M88 42 L72 52"/><path d="M34 94 L40 80 L60 80 L66 94"/></g>
+  <rect x="26" y="40" width="16" height="7" fill="#fff"/><rect x="58" y="40" width="16" height="7" fill="#fff"/>
+  <g stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none"><path d="M50 52 V74"/><path d="M42 58 L50 64 L58 58"/></g>
+</svg>

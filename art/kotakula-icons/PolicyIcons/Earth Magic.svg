@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Магия земли: гора -->
+  <path d="M2 92 L34 26 L48 50 L64 18 L98 92 Z" fill="#000"/>
+  <path d="M56 34 L64 18 L72 34 L66 30 L62 36 Z" fill="#fff"/>
+  <path d="M28 40 L34 26 L40 38 Z" fill="#fff"/>
+</svg>

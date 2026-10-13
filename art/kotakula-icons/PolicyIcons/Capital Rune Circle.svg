@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Рунный круг столицы -->
+  <circle cx="50" cy="50" r="40" fill="none" stroke="#000" stroke-width="10"/>
+  <g fill="#000"><circle cx="50" cy="10" r="9"/><circle cx="90" cy="50" r="9"/><circle cx="50" cy="90" r="9"/><circle cx="10" cy="50" r="9"/></g>
+  <path d="M30 60 L26 34 L40 46 L50 30 L60 46 L74 34 L70 60 Z" fill="#000"/>
+</svg>

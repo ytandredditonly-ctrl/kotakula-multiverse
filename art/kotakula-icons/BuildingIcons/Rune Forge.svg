@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Рунная кузня: наковальня с руной -->
+  <path d="M6 40 H78 C78 50 70 56 60 58 L56 72 H68 V82 H22 V72 H34 L30 58 H20 C12 56 6 50 6 40 Z" fill="#000"/>
+  <path d="M78 40 L96 44 L78 50 Z" fill="#000"/>
+  <rect x="16" y="82" width="58" height="10" rx="2" fill="#000"/>
+  <g stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M42 44 V54"/><path d="M36 44 L48 54"/><path d="M48 44 L36 54"/></g>
+  <path d="M44 4 L48 14 L58 10 L52 20 L62 24 L50 26 L52 36 L44 28 L36 36 L38 26 L26 24 L36 20 L30 10 L40 14 Z" fill="#000"/>
+</svg>

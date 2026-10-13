@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Стена шипов: стена из колючих лоз -->
+  <path d="M2 96 V50 C10 40 16 54 24 44 C32 34 38 50 46 40 C54 30 60 46 68 38 C76 30 84 44 98 36 V96 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="3" fill="none"><path d="M2 66 C20 56 40 76 60 64 C76 56 88 66 98 60"/><path d="M2 84 C24 74 44 92 66 80 C80 74 90 82 98 78"/></g>
+  <g fill="#000">
+    <path d="M8 44 L4 30 L14 40 Z"/><path d="M24 40 L22 24 L30 36 Z"/><path d="M40 40 L44 26 L46 40 Z"/><path d="M56 34 L56 18 L62 32 Z"/><path d="M74 34 L80 20 L80 34 Z"/><path d="M90 36 L96 24 L96 36 Z"/>
+  </g>
+  <g fill="#fff"><path d="M18 64 L14 58 L22 60 Z"/><path d="M48 70 L46 62 L52 66 Z"/><path d="M76 60 L80 54 L82 60 Z"/><path d="M32 82 L28 76 L36 78 Z"/><path d="M60 86 L62 78 L66 84 Z"/></g>
+</svg>

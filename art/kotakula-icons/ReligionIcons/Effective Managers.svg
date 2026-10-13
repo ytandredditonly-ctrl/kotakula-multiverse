@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Эффективные Менеджеры: галстук -->
+  <path d="M30 4 H70 L60 22 H40 Z" fill="#000"/>
+  <path d="M40 22 H60 L74 76 L50 98 L26 76 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="5"><path d="M38 40 L62 30"/><path d="M34 58 L66 46"/><path d="M32 76 L68 62"/></g>
+</svg>

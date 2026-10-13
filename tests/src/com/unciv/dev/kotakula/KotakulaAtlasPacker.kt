@@ -25,7 +25,9 @@ object KotakulaAtlasPacker {
     fun pack(modDir: File) {
         val images = File(modDir, "Images")
         if (!images.isDirectory) return
-        for (old in listOf("game.atlas", "game.png", "game2.png", "game3.png")) File(modDir, old).delete()
+        // The packer writes as many pages as needed (game.png, game2.png, ...): remove every old page
+        File(modDir, "game.atlas").delete()
+        modDir.listFiles { f -> f.name.matches(Regex("""game\d*\.png""")) }?.forEach { it.delete() }
         val settings = TexturePacker.Settings().apply {
             // Same as desktop ImagePacker.getDefaultSettings: 2048 is the safe maximum for old chipsets
             maxWidth = 2048

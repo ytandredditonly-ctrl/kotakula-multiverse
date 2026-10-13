@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Химеризм: три головы на одном теле -->
+  <path d="M20 96 C18 76 24 62 36 56 H64 C76 62 82 76 80 96 Z" fill="#000"/>
+  <path d="M36 58 C30 46 24 40 16 38 L22 30 C32 30 40 38 44 50 Z" fill="#000"/>
+  <path d="M64 58 C70 46 76 40 84 38 L78 30 C68 30 60 38 56 50 Z" fill="#000"/>
+  <rect x="44" y="34" width="12" height="24" fill="#000"/>
+  <path d="M6 32 C8 22 16 18 24 20 L30 26 L22 34 L10 36 Z" fill="#000"/>
+  <path d="M94 32 C92 22 84 18 76 20 L70 26 L78 34 L90 36 Z" fill="#000"/>
+  <path d="M38 22 C38 10 62 10 62 22 L62 36 H38 Z" fill="#000"/>
+  <path d="M38 10 L36 2 L44 8 Z M62 10 L64 2 L56 8 Z" fill="#000"/>
+  <g fill="#fff"><circle cx="45" cy="22" r="2.5"/><circle cx="55" cy="22" r="2.5"/><circle cx="16" cy="26" r="2"/><circle cx="84" cy="26" r="2"/></g>
+</svg>

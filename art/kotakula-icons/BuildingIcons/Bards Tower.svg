@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Башня бардов: башня с нотами -->
+  <path d="M30 30 L42 10 L54 30 Z" fill="#000"/>
+  <path d="M32 30 H52 L56 96 H28 Z" fill="#000"/>
+  <rect x="20" y="90" width="44" height="8" rx="2" fill="#000"/>
+  <path d="M37 50 C37 44 47 44 47 50 V60 H37 Z" fill="#fff"/>
+  <path d="M36 78 C36 72 48 72 48 78 V92 H36 Z" fill="#fff"/>
+  <g fill="#000">
+    <ellipse cx="68" cy="34" rx="6" ry="4.5" transform="rotate(-20 68 34)"/><rect x="72" y="10" width="3" height="24"/><path d="M72 10 L86 6 V14 L75 18 Z"/>
+    <ellipse cx="80" cy="66" rx="6" ry="4.5" transform="rotate(-20 80 66)"/><rect x="84" y="44" width="3" height="22"/><path d="M87 44 C94 48 96 54 92 58 C94 52 90 50 87 50 Z"/>
+  </g>
+</svg>

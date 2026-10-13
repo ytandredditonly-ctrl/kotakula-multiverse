@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Корабль-призрак: полупрозрачный корабль -->
+  <g fill="#808080">
+    <path d="M6 64 H94 L84 82 H16 Z"/>
+    <rect x="47" y="8" width="5" height="56"/>
+    <path d="M22 14 H44 V54 H26 C30 44 30 26 22 14 Z"/>
+    <path d="M56 18 H78 C70 30 70 44 74 54 H56 Z"/>
+  </g>
+  <g stroke="#000" stroke-width="3" fill="none">
+    <path d="M6 64 H94 L84 82 H16 Z"/>
+    <path d="M22 14 H44 V54 H26 C30 44 30 26 22 14 Z"/>
+    <path d="M56 18 H78 C70 30 70 44 74 54 H56 Z"/>
+  </g>
+  <g fill="#fff"><path d="M28 22 L34 30 L30 36 Z"/><path d="M64 26 L68 34 L62 38 Z"/></g>
+  <path d="M4 92 C14 86 24 96 34 90 C44 84 54 96 64 90 C74 84 84 96 96 90" stroke="#808080" stroke-width="4" fill="none"/>
+</svg>

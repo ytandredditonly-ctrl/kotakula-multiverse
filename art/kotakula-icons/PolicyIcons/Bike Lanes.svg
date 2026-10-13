@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Велодорожки: велосипед -->
+  <circle cx="24" cy="66" r="18" fill="none" stroke="#000" stroke-width="8"/>
+  <circle cx="76" cy="66" r="18" fill="none" stroke="#000" stroke-width="8"/>
+  <path d="M24 66 L42 36 H70 L76 66 M42 36 L54 66 L70 36 M36 26 H50 M68 24 L70 36" stroke="#000" stroke-width="7" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

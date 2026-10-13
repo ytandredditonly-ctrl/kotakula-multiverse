@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Либурна: галера с тараном -->
+  <path d="M2 66 L20 62 H86 L98 50 L94 70 C88 80 76 84 60 84 H26 C14 84 8 76 2 66 Z" fill="#000"/>
+  <path d="M2 66 L-2 70 L4 70 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="3" stroke-linecap="round"><path d="M28 84 L22 96"/><path d="M40 84 L34 96"/><path d="M52 84 L46 96"/><path d="M64 84 L58 96"/><path d="M76 82 L70 94"/></g>
+  <rect x="48" y="10" width="5" height="52" fill="#000"/>
+  <path d="M30 16 H72 L68 50 H34 Z" fill="#000"/>
+  <path d="M38 22 H64 L62 44 H40 Z" fill="#fff"/>
+  <path d="M42 26 H60 L58 40 H44 Z" fill="#000"/>
+  <g fill="#fff"><circle cx="34" cy="70" r="2.5"/><circle cx="46" cy="70" r="2.5"/><circle cx="58" cy="70" r="2.5"/><circle cx="70" cy="70" r="2.5"/></g>
+</svg>

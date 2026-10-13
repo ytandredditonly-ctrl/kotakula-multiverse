@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Драгун: всадник с мушкетом -->
+  <path d="M10 62 C12 52 20 46 32 46 H62 C66 38 72 30 80 28 L84 22 L88 30 C94 34 96 40 92 44 L84 46 C80 52 78 58 78 64 L84 92 H76 L68 70 H40 L32 92 H24 L28 70 C18 72 12 70 10 62 Z" fill="#000"/>
+  <circle cx="42" cy="12" r="7" fill="#000"/>
+  <path d="M34 22 H52 L54 42 C54 46 50 48 46 48 H36 C32 48 30 44 32 40 Z" fill="#000" stroke="#fff" stroke-width="2.5"/>
+  <path d="M32 8 H52 L50 4 H36 Z" fill="#000"/>
+  <path d="M24 4 L70 40" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+  <path d="M56 26 L68 36" stroke="#fff" stroke-width="1.5"/>
+</svg>

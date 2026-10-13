@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Бухгалтерия: гроссбух с монетой -->
+  <path d="M6 22 L46 16 L46 84 L6 90 Z" fill="#000"/>
+  <path d="M50 16 L80 22 L80 90 L50 84 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="3">
+    <line x1="13" y1="32" x2="39" y2="28"/><line x1="13" y1="44" x2="39" y2="40"/><line x1="13" y1="56" x2="39" y2="52"/><line x1="13" y1="68" x2="39" y2="64"/>
+    <line x1="57" y1="28" x2="73" y2="31"/><line x1="57" y1="40" x2="73" y2="43"/>
+  </g>
+  <circle cx="74" cy="72" r="21" fill="#fff"/>
+  <circle cx="74" cy="72" r="17" fill="#000"/>
+  <circle cx="74" cy="72" r="11" fill="#fff"/>
+  <circle cx="74" cy="72" r="7" fill="#000"/>
+</svg>

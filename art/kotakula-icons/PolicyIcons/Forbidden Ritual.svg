@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Запретный ритуал: перевёрнутая пентаграмма со свечами -->
+  <circle cx="50" cy="56" r="38" fill="none" stroke="#000" stroke-width="7"/>
+  <path d="M50 92 L28 24 L86 66 H14 L72 24 Z" fill="none" stroke="#000" stroke-width="6" stroke-linejoin="round"/>
+  <g fill="#000"><rect x="6" y="20" width="10" height="20" rx="1"/><rect x="84" y="20" width="10" height="20" rx="1"/><path d="M11 4 C15 10 15 16 11 16 C7 16 7 10 11 4 Z"/><path d="M89 4 C93 10 93 16 89 16 C85 16 85 10 89 4 Z"/></g>
+</svg>

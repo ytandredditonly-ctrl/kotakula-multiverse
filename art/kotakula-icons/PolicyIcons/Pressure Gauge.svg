@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Манометр -->
+  <circle cx="50" cy="54" r="42" fill="#000"/>
+  <circle cx="50" cy="54" r="32" fill="#fff"/>
+  <path d="M50 54 L74 34" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="50" cy="54" r="7" fill="#000"/>
+  <g stroke="#000" stroke-width="5"><path d="M24 70 L30 66"/><path d="M22 46 L30 48"/><path d="M36 28 L40 34"/><path d="M64 28 L60 34"/></g>
+  <rect x="42" y="2" width="16" height="12" fill="#000"/>
+</svg>

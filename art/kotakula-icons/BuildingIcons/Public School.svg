@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Общественная школа: школьное здание с колоколом -->
+  <path d="M38 22 L50 10 L62 22 V36 H38 Z" fill="#000"/>
+  <path d="M44 32 C44 24 56 24 56 32 Z" fill="#fff"/>
+  <rect x="49" y="2" width="2" height="8" fill="#000"/>
+  <path d="M4 50 L50 30 L96 50 Z" fill="#000"/>
+  <rect x="10" y="50" width="80" height="44" fill="#000"/>
+  <g fill="#fff"><rect x="16" y="58" width="12" height="12"/><rect x="72" y="58" width="12" height="12"/><rect x="16" y="76" width="12" height="12"/><rect x="72" y="76" width="12" height="12"/></g>
+  <path d="M40 94 V66 H60 V94 Z" fill="#fff"/>
+  <rect x="49" y="66" width="2" height="28" fill="#000"/>
+  <rect x="4" y="92" width="92" height="6" fill="#000"/>
+</svg>

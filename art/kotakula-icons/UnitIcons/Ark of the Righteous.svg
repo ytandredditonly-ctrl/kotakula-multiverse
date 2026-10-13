@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Ковчег праведников: ковчег с крыльями -->
+  <path d="M10 56 H90 L80 82 H20 Z" fill="#000"/>
+  <path d="M26 56 V40 H74 V56 Z" fill="#000"/>
+  <path d="M22 40 L50 26 L78 40 Z" fill="#000"/>
+  <g fill="#fff"><rect x="34" y="44" width="8" height="8"/><rect x="58" y="44" width="8" height="8"/></g>
+  <g stroke="#fff" stroke-width="2.5"><path d="M14 66 H86"/></g>
+  <path d="M24 50 C14 36 6 34 0 36 C6 40 8 46 8 52 C12 50 18 52 24 54 Z" fill="#000"/>
+  <path d="M76 50 C86 36 94 34 100 36 C94 40 92 46 92 52 C88 50 82 52 76 54 Z" fill="#000"/>
+  <ellipse cx="50" cy="14" rx="14" ry="4" fill="none" stroke="#000" stroke-width="4"/>
+  <path d="M4 92 C14 86 24 96 34 90 C44 84 54 96 64 90 C74 84 84 96 96 90" stroke="#000" stroke-width="4" fill="none"/>
+</svg>

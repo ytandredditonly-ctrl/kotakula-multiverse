@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Зелёный кредит: монета с листом -->
+  <circle cx="44" cy="56" r="40" fill="#000"/>
+  <circle cx="44" cy="56" r="30" fill="#fff"/>
+  <path d="M30 76 C26 52 40 34 66 32 C68 56 54 74 30 76 Z" fill="#000"/>
+  <path d="M32 74 L58 40" stroke="#fff" stroke-width="3"/>
+  <path d="M80 4 C80 18 88 26 98 26 M86 14 L98 4" stroke="#000" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

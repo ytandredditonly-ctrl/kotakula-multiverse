@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Молитвенник: книга со знаком света -->
+  <rect x="14" y="6" width="72" height="88" rx="5" fill="#000"/>
+  <rect x="21" y="6" width="5" height="88" fill="#fff"/>
+  <circle cx="56" cy="44" r="12" fill="#fff"/>
+  <g stroke="#fff" stroke-width="5" stroke-linecap="round"><path d="M56 18 V24"/><path d="M56 64 V70"/><path d="M30 44 H36"/><path d="M76 44 H82"/><path d="M38 26 L42 30"/><path d="M74 26 L70 30"/><path d="M38 62 L42 58"/><path d="M74 62 L70 58"/></g>
+</svg>

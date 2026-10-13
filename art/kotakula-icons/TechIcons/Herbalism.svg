@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Травничество: травы в ступке -->
+  <path d="M50 52 C46 36 40 22 26 12 C36 26 40 38 44 52 Z" fill="#000"/>
+  <path d="M50 52 C52 32 60 18 74 8 C66 24 60 38 56 52 Z" fill="#000"/>
+  <path d="M30 34 C18 30 10 32 6 38 C16 40 24 40 34 44 Z" fill="#000"/>
+  <path d="M68 36 C80 28 88 30 94 34 C84 38 76 40 64 46 Z" fill="#000"/>
+  <path d="M10 50 H90 C88 72 74 86 50 86 C26 86 12 72 10 50 Z" fill="#000"/>
+  <rect x="30" y="86" width="40" height="8" rx="3" fill="#000"/>
+  <path d="M20 58 C24 70 34 76 46 78" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M66 30 L86 6 L92 10 L72 34 Z" fill="#000"/>
+</svg>

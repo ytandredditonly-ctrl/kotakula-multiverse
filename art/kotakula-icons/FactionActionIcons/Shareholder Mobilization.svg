@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Мобилизация акционеров: портфель и мечи -->
+  <g stroke="#000" stroke-width="7" stroke-linecap="round"><path d="M10 6 L50 46"/><path d="M90 6 L50 46"/></g>
+  <path d="M38 52 V46 C38 42 41 40 44 40 H56 C59 40 62 42 62 46 V52" stroke="#000" stroke-width="6" fill="none"/>
+  <rect x="10" y="52" width="80" height="44" rx="5" fill="#000"/>
+  <rect x="10" y="68" width="80" height="4" fill="#fff"/>
+  <rect x="44" y="64" width="12" height="12" rx="2" fill="#000" stroke="#fff" stroke-width="3"/>
+</svg>

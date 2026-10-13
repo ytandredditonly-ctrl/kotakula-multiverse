@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Радио: вышка с волнами -->
+  <path d="M50 26 L72 96 H62 L50 52 L38 96 H28 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="3"><path d="M44 46 H56"/><path d="M40 62 H60"/><path d="M36 78 H64"/><path d="M44 46 L60 62 L36 78"/><path d="M56 46 L40 62 L64 78"/></g>
+  <circle cx="50" cy="22" r="6" fill="#000"/>
+  <g stroke="#000" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M34 10 C28 16 28 28 34 34"/><path d="M66 10 C72 16 72 28 66 34"/>
+    <path d="M22 2 C12 12 12 32 22 42"/><path d="M78 2 C88 12 88 32 78 42"/>
+  </g>
+</svg>

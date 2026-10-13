@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Кинотеатр: кинолента -->
+  <circle cx="30" cy="24" r="20" fill="#000"/><circle cx="70" cy="24" r="20" fill="#000"/>
+  <g fill="#fff"><circle cx="30" cy="24" r="4"/><circle cx="30" cy="12" r="4"/><circle cx="30" cy="36" r="4"/><circle cx="18" cy="24" r="4"/><circle cx="42" cy="24" r="4"/><circle cx="70" cy="24" r="4"/><circle cx="70" cy="12" r="4"/><circle cx="70" cy="36" r="4"/><circle cx="58" cy="24" r="4"/><circle cx="82" cy="24" r="4"/></g>
+  <rect x="12" y="48" width="60" height="40" rx="4" fill="#000"/>
+  <path d="M72 58 L94 48 V88 L72 78 Z" fill="#000"/>
+  <g fill="#fff"><rect x="18" y="52" width="6" height="5"/><rect x="30" y="52" width="6" height="5"/><rect x="42" y="52" width="6" height="5"/><rect x="54" y="52" width="6" height="5"/><rect x="18" y="79" width="6" height="5"/><rect x="30" y="79" width="6" height="5"/><rect x="42" y="79" width="6" height="5"/><rect x="54" y="79" width="6" height="5"/></g>
+</svg>

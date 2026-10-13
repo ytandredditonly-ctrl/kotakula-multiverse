@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Паломничество: посох и дорога -->
+  <circle cx="42" cy="14" r="9" fill="#000"/>
+  <path d="M30 28 H52 L58 54 L50 56 L48 44 L46 96 H36 L36 70 L30 96 H20 L28 52 L24 44 Z" fill="#000"/>
+  <rect x="66" y="10" width="6" height="88" rx="3" fill="#000"/>
+  <path d="M62 10 C62 2 76 2 76 10 C76 16 70 20 66 18" stroke="#000" stroke-width="5" fill="none"/>
+  <path d="M58 54 L66 50" stroke="#000" stroke-width="5" stroke-linecap="round"/>
+</svg>

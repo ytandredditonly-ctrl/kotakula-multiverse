@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- НИИ: колба и атом -->
+  <path d="M28 30 V48 L8 84 C6 90 10 96 16 96 H56 C62 96 66 90 64 84 L44 48 V30 Z" fill="#000"/>
+  <rect x="24" y="24" width="24" height="8" rx="2" fill="#000"/>
+  <path d="M16 76 H56 L60 86 C61 89 59 91 56 91 H16 C13 91 11 89 12 86 Z" fill="#fff"/>
+  <g fill="none" stroke="#000" stroke-width="3.5">
+    <ellipse cx="72" cy="30" rx="24" ry="9"/>
+    <ellipse cx="72" cy="30" rx="24" ry="9" transform="rotate(60 72 30)"/>
+    <ellipse cx="72" cy="30" rx="24" ry="9" transform="rotate(-60 72 30)"/>
+  </g>
+  <circle cx="72" cy="30" r="5" fill="#000"/>
+</svg>

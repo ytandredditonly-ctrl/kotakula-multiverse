@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Магическая схоластика: игла с ангелочками -->
+  <path d="M49 30 L51 30 L53 98 L50 100 L47 98 Z" fill="#000"/>
+  <ellipse cx="50" cy="20" rx="5" ry="12" fill="#000"/>
+  <ellipse cx="50" cy="18" rx="2" ry="6" fill="#fff"/>
+  <g fill="#000">
+    <circle cx="26" cy="48" r="7"/><path d="M18 58 H34 L32 74 H20 Z"/><path d="M18 58 C8 52 4 44 6 38 C12 44 16 50 20 54 Z"/><path d="M34 58 C40 50 44 46 44 40 C38 44 34 50 32 54 Z"/>
+    <circle cx="74" cy="48" r="7"/><path d="M66 58 H82 L80 74 H68 Z"/><path d="M82 58 C92 52 96 44 94 38 C88 44 84 50 80 54 Z"/><path d="M66 58 C60 50 56 46 56 40 C62 44 66 50 68 54 Z"/>
+  </g>
+  <g fill="none" stroke="#000" stroke-width="2.5"><ellipse cx="26" cy="36" rx="7" ry="2.5"/><ellipse cx="74" cy="36" rx="7" ry="2.5"/></g>
+  <path d="M38 88 C44 84 56 84 62 88" stroke="#000" stroke-width="3" fill="none"/>
+</svg>

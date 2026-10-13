@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Квартальная премия: конверт с деньгами -->
+  <rect x="22" y="8" width="56" height="44" rx="3" fill="#000" stroke="#fff" stroke-width="3" transform="rotate(-8 50 30)"/>
+  <circle cx="50" cy="30" r="9" fill="#fff" transform="rotate(-8 50 30)"/>
+  <rect x="4" y="36" width="92" height="58" rx="5" fill="#000"/>
+  <path d="M4 38 L50 70 L96 38" stroke="#fff" stroke-width="5" fill="none"/>
+</svg>

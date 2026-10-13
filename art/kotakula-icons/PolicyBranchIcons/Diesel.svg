@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Дизель: канистра -->
+  <path d="M18 22 H62 L82 40 V90 C82 94 78 96 74 96 H26 C22 96 18 94 18 90 Z" fill="#000"/>
+  <path d="M28 6 H56 V14 C56 18 52 22 48 22 H36 C32 22 28 18 28 14 Z" fill="none" stroke="#000" stroke-width="7"/>
+  <rect x="64" y="10" width="14" height="14" rx="2" fill="#000" transform="rotate(45 71 17)"/>
+  <path d="M30 40 L70 84 M70 40 L30 84" stroke="#fff" stroke-width="5"/>
+  <rect x="28" y="38" width="44" height="48" rx="3" fill="none" stroke="#fff" stroke-width="4"/>
+</svg>

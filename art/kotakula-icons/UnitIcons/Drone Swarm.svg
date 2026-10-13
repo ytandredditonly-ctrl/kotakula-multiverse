@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <!-- Рой дронов: стая квадрокоптеров -->
+  <defs>
+    <g id="drone">
+      <path d="M-14 -14 L14 14 M14 -14 L-14 14" stroke="#000" stroke-width="5"/>
+      <circle cx="-14" cy="-14" r="8" fill="#000"/><circle cx="14" cy="-14" r="8" fill="#000"/>
+      <circle cx="-14" cy="14" r="8" fill="#000"/><circle cx="14" cy="14" r="8" fill="#000"/>
+      <circle cx="-14" cy="-14" r="4" fill="#fff"/><circle cx="14" cy="-14" r="4" fill="#fff"/>
+      <circle cx="-14" cy="14" r="4" fill="#fff"/><circle cx="14" cy="14" r="4" fill="#fff"/>
+      <rect x="-8" y="-6" width="16" height="12" rx="3" fill="#000"/>
+    </g>
+  </defs>
+  <use xlink:href="#drone" transform="translate(30 30) scale(0.95)"/>
+  <use xlink:href="#drone" transform="translate(74 40) scale(0.75)"/>
+  <use xlink:href="#drone" transform="translate(44 76) scale(0.8)"/>
+  <use xlink:href="#drone" transform="translate(84 82) scale(0.45)"/>
+  <use xlink:href="#drone" transform="translate(12 70) scale(0.4)"/>
+</svg>

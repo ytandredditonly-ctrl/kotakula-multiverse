@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Мегакорп: буква М в шестиугольнике -->
+  <path d="M50 2 L92 26 V74 L50 98 L8 74 V26 Z" fill="#000"/>
+  <path d="M24 72 V30 H36 L50 52 L64 30 H76 V72 H64 V50 L50 70 L36 50 V72 Z" fill="#fff"/>
+</svg>

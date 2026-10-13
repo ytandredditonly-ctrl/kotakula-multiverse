@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Электростанция: трансформатор с молнией -->
+  <rect x="14" y="30" width="72" height="60" rx="4" fill="#000"/>
+  <g fill="#000"><rect x="22" y="14" width="10" height="18"/><rect x="45" y="14" width="10" height="18"/><rect x="68" y="14" width="10" height="18"/></g>
+  <g fill="#000"><circle cx="27" cy="10" r="5"/><circle cx="50" cy="10" r="5"/><circle cx="73" cy="10" r="5"/></g>
+  <g stroke="#fff" stroke-width="2"><path d="M22 18 H32"/><path d="M22 24 H32"/><path d="M45 18 H55"/><path d="M45 24 H55"/><path d="M68 18 H78"/><path d="M68 24 H78"/></g>
+  <path d="M54 38 L38 64 H50 L44 84 L64 56 H52 L58 38 Z" fill="#fff"/>
+  <rect x="8" y="90" width="84" height="6" rx="2" fill="#000"/>
+</svg>

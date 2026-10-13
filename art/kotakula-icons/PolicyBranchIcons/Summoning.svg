@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Призыв: пентаграмма -->
+  <circle cx="50" cy="52" r="42" fill="none" stroke="#000" stroke-width="7"/>
+  <path d="M50 12 L74 86 L12 40 H88 L26 86 Z" fill="none" stroke="#000" stroke-width="6" stroke-linejoin="round"/>
+</svg>

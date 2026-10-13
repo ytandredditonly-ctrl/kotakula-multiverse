@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Гавань: причал с краном -->
+  <rect x="2" y="70" width="70" height="8" fill="#000"/>
+  <g fill="#000"><rect x="8" y="78" width="6" height="18"/><rect x="28" y="78" width="6" height="18"/><rect x="48" y="78" width="6" height="18"/><rect x="66" y="78" width="6" height="18"/></g>
+  <path d="M24 70 V28 H32 V70 Z" fill="#000"/>
+  <path d="M20 26 H90 V32 H20 Z" fill="#000"/>
+  <path d="M28 28 L40 10 L44 12 L32 30 Z" fill="#000"/>
+  <path d="M40 10 L90 26" stroke="#000" stroke-width="3"/>
+  <path d="M80 32 V52" stroke="#000" stroke-width="2.5"/>
+  <rect x="72" y="52" width="16" height="12" fill="#000"/>
+  <path d="M76 84 C82 80 90 88 98 84" stroke="#000" stroke-width="3.5" fill="none"/>
+  <path d="M60 94 C70 90 82 98 98 94" stroke="#000" stroke-width="3.5" fill="none"/>
+</svg>

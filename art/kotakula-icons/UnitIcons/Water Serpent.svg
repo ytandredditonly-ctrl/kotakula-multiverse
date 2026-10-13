@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Водяной змей: змей из воды -->
+  <path d="M20 90 C20 70 40 66 40 50 C40 36 28 34 28 22 C28 10 40 4 52 6 C66 8 72 18 68 26 L56 22 C54 16 44 16 42 22 C40 30 52 34 52 50 C52 70 32 72 32 90 Z" fill="#000"/>
+  <path d="M62 14 L80 18 L66 26 Z" fill="#000"/>
+  <circle cx="54" cy="13" r="2.5" fill="#fff"/>
+  <path d="M2 92 C12 86 22 96 32 90 C42 84 52 96 62 90 C72 84 82 96 98 88 V98 H2 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="3.5" fill="none" stroke-linecap="round"><path d="M60 46 C68 40 76 44 80 38"/><path d="M64 60 C72 54 82 60 88 52"/></g>
+  <path d="M36 40 C38 46 42 50 44 54" stroke="#fff" stroke-width="2.5" fill="none"/>
+</svg>

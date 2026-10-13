@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Пехотинец: каска -->
+  <path d="M12 66 C12 34 30 18 50 18 C70 18 88 34 88 66 Z" fill="#000"/>
+  <path d="M4 66 H96 C96 74 88 78 80 78 H20 C12 78 4 74 4 66 Z" fill="#000"/>
+  <path d="M24 56 C26 38 36 28 50 28" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M28 78 C30 88 38 92 44 92" stroke="#000" stroke-width="3" fill="none"/>
+  <path d="M72 78 C70 88 62 92 56 92" stroke="#000" stroke-width="3" fill="none"/>
+  <rect x="44" y="88" width="12" height="6" rx="2" fill="#000"/>
+</svg>

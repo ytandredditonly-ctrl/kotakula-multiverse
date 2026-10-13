@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Источник маны: бьющий фонтан маны -->
+  <path d="M50 4 C58 14 62 22 60 30 C58 36 42 36 40 30 C38 22 42 14 50 4 Z" fill="#000"/>
+  <path d="M46 30 C30 26 18 34 14 48 C24 40 34 38 46 40 Z" fill="#000"/>
+  <path d="M54 30 C70 26 82 34 86 48 C76 40 66 38 54 40 Z" fill="#000"/>
+  <rect x="46" y="32" width="8" height="30" fill="#000"/>
+  <g fill="#000"><circle cx="16" cy="56" r="3"/><circle cx="84" cy="56" r="3"/><circle cx="24" cy="62" r="2"/><circle cx="76" cy="62" r="2"/></g>
+  <path d="M14 66 H86 V90 C86 94 82 96 78 96 H22 C18 96 14 94 14 90 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2"><path d="M14 78 H86"/><path d="M32 66 V78"/><path d="M50 66 V78"/><path d="M68 66 V78"/><path d="M24 78 V96"/><path d="M42 78 V96"/><path d="M60 78 V96"/><path d="M76 78 V96"/></g>
+  <path d="M46 20 C46 16 48 14 50 12" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</svg>

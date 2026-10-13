@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Ночь звездопада: падающие звёзды -->
+  <g fill="#000">
+    <path d="M70 18 L75 32 L90 33 L78 42 L82 56 L70 48 L58 56 L62 42 L50 33 L65 32 Z"/>
+    <path d="M34 50 L38 60 L48 60 L40 66 L43 76 L34 70 L25 76 L28 66 L20 60 L30 60 Z"/>
+    <path d="M84 70 L86 76 L92 76 L87 80 L89 86 L84 82 L79 86 L81 80 L76 76 L82 76 Z"/>
+  </g>
+  <g stroke="#000" stroke-width="5" stroke-linecap="round"><path d="M56 26 L22 4"/><path d="M22 58 L4 46"/><path d="M76 72 L62 64"/></g>
+</svg>

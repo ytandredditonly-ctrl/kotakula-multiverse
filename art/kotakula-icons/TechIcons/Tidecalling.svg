@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Призыв приливов: волна с рукой -->
+  <path d="M4 92 C4 60 20 36 46 30 C70 24 92 40 92 58 C92 70 80 76 70 70 C62 66 64 54 72 54 C66 46 54 46 46 54 C36 64 34 80 40 92 Z" fill="#000"/>
+  <path d="M4 92 H96 V98 H4 Z" fill="#000"/>
+  <path d="M20 76 C24 62 34 52 46 46" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M58 26 L58 12 C58 8 63 8 63 12 L63 22 L65 22 L65 4 C65 0 70 0 70 4 L70 22 L72 22 L72 6 C72 2 77 2 77 6 L77 24 L79 24 L79 14 C79 10 84 10 84 14 L84 30 C84 36 80 40 74 40 H66 C60 40 56 34 52 28 L48 22 C46 18 52 16 54 20 Z" fill="#000" stroke="#fff" stroke-width="2"/>
+</svg>

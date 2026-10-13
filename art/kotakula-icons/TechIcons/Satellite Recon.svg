@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Спутниковая разведка: спутник с глазом -->
+  <g transform="rotate(-30 50 44)">
+    <rect x="2" y="34" width="30" height="20" fill="#000"/>
+    <rect x="68" y="34" width="30" height="20" fill="#000"/>
+    <g stroke="#fff" stroke-width="2"><path d="M12 34 V54"/><path d="M22 34 V54"/><path d="M78 34 V54"/><path d="M88 34 V54"/></g>
+    <rect x="32" y="42" width="36" height="4" fill="#000"/>
+    <rect x="36" y="28" width="28" height="32" rx="4" fill="#000"/>
+  </g>
+  <path d="M26 80 C36 68 64 68 74 80 C64 92 36 92 26 80 Z" fill="#000"/>
+  <circle cx="50" cy="80" r="8" fill="#fff"/>
+  <circle cx="50" cy="80" r="4" fill="#000"/>
+  <path d="M50 58 V68" stroke="#000" stroke-width="3" stroke-dasharray="3 3"/>
+</svg>

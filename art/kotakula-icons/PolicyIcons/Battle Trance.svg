@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Боевой транс: глаз со спиралью -->
+  <path d="M4 50 C20 20 80 20 96 50 C80 80 20 80 4 50 Z" fill="#000"/>
+  <path d="M50 50 m0 -4 C58 -4 62 48 58 56 C52 64 40 58 40 50 C40 38 54 34 62 42 C70 50 66 64 54 66" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

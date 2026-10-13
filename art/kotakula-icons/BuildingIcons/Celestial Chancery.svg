@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Небесная канцелярия: облако со столом и печатью -->
+  <path d="M12 98 C2 98 2 80 12 78 C10 66 26 62 32 70 C36 60 54 58 58 70 C64 62 80 64 80 76 C94 74 98 96 86 98 Z" fill="#000"/>
+  <rect x="14" y="40" width="64" height="8" rx="2" fill="#000"/>
+  <rect x="18" y="48" width="6" height="22" fill="#000"/><rect x="68" y="48" width="6" height="22" fill="#000"/>
+  <path d="M22 38 L28 28 H46 L44 38 Z" fill="#000"/>
+  <rect x="56" y="18" width="8" height="12" rx="2" fill="#000"/>
+  <path d="M52 30 H68 L70 38 H50 Z" fill="#000"/>
+  <ellipse cx="60" cy="12" rx="10" ry="4" fill="none" stroke="#000" stroke-width="3"/>
+  <path d="M30 32 H40" stroke="#fff" stroke-width="2"/>
+</svg>

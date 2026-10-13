@@ -220,6 +220,8 @@ project(":core") {
             "implementation"(rootProject.libs.gdx.tools) {
                 exclude("com.badlogicgames.gdx", "gdx-backend-lwjgl")
             }
+            // Kotakula Multiverse: renders the SVG icon sources (see com.unciv.dev.kotakula.KotakulaSvgIcons)
+            "implementation"("com.github.weisj:jsvg:1.6.1")
         }
     }
 }

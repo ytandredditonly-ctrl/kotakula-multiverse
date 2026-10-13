@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Пятая стихия: звезда в круге стихий -->
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#000" stroke-width="8"/>
+  <g fill="#000"><circle cx="50" cy="8" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="8" cy="50" r="8"/></g>
+  <path d="M50 22 L57 42 L78 42 L61 55 L68 76 L50 63 L32 76 L39 55 L22 42 L43 42 Z" fill="#000"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Левитация: парящая фигура -->
+  <circle cx="50" cy="14" r="9" fill="#000"/>
+  <path d="M36 28 H64 L74 46 L68 50 L60 40 L60 60 L76 66 L72 72 L50 66 L28 72 L24 66 L40 60 L40 40 L32 50 L26 46 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="4" fill="none" stroke-linecap="round">
+    <ellipse cx="50" cy="84" rx="32" ry="6"/>
+    <ellipse cx="50" cy="94" rx="18" ry="3"/>
+  </g>
+</svg>

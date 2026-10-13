@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Чудо исцеления: ладонь с сиянием -->
+  <path d="M8 66 C14 62 20 64 26 70 L36 78 H64 L74 70 C80 64 86 62 92 66 C90 74 84 82 74 88 C66 94 58 96 50 96 C42 96 34 94 26 88 C16 82 10 74 8 66 Z" fill="#000"/>
+  <path d="M50 22 V54 M34 38 H66" stroke="#000" stroke-width="10" stroke-linecap="round"/>
+  <g stroke="#000" stroke-width="4" stroke-linecap="round"><path d="M50 4 V10"/><path d="M22 16 L26 22"/><path d="M78 16 L74 22"/><path d="M12 42 H18"/><path d="M82 42 H88"/></g>
+</svg>

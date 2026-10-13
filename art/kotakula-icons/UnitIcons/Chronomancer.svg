@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Хрономант: песочные часы с рукой -->
+  <rect x="26" y="4" width="48" height="8" rx="2" fill="#000"/>
+  <rect x="26" y="66" width="48" height="8" rx="2" fill="#000"/>
+  <path d="M32 12 H68 C68 28 56 34 54 39 C56 44 68 50 68 66 H32 C32 50 44 44 46 39 C44 34 32 28 32 12 Z" fill="#000"/>
+  <path d="M38 18 H62 C60 26 52 32 50 36 C48 32 40 26 38 18 Z" fill="#fff"/>
+  <path d="M40 62 C44 52 48 48 50 46 C52 48 56 52 60 62 Z" fill="#fff"/>
+  <path d="M50 30 L50 60" stroke="#000" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <path d="M18 98 C22 86 30 80 40 80 H64 C70 80 72 86 66 88 H52 L74 88 C80 88 82 94 76 96 Z" fill="#000"/>
+</svg>

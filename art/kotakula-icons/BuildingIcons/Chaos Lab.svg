@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Лаборатория хаоса: колба с вихрем -->
+  <path d="M40 4 H60 V10 H56 V32 C74 38 86 52 86 68 C86 86 70 98 50 98 C30 98 14 86 14 68 C14 52 26 38 44 32 V10 H40 Z" fill="#000"/>
+  <path d="M50 66 m0 -4 C58 -4 66 70 50 80 C34 86 24 74 30 62 C36 50 54 50 58 60 C60 66 54 72 48 68" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M50 66 C62 54 72 62 70 72 C68 84 52 90 40 84" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

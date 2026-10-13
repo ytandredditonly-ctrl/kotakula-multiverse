@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Геологоразведка: кирка над кристаллом с ценником -->
+  <path d="M8 22 C30 6 60 6 82 22 C62 16 28 16 8 22 Z" fill="#000"/>
+  <rect x="42" y="12" width="8" height="46" rx="2" fill="#000" transform="rotate(-20 46 34)"/>
+  <path d="M30 96 L20 74 L32 56 H54 L64 74 L54 96 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5" fill="none"><path d="M32 56 L36 74 L30 96"/><path d="M54 56 L50 74 L54 96"/><path d="M20 74 H64"/></g>
+  <path d="M64 50 L84 50 L96 62 L84 74 L64 74 Z" fill="#000"/>
+  <circle cx="86" cy="62" r="3.5" fill="#fff"/>
+  <path d="M62 62 L56 60" stroke="#000" stroke-width="2.5"/>
+</svg>

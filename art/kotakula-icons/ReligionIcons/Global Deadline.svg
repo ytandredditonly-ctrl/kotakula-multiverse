@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Глобал Дедлайн: глобус с часами -->
+  <circle cx="44" cy="50" r="40" fill="#000"/>
+  <g fill="none" stroke="#fff" stroke-width="3"><ellipse cx="44" cy="50" rx="16" ry="40"/><path d="M4 50 H84"/><path d="M10 30 H78"/><path d="M10 70 H78"/></g>
+  <circle cx="74" cy="72" r="24" fill="#fff"/>
+  <circle cx="74" cy="72" r="20" fill="#000"/>
+  <path d="M74 72 V58 M74 72 L84 78" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+</svg>

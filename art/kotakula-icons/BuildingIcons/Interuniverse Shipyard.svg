@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Межвселенская верфь: каркас корабля в портале -->
+  <ellipse cx="50" cy="50" rx="46" ry="46" fill="#000"/>
+  <ellipse cx="50" cy="50" rx="38" ry="38" fill="#fff"/>
+  <g stroke="#000" stroke-width="2" fill="none" stroke-dasharray="3 3"><circle cx="50" cy="50" r="33"/></g>
+  <path d="M50 16 C60 26 64 40 62 66 H38 C36 40 40 26 50 16 Z" fill="none" stroke="#000" stroke-width="4"/>
+  <g stroke="#000" stroke-width="3"><path d="M40 34 H60"/><path d="M38 48 H62"/><path d="M38 60 H62"/><path d="M50 18 V66"/></g>
+  <path d="M38 56 L28 70 V78 L38 70 Z M62 56 L72 70 V78 L62 70 Z" fill="#000"/>
+  <path d="M42 68 H58 L54 82 H46 Z" fill="#000"/>
+</svg>

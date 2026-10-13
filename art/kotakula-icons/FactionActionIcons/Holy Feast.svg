@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Святой праздник: стол с чашей и хлебом -->
+  <ellipse cx="50" cy="12" rx="22" ry="6" fill="none" stroke="#000" stroke-width="5"/>
+  <path d="M30 26 H62 C62 42 56 48 46 48 C36 48 30 42 30 26 Z" fill="#000"/>
+  <rect x="43" y="48" width="6" height="14" fill="#000"/>
+  <path d="M60 62 C60 52 70 48 80 48 C90 48 96 54 96 62 Z" fill="#000"/>
+  <rect x="2" y="62" width="96" height="8" rx="2" fill="#000"/>
+  <rect x="10" y="70" width="8" height="26" fill="#000"/><rect x="82" y="70" width="8" height="26" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5"><path d="M70 54 L74 60"/><path d="M80 52 L84 58"/></g>
+</svg>

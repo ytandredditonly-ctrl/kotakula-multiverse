@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Квантовые вычисления: кот в коробке с кубитами -->
+  <path d="M10 48 L50 36 L90 48 L50 60 Z" fill="#000"/>
+  <path d="M10 48 L50 60 V96 L10 84 Z" fill="#000"/>
+  <path d="M90 48 L50 60 V96 L90 84 Z" fill="#000"/>
+  <path d="M50 60 V96" stroke="#fff" stroke-width="2.5"/>
+  <path d="M34 46 L30 26 L42 34 H58 L70 26 L66 46 Z" fill="#000" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+  <g fill="#fff"><circle cx="43" cy="40" r="2.5"/><circle cx="57" cy="40" r="2.5"/></g>
+  <g fill="none" stroke="#000" stroke-width="3"><circle cx="14" cy="16" r="7"/><circle cx="86" cy="16" r="7"/></g>
+  <g fill="#000"><text x="10" y="20" font-size="10" font-family="monospace" font-weight="bold">1</text><text x="82" y="20" font-size="10" font-family="monospace" font-weight="bold">0</text></g>
+  <g stroke="#fff" stroke-width="3"><path d="M22 70 L38 74"/><path d="M62 74 L78 70"/></g>
+</svg>

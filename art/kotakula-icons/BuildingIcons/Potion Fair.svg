@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Ярмарка зелий: прилавок с флаконами -->
+  <path d="M4 26 L14 8 H86 L96 26 Z" fill="#000"/>
+  <path d="M4 26 C4 34 18 34 18 26 C18 34 32 34 32 26 C32 34 46 34 46 26 C46 34 60 34 60 26 C60 34 74 34 74 26 C74 34 88 34 88 26 C88 34 96 34 96 26 Z" fill="#000"/>
+  <rect x="8" y="30" width="6" height="66" fill="#000"/><rect x="86" y="30" width="6" height="66" fill="#000"/>
+  <rect x="8" y="66" width="84" height="30" fill="#000"/>
+  <path d="M24 66 V54 L20 46 V40 H32 V46 L28 54 V66 Z" fill="#000"/>
+  <circle cx="48" cy="56" r="9" fill="#000"/><rect x="45" y="40" width="6" height="10" fill="#000"/>
+  <path d="M66 66 L68 46 H76 L78 66 Z" fill="#000"/><rect x="69" y="40" width="6" height="6" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5"><path d="M14 76 H86"/></g>
+</svg>

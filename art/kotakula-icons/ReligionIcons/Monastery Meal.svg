@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Монастырская трапеза: хлеб и чаша -->
+  <path d="M4 70 C4 52 18 44 34 44 C50 44 62 52 62 70 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="3.5"><path d="M18 52 L24 62"/><path d="M30 48 L36 60"/><path d="M42 48 L48 60"/></g>
+  <rect x="2" y="70" width="62" height="8" rx="3" fill="#000"/>
+  <path d="M60 20 H98 C98 36 90 46 79 46 C68 46 60 36 60 20 Z" fill="#000"/>
+  <rect x="76" y="46" width="6" height="30" fill="#000"/>
+  <path d="M66 82 C66 76 92 76 92 82 V86 H66 Z" fill="#000"/>
+  <rect x="2" y="88" width="96" height="6" rx="2" fill="#000"/>
+</svg>

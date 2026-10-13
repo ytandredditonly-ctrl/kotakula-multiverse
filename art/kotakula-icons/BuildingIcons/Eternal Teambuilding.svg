@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Вечный тимбилдинг: верёвочный парк -->
+  <rect x="6" y="14" width="8" height="84" fill="#000"/><rect x="86" y="14" width="8" height="84" fill="#000"/>
+  <path d="M4 14 L10 4 L16 14 Z M84 14 L90 4 L96 14 Z" fill="#000"/>
+  <path d="M14 24 C38 36 62 36 86 24" stroke="#000" stroke-width="3" fill="none"/>
+  <path d="M14 58 C38 68 62 68 86 58" stroke="#000" stroke-width="5" fill="none"/>
+  <g stroke="#000" stroke-width="2"><path d="M26 30 V62"/><path d="M38 33 V65"/><path d="M50 34 V66"/><path d="M62 33 V65"/><path d="M74 30 V62"/></g>
+  <circle cx="44" cy="30" r="5" fill="#000"/>
+  <path d="M38 38 H50 L52 52 L58 60 H52 L46 54 L40 60 H34 L40 52 Z" fill="#000"/>
+  <path d="M38 40 L32 32 M50 40 L56 32" stroke="#000" stroke-width="3.5" stroke-linecap="round"/>
+</svg>

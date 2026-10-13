@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Шестерёночная бюрократия: шестерня и печать -->
+  <circle cx="40" cy="44" r="32" fill="none" stroke="#000" stroke-width="14" stroke-dasharray="11 9"/>
+  <circle cx="40" cy="44" r="28" fill="#000"/>
+  <circle cx="40" cy="44" r="11" fill="#fff"/>
+  <path d="M62 66 H92 V78 H62 Z" fill="#000" stroke="#fff" stroke-width="3"/>
+  <rect x="72" y="46" width="10" height="22" fill="#000" stroke="#fff" stroke-width="3"/>
+  <rect x="58" y="84" width="38" height="10" rx="2" fill="#000"/>
+</svg>

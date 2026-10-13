@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Первый Калькулятор: огромный калькулятор-монолит -->
+  <rect x="22" y="4" width="56" height="86" rx="5" fill="#000"/>
+  <rect x="30" y="12" width="40" height="18" rx="2" fill="#fff"/>
+  <g fill="#000"><rect x="52" y="17" width="4" height="8"/><rect x="60" y="17" width="4" height="8"/></g>
+  <g fill="#fff">
+    <rect x="30" y="38" width="10" height="9" rx="1"/><rect x="45" y="38" width="10" height="9" rx="1"/><rect x="60" y="38" width="10" height="9" rx="1"/>
+    <rect x="30" y="52" width="10" height="9" rx="1"/><rect x="45" y="52" width="10" height="9" rx="1"/><rect x="60" y="52" width="10" height="9" rx="1"/>
+    <rect x="30" y="66" width="10" height="9" rx="1"/><rect x="45" y="66" width="10" height="9" rx="1"/><rect x="60" y="66" width="10" height="23" rx="1"/>
+    <rect x="30" y="80" width="25" height="9" rx="1"/>
+  </g>
+  <path d="M4 96 L22 84 V96 Z M96 96 L78 84 V96 Z" fill="#000"/>
+  <rect x="2" y="94" width="96" height="5" fill="#000"/>
+</svg>

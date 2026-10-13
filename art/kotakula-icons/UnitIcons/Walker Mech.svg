@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Шагоход: двуногий мех -->
+  <path d="M26 20 H74 L82 36 L74 52 H26 L18 36 Z" fill="#000"/>
+  <rect x="34" y="28" width="20" height="8" rx="2" fill="#fff"/>
+  <rect x="80" y="30" width="18" height="6" rx="2" fill="#000"/>
+  <rect x="2" y="30" width="18" height="6" rx="2" fill="#000"/>
+  <path d="M34 52 L28 70 L36 94 H26 L18 72 L26 52 Z" fill="#000"/>
+  <path d="M66 52 L72 70 L64 94 H74 L82 72 L74 52 Z" fill="#000"/>
+  <g fill="#000"><rect x="20" y="92" width="20" height="5" rx="2"/><rect x="60" y="92" width="20" height="5" rx="2"/></g>
+  <g fill="#fff"><circle cx="27" cy="70" r="3"/><circle cx="73" cy="70" r="3"/></g>
+  <rect x="44" y="12" width="12" height="8" fill="#000"/>
+</svg>

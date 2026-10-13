@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Культ кофе: кружка с нимбом -->
+  <ellipse cx="44" cy="12" rx="28" ry="8" fill="none" stroke="#000" stroke-width="6"/>
+  <path d="M12 32 H76 V80 C76 90 68 96 58 96 H30 C20 96 12 90 12 80 Z" fill="#000"/>
+  <path d="M76 44 H84 C94 44 98 52 98 60 C98 70 92 76 82 76 H76 V66 H82 C86 66 88 64 88 60 C88 56 86 54 82 54 H76 Z" fill="#000"/>
+  <path d="M30 48 C38 52 50 52 58 48" stroke="#fff" stroke-width="4" fill="none"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Цитадель магов: крепость с куполом-барьером -->
+  <path d="M4 96 C4 50 24 20 50 20 C76 20 96 50 96 96" stroke="#000" stroke-width="4" fill="none" stroke-dasharray="7 4"/>
+  <path d="M18 96 V58 H26 V52 H32 V58 H40 V44 L50 32 L60 44 V58 H68 V52 H74 V58 H82 V96 Z" fill="#000"/>
+  <path d="M44 96 V80 C44 74 56 74 56 80 V96 Z" fill="#fff"/>
+  <g fill="#fff"><rect x="24" y="68" width="6" height="8"/><rect x="70" y="68" width="6" height="8"/><rect x="47" y="50" width="6" height="8"/></g>
+  <path d="M50 4 L52 10 L58 12 L52 14 L50 20 L48 14 L42 12 L48 10 Z" fill="#000"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Кот-Демиург Kotakula: кот, сидящий на облаке и роняющий планету -->
+  <path d="M12 98 C2 98 2 82 12 80 C12 70 26 66 32 74 C38 64 56 64 60 74 C66 66 82 68 82 80 C96 80 96 98 86 98 Z" fill="#000"/>
+  <path d="M30 76 C24 60 26 44 36 36 L34 18 L44 26 C48 24 52 24 56 26 L66 18 L64 36 C72 44 74 60 68 76 Z" fill="#000"/>
+  <g fill="#fff"><path d="M40 38 L46 40 L40 44 Z"/><path d="M60 38 L54 40 L60 44 Z"/><path d="M48 48 H52 L50 51 Z"/></g>
+  <g stroke="#fff" stroke-width="1.5"><path d="M38 48 H28"/><path d="M38 51 H30"/><path d="M62 48 H72"/><path d="M62 51 H70"/></g>
+  <path d="M68 62 C78 60 84 52 82 44" stroke="#000" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <circle cx="86" cy="22" r="10" fill="#000"/>
+  <ellipse cx="86" cy="22" rx="16" ry="3.5" fill="none" stroke="#000" stroke-width="2.5" transform="rotate(-20 86 22)"/>
+  <g stroke="#000" stroke-width="2.5" stroke-linecap="round"><path d="M80 38 L78 44"/><path d="M90 38 L90 46"/></g>
+</svg>

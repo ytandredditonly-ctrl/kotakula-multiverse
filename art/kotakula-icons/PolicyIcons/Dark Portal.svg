@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Тёмный портал: арка с вихрем -->
+  <path d="M8 98 V42 C8 18 26 4 50 4 C74 4 92 18 92 42 V98 Z" fill="#000"/>
+  <path d="M20 98 V44 C20 26 34 16 50 16 C66 16 80 26 80 44 V98 Z" fill="#fff"/>
+  <path d="M50 58 m0 -4 C60 -4 66 54 60 66 C54 76 38 72 38 60 C38 46 56 40 64 50" stroke="#000" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M50 58 C42 54 42 44 50 40" stroke="#000" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

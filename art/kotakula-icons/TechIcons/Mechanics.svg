@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Механика: шестерня и гаечный ключ -->
+  <circle cx="38" cy="62" r="27" fill="none" stroke="#000" stroke-width="12" stroke-dasharray="10.6 10.6"/>
+  <circle cx="38" cy="62" r="25" fill="#000"/>
+  <circle cx="38" cy="62" r="10" fill="#fff"/>
+  <g transform="rotate(-45 66 34)">
+    <rect x="30" y="24" width="64" height="20" rx="9" fill="#fff"/>
+    <rect x="62" y="29.5" width="34" height="9" rx="4" fill="#000"/>
+    <circle cx="54" cy="34" r="16" fill="#fff"/>
+    <circle cx="54" cy="34" r="13" fill="#000"/>
+    <rect x="37" y="29" width="17" height="10" fill="#fff"/>
+  </g>
+</svg>

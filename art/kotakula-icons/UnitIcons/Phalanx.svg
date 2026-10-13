@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Фалангит: щит и копьё -->
+  <path d="M78 4 L86 14 L80 16 L28 94 L22 90 L74 12 L72 6 Z" fill="#000"/>
+  <circle cx="44" cy="58" r="34" fill="#fff"/>
+  <circle cx="44" cy="58" r="31" fill="#000"/>
+  <circle cx="44" cy="58" r="23" fill="none" stroke="#fff" stroke-width="3"/>
+  <path d="M44 40 L50 52 L62 54 L52 62 L56 74 L44 66 L32 74 L36 62 L26 54 L38 52 Z" fill="#fff"/>
+</svg>

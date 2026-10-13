@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Механизированная война: гусеница танка -->
+  <rect x="4" y="34" width="92" height="40" rx="20" fill="#000"/>
+  <rect x="11" y="41" width="78" height="26" rx="13" fill="#fff"/>
+  <g fill="#000"><circle cx="24" cy="54" r="9"/><circle cx="44" cy="54" r="7"/><circle cx="60" cy="54" r="7"/><circle cx="76" cy="54" r="9"/></g>
+  <g fill="#fff"><circle cx="24" cy="54" r="3"/><circle cx="76" cy="54" r="3"/></g>
+  <g stroke="#fff" stroke-width="3"><path d="M20 34 V40"/><path d="M32 34 V40"/><path d="M44 34 V40"/><path d="M56 34 V40"/><path d="M68 34 V40"/><path d="M80 34 V40"/><path d="M20 68 V74"/><path d="M32 68 V74"/><path d="M44 68 V74"/><path d="M56 68 V74"/><path d="M68 68 V74"/><path d="M80 68 V74"/></g>
+</svg>

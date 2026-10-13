@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Сингулярность: чёрная дыра со спиралью -->
+  <path d="M50 50 m0 -6 C62 -6 96 12 92 50 C88 84 56 98 32 88 C10 78 4 54 14 36 C24 18 48 14 62 24 C74 34 74 52 64 60" stroke="#000" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <circle cx="50" cy="50" r="14" fill="#000"/>
+</svg>

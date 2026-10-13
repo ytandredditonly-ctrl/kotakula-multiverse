@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Дивиденды: стопки монет и стрелка вверх -->
+  <g fill="#000" stroke="#fff" stroke-width="3">
+    <ellipse cx="26" cy="88" rx="20" ry="7"/><ellipse cx="26" cy="80" rx="20" ry="7"/><ellipse cx="26" cy="72" rx="20" ry="7"/>
+    <ellipse cx="68" cy="88" rx="20" ry="7"/><ellipse cx="68" cy="80" rx="20" ry="7"/><ellipse cx="68" cy="72" rx="20" ry="7"/><ellipse cx="68" cy="64" rx="20" ry="7"/><ellipse cx="68" cy="56" rx="20" ry="7"/>
+  </g>
+  <path d="M12 52 L40 30 L54 40 L80 14" stroke="#000" stroke-width="7" fill="none" stroke-linejoin="round"/>
+  <path d="M70 6 H92 V28 Z" fill="#000"/>
+</svg>

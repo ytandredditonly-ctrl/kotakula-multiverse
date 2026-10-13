@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Kotakula Holdings: кошачья голова в круге -->
+  <circle cx="50" cy="50" r="46" fill="#000"/>
+  <circle cx="50" cy="50" r="38" fill="#fff"/>
+  <path d="M50 30 H30 L26 14 L20 40 C16 50 18 64 26 72 C32 78 40 82 50 82 C60 82 68 78 74 72 C82 64 84 50 80 40 L74 14 L70 30 Z" fill="#000"/>
+  <g fill="#fff"><path d="M34 50 L44 54 L36 58 Z"/><path d="M66 50 L56 54 L64 58 Z"/><path d="M46 64 H54 L50 68 Z"/></g>
+</svg>

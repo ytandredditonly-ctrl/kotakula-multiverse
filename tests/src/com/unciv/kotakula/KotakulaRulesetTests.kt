@@ -36,6 +36,24 @@ class KotakulaRulesetTests {
         Assert.assertTrue("Ruleset errors/warnings: ${problems.size}", problems.isEmpty())
     }
 
+    /** Section 13: every SVG icon of art/kotakula-icons is packed into the mod atlas under the name the engine looks up */
+    @Test
+    fun svgIconsArePackedIntoTheAtlas() {
+        val sources = java.io.File(com.unciv.dev.kotakula.KotakulaSvgIcons.SOURCE_DIR)
+        val svgNames = sources.walkTopDown().filter { it.extension == "svg" }
+            .map { it.relativeTo(sources).invariantSeparatorsPath.removeSuffix(".svg") }.toList()
+        Assert.assertTrue("No SVG icons found", svgNames.size > 300)
+        val atlas = java.io.File(KotakulaTestSupport.MOD_FOLDER, "game.atlas").readLines(Charsets.UTF_8).toSet()
+        val missing = svgNames.filterNot { it in atlas }
+        Assert.assertTrue("Not in game.atlas: $missing", missing.isEmpty())
+        // ...and every unique object of the mod has its own icon or a vanilla one kept on purpose
+        val withoutIcon = com.unciv.dev.kotakula.KotakulaSvgIcons.targets(java.io.File(KotakulaTestSupport.MOD_FOLDER))
+            .map { "${it.folder}/${it.name}" }
+            .filterNot { it in svgNames }
+            .filterNot { it in java.io.File(sources, "keep-vanilla.txt").readLines() }
+        Assert.assertTrue("Unique objects without an icon: $withoutIcon", withoutIcon.isEmpty())
+    }
+
     @Test
     fun rulesetHasFactions() {
         val ruleset = RulesetCache.getComplexRuleset(linkedSetOf(), KotakulaTestSupport.MOD.also { KotakulaTestSupport.ensureLoaded() })

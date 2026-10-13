@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Ускоритель реальности: кольцо ускорителя -->
+  <circle cx="50" cy="50" r="40" fill="none" stroke="#000" stroke-width="14"/>
+  <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="6 6"/>
+  <g fill="#000"><rect x="44" y="2" width="12" height="20" rx="2"/><rect x="44" y="78" width="12" height="20" rx="2"/><rect x="2" y="44" width="20" height="12" rx="2"/><rect x="78" y="44" width="20" height="12" rx="2"/></g>
+  <circle cx="50" cy="50" r="10" fill="#000"/>
+  <g stroke="#000" stroke-width="3.5" stroke-linecap="round"><path d="M38 38 L32 32"/><path d="M62 38 L68 32"/><path d="M38 62 L32 68"/><path d="M62 62 L68 68"/></g>
+</svg>

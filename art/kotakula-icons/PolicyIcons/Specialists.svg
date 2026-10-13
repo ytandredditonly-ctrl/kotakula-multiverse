@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Узкие специалисты: фигура с лупой -->
+  <circle cx="36" cy="18" r="13" fill="#000"/>
+  <path d="M10 98 V56 C10 42 20 36 36 36 C52 36 62 42 62 56 V98 Z" fill="#000"/>
+  <circle cx="72" cy="58" r="16" fill="#fff" stroke="#000" stroke-width="8"/>
+  <path d="M84 70 L98 86" stroke="#000" stroke-width="10" stroke-linecap="round"/>
+</svg>

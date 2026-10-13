@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Рунная стена: стена с рунами -->
+  <path d="M2 30 H16 V20 H28 V30 H38 V20 H50 V30 H62 V20 H74 V30 H84 V20 H98 V96 H2 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="1.5"><path d="M2 54 H98"/><path d="M2 76 H98"/><path d="M34 30 V54"/><path d="M66 30 V54"/><path d="M18 54 V76"/><path d="M50 54 V76"/><path d="M82 54 V76"/><path d="M34 76 V96"/><path d="M66 76 V96"/></g>
+  <g stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M18 34 V50 M18 38 L26 44"/>
+    <path d="M50 34 V50 M44 38 L50 44 L56 38"/>
+    <path d="M78 34 L86 42 L78 50"/>
+    <path d="M34 58 V72 M34 62 L40 58 M34 66 L40 62"/>
+    <path d="M62 58 L70 72 M70 58 L62 72"/>
+  </g>
+</svg>

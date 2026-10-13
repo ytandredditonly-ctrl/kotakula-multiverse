@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Кавалерийская тактика: голова лошади и мушкет -->
+  <path d="M30 94 C26 76 26 60 32 46 L22 66 C18 72 8 70 8 62 L22 30 C26 20 34 12 44 10 L42 2 L52 10 C66 12 76 24 76 42 C76 60 70 78 72 94 Z" fill="#000"/>
+  <circle cx="42" cy="28" r="4" fill="#fff"/>
+  <path d="M54 14 C66 22 70 36 68 52" stroke="#fff" stroke-width="3" fill="none"/>
+  <g transform="rotate(-50 70 56)">
+    <rect x="30" y="52" width="70" height="6" rx="2" fill="#fff"/>
+    <rect x="32" y="53" width="66" height="4" fill="#000"/>
+    <path d="M84 50 L102 50 L104 62 L84 60 Z" fill="#000" stroke="#fff" stroke-width="2"/>
+  </g>
+</svg>

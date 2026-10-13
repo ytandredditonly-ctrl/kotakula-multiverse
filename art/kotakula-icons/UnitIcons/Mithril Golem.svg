@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Мифриловый голем: блестящий голем -->
+  <path d="M38 6 H62 L66 24 H34 Z" fill="#000"/>
+  <rect x="40" y="13" width="20" height="4" fill="#fff"/>
+  <path d="M24 26 H76 L80 60 L66 64 H34 L20 60 Z" fill="#000"/>
+  <path d="M8 28 H24 L22 64 L12 70 L6 62 Z" fill="#000"/><path d="M92 28 H76 L78 64 L88 70 L94 62 Z" fill="#000"/>
+  <path d="M30 64 H48 L46 96 H26 Z" fill="#000"/><path d="M52 64 H70 L74 96 H54 Z" fill="#000"/>
+  <path d="M36 34 L42 30 L46 40 Z" fill="#fff"/>
+  <path d="M50 34 L62 44 L50 54 L38 44 Z" fill="none" stroke="#fff" stroke-width="2.5"/>
+  <g fill="#000"><path d="M88 6 L90.5 13.5 L98 16 L90.5 18.5 L88 26 L85.5 18.5 L78 16 L85.5 13.5 Z"/><path d="M12 82 L14 88 L20 90 L14 92 L12 98 L10 92 L4 90 L10 88 Z"/></g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Земной элементаль: каменная глыба с кулаками -->
+  <path d="M28 18 L50 8 L72 18 L80 46 L70 82 H30 L20 46 Z" fill="#000"/>
+  <g fill="#fff"><path d="M36 34 L46 38 L36 42 Z"/><path d="M64 34 L54 38 L64 42 Z"/><path d="M40 56 H60 L56 62 H44 Z"/></g>
+  <g stroke="#fff" stroke-width="2.5" fill="none"><path d="M50 8 L46 24"/><path d="M30 70 L44 72 L50 82"/><path d="M72 18 L62 26"/></g>
+  <path d="M2 48 C2 38 10 34 18 36 L22 58 C14 64 2 60 2 48 Z" fill="#000"/>
+  <path d="M98 48 C98 38 90 34 82 36 L78 58 C86 64 98 60 98 48 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2"><path d="M6 44 H16"/><path d="M6 50 H18"/><path d="M84 44 H94"/><path d="M82 50 H94"/></g>
+  <path d="M24 90 H76 L80 98 H20 Z" fill="#000"/>
+</svg>

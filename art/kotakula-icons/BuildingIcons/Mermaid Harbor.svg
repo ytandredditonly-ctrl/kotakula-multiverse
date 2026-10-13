@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Гавань русалок: причал с хвостом русалки -->
+  <rect x="2" y="58" width="96" height="8" fill="#000"/>
+  <g fill="#000"><rect x="8" y="66" width="6" height="22"/><rect x="34" y="66" width="6" height="22"/><rect x="60" y="66" width="6" height="22"/><rect x="86" y="66" width="6" height="22"/></g>
+  <path d="M2 92 C14 86 24 96 36 90 C48 84 58 96 70 90 C82 84 90 94 98 90 V98 H2 Z" fill="#000"/>
+  <path d="M50 58 C40 50 40 38 46 28 C50 20 50 12 46 6 C56 10 60 24 56 36 C54 44 56 52 60 58 Z" fill="#000"/>
+  <path d="M46 6 C38 0 28 2 24 8 C32 8 38 10 44 14 Z" fill="#000"/>
+  <path d="M48 8 C52 0 62 -2 70 4 C62 6 56 8 50 14 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2" fill="none"><path d="M46 46 C48 42 52 42 54 46"/><path d="M46 36 C48 32 52 32 54 36"/></g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Всемирная паутина: паутина из узлов -->
+  <g stroke="#000" stroke-width="3" fill="none">
+    <path d="M50 4 V96"/><path d="M4 50 H96"/><path d="M17 17 L83 83"/><path d="M83 17 L17 83"/>
+    <path d="M50 18 L73 27 L82 50 L73 73 L50 82 L27 73 L18 50 L27 27 Z"/>
+    <path d="M50 34 L61 39 L66 50 L61 61 L50 66 L39 61 L34 50 L39 39 Z"/>
+  </g>
+  <g fill="#000">
+    <circle cx="50" cy="50" r="7"/>
+    <circle cx="50" cy="18" r="5"/><circle cx="73" cy="27" r="5"/><circle cx="82" cy="50" r="5"/><circle cx="73" cy="73" r="5"/><circle cx="50" cy="82" r="5"/><circle cx="27" cy="73" r="5"/><circle cx="18" cy="50" r="5"/><circle cx="27" cy="27" r="5"/>
+    <circle cx="50" cy="4" r="4"/><circle cx="96" cy="50" r="4"/><circle cx="50" cy="96" r="4"/><circle cx="4" cy="50" r="4"/>
+  </g>
+</svg>

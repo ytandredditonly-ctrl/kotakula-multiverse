@@ -1,6 +1,7 @@
 Atlases.json	325c8874
-game.atlas	b33982b1
-game.png	9973bdcb
+game.atlas	1daa65da
+game.png	d1572340
+game2.png	28d92b85
 jsons/Beliefs.json	334b9891
 jsons/Buildings.json	47b97b6c
 jsons/CityStateTypes.json	7d975741
@@ -9,7 +10,7 @@ jsons/Eras.json	52f1263c
 jsons/Events.json	397b1c64
 jsons/FactionActions.json	790ed1c6
 jsons/GlobalUniques.json	28d0481a
-jsons/IconPlaceholders.json	9c80ad65
+jsons/IconPlaceholders.json	1e82a7ad
 jsons/ModOptions.json	6c245647
 jsons/Nations.json	a1999d2a
 jsons/Personalities.json	698157af

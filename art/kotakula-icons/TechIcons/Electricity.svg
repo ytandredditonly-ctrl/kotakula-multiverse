@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Электричество: молния и лампочка -->
+  <path d="M62 34 C62 18 74 6 84 6 C94 6 98 18 98 30 C98 40 92 44 90 52 H72 C70 44 62 42 62 34 Z" fill="#000" transform="translate(-30 0)"/>
+  <rect x="44" y="54" width="16" height="6" fill="#000"/><rect x="44" y="62" width="16" height="6" fill="#000"/><rect x="47" y="70" width="10" height="4" rx="2" fill="#000"/>
+  <path d="M46 26 L54 26" stroke="#fff" stroke-width="3"/>
+  <path d="M30 40 L14 70 H28 L20 98 L44 62 H30 L38 40 Z" fill="#000" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+  <g stroke="#000" stroke-width="4" stroke-linecap="round"><path d="M80 14 L88 8"/><path d="M84 32 H94"/><path d="M80 50 L88 56"/></g>
+</svg>
