@@ -276,7 +276,8 @@ class TechPickerScreen(
             lines.addActor(line)
         }
 
-        for (tech in ruleset.technologies.values) {
+        // Kotakula (KC-09): the other faction's techs have no buttons on purpose - no lines and no warning for them
+        for (tech in ruleset.technologies.values.filter { com.unciv.logic.kotakula.FactionRules.canUse(civInfo, it) }) {
             if (!techNameToButton.containsKey(tech.name)) {
                 ToastPopup("Tech ${tech.name} appears to be missing - perhaps two techs have the same row & column", this)
                 continue
