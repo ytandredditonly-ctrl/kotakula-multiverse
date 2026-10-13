@@ -52,7 +52,9 @@ object KotakulaSvgIcons {
         }
         // These folders only hold rendered SVGs: a PNG without a target any more (renamed or removed object) goes
         for (folder in targets.map { it.folder }.toSet()) {
-            val keep = rendered.filter { it.first.folder == folder }.map { "${it.first.name}.png" }.toSet()
+            val keep = rendered.filter { it.first.folder == folder }.map { "${it.first.name}.png" }.toSet() +
+                // the icons of the lore mod are copied by the generator, not rendered
+                File(GenLore.LORE_PATH, "Images/$folder").list().orEmpty().toSet()
             File(modDir, "Images/$folder").listFiles { f -> f.extension == "png" && f.name !in keep }?.forEach {
                 println("Removed stale ${folder}/${it.name}")
                 it.delete()

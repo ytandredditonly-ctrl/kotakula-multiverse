@@ -1,0 +1,6 @@
+[
+	{
+		"name": "Hit and Run Tactics", // only for Hulimansish land military units, granted by the nation unique
+		"uniques": ["Can move after attacking"]
+	}
+]

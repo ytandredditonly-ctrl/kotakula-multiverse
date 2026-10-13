@@ -1,0 +1,102 @@
+[
+	{
+		"name": "Vedor",
+		"leaderName": "Мистер Никитошка",
+		"adjective": ["Vedorian"],
+		"startBias": ["Desert"],
+		"preferredVictoryType": "Neutral",
+
+		"startIntroPart1": "Мистер Никитошка, повелитель подземного Ведора, приветствует вас!",
+		"startIntroPart2": "Пусть ваш путь лежит через наши тоннели, а оплотом станут глубокие своды.",
+
+		"declaringWar": "Вы слишком долго стояли над нашими головами. Мы идём наверх.",
+		"attacked": "Вы бьёте по крыше, а фундамент крепче.",
+		"defeated": "Свет погас... Закройте шахту, когда будете уходить.",
+		"introduction": "Добро пожаловать вниз! Фонарь у входа, не споткнитесь.",
+
+		"neutralHello": "Здравствуйте. Лифт вниз бесплатный, обратно уже по тарифу.",
+		"hateHello": "Вы потревожили наш покой. Это было ошибкой.",
+
+		"tradeRequest": "В наших шахтах найдётся то, что нужно вам. Надеюсь, и у вас найдётся то, что нужно нам.",
+
+		"outerColor": [28, 28, 28],
+		"innerColor": [224, 169, 102],
+
+		"uniqueName": "Underground City",
+		"uniqueText": "Underground City: cities get +30% Strength, own units fighting in your territory get +15% Strength, cities founded on Desert get +1 Food and +1 Production. Tunnel Diggers: road and railroad maintenance -50%, every city connected to the capital gives +1 Gold.",
+		"uniques": [
+			"[+30]% Strength for cities",
+			"[+15]% Strength <for [All] units> <when fighting in [your] tiles>",
+			"[+1 Food, +1 Production] in cities on [Desert] tiles",
+			"[-50]% maintenance on road & railroads",
+			"[+1 Gold] [in all cities connected to capital]"
+		],
+		"cities": ["Глубь", "Нижний Ведор", "Каверна", "Штольня", "Грот", "Шурф", "Забой", "Подкамень", "Сталактит", "Катакомбы", "Бездонск", "Рудничное"]
+	},
+	{
+		"name": "Hun-Pyr-na-Chun-Chunke",
+		"leaderName": "Метермин",
+		"adjective": ["Hun-Pyr"],
+		"startBias": ["Jungle", "River"],
+		"preferredVictoryType": "Neutral",
+
+		"startIntroPart1": "Метермин, хранитель берегов Чунь-Чуньки, приветствует вас!",
+		"startIntroPart2": "Пусть ваши стены будут крепки, а сады обильны.",
+
+		"declaringWar": "Вы перешли реку. Обратной переправы не будет.",
+		"attacked": "Стены дрогнули, но не упали.",
+		"defeated": "Река унесла всё... но сады вырастут снова.",
+		"introduction": "Мир вам! Ноги вытирайте, у нас тут мокро.",
+
+		"neutralHello": "Здравствуйте. Мостик у нас один, зато надёжный.",
+		"hateHello": "Вам тут не рады. Река сегодня необычно холодная.",
+
+		"tradeRequest": "Наши сады полны даров. Договоримся?",
+
+		"outerColor": [11, 61, 92],
+		"innerColor": [91, 209, 160],
+
+		"uniqueName": "Chun-Chunka Walls and Gardens",
+		"uniqueText": "Wall on the Chun-Chunka: Walls and Castle are built twice as fast (+100% Production), cities with Walls get +15% Strength. Gardens of Chun-Chunka: the Garden improvement is available from the start, without a technology.",
+		"uniques": [
+			"[+100]% Production when constructing [Walls] buildings [in all cities]",
+			"[+100]% Production when constructing [Castle] buildings [in all cities]",
+			"[+15]% Strength for cities <in cities with a [Walls]>",
+			"[+10]% Strength for cities <in cities with a [Garden Wall]>"
+		],
+		"cities": ["Хунь-Пырь", "Верхняя Чунь", "Нижняя Чуньчунька", "Тростниково", "Бродец", "Ил-на-Реке", "Заводь", "Перекат", "Протока", "Мокрый Мост", "Осока", "Бананово"]
+	},
+	{
+		"name": "Hulimansish",
+		"leaderName": "kivi_guy",
+		"adjective": ["Hulimansish"],
+		"startBias": ["Forest", "Hill"],
+		"preferredVictoryType": "Domination",
+
+		"startIntroPart1": "kivi_guy, предводитель Хулимансиша, приветствует вас! Только без резких движений.",
+		"startIntroPart2": "Пусть ваш меч будет остёр, а ноги быстры.",
+
+		"declaringWar": "Мы нападаем! ...и сразу отходим на заранее подготовленные позиции.",
+		"attacked": "Хули мансишь, а? Бежим! Нет, стоим! Нет, бежим!",
+		"defeated": "Ладно, сдаёмся. Мы всё равно собирались уходить.",
+		"introduction": "О, гость? А мы тут просто мимо проходили.",
+
+		"neutralHello": "Здравствуйте. Хули мансишь, подходи ближе... нет, стой там.",
+		"hateHello": "Ты нам не нравишься. Но драться мы будем издалека.",
+
+		"tradeRequest": "Есть тихая сделка. Без свидетелей и без обид.",
+
+		"outerColor": [122, 18, 24],
+		"innerColor": [240, 200, 80],
+
+		"uniqueName": "Hit and Run",
+		"uniqueText": "Hit and Run: all land military units can move after attacking. Cowardice as Strategy: cities get -15% Strength, all units heal +10 HP per turn, land military units get +1 Movement while not at war.",
+		"uniques": [
+			"[{Military} {Land}] units gain the [Hit and Run Tactics] promotion <upon gaining a [All] unit>",
+			"[-15]% Strength for cities",
+			"[10] HP when healing <for [All] units>",
+			"[1] Movement <for [{Military} {Land}] units> <when not at war>"
+		],
+		"cities": ["Хулимансиш", "Мань-Ши", "Хули-Бао", "Дзин-Бег", "Прятная Гора", "Тихий Бамбук", "Порхающий Лист", "Нэ-Трогай", "Чайный Бег", "Ша-Ку", "Отступай-Дзян", "Журавлиный Утёс"]
+	}
+]

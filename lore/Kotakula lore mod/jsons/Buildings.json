@@ -1,0 +1,39 @@
+[
+	{
+		"name": "Mushroom Cave",
+		"replaces": "Granary",
+		"uniqueTo": "Vedor",
+		"food": 3,
+		"production": 1,
+		"maintenance": 1,
+		"hurryCostModifier": 25,
+		"uniques": ["[+1 Food] from [Deer] tiles [in this city]",
+			"[+1 Food] from [Bananas] tiles [in this city]",
+			"[+1 Food] from [Wheat] tiles [in this city]"],
+		"requiredTech": "Pottery"
+	},
+	{
+		"name": "Garden Wall",
+		"uniqueTo": "Hun-Pyr-na-Chun-Chunke",
+		"culture": 2,
+		"happiness": 1,
+		"cost": 100,
+		"maintenance": 1,
+		"hurryCostModifier": 25,
+		"requiredBuilding": "Walls",
+		"requiredTech": "Masonry",
+		"uniques": ["Destroyed when the city is captured"]
+	},
+	{
+		"name": "Mansish Pagoda",
+		"replaces": "Monument",
+		"uniqueTo": "Hulimansish",
+		"culture": 3,
+		"happiness": 1,
+		"cost": 40,
+		"hurryCostModifier": 40,
+		"maintenance": 1,
+		"uniques": ["Destroyed when the city is captured",
+			"[All] Units adjacent to this city heal [10] HP per turn when healing"]
+	}
+]

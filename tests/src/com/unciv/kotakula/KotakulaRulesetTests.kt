@@ -67,6 +67,29 @@ class KotakulaRulesetTests {
         Assert.assertTrue(ruleset.unitTypes["WaterSubmarine"]!!.uniques.any { it.startsWith("Invisible to non-adjacent units") })
     }
 
+    /** The nations of the Kotakula lore mod, moved onto the Kotakula tech tree */
+    @Test
+    fun loreNationsAreAdapted() {
+        val ruleset = RulesetCache.getComplexRuleset(linkedSetOf(), KotakulaTestSupport.MOD.also { KotakulaTestSupport.ensureLoaded() })
+        for (nation in listOf("Vedor", "Hun-Pyr-na-Chun-Chunke", "Hulimansish"))
+            Assert.assertTrue(nation, ruleset.nations[nation]?.isMajorCiv == true)
+        val loreUnits = listOf("Tunneler", "Chun-Chunka Guardian", "Dodger", "Nikitoshka", "Nikitoshka Big", "Bobrynya", "Kiwi")
+        for (name in loreUnits) {
+            val unit = ruleset.units[name]!!
+            Assert.assertNull("$name is common to both factions", unit.faction)
+            unit.requiredTech?.let { Assert.assertTrue("$name: tech $it", it in ruleset.technologies) }
+            unit.obsoleteTech?.let { Assert.assertTrue("$name: obsolete tech $it", it in ruleset.technologies) }
+            unit.upgradesTo?.let { Assert.assertTrue("$name: upgrade $it", it in ruleset.units) }
+        }
+        Assert.assertEquals("Phalanx", ruleset.units["Chun-Chunka Guardian"]!!.upgradesTo)
+        Assert.assertEquals(ruleset.units["Archer"]!!.upgradesTo, ruleset.units["Dodger"]!!.upgradesTo)
+        Assert.assertEquals("Melee", ruleset.units["Nikitoshka"]!!.unitType)
+        Assert.assertTrue("Kiwi can be promoted", ruleset.unitPromotions.values.any { "Undead" in it.unitTypes })
+        for (name in listOf("Mushroom Cave", "Garden Wall", "Mansish Pagoda"))
+            ruleset.buildings[name]!!.requiredTech?.let { Assert.assertTrue("$name: tech $it", it in ruleset.technologies) }
+        Assert.assertTrue(ruleset.nations["Hun-Pyr-na-Chun-Chunke"]!!.uniques.any { it.contains("[Bastion] buildings") })
+    }
+
     @Test
     fun rulesetHasFactions() {
         val ruleset = RulesetCache.getComplexRuleset(linkedSetOf(), KotakulaTestSupport.MOD.also { KotakulaTestSupport.ensureLoaded() })

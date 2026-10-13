@@ -2279,5 +2279,160 @@
 			"Religious Unit"
 		],
 		"movement": 3
+	},
+	{
+		"name": "Tunneler",
+		"unitType": "Civilian",
+		"replaces": "Worker",
+		"uniqueTo": "Vedor",
+		"movement": 2,
+		"requiredTech": "Agriculture",
+		"uniques": [
+			"Can build [Land] improvements on tiles",
+			"Automation is a primary action",
+			"[-50]% construction time for [All Road] improvements"
+		],
+		"cost": 70
+	},
+	{
+		"name": "Chun-Chunka Guardian",
+		"unitType": "Melee",
+		"replaces": "Spearman",
+		"uniqueTo": "Hun-Pyr-na-Chun-Chunke",
+		"movement": 2,
+		"strength": 11,
+		"cost": 56,
+		"requiredTech": "Bronze Working",
+		"upgradesTo": "Phalanx",
+		"uniques": [
+			"[+50]% Strength <vs [Mounted] units>",
+			"[+30]% Strength <when defending> <when fighting in [Jungle] tiles>",
+			"[+30]% Strength <when defending> <when fighting in [River] tiles> <in tiles without [Jungle]>"
+		],
+		"attackSound": "metalhit"
+	},
+	{
+		"name": "Dodger",
+		"unitType": "Ranged",
+		"replaces": "Archer",
+		"uniqueTo": "Hulimansish",
+		"movement": 2,
+		"strength": 5,
+		"rangedStrength": 7,
+		"cost": 40,
+		"requiredTech": "Archery",
+		"upgradesTo": "Gastraphetes",
+		"uniques": ["Withdraws before melee combat <with [80]% chance>", "[+1] Movement", "[+1] Sight"],
+		"attackSound": "arrow"
+	},
+	{
+		"name": "Nikitoshka",
+		"unitType": "Melee",
+		"uniqueTo": "Vedor",
+		"movement": 4,
+		"strength": 4,
+		"cost": 70,
+		"requiredTech": "Bronze Working",
+		"uniques": [
+			"Can transform to [Nikitoshka Big]",
+			"Invisible to non-adjacent units",
+			"May travel on Water tiles without embarking",
+			"[+900]% Strength <when defending> <vs [Ranged] units>",
+			"[+900]% Strength <when defending> <vs cities>",
+			"Never appears as a Barbarian unit"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Nikitoshka"
+			},
+			{
+				"text": "Description 2: Nikitoshka"
+			}
+		],
+		"attackSound": "nonmetalhit"
+	},
+	{
+		"name": "Nikitoshka Big",
+		"unitType": "Melee",
+		"uniqueTo": "Vedor",
+		"movement": 1,
+		"strength": 30,
+		"cost": 70,
+		"requiredTech": "Bronze Working",
+		"uniques": [
+			"Unbuildable",
+			"Can transform to [Nikitoshka]",
+			"Withdraws before melee combat <with [60]% chance>",
+			"Never appears as a Barbarian unit"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Nikitoshka Big"
+			},
+			{
+				"text": "Description 2: Nikitoshka Big"
+			}
+		],
+		"attackSound": "nonmetalhit"
+	},
+	{
+		"name": "Bobrynya",
+		"unitType": "Civilian",
+		"uniqueTo": "Hun-Pyr-na-Chun-Chunke",
+		"movement": 3,
+		"cost": 90,
+		"religiousStrength": 1000,
+		"uniques": [
+			"Can Spread Religion <for [2] movement> <[3] times>",
+			"Gain [25] [Faith] <costs [+10 Food] stats> <for [1] movement>",
+			"May enter foreign tiles without open borders, but loses [250] religious strength each turn it ends there",
+			"Takes your religion over the one in their birth city",
+			"Can be purchased for [120] [Faith] [in all cities]",
+			"Religious Unit",
+			"Only available <after founding a religion>",
+			"Only available <when religion is enabled>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Bobrynya"
+			},
+			{
+				"text": "Description 2: Bobrynya"
+			},
+			{
+				"text": "Description 3: Bobrynya"
+			}
+		]
+	},
+	{
+		"name": "Kiwi",
+		"unitType": "Undead",
+		"uniqueTo": "Hulimansish",
+		"movement": 3,
+		"strength": 18,
+		"cost": 180,
+		"requiredTech": "Iron Working",
+		"uniques": [
+			"May Paradrop to [Land] tiles up to [5] tiles away <in [{Friendly} {Land}] tiles>",
+			"Ignores terrain cost",
+			"May enter foreign tiles without open borders",
+			"[+50]% Strength <vs cities> <when attacking>",
+			"[This Unit] takes [10] damage <upon turn end> <in [Desert] tiles>",
+			"[This Unit] takes [10] damage <upon turn end> <in [Water] tiles>",
+			"[This Unit] takes [10] damage <upon turn end> <in [River] tiles> <in tiles without [Desert]>",
+			"Can only heal by pillaging",
+			"[This Unit] heals [20] HP <upon turn end> <in [City center] tiles> <in cities with a [Mansish Pagoda]>",
+			"[This Unit] heals [10] HP <upon turn end> <when adjacent to a [Medic] unit>",
+			"Never appears as a Barbarian unit"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Kiwi"
+			},
+			{
+				"text": "Description 2: Kiwi"
+			}
+		],
+		"attackSound": "nonmetalhit"
 	}
 ]

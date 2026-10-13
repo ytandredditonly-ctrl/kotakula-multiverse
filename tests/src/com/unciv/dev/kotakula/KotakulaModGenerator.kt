@@ -41,6 +41,7 @@ object KotakulaModGenerator {
             generateVictories()
             generateEvents()
             generateMisc()
+            mergeLoreMod()
             renameUnitTypeFilters(File(outDir, "jsons"))
             generateIconPlaceholders(File("../.."))
             addEngineTranslations()

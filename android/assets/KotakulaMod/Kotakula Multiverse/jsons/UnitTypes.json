@@ -127,5 +127,9 @@
 		"name": "AtomicBomber",
 		"movementType": "Air",
 		"uniques": ["Aircraft"]
+	},
+	{
+		"name": "Undead",
+		"movementType": "Land"
 	}
 ]

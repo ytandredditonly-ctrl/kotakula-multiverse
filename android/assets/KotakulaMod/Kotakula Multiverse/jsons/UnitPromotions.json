@@ -19,7 +19,8 @@
 			"Armor",
 			"WaterMelee",
 			"WaterRanged",
-			"WaterSubmarine"
+			"WaterSubmarine",
+			"Undead"
 		],
 		"innerColor": [195, 53, 43],
 		"outerColor": [253, 236, 234],
@@ -117,7 +118,7 @@
 			"[+15]% Strength <when fighting in [Open terrain] tiles>",
 			"[-90]% weight to this choice for AI decisions"
 		],
-		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor"],
+		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor", "Undead"],
 		"column": 4,
 		"row": 1
 	},
@@ -125,7 +126,7 @@
 		"name": "Shock II",
 		"prerequisites": ["Shock I"],
 		"uniques": ["[+15]% Strength <when fighting in [Open terrain] tiles>"],
-		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor"],
+		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor", "Undead"],
 		"column": 4,
 		"row": 2
 	},
@@ -133,7 +134,7 @@
 		"name": "Shock III",
 		"prerequisites": ["Shock II"],
 		"uniques": ["[+15]% Strength <when fighting in [Open terrain] tiles>"],
-		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor"],
+		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor", "Undead"],
 		"column": 4,
 		"row": 3
 	},
@@ -143,7 +144,7 @@
 			"[+15]% Strength <when fighting in [Rough terrain] tiles>",
 			"[-90]% weight to this choice for AI decisions"
 		],
-		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor"],
+		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor", "Undead"],
 		"column": 5,
 		"row": 1
 	},
@@ -151,7 +152,7 @@
 		"name": "Drill II",
 		"prerequisites": ["Drill I"],
 		"uniques": ["[+15]% Strength <when fighting in [Rough terrain] tiles>"],
-		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor"],
+		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor", "Undead"],
 		"column": 5,
 		"row": 2
 	},
@@ -159,7 +160,7 @@
 		"name": "Drill III",
 		"prerequisites": ["Drill II"],
 		"uniques": ["[+15]% Strength <when fighting in [Rough terrain] tiles>"],
-		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor"],
+		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor", "Undead"],
 		"column": 5,
 		"row": 3
 	},
@@ -175,7 +176,7 @@
 		"name": "Besiege",
 		"prerequisites": ["Shock II", "Drill II"],
 		"uniques": ["[+50]% Strength <vs cities>"],
-		"unitTypes": ["Sword", "Gunpowder", "Melee"],
+		"unitTypes": ["Sword", "Gunpowder", "Melee", "Undead"],
 		"column": 6,
 		"row": 3
 	},
@@ -183,7 +184,7 @@
 		"name": "Formation I",
 		"prerequisites": ["Shock II", "Drill II"],
 		"uniques": ["[+33]% Strength <vs [Mounted] units>", "[-50]% weight to this choice for AI decisions"],
-		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Melee"],
+		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Melee", "Undead"],
 		"column": 7,
 		"row": 2
 	},
@@ -191,7 +192,7 @@
 		"name": "Formation II",
 		"prerequisites": ["Formation I"],
 		"uniques": ["[+33]% Strength <vs [Mounted] units>"],
-		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Melee"],
+		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Melee", "Undead"],
 		"column": 7,
 		"row": 3
 	},
@@ -199,7 +200,7 @@
 		"name": "Blitz",
 		"prerequisites": ["Shock III", "Drill III"],
 		"uniques": ["[1] additional attacks per turn"],
-		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor"],
+		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Armored", "Melee", "Armor", "Undead"],
 		"column": 6,
 		"row": 4
 	},
@@ -207,7 +208,7 @@
 		"name": "Woodsman",
 		"prerequisites": ["Shock III", "Drill III"],
 		"uniques": ["Double movement in [Forest]", "Double movement in [Jungle]"],
-		"unitTypes": ["Sword", "Gunpowder", "Melee"],
+		"unitTypes": ["Sword", "Gunpowder", "Melee", "Undead"],
 		"column": 6,
 		"row": 5
 	},
@@ -218,7 +219,7 @@
 			"Eliminates combat penalty for attacking over a river",
 			"Eliminates combat penalty for attacking across a coast"
 		],
-		"unitTypes": ["Sword", "Gunpowder", "Melee"],
+		"unitTypes": ["Sword", "Gunpowder", "Melee", "Undead"],
 		"column": 6,
 		"row": 1
 	},
@@ -226,7 +227,7 @@
 		"name": "Medic",
 		"prerequisites": ["Shock I", "Drill I", "Scouting II", "Survivalism II"],
 		"uniques": ["All adjacent units heal [+5] HP when healing", "[-50]% weight to this choice for AI decisions"],
-		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Scout", "Melee"],
+		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Scout", "Melee", "Undead"],
 		"column": 10,
 		"row": 1
 	},
@@ -234,7 +235,7 @@
 		"name": "Medic II",
 		"prerequisites": ["Medic"],
 		"uniques": ["[+5] HP when healing <in [Foreign Land] tiles>", "All adjacent units heal [+5] HP when healing"],
-		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Scout", "Melee"],
+		"unitTypes": ["Sword", "Gunpowder", "Mounted", "Scout", "Melee", "Undead"],
 		"column": 10,
 		"row": 2
 	},
@@ -596,7 +597,7 @@
 			"[+33]% Strength <vs [Ranged] units> <when defending>",
 			"[-100]% weight to this choice for AI decisions"
 		],
-		"unitTypes": ["Sword", "Gunpowder", "Archery", "Ranged Gunpowder", "Siege", "Melee", "Ranged"],
+		"unitTypes": ["Sword", "Gunpowder", "Archery", "Ranged Gunpowder", "Siege", "Melee", "Ranged", "Undead"],
 		"column": 24,
 		"row": 1
 	},
@@ -604,7 +605,7 @@
 		"name": "Cover II",
 		"prerequisites": ["Cover I"],
 		"uniques": ["[+33]% Strength <vs [Ranged] units> <when defending>"],
-		"unitTypes": ["Sword", "Gunpowder", "Archery", "Ranged Gunpowder", "Siege", "Melee", "Ranged"],
+		"unitTypes": ["Sword", "Gunpowder", "Archery", "Ranged Gunpowder", "Siege", "Melee", "Ranged", "Undead"],
 		"column": 24,
 		"row": 2
 	},
@@ -612,7 +613,17 @@
 		"name": "March",
 		"prerequisites": ["Accuracy II", "Barrage II", "Shock III", "Drill III"],
 		"uniques": ["Unit will heal every turn, even if it performs an action"],
-		"unitTypes": ["Sword", "Gunpowder", "Archery", "Ranged Gunpowder", "Siege", "Mounted", "Melee", "Ranged"],
+		"unitTypes": [
+			"Sword",
+			"Gunpowder",
+			"Archery",
+			"Ranged Gunpowder",
+			"Siege",
+			"Mounted",
+			"Melee",
+			"Ranged",
+			"Undead"
+		],
 		"column": 10,
 		"row": 3
 	},
@@ -665,7 +676,8 @@
 			"Melee",
 			"WaterRanged",
 			"Armor",
-			"WaterMelee"
+			"WaterMelee",
+			"Undead"
 		],
 		"column": 24,
 		"row": 4
@@ -706,7 +718,7 @@
 	{
 		"name": "Ambush I",
 		"uniques": ["[+33]% Strength <vs [Armor] units>", "[-100]% weight to this choice for AI decisions"],
-		"unitTypes": ["Sword", "Gunpowder", "Fighter", "Bomber", "Melee"],
+		"unitTypes": ["Sword", "Gunpowder", "Fighter", "Bomber", "Melee", "Undead"],
 		"column": 25,
 		"row": 1
 	},
@@ -714,7 +726,7 @@
 		"name": "Ambush II",
 		"prerequisites": ["Ambush I"],
 		"uniques": ["[+33]% Strength <vs [Armor] units>"],
-		"unitTypes": ["Sword", "Gunpowder", "Fighter", "Bomber", "Melee"],
+		"unitTypes": ["Sword", "Gunpowder", "Fighter", "Bomber", "Melee", "Undead"],
 		"column": 25,
 		"row": 2
 	},
@@ -864,5 +876,9 @@
 	},
 	{
 		"name": "Expiring"
+	},
+	{
+		"name": "Hit and Run Tactics",
+		"uniques": ["Can move after attacking"]
 	}
 ]

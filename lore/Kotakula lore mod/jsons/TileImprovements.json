@@ -1,0 +1,13 @@
+[
+	{
+		"name": "Chun Garden",
+		"uniqueTo": "Hun-Pyr-na-Chun-Chunke",
+		"terrainsCanBeBuiltOn": ["Grassland", "Plains", "Jungle"],
+		"food": 1,
+		"culture": 1,
+		"turnsToBuild": 5,
+		"uniques": ["Does not need removal of [Jungle]",
+			"[+1 Food] from [River] tiles",
+			"Pillaging this improvement yields approximately [+10 Gold]"]
+	}
+]
