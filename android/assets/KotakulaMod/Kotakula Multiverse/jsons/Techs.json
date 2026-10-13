@@ -1,0 +1,819 @@
+[
+	{
+		"columnNumber": 0,
+		"era": "Ancient era",
+		"techCost": 20,
+		"buildingCost": 40,
+		"wonderCost": 185,
+		"techs": [
+			{
+				"name": "Agriculture",
+				"row": 5,
+				"uniques": ["Starting tech"],
+				"quote": "Quote: Agriculture"
+			}
+		]
+	},
+	{
+		"columnNumber": 1,
+		"era": "Ancient era",
+		"techCost": 35,
+		"buildingCost": 55,
+		"wonderCost": 185,
+		"techs": [
+			{
+				"name": "Pottery",
+				"row": 2,
+				"prerequisites": ["Agriculture"],
+				"quote": "Quote: Pottery"
+			},
+			{
+				"name": "Animal Husbandry",
+				"row": 4,
+				"prerequisites": ["Agriculture"],
+				"quote": "Quote: Animal Husbandry"
+			},
+			{
+				"name": "Archery",
+				"row": 6,
+				"prerequisites": ["Agriculture"],
+				"quote": "Quote: Archery"
+			},
+			{
+				"name": "Mining",
+				"row": 8,
+				"prerequisites": ["Agriculture"],
+				"quote": "Quote: Mining"
+			}
+		]
+	},
+	{
+		"columnNumber": 2,
+		"era": "Ancient era",
+		"techCost": 55,
+		"buildingCost": 75,
+		"wonderCost": 185,
+		"techs": [
+			{
+				"name": "Sailing",
+				"row": 1,
+				"prerequisites": ["Pottery"],
+				"quote": "Quote: Sailing"
+			},
+			{
+				"name": "Writing",
+				"row": 3,
+				"prerequisites": ["Pottery"],
+				"uniques": ["Enables establishment of embassies <Civilopedia link [Tutorials/Embassies]>"],
+				"quote": "Quote: Writing"
+			},
+			{
+				"name": "The Wheel",
+				"row": 5,
+				"prerequisites": ["Animal Husbandry"],
+				"quote": "Quote: The Wheel"
+			},
+			{
+				"name": "Masonry",
+				"row": 7,
+				"prerequisites": ["Mining"],
+				"quote": "Quote: Masonry"
+			},
+			{
+				"name": "Bronze Working",
+				"row": 9,
+				"prerequisites": ["Mining"],
+				"quote": "Quote: Bronze Working"
+			}
+		]
+	},
+	{
+		"columnNumber": 3,
+		"era": "Ancient era",
+		"techCost": 85,
+		"buildingCost": 75,
+		"wonderCost": 185,
+		"techs": [
+			{
+				"name": "Horseback Riding",
+				"row": 5,
+				"prerequisites": ["The Wheel"],
+				"quote": "Quote: Horseback Riding"
+			},
+			{
+				"name": "Iron Working",
+				"row": 9,
+				"prerequisites": ["Bronze Working"],
+				"quote": "Quote: Iron Working"
+			}
+		]
+	},
+	{
+		"columnNumber": 4,
+		"era": "Classical era",
+		"techCost": 160,
+		"buildingCost": 100,
+		"wonderCost": 250,
+		"techs": [
+			{
+				"name": "Mechanics",
+				"faction": "Technocrat",
+				"row": 2,
+				"prerequisites": ["The Wheel", "Bronze Working"],
+				"quote": "Quote: Mechanics"
+			},
+			{
+				"name": "Mathematics",
+				"faction": "Technocrat",
+				"row": 5,
+				"prerequisites": ["Writing", "Masonry"],
+				"quote": "Quote: Mathematics"
+			},
+			{
+				"name": "Accounting",
+				"faction": "Technocrat",
+				"row": 8,
+				"prerequisites": ["Writing"],
+				"quote": "Quote: Accounting"
+			},
+			{
+				"name": "Herbalism",
+				"faction": "Humanist",
+				"row": 2,
+				"prerequisites": ["The Wheel", "Bronze Working"],
+				"quote": "Quote: Herbalism"
+			},
+			{
+				"name": "Numerology",
+				"faction": "Humanist",
+				"row": 5,
+				"prerequisites": ["Writing", "Masonry"],
+				"quote": "Quote: Numerology"
+			},
+			{
+				"name": "Rituals",
+				"faction": "Humanist",
+				"row": 8,
+				"prerequisites": ["Writing"],
+				"quote": "Quote: Rituals"
+			}
+		]
+	},
+	{
+		"columnNumber": 5,
+		"era": "Classical era",
+		"techCost": 260,
+		"buildingCost": 100,
+		"wonderCost": 250,
+		"techs": [
+			{
+				"name": "Engineering",
+				"faction": "Technocrat",
+				"row": 2,
+				"prerequisites": ["Mechanics", "Mathematics"],
+				"uniques": ["Roads connect tiles across rivers"],
+				"quote": "Quote: Engineering"
+			},
+			{
+				"name": "Drill",
+				"faction": "Technocrat",
+				"row": 5,
+				"prerequisites": ["Iron Working", "Mathematics"],
+				"quote": "Quote: Drill"
+			},
+			{
+				"name": "Shipbuilding",
+				"faction": "Technocrat",
+				"row": 8,
+				"prerequisites": ["Sailing", "Mechanics"],
+				"uniques": ["Enables embarkation for land units"],
+				"quote": "Quote: Shipbuilding"
+			},
+			{
+				"name": "Hydromancy",
+				"faction": "Humanist",
+				"row": 2,
+				"prerequisites": ["Herbalism", "Numerology"],
+				"uniques": ["Roads connect tiles across rivers"],
+				"quote": "Quote: Hydromancy"
+			},
+			{
+				"name": "Oath of Blades",
+				"faction": "Humanist",
+				"row": 5,
+				"prerequisites": ["Iron Working", "Numerology"],
+				"quote": "Quote: Oath of Blades"
+			},
+			{
+				"name": "Sea Charms",
+				"faction": "Humanist",
+				"row": 8,
+				"prerequisites": ["Sailing", "Herbalism"],
+				"uniques": ["Enables embarkation for land units"],
+				"quote": "Quote: Sea Charms"
+			}
+		]
+	},
+	{
+		"columnNumber": 6,
+		"era": "Medieval era",
+		"techCost": 420,
+		"buildingCost": 120,
+		"wonderCost": 300,
+		"techs": [
+			{
+				"name": "Metallurgy",
+				"faction": "Technocrat",
+				"row": 2,
+				"prerequisites": ["Engineering", "Drill"],
+				"quote": "Quote: Metallurgy"
+			},
+			{
+				"name": "Clockwork",
+				"faction": "Technocrat",
+				"row": 5,
+				"prerequisites": ["Engineering"],
+				"uniques": ["Improves movement speed on roads"],
+				"quote": "Quote: Clockwork"
+			},
+			{
+				"name": "Banking",
+				"faction": "Technocrat",
+				"row": 8,
+				"prerequisites": ["Accounting", "Shipbuilding"],
+				"uniques": [
+					"Enables Open Borders agreements <Civilopedia link [Tutorials/Open Borders]>",
+					"Enables conversion of city production to [Gold]"
+				],
+				"quote": "Quote: Banking"
+			},
+			{
+				"name": "Rune Carving",
+				"faction": "Humanist",
+				"row": 2,
+				"prerequisites": ["Hydromancy", "Oath of Blades"],
+				"quote": "Quote: Rune Carving"
+			},
+			{
+				"name": "Alchemy",
+				"faction": "Humanist",
+				"row": 5,
+				"prerequisites": ["Hydromancy"],
+				"uniques": ["Improves movement speed on roads"],
+				"quote": "Quote: Alchemy"
+			},
+			{
+				"name": "Coin Magic",
+				"faction": "Humanist",
+				"row": 8,
+				"prerequisites": ["Rituals", "Sea Charms"],
+				"uniques": [
+					"Enables Open Borders agreements <Civilopedia link [Tutorials/Open Borders]>",
+					"Enables conversion of city production to [Gold]"
+				],
+				"quote": "Quote: Coin Magic"
+			}
+		]
+	},
+	{
+		"columnNumber": 7,
+		"era": "Medieval era",
+		"techCost": 700,
+		"buildingCost": 160,
+		"wonderCost": 350,
+		"techs": [
+			{
+				"name": "Printing Press",
+				"faction": "Technocrat",
+				"row": 2,
+				"prerequisites": ["Clockwork", "Banking"],
+				"uniques": [
+					"Enables conversion of city production to [Science]",
+					"Enables Research agreements <Civilopedia link [Tutorials/Research Agreements]>"
+				],
+				"quote": "Quote: Printing Press"
+			},
+			{
+				"name": "Navigation",
+				"faction": "Technocrat",
+				"row": 5,
+				"prerequisites": ["Shipbuilding", "Clockwork"],
+				"quote": "Quote: Navigation"
+			},
+			{
+				"name": "Corporate Law",
+				"faction": "Technocrat",
+				"row": 8,
+				"prerequisites": ["Banking"],
+				"uniques": ["Enables Defensive Pacts <Civilopedia link [Tutorials/Defensive Pacts]>"],
+				"quote": "Quote: Corporate Law"
+			},
+			{
+				"name": "Arcane Scripts",
+				"faction": "Humanist",
+				"row": 2,
+				"prerequisites": ["Alchemy", "Coin Magic"],
+				"uniques": [
+					"Enables conversion of city production to [Science]",
+					"Enables Research agreements <Civilopedia link [Tutorials/Research Agreements]>"
+				],
+				"quote": "Quote: Arcane Scripts"
+			},
+			{
+				"name": "Tidecalling",
+				"faction": "Humanist",
+				"row": 5,
+				"prerequisites": ["Sea Charms", "Alchemy"],
+				"quote": "Quote: Tidecalling"
+			},
+			{
+				"name": "Liturgy",
+				"faction": "Humanist",
+				"row": 8,
+				"prerequisites": ["Coin Magic"],
+				"uniques": ["Enables Defensive Pacts <Civilopedia link [Tutorials/Defensive Pacts]>"],
+				"quote": "Quote: Liturgy"
+			}
+		]
+	},
+	{
+		"columnNumber": 8,
+		"era": "Renaissance era",
+		"techCost": 1150,
+		"buildingCost": 200,
+		"wonderCost": 400,
+		"techs": [
+			{
+				"name": "Gunpowder",
+				"faction": "Technocrat",
+				"row": 2,
+				"prerequisites": ["Metallurgy", "Clockwork"],
+				"quote": "Quote: Gunpowder"
+			},
+			{
+				"name": "Industrial Espionage",
+				"faction": "Technocrat",
+				"row": 5,
+				"prerequisites": ["Printing Press", "Corporate Law"],
+				"uniques": ["KM: Reveals [25]% of opposing faction military units"],
+				"quote": "Quote: Industrial Espionage"
+			},
+			{
+				"name": "Astronomy",
+				"faction": "Technocrat",
+				"row": 8,
+				"prerequisites": ["Navigation", "Printing Press"],
+				"uniques": ["[+1] Movement <for [Embarked] units>", "Enables [Embarked] units to enter ocean tiles"],
+				"quote": "Quote: Astronomy"
+			},
+			{
+				"name": "Spellblading",
+				"faction": "Humanist",
+				"row": 2,
+				"prerequisites": ["Rune Carving", "Alchemy"],
+				"quote": "Quote: Spellblading"
+			},
+			{
+				"name": "Clairvoyance",
+				"faction": "Humanist",
+				"row": 5,
+				"prerequisites": ["Arcane Scripts", "Liturgy"],
+				"uniques": ["KM: Reveals [25]% of opposing faction military units"],
+				"quote": "Quote: Clairvoyance"
+			},
+			{
+				"name": "Astrology",
+				"faction": "Humanist",
+				"row": 8,
+				"prerequisites": ["Tidecalling", "Arcane Scripts"],
+				"uniques": ["[+1] Movement <for [Embarked] units>", "Enables [Embarked] units to enter ocean tiles"],
+				"quote": "Quote: Astrology"
+			}
+		]
+	},
+	{
+		"columnNumber": 9,
+		"era": "Renaissance era",
+		"techCost": 1700,
+		"buildingCost": 250,
+		"wonderCost": 500,
+		"techs": [
+			{
+				"name": "Ballistics",
+				"faction": "Technocrat",
+				"row": 1,
+				"prerequisites": ["Gunpowder"],
+				"quote": "Quote: Ballistics"
+			},
+			{
+				"name": "Cavalry Tactics",
+				"faction": "Technocrat",
+				"row": 3,
+				"prerequisites": ["Gunpowder"],
+				"quote": "Quote: Cavalry Tactics"
+			},
+			{
+				"name": "Geological Survey",
+				"faction": "Technocrat",
+				"row": 6,
+				"prerequisites": ["Industrial Espionage", "Astronomy"],
+				"uniques": [
+					"KM: Reveals resources of the opposing faction",
+					"[+1 Production] from [Mine] tiles [in all cities]",
+					"[+1 Production] from [Quarry] tiles [in all cities]"
+				],
+				"quote": "Quote: Geological Survey"
+			},
+			{
+				"name": "Evocation",
+				"faction": "Humanist",
+				"row": 1,
+				"prerequisites": ["Spellblading"],
+				"quote": "Quote: Evocation"
+			},
+			{
+				"name": "Beast Taming",
+				"faction": "Humanist",
+				"row": 3,
+				"prerequisites": ["Spellblading"],
+				"quote": "Quote: Beast Taming"
+			},
+			{
+				"name": "Dowsing",
+				"faction": "Humanist",
+				"row": 6,
+				"prerequisites": ["Clairvoyance", "Astrology"],
+				"uniques": [
+					"KM: Reveals resources of the opposing faction",
+					"[+1 Production] from [Mine] tiles [in all cities]",
+					"[+1 Production] from [Quarry] tiles [in all cities]"
+				],
+				"quote": "Quote: Dowsing"
+			}
+		]
+	},
+	{
+		"columnNumber": 10,
+		"era": "Industrial era",
+		"techCost": 2400,
+		"buildingCost": 300,
+		"wonderCost": 600,
+		"techs": [
+			{
+				"name": "Steam Engine",
+				"faction": "Technocrat",
+				"row": 2,
+				"prerequisites": ["Ballistics", "Geological Survey"],
+				"uniques": ["[+1] Movement <for [Embarked] units>"],
+				"quote": "Quote: Steam Engine"
+			},
+			{
+				"name": "Scientific Management",
+				"faction": "Technocrat",
+				"row": 5,
+				"prerequisites": ["Geological Survey"],
+				"quote": "Quote: Scientific Management"
+			},
+			{
+				"name": "Railroads",
+				"faction": "Technocrat",
+				"row": 8,
+				"prerequisites": ["Cavalry Tactics", "Geological Survey"],
+				"quote": "Quote: Railroads"
+			},
+			{
+				"name": "Crystallomancy",
+				"faction": "Humanist",
+				"row": 2,
+				"prerequisites": ["Evocation", "Dowsing"],
+				"uniques": ["[+1] Movement <for [Embarked] units>"],
+				"quote": "Quote: Crystallomancy"
+			},
+			{
+				"name": "Magic Scholasticism",
+				"faction": "Humanist",
+				"row": 5,
+				"prerequisites": ["Dowsing"],
+				"quote": "Quote: Magic Scholasticism"
+			},
+			{
+				"name": "Geomancy",
+				"faction": "Humanist",
+				"row": 8,
+				"prerequisites": ["Beast Taming", "Dowsing"],
+				"quote": "Quote: Geomancy"
+			}
+		]
+	},
+	{
+		"columnNumber": 11,
+		"era": "Industrial era",
+		"techCost": 3300,
+		"buildingCost": 360,
+		"wonderCost": 700,
+		"techs": [
+			{
+				"name": "Petrochemistry",
+				"faction": "Technocrat",
+				"row": 2,
+				"prerequisites": ["Steam Engine"],
+				"quote": "Quote: Petrochemistry"
+			},
+			{
+				"name": "Armored Warfare",
+				"faction": "Technocrat",
+				"row": 5,
+				"prerequisites": ["Steam Engine", "Railroads"],
+				"quote": "Quote: Armored Warfare"
+			},
+			{
+				"name": "Aeronautics",
+				"faction": "Technocrat",
+				"row": 8,
+				"prerequisites": ["Scientific Management", "Railroads"],
+				"quote": "Quote: Aeronautics"
+			},
+			{
+				"name": "Lunar Rites",
+				"faction": "Humanist",
+				"row": 2,
+				"prerequisites": ["Crystallomancy"],
+				"quote": "Quote: Lunar Rites"
+			},
+			{
+				"name": "High Elementalism",
+				"faction": "Humanist",
+				"row": 5,
+				"prerequisites": ["Crystallomancy", "Geomancy"],
+				"quote": "Quote: High Elementalism"
+			},
+			{
+				"name": "Levitation",
+				"faction": "Humanist",
+				"row": 8,
+				"prerequisites": ["Magic Scholasticism", "Geomancy"],
+				"quote": "Quote: Levitation"
+			}
+		]
+	},
+	{
+		"columnNumber": 12,
+		"era": "Modern era",
+		"techCost": 4400,
+		"buildingCost": 450,
+		"wonderCost": 800,
+		"techs": [
+			{
+				"name": "Electricity",
+				"faction": "Technocrat",
+				"row": 2,
+				"prerequisites": ["Petrochemistry", "Scientific Management"],
+				"quote": "Quote: Electricity"
+			},
+			{
+				"name": "Radio",
+				"faction": "Technocrat",
+				"row": 5,
+				"prerequisites": ["Aeronautics"],
+				"quote": "Quote: Radio"
+			},
+			{
+				"name": "Mechanized Warfare",
+				"faction": "Technocrat",
+				"row": 8,
+				"prerequisites": ["Armored Warfare", "Petrochemistry"],
+				"quote": "Quote: Mechanized Warfare"
+			},
+			{
+				"name": "Dragonology",
+				"faction": "Humanist",
+				"row": 2,
+				"prerequisites": ["Lunar Rites", "Magic Scholasticism"],
+				"quote": "Quote: Dragonology"
+			},
+			{
+				"name": "Great Echo",
+				"faction": "Humanist",
+				"row": 5,
+				"prerequisites": ["Levitation"],
+				"quote": "Quote: Great Echo"
+			},
+			{
+				"name": "Chimerism",
+				"faction": "Humanist",
+				"row": 8,
+				"prerequisites": ["High Elementalism", "Lunar Rites"],
+				"quote": "Quote: Chimerism"
+			}
+		]
+	},
+	{
+		"columnNumber": 13,
+		"era": "Modern era",
+		"techCost": 5400,
+		"buildingCost": 500,
+		"wonderCost": 900,
+		"techs": [
+			{
+				"name": "Atomic Theory",
+				"faction": "Technocrat",
+				"row": 3,
+				"prerequisites": ["Electricity"],
+				"quote": "Quote: Atomic Theory"
+			},
+			{
+				"name": "Combined Arms",
+				"faction": "Technocrat",
+				"row": 7,
+				"prerequisites": ["Radio", "Mechanized Warfare"],
+				"quote": "Quote: Combined Arms"
+			},
+			{
+				"name": "Astral Magic",
+				"faction": "Humanist",
+				"row": 3,
+				"prerequisites": ["Dragonology"],
+				"quote": "Quote: Astral Magic"
+			},
+			{
+				"name": "War Rituals",
+				"faction": "Humanist",
+				"row": 7,
+				"prerequisites": ["Great Echo", "Chimerism"],
+				"quote": "Quote: War Rituals"
+			}
+		]
+	},
+	{
+		"columnNumber": 14,
+		"era": "Atomic era",
+		"techCost": 6400,
+		"buildingCost": 600,
+		"wonderCost": 1000,
+		"techs": [
+			{
+				"name": "Microelectronics",
+				"faction": "Technocrat",
+				"row": 2,
+				"prerequisites": ["Atomic Theory"],
+				"quote": "Quote: Microelectronics"
+			},
+			{
+				"name": "Nuclear Fission",
+				"faction": "Technocrat",
+				"row": 5,
+				"prerequisites": ["Atomic Theory", "Combined Arms"],
+				"quote": "Quote: Nuclear Fission"
+			},
+			{
+				"name": "Rocketry",
+				"faction": "Technocrat",
+				"row": 8,
+				"prerequisites": ["Combined Arms"],
+				"quote": "Quote: Rocketry"
+			},
+			{
+				"name": "Flesh Magic",
+				"faction": "Humanist",
+				"row": 2,
+				"prerequisites": ["Astral Magic"],
+				"quote": "Quote: Flesh Magic"
+			},
+			{
+				"name": "Forbidden Lore",
+				"faction": "Humanist",
+				"row": 5,
+				"prerequisites": ["Astral Magic", "War Rituals"],
+				"quote": "Quote: Forbidden Lore"
+			},
+			{
+				"name": "Skyforging",
+				"faction": "Humanist",
+				"row": 8,
+				"prerequisites": ["War Rituals"],
+				"quote": "Quote: Skyforging"
+			}
+		]
+	},
+	{
+		"columnNumber": 15,
+		"era": "Atomic era",
+		"techCost": 7400,
+		"buildingCost": 650,
+		"wonderCost": 1100,
+		"techs": [
+			{
+				"name": "Satellite Recon",
+				"faction": "Technocrat",
+				"row": 3,
+				"prerequisites": ["Rocketry", "Microelectronics"],
+				"uniques": [
+					"KM: Reveals [50]% of opposing faction military units",
+					"KM: Reveals all opposing faction units within [6] tiles of your cities"
+				],
+				"quote": "Quote: Satellite Recon"
+			},
+			{
+				"name": "Robotics",
+				"faction": "Technocrat",
+				"row": 7,
+				"prerequisites": ["Microelectronics", "Nuclear Fission"],
+				"quote": "Quote: Robotics"
+			},
+			{
+				"name": "All-Seeing Eye",
+				"faction": "Humanist",
+				"row": 3,
+				"prerequisites": ["Skyforging", "Flesh Magic"],
+				"uniques": [
+					"KM: Reveals [50]% of opposing faction military units",
+					"KM: Reveals all opposing faction units within [6] tiles of your cities"
+				],
+				"quote": "Quote: All-Seeing Eye"
+			},
+			{
+				"name": "High Golemancy",
+				"faction": "Humanist",
+				"row": 7,
+				"prerequisites": ["Flesh Magic", "Forbidden Lore"],
+				"quote": "Quote: High Golemancy"
+			}
+		]
+	},
+	{
+		"columnNumber": 16,
+		"era": "Information era",
+		"techCost": 8600,
+		"buildingCost": 700,
+		"wonderCost": 1250,
+		"techs": [
+			{
+				"name": "Quantum Computing",
+				"faction": "Technocrat",
+				"row": 3,
+				"prerequisites": ["Satellite Recon", "Robotics"],
+				"quote": "Quote: Quantum Computing"
+			},
+			{
+				"name": "Nanotechnology",
+				"faction": "Technocrat",
+				"row": 7,
+				"prerequisites": ["Robotics"],
+				"quote": "Quote: Nanotechnology"
+			},
+			{
+				"name": "Planar Magic",
+				"faction": "Humanist",
+				"row": 3,
+				"prerequisites": ["All-Seeing Eye", "High Golemancy"],
+				"quote": "Quote: Planar Magic"
+			},
+			{
+				"name": "Transmutation",
+				"faction": "Humanist",
+				"row": 7,
+				"prerequisites": ["High Golemancy"],
+				"quote": "Quote: Transmutation"
+			}
+		]
+	},
+	{
+		"columnNumber": 17,
+		"era": "Information era",
+		"techCost": 10000,
+		"buildingCost": 750,
+		"wonderCost": 1400,
+		"techs": [
+			{
+				"name": "Multiverse Theory",
+				"faction": "Technocrat",
+				"row": 3,
+				"prerequisites": ["Quantum Computing", "Nanotechnology"],
+				"quote": "Quote: Multiverse Theory"
+			},
+			{
+				"name": "Future Tech",
+				"faction": "Technocrat",
+				"row": 7,
+				"prerequisites": ["Quantum Computing", "Nanotechnology"],
+				"uniques": ["Can be continually researched"],
+				"quote": "Quote: Future Tech"
+			},
+			{
+				"name": "Ascension",
+				"faction": "Humanist",
+				"row": 3,
+				"prerequisites": ["Planar Magic", "Transmutation"],
+				"quote": "Quote: Ascension"
+			},
+			{
+				"name": "Unfathomable",
+				"faction": "Humanist",
+				"row": 7,
+				"prerequisites": ["Planar Magic", "Transmutation"],
+				"uniques": ["Can be continually researched"],
+				"quote": "Quote: Unfathomable"
+			}
+		]
+	}
+]

@@ -1,0 +1,2283 @@
+[
+	{
+		"name": "Settler",
+		"unitType": "Civilian",
+		"movement": 2,
+		"strength": 0,
+		"cost": 106,
+		"uniques": [
+			"Founds a new city <by consuming this unit>",
+			"Excess Food converted to Production when under construction",
+			"Requires at least [2] population"
+		],
+		"hurryCostModifier": 20,
+		"civilopediaText": [
+			{
+				"text": "Description: Settler"
+			}
+		]
+	},
+	{
+		"name": "Worker",
+		"unitType": "Civilian",
+		"movement": 2,
+		"strength": 0,
+		"cost": 70,
+		"uniques": ["Can build [Land] improvements on tiles", "Automation is a primary action"],
+		"civilopediaText": [
+			{
+				"text": "Description: Worker"
+			}
+		]
+	},
+	{
+		"name": "Work Boat",
+		"unitType": "WaterCivilian",
+		"movement": 4,
+		"strength": 0,
+		"cost": 55,
+		"requiredTech": "Sailing",
+		"uniques": [
+			"Cannot enter ocean tiles <before discovering [Astronomy]>",
+			"May create improvements on water resources",
+			"Uncapturable",
+			"Automation is a primary action"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Work Boat"
+			}
+		]
+	},
+	{
+		"name": "Scout",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 4,
+		"cost": 25,
+		"uniques": [
+			"May upgrade to [Archer] through ruins-like effects",
+			"Never appears as a Barbarian unit",
+			"Ignores terrain cost",
+			"[+1] Sight"
+		],
+		"promotions": ["Ignore terrain cost"],
+		"attackSound": "nonmetalhit",
+		"civilopediaText": [
+			{
+				"text": "Description: Scout"
+			}
+		]
+	},
+	{
+		"name": "Warrior",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 8,
+		"cost": 40,
+		"upgradesTo": "Phalanx",
+		"uniques": ["May upgrade to [Spearman] through ruins-like effects"],
+		"attackSound": "nonmetalhit",
+		"civilopediaText": [
+			{
+				"text": "Description: Warrior"
+			}
+		]
+	},
+	{
+		"name": "Archer",
+		"unitType": "Ranged",
+		"movement": 2,
+		"strength": 5,
+		"rangedStrength": 7,
+		"range": 2,
+		"cost": 40,
+		"requiredTech": "Archery",
+		"upgradesTo": "Gastraphetes",
+		"attackSound": "arrow",
+		"civilopediaText": [
+			{
+				"text": "Description: Archer"
+			}
+		]
+	},
+	{
+		"name": "Spearman",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 11,
+		"cost": 56,
+		"requiredTech": "Bronze Working",
+		"upgradesTo": "Phalanx",
+		"uniques": ["[+50]% Strength <vs [Mounted] units>"],
+		"attackSound": "metalhit",
+		"civilopediaText": [
+			{
+				"text": "Description: Spearman"
+			}
+		]
+	},
+	{
+		"name": "Chariot Archer",
+		"unitType": "Ranged",
+		"movement": 4,
+		"strength": 6,
+		"rangedStrength": 10,
+		"range": 2,
+		"cost": 56,
+		"requiredTech": "The Wheel",
+		"requiredResource": "Horses",
+		"upgradesTo": "Knight",
+		"uniques": ["No defensive terrain bonus", "Rough terrain penalty", "Never appears as a Barbarian unit"],
+		"attackSound": "arrow",
+		"civilopediaText": [
+			{
+				"text": "Description: Chariot Archer"
+			}
+		]
+	},
+	{
+		"name": "Horseman",
+		"unitType": "Mounted",
+		"movement": 4,
+		"strength": 12,
+		"cost": 75,
+		"requiredTech": "Horseback Riding",
+		"requiredResource": "Horses",
+		"upgradesTo": "Knight",
+		"uniques": [
+			"Can move after attacking",
+			"No defensive terrain bonus",
+			"[-33]% Strength <vs cities> <when attacking>"
+		],
+		"hurryCostModifier": 20,
+		"attackSound": "horse",
+		"civilopediaText": [
+			{
+				"text": "Description: Horseman"
+			}
+		]
+	},
+	{
+		"name": "Swordsman",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 14,
+		"cost": 75,
+		"requiredTech": "Iron Working",
+		"requiredResource": "Iron",
+		"upgradesTo": "Pikeman",
+		"hurryCostModifier": 20,
+		"attackSound": "metalhit",
+		"civilopediaText": [
+			{
+				"text": "Description: Swordsman"
+			}
+		]
+	},
+	{
+		"name": "Trireme",
+		"unitType": "WaterMelee",
+		"movement": 4,
+		"strength": 10,
+		"cost": 45,
+		"requiredTech": "Sailing",
+		"upgradesTo": "Liburna",
+		"uniques": ["Cannot enter ocean tiles", "Never appears as a Barbarian unit"],
+		"attackSound": "nonmetalhit",
+		"civilopediaText": [
+			{
+				"text": "Description: Trireme"
+			}
+		]
+	},
+	{
+		"name": "Catapult",
+		"faction": "Technocrat",
+		"unitType": "Siege",
+		"movement": 2,
+		"strength": 7,
+		"rangedStrength": 14,
+		"range": 2,
+		"cost": 75,
+		"requiredTech": "Mechanics",
+		"upgradesTo": "Trebuchet",
+		"uniques": [
+			"Must set up to ranged attack",
+			"[+100]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"[-1] Sight",
+			"Never appears as a Barbarian unit"
+		],
+		"hurryCostModifier": 20,
+		"attackSound": "throw",
+		"civilopediaText": [
+			{
+				"text": "Description: Catapult"
+			}
+		]
+	},
+	{
+		"name": "Gastraphetes",
+		"faction": "Technocrat",
+		"unitType": "Ranged",
+		"movement": 2,
+		"strength": 7,
+		"rangedStrength": 11,
+		"range": 2,
+		"cost": 75,
+		"requiredTech": "Mathematics",
+		"upgradesTo": "Crossbowman",
+		"uniques": ["[+10]% Strength <when attacking>"],
+		"attackSound": "arrow",
+		"civilopediaText": [
+			{
+				"text": "Description: Gastraphetes"
+			}
+		]
+	},
+	{
+		"name": "Phalanx",
+		"faction": "Technocrat",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 16,
+		"cost": 75,
+		"requiredTech": "Drill",
+		"upgradesTo": "Pikeman",
+		"uniques": [
+			"[+15]% Strength <when adjacent to a [Military] unit>",
+			"Can build [Road] improvements on tiles",
+			"Can build [Fort] improvements on tiles",
+			"[+50]% Strength <vs [Mounted] units>"
+		],
+		"hurryCostModifier": 20,
+		"attackSound": "metalhit",
+		"civilopediaText": [
+			{
+				"text": "Description: Phalanx"
+			}
+		]
+	},
+	{
+		"name": "Liburna",
+		"faction": "Technocrat",
+		"unitType": "WaterMelee",
+		"movement": 4,
+		"strength": 18,
+		"cost": 70,
+		"requiredTech": "Shipbuilding",
+		"upgradesTo": "Caravel",
+		"uniques": [
+			"[+1] Sight",
+			"[+10]% Strength <when attacking>",
+			"Cannot enter ocean tiles",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "nonmetalhit",
+		"civilopediaText": [
+			{
+				"text": "Description: Liburna"
+			}
+		]
+	},
+	{
+		"name": "Pikeman",
+		"faction": "Technocrat",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 21,
+		"cost": 105,
+		"requiredTech": "Metallurgy",
+		"upgradesTo": "Musketeer",
+		"uniques": ["[+15]% Strength <when adjacent to a [Military] unit>", "[+100]% Strength <vs [Mounted] units>"],
+		"attackSound": "metalhit",
+		"civilopediaText": [
+			{
+				"text": "Description: Pikeman"
+			}
+		]
+	},
+	{
+		"name": "Knight",
+		"faction": "Technocrat",
+		"unitType": "Mounted",
+		"movement": 4,
+		"strength": 22,
+		"cost": 120,
+		"requiredTech": "Metallurgy",
+		"requiredResource": "Horses",
+		"upgradesTo": "Dragoon",
+		"uniques": [
+			"Can move after attacking",
+			"Withdraws before melee combat <with [50]% chance>",
+			"[-33]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "horse",
+		"civilopediaText": [
+			{
+				"text": "Description: Knight"
+			}
+		]
+	},
+	{
+		"name": "Crossbowman",
+		"faction": "Technocrat",
+		"unitType": "Ranged",
+		"movement": 2,
+		"strength": 13,
+		"rangedStrength": 18,
+		"range": 2,
+		"cost": 105,
+		"requiredTech": "Clockwork",
+		"upgradesTo": "Volley Gunner",
+		"uniques": ["[+10]% Strength <when attacking>"],
+		"attackSound": "crossbow",
+		"civilopediaText": [
+			{
+				"text": "Description: Crossbowman"
+			}
+		]
+	},
+	{
+		"name": "Trebuchet",
+		"faction": "Technocrat",
+		"unitType": "Siege",
+		"movement": 2,
+		"strength": 12,
+		"rangedStrength": 20,
+		"range": 2,
+		"cost": 105,
+		"requiredTech": "Clockwork",
+		"upgradesTo": "Cannon",
+		"uniques": [
+			"Must set up to ranged attack",
+			"[+100]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"[-1] Sight",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "throw",
+		"civilopediaText": [
+			{
+				"text": "Description: Trebuchet"
+			}
+		]
+	},
+	{
+		"name": "Caravel",
+		"faction": "Technocrat",
+		"unitType": "WaterMelee",
+		"movement": 4,
+		"strength": 22,
+		"cost": 120,
+		"requiredTech": "Navigation",
+		"upgradesTo": "Ironclad",
+		"uniques": [
+			"[+1] Sight",
+			"[+10]% Strength <when attacking>",
+			"Withdraws before melee combat <with [80]% chance>"
+		],
+		"hurryCostModifier": 30,
+		"attackSound": "cannon",
+		"civilopediaText": [
+			{
+				"text": "Description: Caravel"
+			}
+		]
+	},
+	{
+		"name": "Galleass",
+		"faction": "Technocrat",
+		"unitType": "WaterRanged",
+		"movement": 4,
+		"strength": 16,
+		"rangedStrength": 21,
+		"range": 2,
+		"cost": 120,
+		"requiredTech": "Navigation",
+		"upgradesTo": "Frigate",
+		"uniques": ["[+1] Sight", "[+10]% Strength <vs cities>", "Cannot enter ocean tiles"],
+		"attackSound": "arrow",
+		"civilopediaText": [
+			{
+				"text": "Description: Galleass"
+			}
+		]
+	},
+	{
+		"name": "Musketeer",
+		"faction": "Technocrat",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 28,
+		"cost": 150,
+		"requiredTech": "Gunpowder",
+		"upgradesTo": "Rifleman",
+		"uniques": ["[+15]% Strength <when adjacent to a [Military] unit>"],
+		"attackSound": "shot",
+		"civilopediaText": [
+			{
+				"text": "Description: Musketeer"
+			}
+		]
+	},
+	{
+		"name": "Cannon",
+		"faction": "Technocrat",
+		"unitType": "Siege",
+		"movement": 2,
+		"strength": 14,
+		"rangedStrength": 28,
+		"range": 2,
+		"cost": 165,
+		"requiredTech": "Ballistics",
+		"upgradesTo": "Artillery",
+		"uniques": [
+			"Must set up to ranged attack",
+			"[+100]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"[-1] Sight",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "cannon",
+		"civilopediaText": [
+			{
+				"text": "Description: Cannon"
+			}
+		]
+	},
+	{
+		"name": "Volley Gunner",
+		"faction": "Technocrat",
+		"unitType": "Ranged",
+		"movement": 2,
+		"strength": 20,
+		"rangedStrength": 26,
+		"range": 2,
+		"cost": 150,
+		"requiredTech": "Ballistics",
+		"upgradesTo": "Machine Gunner",
+		"uniques": ["[+10]% Strength <when attacking>"],
+		"attackSound": "crossbow",
+		"civilopediaText": [
+			{
+				"text": "Description: Volley Gunner"
+			}
+		]
+	},
+	{
+		"name": "Dragoon",
+		"faction": "Technocrat",
+		"unitType": "Mounted",
+		"movement": 5,
+		"strength": 34,
+		"cost": 165,
+		"requiredTech": "Cavalry Tactics",
+		"requiredResource": "Horses",
+		"upgradesTo": "Steam Tank",
+		"uniques": [
+			"Can move after attacking",
+			"Withdraws before melee combat <with [50]% chance>",
+			"[-33]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "cavalry",
+		"civilopediaText": [
+			{
+				"text": "Description: Dragoon"
+			}
+		]
+	},
+	{
+		"name": "Frigate",
+		"faction": "Technocrat",
+		"unitType": "WaterRanged",
+		"movement": 5,
+		"strength": 28,
+		"rangedStrength": 32,
+		"range": 2,
+		"cost": 185,
+		"requiredTech": "Astronomy",
+		"upgradesTo": "Dreadnought",
+		"uniques": ["[+1] Sight", "[+10]% Strength <vs cities>"],
+		"hurryCostModifier": 20,
+		"attackSound": "shipCannonVolley",
+		"civilopediaText": [
+			{
+				"text": "Description: Frigate"
+			}
+		]
+	},
+	{
+		"name": "Rifleman",
+		"faction": "Technocrat",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 36,
+		"cost": 225,
+		"requiredTech": "Railroads",
+		"upgradesTo": "Infantry",
+		"uniques": ["[+15]% Strength <when adjacent to a [Military] unit>"],
+		"attackSound": "shot",
+		"civilopediaText": [
+			{
+				"text": "Description: Rifleman"
+			}
+		]
+	},
+	{
+		"name": "Machine Gunner",
+		"faction": "Technocrat",
+		"unitType": "Ranged",
+		"movement": 2,
+		"strength": 30,
+		"rangedStrength": 36,
+		"range": 2,
+		"cost": 225,
+		"requiredTech": "Armored Warfare",
+		"upgradesTo": "Bazooka",
+		"uniques": ["[+10]% Strength <when attacking>"],
+		"attackSound": "machinegun",
+		"civilopediaText": [
+			{
+				"text": "Description: Machine Gunner"
+			}
+		]
+	},
+	{
+		"name": "Artillery",
+		"faction": "Technocrat",
+		"unitType": "Siege",
+		"movement": 2,
+		"strength": 21,
+		"rangedStrength": 38,
+		"range": 3,
+		"cost": 250,
+		"requiredTech": "Armored Warfare",
+		"upgradesTo": "Rocket Artillery",
+		"uniques": [
+			"Must set up to ranged attack",
+			"[+100]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"[-1] Sight",
+			"Never appears as a Barbarian unit",
+			"Ranged attacks may be performed over obstacles"
+		],
+		"promotions": ["Indirect Fire"],
+		"attackSound": "artillery",
+		"civilopediaText": [
+			{
+				"text": "Description: Artillery"
+			}
+		]
+	},
+	{
+		"name": "Steam Tank",
+		"faction": "Technocrat",
+		"unitType": "Armor",
+		"movement": 4,
+		"strength": 45,
+		"cost": 260,
+		"requiredTech": "Armored Warfare",
+		"requiredResource": "Coal",
+		"upgradesTo": "Tank",
+		"uniques": [
+			"Can move after attacking",
+			"No defensive terrain bonus",
+			"[+15]% Strength <vs [Armor] units>",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "tankshot",
+		"civilopediaText": [
+			{
+				"text": "Description: Steam Tank"
+			}
+		]
+	},
+	{
+		"name": "Ironclad",
+		"faction": "Technocrat",
+		"unitType": "WaterMelee",
+		"movement": 5,
+		"strength": 45,
+		"cost": 250,
+		"requiredTech": "Steam Engine",
+		"requiredResource": "Coal",
+		"upgradesTo": "Destroyer",
+		"uniques": [
+			"[+1] Sight",
+			"[+10]% Strength <when attacking>",
+			"Double movement in [Coast]",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "shipguns",
+		"civilopediaText": [
+			{
+				"text": "Description: Ironclad"
+			}
+		]
+	},
+	{
+		"name": "Airship",
+		"faction": "Technocrat",
+		"unitType": "Bomber",
+		"movement": 1,
+		"strength": 35,
+		"rangedStrength": 35,
+		"range": 5,
+		"cost": 250,
+		"requiredTech": "Aeronautics",
+		"requiredResource": "Coal",
+		"upgradesTo": "Fighter",
+		"uniques": ["[+10]% Strength <vs [Water] units>"],
+		"attackSound": "bombing",
+		"civilopediaText": [
+			{
+				"text": "Description: Airship"
+			}
+		]
+	},
+	{
+		"name": "Infantry",
+		"faction": "Technocrat",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 50,
+		"cost": 300,
+		"requiredTech": "Mechanized Warfare",
+		"upgradesTo": "Mech Infantry",
+		"uniques": ["[+15]% Strength <when adjacent to a [Military] unit>"],
+		"attackSound": "shot",
+		"civilopediaText": [
+			{
+				"text": "Description: Infantry"
+			}
+		]
+	},
+	{
+		"name": "Bazooka",
+		"faction": "Technocrat",
+		"unitType": "Ranged",
+		"movement": 2,
+		"strength": 40,
+		"rangedStrength": 50,
+		"range": 2,
+		"cost": 300,
+		"requiredTech": "Mechanized Warfare",
+		"upgradesTo": "Laser Gunner",
+		"uniques": ["[+10]% Strength <when attacking>", "[+33]% Strength <vs [Armor] units>"],
+		"attackSound": "machinegun",
+		"civilopediaText": [
+			{
+				"text": "Description: Bazooka"
+			}
+		]
+	},
+	{
+		"name": "Tank",
+		"faction": "Technocrat",
+		"unitType": "Armor",
+		"movement": 5,
+		"strength": 70,
+		"cost": 350,
+		"requiredTech": "Mechanized Warfare",
+		"requiredResource": "Oil",
+		"upgradesTo": "Walker Mech",
+		"uniques": [
+			"Can move after attacking",
+			"No defensive terrain bonus",
+			"[+15]% Strength <vs [Armor] units>",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "tankshot",
+		"civilopediaText": [
+			{
+				"text": "Description: Tank"
+			}
+		]
+	},
+	{
+		"name": "Destroyer",
+		"faction": "Technocrat",
+		"unitType": "WaterMelee",
+		"movement": 6,
+		"strength": 60,
+		"interceptRange": 2,
+		"cost": 320,
+		"requiredTech": "Electricity",
+		"requiredResource": "Oil",
+		"uniques": [
+			"[+1] Sight",
+			"[+10]% Strength <when attacking>",
+			"Can see invisible [Submarine] units",
+			"[40]% chance to intercept air attacks",
+			"Withdraws before melee combat <with [80]% chance>"
+		],
+		"attackSound": "shipguns",
+		"civilopediaText": [
+			{
+				"text": "Description: Destroyer"
+			}
+		]
+	},
+	{
+		"name": "Fighter",
+		"faction": "Technocrat",
+		"unitType": "Fighter",
+		"movement": 1,
+		"strength": 45,
+		"rangedStrength": 45,
+		"range": 8,
+		"interceptRange": 8,
+		"cost": 325,
+		"requiredTech": "Radio",
+		"requiredResource": "Oil",
+		"upgradesTo": "Jet Fighter",
+		"uniques": ["[+10]% Strength <vs [Water] units>", "[100]% chance to intercept air attacks"],
+		"attackSound": "machinegun",
+		"civilopediaText": [
+			{
+				"text": "Description: Fighter"
+			}
+		]
+	},
+	{
+		"name": "Bomber",
+		"faction": "Technocrat",
+		"unitType": "Bomber",
+		"movement": 1,
+		"strength": 65,
+		"rangedStrength": 65,
+		"range": 10,
+		"cost": 375,
+		"requiredTech": "Combined Arms",
+		"requiredResource": "Oil",
+		"upgradesTo": "Drone Swarm",
+		"uniques": ["[+10]% Strength <vs [Water] units>"],
+		"attackSound": "bombing",
+		"civilopediaText": [
+			{
+				"text": "Description: Bomber"
+			}
+		]
+	},
+	{
+		"name": "Dreadnought",
+		"faction": "Technocrat",
+		"unitType": "WaterRanged",
+		"movement": 5,
+		"strength": 55,
+		"rangedStrength": 60,
+		"range": 3,
+		"cost": 350,
+		"requiredTech": "Combined Arms",
+		"requiredResource": "Oil",
+		"upgradesTo": "Nuclear Submarine",
+		"uniques": ["[+1] Sight", "[+10]% Strength <vs cities>", "Never appears as a Barbarian unit"],
+		"promotions": ["Indirect Fire"],
+		"attackSound": "shipguns",
+		"civilopediaText": [
+			{
+				"text": "Description: Dreadnought"
+			}
+		]
+	},
+	{
+		"name": "Mech Infantry",
+		"faction": "Technocrat",
+		"unitType": "Melee",
+		"movement": 3,
+		"strength": 70,
+		"cost": 375,
+		"requiredTech": "Satellite Recon",
+		"upgradesTo": "Exo-Trooper",
+		"uniques": ["[+15]% Strength <when adjacent to a [Military] unit>", "Never appears as a Barbarian unit"],
+		"attackSound": "tankshot",
+		"civilopediaText": [
+			{
+				"text": "Description: Mech Infantry"
+			}
+		]
+	},
+	{
+		"name": "Laser Gunner",
+		"faction": "Technocrat",
+		"unitType": "Ranged",
+		"movement": 2,
+		"strength": 60,
+		"rangedStrength": 70,
+		"range": 2,
+		"cost": 375,
+		"requiredTech": "Satellite Recon",
+		"upgradesTo": "Railgunner",
+		"uniques": ["[+10]% Strength <when attacking>"],
+		"attackSound": "machinegun",
+		"civilopediaText": [
+			{
+				"text": "Description: Laser Gunner"
+			}
+		]
+	},
+	{
+		"name": "Rocket Artillery",
+		"faction": "Technocrat",
+		"unitType": "Siege",
+		"movement": 3,
+		"strength": 45,
+		"rangedStrength": 80,
+		"range": 3,
+		"cost": 425,
+		"requiredTech": "Rocketry",
+		"uniques": [
+			"Must set up to ranged attack",
+			"[+100]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"[-1] Sight",
+			"Never appears as a Barbarian unit",
+			"Ranged attacks may be performed over obstacles"
+		],
+		"promotions": ["Indirect Fire"],
+		"attackSound": "artillery",
+		"civilopediaText": [
+			{
+				"text": "Description: Rocket Artillery"
+			}
+		]
+	},
+	{
+		"name": "Walker Mech",
+		"faction": "Technocrat",
+		"unitType": "Armor",
+		"movement": 5,
+		"strength": 90,
+		"cost": 425,
+		"requiredTech": "Robotics",
+		"requiredResource": "Aluminum",
+		"upgradesTo": "Grav Tank",
+		"uniques": [
+			"Can move after attacking",
+			"No defensive terrain bonus",
+			"[+15]% Strength <vs [Armor] units>",
+			"Never appears as a Barbarian unit",
+			"Ignores terrain cost"
+		],
+		"attackSound": "tankshot",
+		"civilopediaText": [
+			{
+				"text": "Description: Walker Mech"
+			}
+		]
+	},
+	{
+		"name": "Jet Fighter",
+		"faction": "Technocrat",
+		"unitType": "Fighter",
+		"movement": 1,
+		"strength": 75,
+		"rangedStrength": 75,
+		"range": 10,
+		"interceptRange": 10,
+		"cost": 400,
+		"requiredTech": "Rocketry",
+		"requiredResource": "Aluminum",
+		"uniques": ["[+10]% Strength <vs [Water] units>", "[100]% chance to intercept air attacks"],
+		"attackSound": "jetgun",
+		"civilopediaText": [
+			{
+				"text": "Description: Jet Fighter"
+			}
+		]
+	},
+	{
+		"name": "Carrier",
+		"faction": "Technocrat",
+		"unitType": "WaterAircraftCarrier",
+		"movement": 5,
+		"strength": 40,
+		"cost": 375,
+		"requiredTech": "Robotics",
+		"uniques": [
+			"[+1] Sight",
+			"[+10]% Strength <when attacking>",
+			"Cannot attack",
+			"Can carry [3] [Fighter] units"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Carrier"
+			}
+		]
+	},
+	{
+		"name": "Nuclear Submarine",
+		"faction": "Technocrat",
+		"unitType": "WaterSubmarine",
+		"movement": 6,
+		"strength": 50,
+		"rangedStrength": 80,
+		"range": 3,
+		"cost": 425,
+		"requiredTech": "Nuclear Fission",
+		"requiredResource": "Uranium",
+		"uniques": [
+			"[+1] Sight",
+			"[+10]% Strength <vs cities>",
+			"Can only attack [Water] tiles",
+			"Never appears as a Barbarian unit",
+			"Invisible to others"
+		],
+		"attackSound": "torpedo",
+		"civilopediaText": [
+			{
+				"text": "Description: Nuclear Submarine"
+			}
+		]
+	},
+	{
+		"name": "Atomic Bomb",
+		"faction": "Technocrat",
+		"unitType": "Missile",
+		"movement": 1,
+		"strength": 0,
+		"rangedStrength": 0,
+		"range": 12,
+		"cost": 600,
+		"requiredTech": "Nuclear Fission",
+		"requiredResource": "Uranium",
+		"uniques": ["Nuclear weapon of Strength [1]", "Self-destructs when attacking", "Blast radius [2]"],
+		"promotions": ["Evasion"],
+		"attackSound": "nuke",
+		"civilopediaText": [
+			{
+				"text": "Description: Atomic Bomb"
+			}
+		]
+	},
+	{
+		"name": "Exo-Trooper",
+		"faction": "Technocrat",
+		"unitType": "Melee",
+		"movement": 3,
+		"strength": 95,
+		"cost": 450,
+		"requiredTech": "Quantum Computing",
+		"requiredResource": "Silicon",
+		"uniques": [
+			"[+15]% Strength <when adjacent to a [Military] unit>",
+			"Never appears as a Barbarian unit",
+			"[+1] Movement"
+		],
+		"attackSound": "tankshot",
+		"civilopediaText": [
+			{
+				"text": "Description: Exo-Trooper"
+			}
+		]
+	},
+	{
+		"name": "Railgunner",
+		"faction": "Technocrat",
+		"unitType": "Ranged",
+		"movement": 3,
+		"strength": 80,
+		"rangedStrength": 95,
+		"range": 3,
+		"cost": 450,
+		"requiredTech": "Nanotechnology",
+		"requiredResource": "Silicon",
+		"uniques": ["[+10]% Strength <when attacking>"],
+		"attackSound": "machinegun",
+		"civilopediaText": [
+			{
+				"text": "Description: Railgunner"
+			}
+		]
+	},
+	{
+		"name": "Grav Tank",
+		"faction": "Technocrat",
+		"unitType": "Armor",
+		"movement": 6,
+		"strength": 120,
+		"cost": 500,
+		"requiredTech": "Nanotechnology",
+		"requiredResource": "Silicon",
+		"uniques": [
+			"Can move after attacking",
+			"No defensive terrain bonus",
+			"[+15]% Strength <vs [Armor] units>",
+			"Never appears as a Barbarian unit",
+			"[+20]% Strength <when attacking>"
+		],
+		"attackSound": "gdrAttack",
+		"civilopediaText": [
+			{
+				"text": "Description: Grav Tank"
+			}
+		]
+	},
+	{
+		"name": "Drone Swarm",
+		"faction": "Technocrat",
+		"unitType": "Bomber",
+		"movement": 2,
+		"strength": 100,
+		"rangedStrength": 100,
+		"range": 10,
+		"cost": 450,
+		"requiredTech": "Quantum Computing",
+		"requiredResource": "Silicon",
+		"uniques": [
+			"[+10]% Strength <vs [Water] units>",
+			"Damage taken from interception reduced by [100]%",
+			"Cannot be carried by [Carrier] units",
+			"[+4] Sight",
+			"Can see over obstacles"
+		],
+		"promotions": ["Evasion"],
+		"attackSound": "bombing",
+		"civilopediaText": [
+			{
+				"text": "Description: Drone Swarm"
+			}
+		]
+	},
+	{
+		"name": "Kota-Mech",
+		"faction": "Technocrat",
+		"unitType": "Armor",
+		"movement": 4,
+		"strength": 160,
+		"cost": 1200,
+		"requiredTech": "Multiverse Theory",
+		"requiredResource": "Uranium",
+		"uniques": [
+			"Can move after attacking",
+			"No defensive terrain bonus",
+			"[+15]% Strength <vs [Armor] units>",
+			"Never appears as a Barbarian unit",
+			"Limited to [1] per Civilization",
+			"[+25]% Strength <vs cities>",
+			"[+2] Sight",
+			"Unit will heal every turn, even if it performs an action",
+			"Consumes [1] [Silicon]"
+		],
+		"attackSound": "gdrAttack",
+		"civilopediaText": [
+			{
+				"text": "Description: Kota-Mech"
+			}
+		]
+	},
+	{
+		"name": "Ritual Circle",
+		"faction": "Humanist",
+		"replaces": "Catapult",
+		"unitType": "Siege",
+		"movement": 2,
+		"strength": 7,
+		"rangedStrength": 14,
+		"range": 2,
+		"cost": 75,
+		"requiredTech": "Herbalism",
+		"uniques": [
+			"[+75]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"[-1] Sight",
+			"Never appears as a Barbarian unit"
+		],
+		"hurryCostModifier": 20,
+		"attackSound": "throw",
+		"civilopediaText": [
+			{
+				"text": "Description: Ritual Circle"
+			}
+		]
+	},
+	{
+		"name": "Apprentice Mage",
+		"faction": "Humanist",
+		"replaces": "Gastraphetes",
+		"unitType": "Ranged",
+		"movement": 2,
+		"strength": 7,
+		"rangedStrength": 11,
+		"range": 2,
+		"cost": 75,
+		"requiredTech": "Numerology",
+		"uniques": ["Ignores Zone of Control", "[+1] Sight"],
+		"attackSound": "arrow",
+		"civilopediaText": [
+			{
+				"text": "Description: Apprentice Mage"
+			}
+		]
+	},
+	{
+		"name": "Initiate Guard",
+		"faction": "Humanist",
+		"replaces": "Phalanx",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 16,
+		"cost": 75,
+		"requiredTech": "Oath of Blades",
+		"uniques": [
+			"[10] HP when healing",
+			"Can build [Road] improvements on tiles",
+			"Can build [Fort] improvements on tiles",
+			"[+50]% Strength <vs [Mounted] units>"
+		],
+		"hurryCostModifier": 20,
+		"attackSound": "metalhit",
+		"civilopediaText": [
+			{
+				"text": "Description: Initiate Guard"
+			}
+		]
+	},
+	{
+		"name": "Water Serpent",
+		"faction": "Humanist",
+		"replaces": "Liburna",
+		"unitType": "WaterMelee",
+		"movement": 4,
+		"strength": 18,
+		"cost": 70,
+		"requiredTech": "Sea Charms",
+		"uniques": [
+			"[+1] Sight",
+			"[+15]% Strength <when defending>",
+			"Cannot enter ocean tiles",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "nonmetalhit",
+		"civilopediaText": [
+			{
+				"text": "Description: Water Serpent"
+			}
+		]
+	},
+	{
+		"name": "Rune Guard",
+		"faction": "Humanist",
+		"replaces": "Pikeman",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 21,
+		"cost": 105,
+		"requiredTech": "Rune Carving",
+		"uniques": ["[10] HP when healing", "[+100]% Strength <vs [Mounted] units>"],
+		"attackSound": "metalhit",
+		"civilopediaText": [
+			{
+				"text": "Description: Rune Guard"
+			}
+		]
+	},
+	{
+		"name": "Unicorn Rider",
+		"faction": "Humanist",
+		"replaces": "Knight",
+		"unitType": "Mounted",
+		"movement": 4,
+		"strength": 22,
+		"cost": 120,
+		"requiredTech": "Rune Carving",
+		"requiredResource": "Horses",
+		"uniques": [
+			"Can move after attacking",
+			"Double movement in [Forest]",
+			"Double movement in [Jungle]",
+			"[-33]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "horse",
+		"civilopediaText": [
+			{
+				"text": "Description: Unicorn Rider"
+			}
+		]
+	},
+	{
+		"name": "Pyromancer",
+		"faction": "Humanist",
+		"replaces": "Crossbowman",
+		"unitType": "Ranged",
+		"movement": 2,
+		"strength": 13,
+		"rangedStrength": 18,
+		"range": 2,
+		"cost": 105,
+		"requiredTech": "Alchemy",
+		"uniques": ["Ignores Zone of Control", "[+1] Sight"],
+		"attackSound": "crossbow",
+		"civilopediaText": [
+			{
+				"text": "Description: Pyromancer"
+			}
+		]
+	},
+	{
+		"name": "Fire Elemental",
+		"faction": "Humanist",
+		"replaces": "Trebuchet",
+		"unitType": "Siege",
+		"movement": 2,
+		"strength": 12,
+		"rangedStrength": 20,
+		"range": 2,
+		"cost": 105,
+		"requiredTech": "Alchemy",
+		"uniques": [
+			"[+75]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"[-1] Sight",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "throw",
+		"civilopediaText": [
+			{
+				"text": "Description: Fire Elemental"
+			}
+		]
+	},
+	{
+		"name": "Ghost Ship",
+		"faction": "Humanist",
+		"replaces": "Caravel",
+		"unitType": "WaterMelee",
+		"movement": 4,
+		"strength": 22,
+		"cost": 120,
+		"requiredTech": "Tidecalling",
+		"uniques": [
+			"[+1] Sight",
+			"[+15]% Strength <when defending>",
+			"Withdraws before melee combat <with [80]% chance>"
+		],
+		"hurryCostModifier": 30,
+		"attackSound": "cannon",
+		"civilopediaText": [
+			{
+				"text": "Description: Ghost Ship"
+			}
+		]
+	},
+	{
+		"name": "Siren Galley",
+		"faction": "Humanist",
+		"replaces": "Galleass",
+		"unitType": "WaterRanged",
+		"movement": 4,
+		"strength": 16,
+		"rangedStrength": 21,
+		"range": 2,
+		"cost": 120,
+		"requiredTech": "Tidecalling",
+		"uniques": ["[+1] Sight", "[10] HP when healing", "Cannot enter ocean tiles"],
+		"attackSound": "arrow",
+		"civilopediaText": [
+			{
+				"text": "Description: Siren Galley"
+			}
+		]
+	},
+	{
+		"name": "Spellblade",
+		"faction": "Humanist",
+		"replaces": "Musketeer",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 28,
+		"cost": 150,
+		"requiredTech": "Spellblading",
+		"uniques": ["[10] HP when healing"],
+		"attackSound": "shot",
+		"civilopediaText": [
+			{
+				"text": "Description: Spellblade"
+			}
+		]
+	},
+	{
+		"name": "Meteor Ritualist",
+		"faction": "Humanist",
+		"replaces": "Cannon",
+		"unitType": "Siege",
+		"movement": 2,
+		"strength": 14,
+		"rangedStrength": 28,
+		"range": 2,
+		"cost": 165,
+		"requiredTech": "Evocation",
+		"uniques": [
+			"[+75]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"[-1] Sight",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "cannon",
+		"civilopediaText": [
+			{
+				"text": "Description: Meteor Ritualist"
+			}
+		]
+	},
+	{
+		"name": "Battlemage",
+		"faction": "Humanist",
+		"replaces": "Volley Gunner",
+		"unitType": "Ranged",
+		"movement": 2,
+		"strength": 20,
+		"rangedStrength": 26,
+		"range": 2,
+		"cost": 150,
+		"requiredTech": "Evocation",
+		"uniques": ["Ignores Zone of Control", "[+1] Sight"],
+		"attackSound": "crossbow",
+		"civilopediaText": [
+			{
+				"text": "Description: Battlemage"
+			}
+		]
+	},
+	{
+		"name": "Griffin Knight",
+		"faction": "Humanist",
+		"replaces": "Dragoon",
+		"unitType": "Mounted",
+		"movement": 5,
+		"strength": 34,
+		"cost": 165,
+		"requiredTech": "Beast Taming",
+		"requiredResource": "Horses",
+		"uniques": [
+			"Can move after attacking",
+			"Double movement in [Forest]",
+			"Double movement in [Jungle]",
+			"[-33]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "cavalry",
+		"civilopediaText": [
+			{
+				"text": "Description: Griffin Knight"
+			}
+		]
+	},
+	{
+		"name": "Kraken",
+		"faction": "Humanist",
+		"replaces": "Frigate",
+		"unitType": "WaterRanged",
+		"movement": 5,
+		"strength": 28,
+		"rangedStrength": 32,
+		"range": 2,
+		"cost": 185,
+		"requiredTech": "Astrology",
+		"uniques": ["[+1] Sight", "[10] HP when healing"],
+		"hurryCostModifier": 20,
+		"attackSound": "shipCannonVolley",
+		"civilopediaText": [
+			{
+				"text": "Description: Kraken"
+			}
+		]
+	},
+	{
+		"name": "Stone Golem",
+		"faction": "Humanist",
+		"replaces": "Rifleman",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 36,
+		"cost": 225,
+		"requiredTech": "Geomancy",
+		"uniques": ["[10] HP when healing"],
+		"attackSound": "shot",
+		"civilopediaText": [
+			{
+				"text": "Description: Stone Golem"
+			}
+		]
+	},
+	{
+		"name": "Elemental Magister",
+		"faction": "Humanist",
+		"replaces": "Machine Gunner",
+		"unitType": "Ranged",
+		"movement": 2,
+		"strength": 30,
+		"rangedStrength": 36,
+		"range": 2,
+		"cost": 225,
+		"requiredTech": "High Elementalism",
+		"uniques": ["Ignores Zone of Control", "[+1] Sight"],
+		"attackSound": "machinegun",
+		"civilopediaText": [
+			{
+				"text": "Description: Elemental Magister"
+			}
+		]
+	},
+	{
+		"name": "Earth Elemental",
+		"faction": "Humanist",
+		"replaces": "Artillery",
+		"unitType": "Siege",
+		"movement": 2,
+		"strength": 21,
+		"rangedStrength": 38,
+		"range": 3,
+		"cost": 250,
+		"requiredTech": "High Elementalism",
+		"uniques": [
+			"[+75]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"[-1] Sight",
+			"Never appears as a Barbarian unit",
+			"Ranged attacks may be performed over obstacles"
+		],
+		"promotions": ["Indirect Fire"],
+		"attackSound": "artillery",
+		"civilopediaText": [
+			{
+				"text": "Description: Earth Elemental"
+			}
+		]
+	},
+	{
+		"name": "Manticore",
+		"faction": "Humanist",
+		"replaces": "Steam Tank",
+		"unitType": "Armor",
+		"movement": 4,
+		"strength": 45,
+		"cost": 260,
+		"requiredTech": "High Elementalism",
+		"requiredResource": "Mana Crystals",
+		"uniques": [
+			"Can move after attacking",
+			"No defensive terrain bonus",
+			"[15] HP when healing",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "tankshot",
+		"civilopediaText": [
+			{
+				"text": "Description: Manticore"
+			}
+		]
+	},
+	{
+		"name": "Leviathan",
+		"faction": "Humanist",
+		"replaces": "Ironclad",
+		"unitType": "WaterMelee",
+		"movement": 5,
+		"strength": 45,
+		"cost": 250,
+		"requiredTech": "Crystallomancy",
+		"requiredResource": "Mana Crystals",
+		"uniques": [
+			"[+1] Sight",
+			"[+15]% Strength <when defending>",
+			"Double movement in [Coast]",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "shipguns",
+		"civilopediaText": [
+			{
+				"text": "Description: Leviathan"
+			}
+		]
+	},
+	{
+		"name": "Griffin",
+		"faction": "Humanist",
+		"replaces": "Airship",
+		"unitType": "Bomber",
+		"movement": 1,
+		"strength": 35,
+		"rangedStrength": 35,
+		"range": 5,
+		"cost": 250,
+		"requiredTech": "Levitation",
+		"requiredResource": "Mana Crystals",
+		"uniques": ["[+10]% Strength <vs [Land] units>"],
+		"attackSound": "bombing",
+		"civilopediaText": [
+			{
+				"text": "Description: Griffin"
+			}
+		]
+	},
+	{
+		"name": "Mithril Golem",
+		"faction": "Humanist",
+		"replaces": "Infantry",
+		"unitType": "Melee",
+		"movement": 2,
+		"strength": 50,
+		"cost": 300,
+		"requiredTech": "Chimerism",
+		"uniques": ["[10] HP when healing"],
+		"attackSound": "shot",
+		"civilopediaText": [
+			{
+				"text": "Description: Mithril Golem"
+			}
+		]
+	},
+	{
+		"name": "Storm Caller",
+		"faction": "Humanist",
+		"replaces": "Bazooka",
+		"unitType": "Ranged",
+		"movement": 2,
+		"strength": 40,
+		"rangedStrength": 50,
+		"range": 2,
+		"cost": 300,
+		"requiredTech": "Chimerism",
+		"uniques": ["Ignores Zone of Control", "[+1] Sight", "[+33]% Strength <vs [Armor] units>"],
+		"attackSound": "machinegun",
+		"civilopediaText": [
+			{
+				"text": "Description: Storm Caller"
+			}
+		]
+	},
+	{
+		"name": "Chimera",
+		"faction": "Humanist",
+		"replaces": "Tank",
+		"unitType": "Armor",
+		"movement": 5,
+		"strength": 70,
+		"cost": 350,
+		"requiredTech": "Chimerism",
+		"requiredResource": "Moonsilver",
+		"uniques": [
+			"Can move after attacking",
+			"No defensive terrain bonus",
+			"[15] HP when healing",
+			"Never appears as a Barbarian unit"
+		],
+		"attackSound": "tankshot",
+		"civilopediaText": [
+			{
+				"text": "Description: Chimera"
+			}
+		]
+	},
+	{
+		"name": "Sea Serpent",
+		"faction": "Humanist",
+		"replaces": "Destroyer",
+		"unitType": "WaterMelee",
+		"movement": 6,
+		"strength": 60,
+		"interceptRange": 2,
+		"cost": 320,
+		"requiredTech": "Dragonology",
+		"requiredResource": "Moonsilver",
+		"uniques": [
+			"[+1] Sight",
+			"[+15]% Strength <when defending>",
+			"Can see invisible [Submarine] units",
+			"[40]% chance to intercept air attacks",
+			"Withdraws before melee combat <with [80]% chance>"
+		],
+		"attackSound": "shipguns",
+		"civilopediaText": [
+			{
+				"text": "Description: Sea Serpent"
+			}
+		]
+	},
+	{
+		"name": "Wyvern",
+		"faction": "Humanist",
+		"replaces": "Fighter",
+		"unitType": "Fighter",
+		"movement": 1,
+		"strength": 45,
+		"rangedStrength": 45,
+		"range": 8,
+		"interceptRange": 8,
+		"cost": 325,
+		"requiredTech": "Great Echo",
+		"requiredResource": "Moonsilver",
+		"uniques": ["[+10]% Strength <vs [Land] units>", "[100]% chance to intercept air attacks"],
+		"attackSound": "machinegun",
+		"civilopediaText": [
+			{
+				"text": "Description: Wyvern"
+			}
+		]
+	},
+	{
+		"name": "Fire Dragon",
+		"faction": "Humanist",
+		"replaces": "Bomber",
+		"unitType": "Bomber",
+		"movement": 1,
+		"strength": 65,
+		"rangedStrength": 65,
+		"range": 10,
+		"cost": 375,
+		"requiredTech": "War Rituals",
+		"requiredResource": "Moonsilver",
+		"uniques": ["[+10]% Strength <vs [Land] units>"],
+		"attackSound": "bombing",
+		"civilopediaText": [
+			{
+				"text": "Description: Fire Dragon"
+			}
+		]
+	},
+	{
+		"name": "Storm Ship",
+		"faction": "Humanist",
+		"replaces": "Dreadnought",
+		"unitType": "WaterRanged",
+		"movement": 5,
+		"strength": 55,
+		"rangedStrength": 60,
+		"range": 3,
+		"cost": 350,
+		"requiredTech": "War Rituals",
+		"requiredResource": "Moonsilver",
+		"uniques": ["[+1] Sight", "[10] HP when healing", "Never appears as a Barbarian unit"],
+		"promotions": ["Indirect Fire"],
+		"attackSound": "shipguns",
+		"civilopediaText": [
+			{
+				"text": "Description: Storm Ship"
+			}
+		]
+	},
+	{
+		"name": "Titan",
+		"faction": "Humanist",
+		"replaces": "Mech Infantry",
+		"unitType": "Melee",
+		"movement": 3,
+		"strength": 70,
+		"cost": 375,
+		"requiredTech": "All-Seeing Eye",
+		"uniques": ["[10] HP when healing", "Never appears as a Barbarian unit"],
+		"attackSound": "tankshot",
+		"civilopediaText": [
+			{
+				"text": "Description: Titan"
+			}
+		]
+	},
+	{
+		"name": "Chronomancer",
+		"faction": "Humanist",
+		"replaces": "Laser Gunner",
+		"unitType": "Ranged",
+		"movement": 2,
+		"strength": 60,
+		"rangedStrength": 70,
+		"range": 2,
+		"cost": 375,
+		"requiredTech": "All-Seeing Eye",
+		"uniques": ["Ignores Zone of Control", "[+1] Sight"],
+		"attackSound": "machinegun",
+		"civilopediaText": [
+			{
+				"text": "Description: Chronomancer"
+			}
+		]
+	},
+	{
+		"name": "Chaos Colossus",
+		"faction": "Humanist",
+		"replaces": "Rocket Artillery",
+		"unitType": "Siege",
+		"movement": 3,
+		"strength": 45,
+		"rangedStrength": 80,
+		"range": 3,
+		"cost": 425,
+		"requiredTech": "Skyforging",
+		"uniques": [
+			"[+75]% Strength <vs cities>",
+			"No defensive terrain bonus",
+			"[-1] Sight",
+			"Never appears as a Barbarian unit",
+			"Ranged attacks may be performed over obstacles"
+		],
+		"promotions": ["Indirect Fire"],
+		"attackSound": "artillery",
+		"civilopediaText": [
+			{
+				"text": "Description: Chaos Colossus"
+			}
+		]
+	},
+	{
+		"name": "Nightmare",
+		"faction": "Humanist",
+		"replaces": "Walker Mech",
+		"unitType": "Armor",
+		"movement": 5,
+		"strength": 90,
+		"cost": 425,
+		"requiredTech": "High Golemancy",
+		"requiredResource": "Dragon Bone",
+		"uniques": [
+			"Can move after attacking",
+			"No defensive terrain bonus",
+			"[15] HP when healing",
+			"Never appears as a Barbarian unit",
+			"Ignores terrain cost"
+		],
+		"attackSound": "tankshot",
+		"civilopediaText": [
+			{
+				"text": "Description: Nightmare"
+			}
+		]
+	},
+	{
+		"name": "Phoenix",
+		"faction": "Humanist",
+		"replaces": "Jet Fighter",
+		"unitType": "Fighter",
+		"movement": 1,
+		"strength": 75,
+		"rangedStrength": 75,
+		"range": 10,
+		"interceptRange": 10,
+		"cost": 400,
+		"requiredTech": "Skyforging",
+		"requiredResource": "Dragon Bone",
+		"uniques": ["[+10]% Strength <vs [Land] units>", "[100]% chance to intercept air attacks"],
+		"attackSound": "jetgun",
+		"civilopediaText": [
+			{
+				"text": "Description: Phoenix"
+			}
+		]
+	},
+	{
+		"name": "Griffin Ark",
+		"faction": "Humanist",
+		"replaces": "Carrier",
+		"unitType": "WaterAircraftCarrier",
+		"movement": 5,
+		"strength": 40,
+		"cost": 375,
+		"requiredTech": "High Golemancy",
+		"uniques": [
+			"[+1] Sight",
+			"[+15]% Strength <when defending>",
+			"Cannot attack",
+			"Can carry [3] [Fighter] units"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Griffin Ark"
+			}
+		]
+	},
+	{
+		"name": "Shadow of the Deep",
+		"faction": "Humanist",
+		"replaces": "Nuclear Submarine",
+		"unitType": "WaterSubmarine",
+		"movement": 6,
+		"strength": 50,
+		"rangedStrength": 80,
+		"range": 3,
+		"cost": 425,
+		"requiredTech": "Forbidden Lore",
+		"requiredResource": "Stardust",
+		"uniques": [
+			"[+1] Sight",
+			"[10] HP when healing",
+			"Can only attack [Water] tiles",
+			"Never appears as a Barbarian unit",
+			"Invisible to others"
+		],
+		"attackSound": "torpedo",
+		"civilopediaText": [
+			{
+				"text": "Description: Shadow of the Deep"
+			}
+		]
+	},
+	{
+		"name": "Armageddon Scroll",
+		"faction": "Humanist",
+		"replaces": "Atomic Bomb",
+		"unitType": "Missile",
+		"movement": 1,
+		"strength": 0,
+		"rangedStrength": 0,
+		"range": 12,
+		"cost": 600,
+		"requiredTech": "Forbidden Lore",
+		"requiredResource": "Stardust",
+		"uniques": ["Nuclear weapon of Strength [1]", "Self-destructs when attacking", "Blast radius [2]"],
+		"promotions": ["Evasion"],
+		"attackSound": "nuke",
+		"civilopediaText": [
+			{
+				"text": "Description: Armageddon Scroll"
+			}
+		]
+	},
+	{
+		"name": "Elemental Avatar",
+		"faction": "Humanist",
+		"replaces": "Exo-Trooper",
+		"unitType": "Melee",
+		"movement": 3,
+		"strength": 95,
+		"cost": 450,
+		"requiredTech": "Planar Magic",
+		"requiredResource": "Titan Blood",
+		"uniques": ["[10] HP when healing", "Never appears as a Barbarian unit", "[+1] Movement"],
+		"attackSound": "tankshot",
+		"civilopediaText": [
+			{
+				"text": "Description: Elemental Avatar"
+			}
+		]
+	},
+	{
+		"name": "Demiurge",
+		"faction": "Humanist",
+		"replaces": "Railgunner",
+		"unitType": "Ranged",
+		"movement": 3,
+		"strength": 80,
+		"rangedStrength": 95,
+		"range": 3,
+		"cost": 450,
+		"requiredTech": "Transmutation",
+		"requiredResource": "Titan Blood",
+		"uniques": ["Ignores Zone of Control", "[+1] Sight"],
+		"attackSound": "machinegun",
+		"civilopediaText": [
+			{
+				"text": "Description: Demiurge"
+			}
+		]
+	},
+	{
+		"name": "Apocalypse Pegasus",
+		"faction": "Humanist",
+		"replaces": "Grav Tank",
+		"unitType": "Armor",
+		"movement": 6,
+		"strength": 120,
+		"cost": 500,
+		"requiredTech": "Transmutation",
+		"requiredResource": "Titan Blood",
+		"uniques": [
+			"Can move after attacking",
+			"No defensive terrain bonus",
+			"[15] HP when healing",
+			"Never appears as a Barbarian unit",
+			"[+20]% Strength <when attacking>"
+		],
+		"attackSound": "gdrAttack",
+		"civilopediaText": [
+			{
+				"text": "Description: Apocalypse Pegasus"
+			}
+		]
+	},
+	{
+		"name": "Fairy Swarm",
+		"faction": "Humanist",
+		"replaces": "Drone Swarm",
+		"unitType": "Bomber",
+		"movement": 2,
+		"strength": 100,
+		"rangedStrength": 100,
+		"range": 10,
+		"cost": 450,
+		"requiredTech": "Planar Magic",
+		"requiredResource": "Titan Blood",
+		"uniques": [
+			"[+10]% Strength <vs [Land] units>",
+			"Damage taken from interception reduced by [100]%",
+			"Cannot be carried by [Carrier] units",
+			"[+4] Sight",
+			"Can see over obstacles"
+		],
+		"promotions": ["Evasion"],
+		"attackSound": "bombing",
+		"civilopediaText": [
+			{
+				"text": "Description: Fairy Swarm"
+			}
+		]
+	},
+	{
+		"name": "Cat Demiurge",
+		"faction": "Humanist",
+		"replaces": "Kota-Mech",
+		"unitType": "Armor",
+		"movement": 4,
+		"strength": 160,
+		"cost": 1200,
+		"requiredTech": "Ascension",
+		"requiredResource": "Stardust",
+		"uniques": [
+			"Can move after attacking",
+			"No defensive terrain bonus",
+			"[15] HP when healing",
+			"Never appears as a Barbarian unit",
+			"Limited to [1] per Civilization",
+			"[+25]% Strength <vs cities>",
+			"[+2] Sight",
+			"Unit will heal every turn, even if it performs an action",
+			"Consumes [1] [Titan Blood]"
+		],
+		"attackSound": "gdrAttack",
+		"civilopediaText": [
+			{
+				"text": "Description: Cat Demiurge"
+			}
+		]
+	},
+	{
+		"name": "Reality Accelerator",
+		"faction": "Technocrat",
+		"unitType": "Civilian",
+		"movement": 2,
+		"cost": 1300,
+		"requiredTech": "Quantum Computing",
+		"requiredResource": "Aluminum",
+		"uniques": [
+			"Spaceship part",
+			"Cannot be purchased",
+			"Only available <if [Interuniverse Shipyard] is constructed>",
+			"Uncapturable",
+			"Can be added to [The Spaceship] in the Capital",
+			"Limited to [3] per Civilization",
+			"Only available <when [Interuniverse Flight] Victory is enabled>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Reality Accelerator"
+			}
+		]
+	},
+	{
+		"name": "Celestial Stair Step",
+		"faction": "Humanist",
+		"unitType": "Civilian",
+		"movement": 2,
+		"cost": 1300,
+		"requiredTech": "Planar Magic",
+		"requiredResource": "Dragon Bone",
+		"uniques": [
+			"Spaceship part",
+			"Cannot be purchased",
+			"Only available <if [Celestial Chancery] is constructed>",
+			"Uncapturable",
+			"Can be added to [The Spaceship] in the Capital",
+			"Limited to [3] per Civilization",
+			"Only available <when [Gates of Paradise] Victory is enabled>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Celestial Stair Step"
+			}
+		]
+	},
+	{
+		"name": "Crew Capsule",
+		"faction": "Technocrat",
+		"unitType": "Civilian",
+		"movement": 2,
+		"cost": 1500,
+		"requiredTech": "Nanotechnology",
+		"requiredResource": "Silicon",
+		"uniques": [
+			"Spaceship part",
+			"Cannot be purchased",
+			"Only available <if [Interuniverse Shipyard] is constructed>",
+			"Uncapturable",
+			"Can be added to [The Spaceship] in the Capital",
+			"Limited to [1] per Civilization",
+			"Only available <when [Interuniverse Flight] Victory is enabled>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Crew Capsule"
+			}
+		]
+	},
+	{
+		"name": "Halo Generator",
+		"faction": "Humanist",
+		"unitType": "Civilian",
+		"movement": 2,
+		"cost": 1500,
+		"requiredTech": "Transmutation",
+		"requiredResource": "Titan Blood",
+		"uniques": [
+			"Spaceship part",
+			"Cannot be purchased",
+			"Only available <if [Celestial Chancery] is constructed>",
+			"Uncapturable",
+			"Can be added to [The Spaceship] in the Capital",
+			"Limited to [1] per Civilization",
+			"Only available <when [Gates of Paradise] Victory is enabled>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Halo Generator"
+			}
+		]
+	},
+	{
+		"name": "Kotakula Engine",
+		"faction": "Technocrat",
+		"unitType": "Civilian",
+		"movement": 2,
+		"cost": 1500,
+		"requiredTech": "Multiverse Theory",
+		"requiredResource": "Uranium",
+		"uniques": [
+			"Spaceship part",
+			"Cannot be purchased",
+			"Only available <if [Interuniverse Shipyard] is constructed>",
+			"Uncapturable",
+			"Can be added to [The Spaceship] in the Capital",
+			"Limited to [1] per Civilization",
+			"Only available <when [Interuniverse Flight] Victory is enabled>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Kotakula Engine"
+			}
+		]
+	},
+	{
+		"name": "Key of the Holy Watchman",
+		"faction": "Humanist",
+		"unitType": "Civilian",
+		"movement": 2,
+		"cost": 1500,
+		"requiredTech": "Ascension",
+		"requiredResource": "Stardust",
+		"uniques": [
+			"Spaceship part",
+			"Cannot be purchased",
+			"Only available <if [Celestial Chancery] is constructed>",
+			"Uncapturable",
+			"Can be added to [The Spaceship] in the Capital",
+			"Limited to [1] per Civilization",
+			"Only available <when [Gates of Paradise] Victory is enabled>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Key of the Holy Watchman"
+			}
+		]
+	},
+	{
+		"name": "Cat Cryochamber",
+		"faction": "Technocrat",
+		"unitType": "Civilian",
+		"movement": 2,
+		"cost": 1500,
+		"requiredTech": "Multiverse Theory",
+		"requiredResource": "Silicon",
+		"uniques": [
+			"Spaceship part",
+			"Cannot be purchased",
+			"Only available <if [Interuniverse Shipyard] is constructed>",
+			"Uncapturable",
+			"Can be added to [The Spaceship] in the Capital",
+			"Limited to [1] per Civilization",
+			"Only available <when [Interuniverse Flight] Victory is enabled>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Cat Cryochamber"
+			}
+		]
+	},
+	{
+		"name": "Ark of the Righteous",
+		"faction": "Humanist",
+		"unitType": "Civilian",
+		"movement": 2,
+		"cost": 1500,
+		"requiredTech": "Ascension",
+		"requiredResource": "Titan Blood",
+		"uniques": [
+			"Spaceship part",
+			"Cannot be purchased",
+			"Only available <if [Celestial Chancery] is constructed>",
+			"Uncapturable",
+			"Can be added to [The Spaceship] in the Capital",
+			"Limited to [1] per Civilization",
+			"Only available <when [Gates of Paradise] Victory is enabled>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Ark of the Righteous"
+			}
+		]
+	},
+	{
+		"name": "Great Artist",
+		"unitType": "Civilian",
+		"uniques": [
+			"Empire enters a [8]-turn Golden Age <by consuming this unit>",
+			"Can instantly construct a [Landmark] improvement <by consuming this unit>",
+			"Is part of Great Person group [Great Person]",
+			"[This Unit] gets a name from the [Artist] group",
+			"Great Person - [Culture]",
+			"Unbuildable",
+			"Uncapturable"
+		],
+		"movement": 2
+	},
+	{
+		"name": "Great Scientist",
+		"unitType": "Civilian",
+		"uniques": [
+			"Can hurry technology research",
+			"Can instantly construct a [Academy] improvement <by consuming this unit>",
+			"Is part of Great Person group [Great Person]",
+			"[This Unit] gets a name from the [Scientist] group",
+			"Great Person - [Science]",
+			"Unbuildable",
+			"Uncapturable"
+		],
+		"movement": 2
+	},
+	{
+		"name": "Great Merchant",
+		"unitType": "Civilian",
+		"uniques": [
+			"Can undertake a trade mission with City-State, giving a large sum of gold and [30] Influence",
+			"Can instantly construct a [Customs house] improvement <by consuming this unit>",
+			"Is part of Great Person group [Great Person]",
+			"[This Unit] gets a name from the [Merchant] group",
+			"Great Person - [Gold]",
+			"Unbuildable",
+			"Uncapturable"
+		],
+		"movement": 2
+	},
+	{
+		"name": "Great Engineer",
+		"unitType": "Civilian",
+		"uniques": [
+			"Can speed up construction of a building",
+			"Can instantly construct a [Manufactory] improvement <by consuming this unit>",
+			"Is part of Great Person group [Great Person]",
+			"[This Unit] gets a name from the [Engineer] group",
+			"Great Person - [Production]",
+			"Unbuildable",
+			"Uncapturable"
+		],
+		"movement": 2
+	},
+	{
+		"name": "Great Prophet",
+		"unitType": "Civilian",
+		"uniques": [
+			"Can instantly construct a [Holy site] improvement <by consuming this unit> <if it hasn't used other actions yet>",
+			"Can Spread Religion <for [2] movement> <[4] times> <after which this unit is consumed>",
+			"Removes other religions when spreading religion",
+			"May found a religion <by consuming this unit> <if it hasn't used other actions yet>",
+			"May enhance a religion <by consuming this unit>  <if it hasn't used other actions yet>",
+			"Is part of Great Person group [Prophet]",
+			"[This Unit] gets a name from the [Prophet] group",
+			"May enter foreign tiles without open borders",
+			"[-1] Sight",
+			"Great Person - [Faith]",
+			"Unbuildable",
+			"Religious Unit",
+			"Only available <when religion is enabled>",
+			"Takes your religion over the one in their birth city"
+		],
+		"movement": 2,
+		"religiousStrength": 1000
+	},
+	{
+		"name": "Great General",
+		"unitType": "Civilian",
+		"uniques": [
+			"[+15]% Strength bonus for [{Military} {Land}] units within [2] tiles",
+			"Can instantly construct a [Citadel] improvement <by consuming this unit>",
+			"Can be earned through combat <for [Land] units>",
+			"Is part of Great Person group [General]",
+			"[This Unit] gets a name from the [General] group",
+			"Great Person - [War]",
+			"Unbuildable",
+			"Uncapturable"
+		],
+		"movement": 2
+	},
+	{
+		"name": "Great Admiral",
+		"unitType": "Civilian Water",
+		"uniques": [
+			"May Paradrop to [{your} {Coastal} {City center}] tiles up to [25] tiles away <in [City center] tiles>",
+			"[+15]% Strength bonus for [{Military} {Water}] units within [2] tiles",
+			"Can be earned through combat <for [Water] units>",
+			"Is part of Great Person group [Admiral]",
+			"[This Unit] gets a name from the [Admiral] group",
+			"Great Person - [War]",
+			"Unbuildable",
+			"Uncapturable"
+		],
+		"movement": 4
+	},
+	{
+		"name": "Missionary",
+		"unitType": "Civilian",
+		"uniques": [
+			"Can Spread Religion <for [4] movement> <[2] times> <after which this unit is consumed>",
+			"May enter foreign tiles without open borders, but loses [250] religious strength each turn it ends there",
+			"Can be purchased with [Faith] [in all cities in which the majority religion is a major religion]",
+			"[-1] Sight",
+			"Unbuildable",
+			"Religious Unit",
+			"Only available <when religion is enabled>"
+		],
+		"movement": 4,
+		"religiousStrength": 1000
+	},
+	{
+		"name": "Inquisitor",
+		"unitType": "Civilian",
+		"uniques": [
+			"Prevents spreading of religion to the city it is next to",
+			"Can remove other religions from cities <in [Friendly] tiles> <once> <after which this unit is consumed>",
+			"Can be purchased with [Faith] [in all cities in which the majority religion is a major religion]",
+			"[+1] Sight",
+			"Only available <when religion is enabled>",
+			"Unbuildable",
+			"Religious Unit"
+		],
+		"movement": 3
+	}
+]

@@ -1,0 +1,62 @@
+[
+	{
+		"name": "Domination",
+		"victoryScreenHeader": "Capture all enemy Capitals to win!",
+		"milestones": ["Capture all capitals"],
+		"victoryString": "The world has been convulsed by war. Many great and powerful civilizations have fallen, but you have survived - and emerged victorious! The world will long remember your glorious triumph!",
+		"defeatString": "You have been defeated. Your civilization has been overwhelmed by its many foes. But your people do not despair, for they know that one day you shall return - and lead them forward to victory!"
+	},
+	{
+		"name": "Cultural",
+		"victoryScreenHeader": "Build the culture project of your faction after 5 policy branches to win!",
+		"milestones": ["Complete [5] Policy branches", "Build [Eternal Teambuilding]"],
+		"victoryString": "Cultural: victory",
+		"defeatString": "You have been defeated. Your civilization has been overwhelmed by its many foes. But your people do not despair, for they know that one day you shall return - and lead them forward to victory!"
+	},
+	{
+		"name": "Interuniverse Flight",
+		"faction": "Technocrat",
+		"victoryScreenHeader": "Build the Interuniverse Shipyard and deliver all parts to the capital!",
+		"milestones": ["Build [Interuniverse Shipyard]", "Add all [spaceship parts] in capital"],
+		"requiredSpaceshipParts": [
+			"Reality Accelerator",
+			"Reality Accelerator",
+			"Reality Accelerator",
+			"Crew Capsule",
+			"Kotakula Engine",
+			"Cat Cryochamber"
+		],
+		"victoryString": "Interuniverse Flight: victory",
+		"defeatString": "Interuniverse Flight: defeat"
+	},
+	{
+		"name": "Gates of Paradise",
+		"faction": "Humanist",
+		"victoryScreenHeader": "Build the Celestial Chancery and deliver all relics to the capital!",
+		"milestones": ["Build [Celestial Chancery]", "Add all [spaceship parts] in capital"],
+		"requiredSpaceshipParts": [
+			"Celestial Stair Step",
+			"Celestial Stair Step",
+			"Celestial Stair Step",
+			"Halo Generator",
+			"Key of the Holy Watchman",
+			"Ark of the Righteous"
+		],
+		"victoryString": "Gates of Paradise: victory",
+		"defeatString": "Gates of Paradise: defeat"
+	},
+	{
+		"name": "Time",
+		"hiddenInVictoryScreen": true,
+		"milestones": ["Have highest score after max turns"],
+		"victoryString": "The world has been convulsed by war. Many great and powerful civilizations have fallen, but you have survived - and emerged victorious! The world will long remember your glorious triumph!",
+		"defeatString": "You have been defeated. Your civilization has been overwhelmed by its many foes. But your people do not despair, for they know that one day you shall return - and lead them forward to victory!"
+	},
+	{
+		"name": "Faction Victory",
+		"victoryScreenHeader": "Leave no civilization of the other faction alive!",
+		"milestones": ["KM: Destroy all civilizations of the opposing faction"],
+		"victoryString": "Faction Victory: victory",
+		"defeatString": "Faction Victory: defeat"
+	}
+]

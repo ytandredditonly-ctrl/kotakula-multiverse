@@ -1,0 +1,1248 @@
+[
+	{
+		"name": "Palace",
+		"isNationalWonder": true,
+		"production": 3,
+		"science": 3,
+		"gold": 3,
+		"culture": 1,
+		"cityStrength": 2.5,
+		"cost": 0,
+		"uniques": ["Indicates the capital city"]
+	},
+	{
+		"name": "Monument",
+		"culture": 2,
+		"cost": 40,
+		"hurryCostModifier": 40,
+		"maintenance": 1,
+		"uniques": ["Destroyed when the city is captured"]
+	},
+	{
+		"name": "Granary",
+		"food": 2,
+		"maintenance": 1,
+		"hurryCostModifier": 25,
+		"uniques": [
+			"[+1 Food] from [Deer] tiles [in this city]",
+			"[+1 Food] from [Bananas] tiles [in this city]",
+			"[+1 Food] from [Wheat] tiles [in this city]"
+		],
+		"requiredTech": "Pottery",
+		"cost": 60
+	},
+	{
+		"name": "Shrine",
+		"faith": 2,
+		"cost": 40,
+		"maintenance": 1,
+		"requiredTech": "Pottery",
+		"uniques": ["Only available <when religion is enabled>"]
+	},
+	{
+		"name": "Library",
+		"hurryCostModifier": 25,
+		"maintenance": 1,
+		"uniques": ["[+1 Science] per [2] population [in this city]"],
+		"requiredTech": "Writing",
+		"cost": 75
+	},
+	{
+		"name": "Apprentice Tower",
+		"hurryCostModifier": 25,
+		"maintenance": 1,
+		"uniques": ["[+1 Science] per [2] population [in this city]"],
+		"requiredTech": "Writing",
+		"cost": 75,
+		"faction": "Humanist",
+		"replaces": "Library"
+	},
+	{
+		"name": "Walls",
+		"cityStrength": 5,
+		"cityHealth": 50,
+		"hurryCostModifier": 25,
+		"requiredTech": "Masonry",
+		"uniques": ["Destroyed when the city is captured"],
+		"cost": 75
+	},
+	{
+		"name": "Barracks",
+		"hurryCostModifier": 25,
+		"maintenance": 1,
+		"uniques": ["New [Military] units start with [15] XP [in this city]", "Destroyed when the city is captured"],
+		"requiredTech": "Bronze Working",
+		"cost": 75
+	},
+	{
+		"name": "Lighthouse",
+		"cost": 75,
+		"hurryCostModifier": 25,
+		"maintenance": 1,
+		"uniques": [
+			"Must be next to [Coast]",
+			"[+1 Food] from [Ocean] tiles [in this city]",
+			"[+1 Food] from [Coast] tiles [in this city]",
+			"[+1 Food] from [Fish] tiles [in this city]"
+		],
+		"requiredTech": "Sailing"
+	},
+	{
+		"name": "Stable",
+		"maintenance": 1,
+		"requiredNearbyImprovedResources": ["Horses", "Sheep", "Cattle"],
+		"hurryCostModifier": 25,
+		"uniques": [
+			"[+15]% Production when constructing [Mounted] units [in this city]",
+			"[+1 Production] from [Cattle] tiles [in this city]",
+			"[+1 Production] from [Horses] tiles [in this city]",
+			"[+1 Production] from [Sheep] tiles [in this city]"
+		],
+		"requiredTech": "Horseback Riding",
+		"cost": 100
+	},
+	{
+		"name": "Circus",
+		"requiredNearbyImprovedResources": ["Ivory", "Horses"],
+		"happiness": 2,
+		"hurryCostModifier": 25,
+		"requiredTech": "Animal Husbandry",
+		"cost": 75,
+		"maintenance": 1
+	},
+	{
+		"name": "Water Mill",
+		"maintenance": 1,
+		"food": 2,
+		"production": 1,
+		"hurryCostModifier": 25,
+		"uniques": ["Must be on [River]"],
+		"requiredTech": "The Wheel",
+		"cost": 75
+	},
+	{
+		"name": "Stonehenge",
+		"faith": 6,
+		"isWonder": true,
+		"greatPersonPoints": {
+			"Great Engineer": 1
+		},
+		"requiredTech": "Pottery",
+		"quote": "'Time crumbles things; everything grows old and is forgotten under the power of time' - Aristotle",
+		"cost": 185
+	},
+	{
+		"name": "Temple of Artemis",
+		"culture": 1,
+		"isWonder": true,
+		"greatPersonPoints": {
+			"Great Engineer": 1
+		},
+		"uniques": [
+			"[+10]% [Food] [in all cities]",
+			"[+15]% Production when constructing [Archery] units [in this city]",
+			"[+15]% Production when constructing [Ranged Gunpowder] units [in this city]"
+		],
+		"requiredTech": "Archery",
+		"quote": "'It is not so much for its beauty that the forest makes a claim upon men's hearts, as for that subtle something, that quality of air, that emanation from old trees, that so wonderfully changes and renews a weary spirit.' - Robert Louis Stevenson",
+		"cost": 185
+	},
+	{
+		"name": "Great Lighthouse",
+		"cost": 185,
+		"culture": 1,
+		"greatPersonPoints": {
+			"Great Merchant": 1
+		},
+		"isWonder": true,
+		"uniques": [
+			"Must be next to [Coast]",
+			"[+1] Movement <for [{Military} {Water}] units>",
+			"[+1] Sight <for [{Military} {Water}] units>",
+			"Gain a free [Lighthouse] [in this city]"
+		],
+		"requiredTech": "Sailing",
+		"quote": "'They that go down to the sea in ships, that do business in great waters; these see the works of the Lord, and his wonders in the deep.' - The Bible, Psalms 107:23-24"
+	},
+	{
+		"name": "Great Library",
+		"science": 3,
+		"culture": 1,
+		"greatPersonPoints": {
+			"Great Scientist": 1
+		},
+		"isWonder": true,
+		"requiredTech": "Writing",
+		"uniques": ["Free Technology", "Gain a free [Library] [in this city]"],
+		"quote": "'Libraries are as the shrine where all the relics of the ancient saints, full of true virtue, and all that without delusion or imposture are preserved and reposed.' - Sir Francis Bacon",
+		"cost": 185
+	},
+	{
+		"name": "Pyramids",
+		"culture": 1,
+		"greatPersonPoints": {
+			"Great Engineer": 1
+		},
+		"isWonder": true,
+		"uniques": ["Can build [all] improvements at a [+25]% rate", "[2] free [Worker] units appear"],
+		"requiredTech": "Masonry",
+		"quote": "'O, let not the pains of death which come upon thee enter into my body. I am the god Tem, and I am the foremost part of the sky, and the power which protecteth me is that which is with all the gods forever.' - The Book of the Dead, translated by Sir Ernest Alfred Wallis Budge",
+		"cost": 185
+	},
+	{
+		"name": "Colossus",
+		"cost": 185,
+		"culture": 1,
+		"gold": 5,
+		"greatPersonPoints": {
+			"Great Merchant": 1
+		},
+		"isWonder": true,
+		"uniques": ["Must be next to [Coast]", "[+1 Gold] from [Water] tiles [in this city]"],
+		"requiredTech": "Bronze Working",
+		"quote": "'Why man, he doth bestride the narrow world like a colossus, and we petty men walk under his huge legs, and peep about to find ourselves dishonorable graves.' - William Shakespeare, Julius Caesar"
+	},
+	{
+		"name": "Workshop",
+		"faction": "Technocrat",
+		"cost": 100,
+		"maintenance": 2,
+		"requiredTech": "Mechanics",
+		"uniques": ["[+2 Production]", "[+10]% [Production] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Workshop"
+			}
+		]
+	},
+	{
+		"name": "Alchemy Workshop",
+		"faction": "Humanist",
+		"replaces": "Workshop",
+		"cost": 100,
+		"maintenance": 2,
+		"requiredTech": "Herbalism",
+		"uniques": ["[+2 Production]", "[+10]% [Production] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Alchemy Workshop"
+			}
+		]
+	},
+	{
+		"name": "Market",
+		"faction": "Technocrat",
+		"cost": 100,
+		"requiredTech": "Accounting",
+		"uniques": ["[+2 Gold]", "[+25]% [Gold] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Market"
+			}
+		]
+	},
+	{
+		"name": "Potion Fair",
+		"faction": "Humanist",
+		"replaces": "Market",
+		"cost": 100,
+		"requiredTech": "Rituals",
+		"uniques": ["[+2 Gold]", "[+25]% [Gold] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Potion Fair"
+			}
+		]
+	},
+	{
+		"name": "Aqueduct",
+		"faction": "Technocrat",
+		"cost": 100,
+		"maintenance": 1,
+		"requiredTech": "Engineering",
+		"uniques": ["[40]% Food is carried over after population increases [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Aqueduct"
+			}
+		]
+	},
+	{
+		"name": "Fountain of Life",
+		"faction": "Humanist",
+		"replaces": "Aqueduct",
+		"cost": 100,
+		"maintenance": 1,
+		"requiredTech": "Hydromancy",
+		"uniques": ["[40]% Food is carried over after population increases [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Fountain of Life"
+			}
+		]
+	},
+	{
+		"name": "Arena",
+		"faction": "Technocrat",
+		"cost": 100,
+		"maintenance": 1,
+		"requiredTech": "Engineering",
+		"uniques": ["[+3 Happiness]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Arena"
+			}
+		]
+	},
+	{
+		"name": "Sorcerer Arena",
+		"faction": "Humanist",
+		"replaces": "Arena",
+		"cost": 100,
+		"maintenance": 1,
+		"requiredTech": "Hydromancy",
+		"uniques": ["[+3 Happiness]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Sorcerer Arena"
+			}
+		]
+	},
+	{
+		"name": "Harbor",
+		"faction": "Technocrat",
+		"cost": 100,
+		"maintenance": 2,
+		"requiredTech": "Shipbuilding",
+		"uniques": [
+			"Must be next to [Coast]",
+			"[+1 Production] from [Water] tiles [in this city]",
+			"Connects trade routes over water"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Harbor"
+			}
+		]
+	},
+	{
+		"name": "Mermaid Harbor",
+		"faction": "Humanist",
+		"replaces": "Harbor",
+		"cost": 100,
+		"maintenance": 2,
+		"requiredTech": "Sea Charms",
+		"uniques": [
+			"Must be next to [Coast]",
+			"[+1 Production] from [Water] tiles [in this city]",
+			"Connects trade routes over water"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Mermaid Harbor"
+			}
+		]
+	},
+	{
+		"name": "Forge",
+		"faction": "Technocrat",
+		"cost": 120,
+		"maintenance": 1,
+		"requiredTech": "Metallurgy",
+		"uniques": ["[+15]% Production when constructing [Land] units [in this city]", "[+1 Production]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Forge"
+			}
+		]
+	},
+	{
+		"name": "Rune Forge",
+		"faction": "Humanist",
+		"replaces": "Forge",
+		"cost": 120,
+		"maintenance": 1,
+		"requiredTech": "Rune Carving",
+		"uniques": ["[+15]% Production when constructing [Land] units [in this city]", "[+1 Production]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Rune Forge"
+			}
+		]
+	},
+	{
+		"name": "Bastion",
+		"faction": "Technocrat",
+		"cost": 120,
+		"requiredTech": "Clockwork",
+		"requiredBuilding": "Walls",
+		"cityStrength": 7,
+		"cityHealth": 25,
+		"civilopediaText": [
+			{
+				"text": "Description: Bastion"
+			}
+		]
+	},
+	{
+		"name": "Rune Wall",
+		"faction": "Humanist",
+		"replaces": "Bastion",
+		"cost": 120,
+		"requiredTech": "Alchemy",
+		"requiredBuilding": "Walls",
+		"cityStrength": 7,
+		"cityHealth": 25,
+		"civilopediaText": [
+			{
+				"text": "Description: Rune Wall"
+			}
+		]
+	},
+	{
+		"name": "Bank",
+		"faction": "Technocrat",
+		"cost": 120,
+		"requiredTech": "Banking",
+		"requiredBuilding": "Market",
+		"uniques": ["[+2 Gold]", "[+25]% [Gold] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Bank"
+			}
+		]
+	},
+	{
+		"name": "Goblin Vault",
+		"faction": "Humanist",
+		"replaces": "Bank",
+		"cost": 120,
+		"requiredTech": "Coin Magic",
+		"requiredBuilding": "Market",
+		"uniques": ["[+2 Gold]", "[+25]% [Gold] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Goblin Vault"
+			}
+		]
+	},
+	{
+		"name": "University",
+		"faction": "Technocrat",
+		"cost": 160,
+		"maintenance": 2,
+		"requiredTech": "Printing Press",
+		"requiredBuilding": "Library",
+		"uniques": [
+			"[+2 Science]",
+			"[+33]% [Science] [in this city]",
+			"[+2 Science] from [Jungle] tiles [in this city]"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: University"
+			}
+		]
+	},
+	{
+		"name": "Academy of Sorcery",
+		"faction": "Humanist",
+		"replaces": "University",
+		"cost": 160,
+		"maintenance": 2,
+		"requiredTech": "Arcane Scripts",
+		"requiredBuilding": "Library",
+		"uniques": [
+			"[+2 Science]",
+			"[+33]% [Science] [in this city]",
+			"[+2 Science] from [Jungle] tiles [in this city]"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Academy of Sorcery"
+			}
+		]
+	},
+	{
+		"name": "Standup Theater",
+		"faction": "Technocrat",
+		"cost": 160,
+		"maintenance": 2,
+		"requiredTech": "Printing Press",
+		"uniques": ["[+3 Happiness]", "[+2 Culture]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Standup Theater"
+			}
+		]
+	},
+	{
+		"name": "Bards Booth",
+		"faction": "Humanist",
+		"replaces": "Standup Theater",
+		"cost": 160,
+		"maintenance": 2,
+		"requiredTech": "Arcane Scripts",
+		"uniques": ["[+3 Happiness]", "[+2 Culture]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Bards Booth"
+			}
+		]
+	},
+	{
+		"name": "Business Center",
+		"faction": "Technocrat",
+		"cost": 160,
+		"maintenance": 2,
+		"requiredTech": "Corporate Law",
+		"requiredBuilding": "Shrine",
+		"uniques": ["[+4 Faith]", "[+1 Happiness]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Business Center"
+			}
+		]
+	},
+	{
+		"name": "Temple of Light",
+		"faction": "Humanist",
+		"replaces": "Business Center",
+		"cost": 160,
+		"maintenance": 2,
+		"requiredTech": "Liturgy",
+		"requiredBuilding": "Shrine",
+		"uniques": ["[+4 Faith]", "[+1 Happiness]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Temple of Light"
+			}
+		]
+	},
+	{
+		"name": "Intelligence Department",
+		"faction": "Technocrat",
+		"cost": 200,
+		"maintenance": 2,
+		"requiredTech": "Industrial Espionage",
+		"uniques": [
+			"Only available <in [Capital] cities>",
+			"Limited to [1] per Civilization",
+			"[+2 Science]",
+			"KM: Reveals [+10]% opposing faction military units"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Intelligence Department"
+			}
+		]
+	},
+	{
+		"name": "Crystal Ball",
+		"faction": "Humanist",
+		"replaces": "Intelligence Department",
+		"cost": 200,
+		"maintenance": 2,
+		"requiredTech": "Clairvoyance",
+		"uniques": [
+			"Only available <in [Capital] cities>",
+			"Limited to [1] per Civilization",
+			"[+2 Science]",
+			"KM: Reveals [+10]% opposing faction military units"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Crystal Ball"
+			}
+		]
+	},
+	{
+		"name": "Observatory",
+		"faction": "Technocrat",
+		"cost": 200,
+		"maintenance": 1,
+		"requiredTech": "Astronomy",
+		"uniques": ["Must be next to [Mountain]", "[+50]% [Science] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Observatory"
+			}
+		]
+	},
+	{
+		"name": "Star Tower",
+		"faction": "Humanist",
+		"replaces": "Observatory",
+		"cost": 200,
+		"maintenance": 1,
+		"requiredTech": "Astrology",
+		"uniques": ["Must be next to [Mountain]", "[+50]% [Science] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Star Tower"
+			}
+		]
+	},
+	{
+		"name": "Factory",
+		"faction": "Technocrat",
+		"cost": 300,
+		"maintenance": 3,
+		"requiredTech": "Steam Engine",
+		"requiredBuilding": "Workshop",
+		"uniques": ["[+4 Production]", "[+25]% [Production] [in this city]", "Consumes [1] [Coal]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Factory"
+			}
+		]
+	},
+	{
+		"name": "Golem Workshop",
+		"faction": "Humanist",
+		"replaces": "Factory",
+		"cost": 300,
+		"maintenance": 3,
+		"requiredTech": "Crystallomancy",
+		"requiredBuilding": "Workshop",
+		"uniques": ["[+4 Production]", "[+25]% [Production] [in this city]", "Consumes [1] [Mana Crystals]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Golem Workshop"
+			}
+		]
+	},
+	{
+		"name": "Public School",
+		"faction": "Technocrat",
+		"cost": 300,
+		"maintenance": 3,
+		"requiredTech": "Scientific Management",
+		"requiredBuilding": "University",
+		"uniques": ["[+3 Science]", "[+1 Science] per [2] population [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Public School"
+			}
+		]
+	},
+	{
+		"name": "School of Wizardry",
+		"faction": "Humanist",
+		"replaces": "Public School",
+		"cost": 300,
+		"maintenance": 3,
+		"requiredTech": "Magic Scholasticism",
+		"requiredBuilding": "University",
+		"uniques": ["[+3 Science]", "[+1 Science] per [2] population [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: School of Wizardry"
+			}
+		]
+	},
+	{
+		"name": "Stock Exchange",
+		"faction": "Technocrat",
+		"cost": 300,
+		"requiredTech": "Scientific Management",
+		"requiredBuilding": "Bank",
+		"uniques": ["[+3 Gold]", "[+25]% [Gold] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Stock Exchange"
+			}
+		]
+	},
+	{
+		"name": "Alchemists Guild",
+		"faction": "Humanist",
+		"replaces": "Stock Exchange",
+		"cost": 300,
+		"requiredTech": "Magic Scholasticism",
+		"requiredBuilding": "Bank",
+		"uniques": ["[+3 Gold]", "[+25]% [Gold] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Alchemists Guild"
+			}
+		]
+	},
+	{
+		"name": "Hospital",
+		"faction": "Technocrat",
+		"cost": 360,
+		"maintenance": 2,
+		"requiredTech": "Aeronautics",
+		"requiredBuilding": "Aqueduct",
+		"uniques": ["[+5 Food]", "[+1 Happiness]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Hospital"
+			}
+		]
+	},
+	{
+		"name": "Healing Spring",
+		"faction": "Humanist",
+		"replaces": "Hospital",
+		"cost": 360,
+		"maintenance": 2,
+		"requiredTech": "Levitation",
+		"requiredBuilding": "Aqueduct",
+		"uniques": ["[+5 Food]", "[+1 Happiness]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Healing Spring"
+			}
+		]
+	},
+	{
+		"name": "Power Plant",
+		"faction": "Technocrat",
+		"cost": 450,
+		"maintenance": 3,
+		"requiredTech": "Electricity",
+		"requiredBuilding": "Factory",
+		"uniques": ["[+25]% [Production] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Power Plant"
+			}
+		]
+	},
+	{
+		"name": "Mana Well",
+		"faction": "Humanist",
+		"replaces": "Power Plant",
+		"cost": 450,
+		"maintenance": 3,
+		"requiredTech": "Dragonology",
+		"requiredBuilding": "Factory",
+		"uniques": ["[+25]% [Production] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Mana Well"
+			}
+		]
+	},
+	{
+		"name": "Broadcast Tower",
+		"faction": "Technocrat",
+		"cost": 450,
+		"maintenance": 3,
+		"requiredTech": "Radio",
+		"uniques": ["[+3 Culture]", "[+33]% [Culture] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Broadcast Tower"
+			}
+		]
+	},
+	{
+		"name": "Bards Tower",
+		"faction": "Humanist",
+		"replaces": "Broadcast Tower",
+		"cost": 450,
+		"maintenance": 3,
+		"requiredTech": "Great Echo",
+		"uniques": ["[+3 Culture]", "[+33]% [Culture] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Bards Tower"
+			}
+		]
+	},
+	{
+		"name": "Cinema",
+		"faction": "Technocrat",
+		"cost": 450,
+		"maintenance": 3,
+		"requiredTech": "Radio",
+		"uniques": ["[+4 Happiness]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Cinema"
+			}
+		]
+	},
+	{
+		"name": "Theater of Illusions",
+		"faction": "Humanist",
+		"replaces": "Cinema",
+		"cost": 450,
+		"maintenance": 3,
+		"requiredTech": "Great Echo",
+		"uniques": ["[+4 Happiness]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Theater of Illusions"
+			}
+		]
+	},
+	{
+		"name": "Research Institute",
+		"faction": "Technocrat",
+		"cost": 500,
+		"maintenance": 3,
+		"requiredTech": "Atomic Theory",
+		"requiredBuilding": "Public School",
+		"uniques": ["[+4 Science]", "[+50]% [Science] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Research Institute"
+			}
+		]
+	},
+	{
+		"name": "Chaos Lab",
+		"faction": "Humanist",
+		"replaces": "Research Institute",
+		"cost": 500,
+		"maintenance": 3,
+		"requiredTech": "Astral Magic",
+		"requiredBuilding": "Public School",
+		"uniques": ["[+4 Science]", "[+50]% [Science] [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Chaos Lab"
+			}
+		]
+	},
+	{
+		"name": "Military Base",
+		"faction": "Technocrat",
+		"cost": 500,
+		"maintenance": 2,
+		"requiredTech": "Combined Arms",
+		"requiredBuilding": "Bastion",
+		"cityStrength": 12,
+		"cityHealth": 25,
+		"civilopediaText": [
+			{
+				"text": "Description: Military Base"
+			}
+		]
+	},
+	{
+		"name": "Mage Citadel",
+		"faction": "Humanist",
+		"replaces": "Military Base",
+		"cost": 500,
+		"maintenance": 2,
+		"requiredTech": "War Rituals",
+		"requiredBuilding": "Bastion",
+		"cityStrength": 12,
+		"cityHealth": 25,
+		"civilopediaText": [
+			{
+				"text": "Description: Mage Citadel"
+			}
+		]
+	},
+	{
+		"name": "Data Center",
+		"faction": "Technocrat",
+		"cost": 600,
+		"maintenance": 3,
+		"requiredTech": "Microelectronics",
+		"requiredBuilding": "Research Institute",
+		"uniques": ["[+3 Science]", "[+3 Faith]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Data Center"
+			}
+		]
+	},
+	{
+		"name": "Necromancy Hall",
+		"faction": "Humanist",
+		"replaces": "Data Center",
+		"cost": 600,
+		"maintenance": 3,
+		"requiredTech": "Flesh Magic",
+		"requiredBuilding": "Research Institute",
+		"uniques": ["[+3 Science]", "[+3 Faith]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Necromancy Hall"
+			}
+		]
+	},
+	{
+		"name": "Nuclear Plant",
+		"faction": "Technocrat",
+		"cost": 600,
+		"maintenance": 3,
+		"requiredTech": "Nuclear Fission",
+		"requiredBuilding": "Factory",
+		"uniques": [
+			"[+35]% [Production] [in this city]",
+			"Consumes [1] [Uranium]",
+			"Only available <in cities without a [Power Plant]>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Nuclear Plant"
+			}
+		]
+	},
+	{
+		"name": "Star Sanctum",
+		"faction": "Humanist",
+		"replaces": "Nuclear Plant",
+		"cost": 600,
+		"maintenance": 3,
+		"requiredTech": "Forbidden Lore",
+		"requiredBuilding": "Factory",
+		"uniques": [
+			"[+35]% [Production] [in this city]",
+			"Consumes [1] [Stardust]",
+			"Only available <in cities without a [Power Plant]>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Star Sanctum"
+			}
+		]
+	},
+	{
+		"name": "Multiverse Component Plant",
+		"faction": "Technocrat",
+		"cost": 700,
+		"maintenance": 3,
+		"requiredTech": "Quantum Computing",
+		"requiredBuilding": "Factory",
+		"uniques": ["[+50]% Production when constructing [Spaceship part] units [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Multiverse Component Plant"
+			}
+		]
+	},
+	{
+		"name": "Relic Forge",
+		"faction": "Humanist",
+		"replaces": "Multiverse Component Plant",
+		"cost": 700,
+		"maintenance": 3,
+		"requiredTech": "Planar Magic",
+		"requiredBuilding": "Factory",
+		"uniques": ["[+50]% Production when constructing [Spaceship part] units [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Relic Forge"
+			}
+		]
+	},
+	{
+		"name": "Interuniverse Shipyard",
+		"faction": "Technocrat",
+		"cost": 1250,
+		"requiredTech": "Quantum Computing",
+		"isNationalWonder": true,
+		"uniques": [
+			"Enables construction of Spaceship parts",
+			"Limited to [1] per Civilization",
+			"Triggers a global alert upon completion",
+			"Cannot be hurried",
+			"Only available <when [Interuniverse Flight] Victory is enabled>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Interuniverse Shipyard"
+			}
+		]
+	},
+	{
+		"name": "Celestial Chancery",
+		"faction": "Humanist",
+		"replaces": "Interuniverse Shipyard",
+		"cost": 1250,
+		"requiredTech": "Planar Magic",
+		"isNationalWonder": true,
+		"uniques": [
+			"Enables construction of Spaceship parts",
+			"Limited to [1] per Civilization",
+			"Triggers a global alert upon completion",
+			"Cannot be hurried",
+			"Only available <when [Gates of Paradise] Victory is enabled>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Celestial Chancery"
+			}
+		]
+	},
+	{
+		"name": "First Calculator",
+		"faction": "Technocrat",
+		"isWonder": true,
+		"cost": 250,
+		"requiredTech": "Mathematics",
+		"uniques": ["Free [Great Scientist] appears", "[+25]% [Science] [in this city]"],
+		"quote": "Quote: First Calculator"
+	},
+	{
+		"name": "Crystal Sphere",
+		"faction": "Humanist",
+		"isWonder": true,
+		"cost": 250,
+		"requiredTech": "Numerology",
+		"uniques": ["Free [Great Scientist] appears", "[+1 Science] from every [Library]"],
+		"quote": "Quote: Crystal Sphere"
+	},
+	{
+		"name": "Great Firewall",
+		"faction": "Technocrat",
+		"isWonder": true,
+		"cost": 250,
+		"requiredTech": "Engineering",
+		"uniques": [
+			"Enemy [Land] units must spend [1] extra movement points when inside your territory",
+			"Obsolete with [Steam Engine]",
+			"[+2 Culture]"
+		],
+		"quote": "Quote: Great Firewall"
+	},
+	{
+		"name": "Wall of Thorns",
+		"faction": "Humanist",
+		"isWonder": true,
+		"cost": 250,
+		"requiredTech": "Hydromancy",
+		"uniques": [
+			"Enemy [Land] units must spend [1] extra movement points when inside your territory",
+			"Obsolete with [Crystallomancy]",
+			"[+2 Faith]"
+		],
+		"quote": "Quote: Wall of Thorns"
+	},
+	{
+		"name": "Giant Gear",
+		"faction": "Technocrat",
+		"isWonder": true,
+		"cost": 300,
+		"requiredTech": "Clockwork",
+		"uniques": ["[+2 Production] from every [Workshop]"],
+		"quote": "Quote: Giant Gear"
+	},
+	{
+		"name": "Eternal Cauldron",
+		"faction": "Humanist",
+		"isWonder": true,
+		"cost": 300,
+		"requiredTech": "Alchemy",
+		"uniques": ["[+1 Production, +1 Food] from every [Workshop]"],
+		"quote": "Quote: Eternal Cauldron"
+	},
+	{
+		"name": "Turing Machine",
+		"faction": "Technocrat",
+		"isWonder": true,
+		"cost": 350,
+		"requiredTech": "Printing Press",
+		"uniques": ["Free Technology", "[+3 Science]"],
+		"quote": "Quote: Turing Machine"
+	},
+	{
+		"name": "Library of Dreams",
+		"faction": "Humanist",
+		"isWonder": true,
+		"cost": 350,
+		"requiredTech": "Arcane Scripts",
+		"uniques": ["Free Technology", "[+3 Culture]"],
+		"quote": "Quote: Library of Dreams"
+	},
+	{
+		"name": "Kotakula Skyscraper",
+		"faction": "Technocrat",
+		"isWonder": true,
+		"cost": 350,
+		"requiredTech": "Corporate Law",
+		"uniques": ["Free [Great Prophet] appears", "[+2 Faith] from every [Business Center]"],
+		"quote": "Quote: Kotakula Skyscraper"
+	},
+	{
+		"name": "Spire of the High Priest",
+		"faction": "Humanist",
+		"isWonder": true,
+		"cost": 350,
+		"requiredTech": "Liturgy",
+		"uniques": ["Free [Great Prophet] appears", "[+2 Faith] from every [Business Center]"],
+		"quote": "Quote: Spire of the High Priest"
+	},
+	{
+		"name": "Crystal Palace",
+		"faction": "Technocrat",
+		"isWonder": true,
+		"cost": 600,
+		"requiredTech": "Steam Engine",
+		"uniques": ["[+15]% Production when constructing [All] buildings [in all cities]"],
+		"quote": "Quote: Crystal Palace"
+	},
+	{
+		"name": "Aether Gardens",
+		"faction": "Humanist",
+		"isWonder": true,
+		"cost": 600,
+		"requiredTech": "Crystallomancy",
+		"uniques": ["[+15]% growth [in all cities]"],
+		"quote": "Quote: Aether Gardens"
+	},
+	{
+		"name": "Aether Broadcast Tower",
+		"faction": "Technocrat",
+		"isWonder": true,
+		"cost": 800,
+		"requiredTech": "Radio",
+		"uniques": ["[+5 Culture]", "[+1 Happiness] from every [Broadcast Tower]"],
+		"quote": "Quote: Aether Broadcast Tower"
+	},
+	{
+		"name": "Bell of Echoes",
+		"faction": "Humanist",
+		"isWonder": true,
+		"cost": 800,
+		"requiredTech": "Great Echo",
+		"uniques": ["[+5 Culture]", "[+1 Happiness] from every [Broadcast Tower]"],
+		"quote": "Quote: Bell of Echoes"
+	},
+	{
+		"name": "Large Hadron Collider",
+		"faction": "Technocrat",
+		"isWonder": true,
+		"cost": 900,
+		"requiredTech": "Atomic Theory",
+		"uniques": ["[2] free [Great Scientist] units appear"],
+		"quote": "Quote: Large Hadron Collider"
+	},
+	{
+		"name": "Eye of the Abyss",
+		"faction": "Humanist",
+		"isWonder": true,
+		"cost": 900,
+		"requiredTech": "Astral Magic",
+		"uniques": ["Free [Great Scientist] appears", "[+50]% [Science] [in this city]"],
+		"quote": "Quote: Eye of the Abyss"
+	},
+	{
+		"name": "World Wide Web",
+		"faction": "Technocrat",
+		"isWonder": true,
+		"cost": 1000,
+		"requiredTech": "Microelectronics",
+		"uniques": ["[+25]% [Culture] [in all cities]", "KM: Reveals [+10]% opposing faction military units"],
+		"quote": "Quote: World Wide Web"
+	},
+	{
+		"name": "World Tree",
+		"faction": "Humanist",
+		"isWonder": true,
+		"cost": 1000,
+		"requiredTech": "Flesh Magic",
+		"uniques": ["[+25]% [Culture] [in all cities]", "KM: Reveals [+10]% opposing faction military units"],
+		"quote": "Quote: World Tree"
+	},
+	{
+		"name": "Kotakula Office",
+		"faction": "Technocrat",
+		"isWonder": true,
+		"cost": 1250,
+		"requiredTech": "Quantum Computing",
+		"uniques": [
+			"[+5 Gold, +5 Culture, +5 Science, +5 Faith] [in capital]",
+			"KM: [+10]% Strength vs opposing faction"
+		],
+		"quote": "Quote: Kotakula Office"
+	},
+	{
+		"name": "Kotakula Hall",
+		"faction": "Humanist",
+		"isWonder": true,
+		"cost": 1250,
+		"requiredTech": "Planar Magic",
+		"uniques": [
+			"[+5 Gold, +5 Culture, +5 Science, +5 Faith] [in capital]",
+			"KM: [+10]% Strength vs opposing faction"
+		],
+		"quote": "Quote: Kotakula Hall"
+	},
+	{
+		"name": "Eternal Teambuilding",
+		"faction": "Technocrat",
+		"isNationalWonder": true,
+		"cost": 1500,
+		"uniques": [
+			"Unavailable <when number of [Completed Policy branches] is less than [5]>",
+			"Triggers a global alert upon build start",
+			"Triggers a Cultural Victory upon completion",
+			"Only available <when [Cultural] Victory is enabled>",
+			"Cannot be hurried"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Eternal Teambuilding"
+			}
+		]
+	},
+	{
+		"name": "Endless Ball of Muses",
+		"faction": "Humanist",
+		"replaces": "Eternal Teambuilding",
+		"isNationalWonder": true,
+		"cost": 1500,
+		"uniques": [
+			"Unavailable <when number of [Completed Policy branches] is less than [5]>",
+			"Triggers a global alert upon build start",
+			"Triggers a Cultural Victory upon completion",
+			"Only available <when [Cultural] Victory is enabled>",
+			"Cannot be hurried"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Endless Ball of Muses"
+			}
+		]
+	},
+	{
+		"name": "Cathedral",
+		"cost": 0,
+		"faith": 1,
+		"culture": 3,
+		"happiness": 1,
+		"specialistSlots": {
+			"Artist": 1
+		},
+		"uniques": ["Unbuildable", "Only available <when religion is enabled>"]
+	},
+	{
+		"name": "Mosque",
+		"cost": 0,
+		"culture": 2,
+		"faith": 3,
+		"happiness": 1,
+		"uniques": ["Unbuildable", "Only available <when religion is enabled>"]
+	},
+	{
+		"name": "Pagoda",
+		"cost": 0,
+		"culture": 2,
+		"faith": 2,
+		"happiness": 2,
+		"uniques": ["Unbuildable", "Only available <when religion is enabled>"]
+	},
+	{
+		"name": "Monastery",
+		"cost": 0,
+		"culture": 2,
+		"faith": 2,
+		"uniques": [
+			"[+1 Culture, +1 Faith] from [Wine] tiles [in this city]",
+			"[+1 Culture, +1 Faith] from [Incense] tiles [in this city]",
+			"Unbuildable",
+			"Only available <when religion is enabled>",
+			"Destroyed when the city is captured"
+		]
+	}
+]

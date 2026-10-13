@@ -1,0 +1,66 @@
+# Unciv: Kotakula Edition - tests, desktop jar and Android apk.
+# Every push builds both and keeps them as workflow artifacts; a tag "v*" also publishes a GitHub release with them.
+# The upstream Unciv workflows (store deploys, bots) live disabled in .github/upstream-workflows.
+
+name: Kotakula build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: 21
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Kotakula tests (T1-T13, translations)
+        run: ./gradlew :tests:test --tests "com.unciv.kotakula.*"
+
+      - name: Desktop jar (Windows, Linux, macOS)
+        run: ./gradlew :desktop:dist
+
+      - name: Android apk
+        run: ./gradlew :android:assembleDebug
+
+      - name: Collect files
+        run: |
+          mkdir -p dist
+          cp desktop/build/libs/Unciv.jar dist/Unciv-Kotakula.jar
+          cp "$(find android/build/outputs/apk/debug -name '*.apk' | head -1)" dist/Unciv-Kotakula.apk
+          ls -la dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Unciv-Kotakula
+          path: dist/*
+
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Unciv Kotakula Edition ${{ github.ref_name }}
+          files: dist/*
+          body: |
+            Сборка Unciv 4.22.9 с модом Kotakula Multiverse.
+            - `Unciv-Kotakula.jar` — Windows, Linux и macOS (нужна Java 21+): `java -jar Unciv-Kotakula.jar`
+            - `Unciv-Kotakula.apk` — Android
+            Как начать игру — в README.md.

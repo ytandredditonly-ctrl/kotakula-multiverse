@@ -1,0 +1,128 @@
+[
+	{
+		"name": "Quarterly Bonus",
+		"faction": "Technocrat",
+		"baseCost": 80,
+		"duration": 10,
+		"cooldown": 10,
+		"uniques": ["[+15]% [Production] [in all cities]"],
+		"quote": "Quote: Quarterly Bonus"
+	},
+	{
+		"name": "Ad Campaign",
+		"faction": "Technocrat",
+		"baseCost": 80,
+		"duration": 10,
+		"cooldown": 10,
+		"uniques": ["[+25]% [Culture] [in all cities]"],
+		"quote": "Quote: Ad Campaign"
+	},
+	{
+		"name": "Hackathon",
+		"faction": "Technocrat",
+		"baseCost": 100,
+		"duration": 8,
+		"cooldown": 10,
+		"uniques": ["[+20]% [Science] [in all cities]"],
+		"quote": "Quote: Hackathon"
+	},
+	{
+		"name": "Corporate Party",
+		"faction": "Technocrat",
+		"baseCost": 60,
+		"duration": 10,
+		"cooldown": 10,
+		"uniques": ["[+5 Happiness]"],
+		"quote": "Quote: Corporate Party"
+	},
+	{
+		"name": "Mergers and Acquisitions",
+		"faction": "Technocrat",
+		"baseCost": 120,
+		"duration": 0,
+		"cooldown": 10,
+		"uniques": ["KM: [+40] Influence with chosen city-state"],
+		"quote": "Quote: Mergers and Acquisitions"
+	},
+	{
+		"name": "Shareholder Mobilization",
+		"faction": "Technocrat",
+		"baseCost": 150,
+		"duration": 10,
+		"cooldown": 10,
+		"uniques": ["KM: [+15]% Strength vs opposing faction"],
+		"quote": "Quote: Shareholder Mobilization"
+	},
+	{
+		"name": "IPO Bubble",
+		"faction": "Technocrat",
+		"baseCost": 100,
+		"duration": 0,
+		"cooldown": 10,
+		"uniques": ["Gain [200]% of action cost as [Gold]"],
+		"quote": "Quote: IPO Bubble"
+	},
+	{
+		"name": "Craft Blessing",
+		"faction": "Humanist",
+		"baseCost": 80,
+		"duration": 10,
+		"cooldown": 10,
+		"uniques": ["[+15]% [Production] [in all cities]"],
+		"quote": "Quote: Craft Blessing"
+	},
+	{
+		"name": "Festival of Muses",
+		"faction": "Humanist",
+		"baseCost": 80,
+		"duration": 10,
+		"cooldown": 10,
+		"uniques": ["[+25]% [Culture] [in all cities]"],
+		"quote": "Quote: Festival of Muses"
+	},
+	{
+		"name": "Starfall Night",
+		"faction": "Humanist",
+		"baseCost": 100,
+		"duration": 8,
+		"cooldown": 10,
+		"uniques": ["[+20]% [Science] [in all cities]"],
+		"quote": "Quote: Starfall Night"
+	},
+	{
+		"name": "Holy Feast",
+		"faction": "Humanist",
+		"baseCost": 60,
+		"duration": 10,
+		"cooldown": 10,
+		"uniques": ["[+5 Happiness]"],
+		"quote": "Quote: Holy Feast"
+	},
+	{
+		"name": "Miracle of Healing",
+		"faction": "Humanist",
+		"baseCost": 120,
+		"duration": 0,
+		"cooldown": 10,
+		"uniques": ["KM: All units fully heal", "[10] HP when healing <for [5] turns>"],
+		"quote": "Quote: Miracle of Healing"
+	},
+	{
+		"name": "Crusade",
+		"faction": "Humanist",
+		"baseCost": 150,
+		"duration": 10,
+		"cooldown": 10,
+		"uniques": ["KM: [+15]% Strength vs opposing faction"],
+		"quote": "Quote: Crusade"
+	},
+	{
+		"name": "Prophet Vision",
+		"faction": "Humanist",
+		"baseCost": 100,
+		"duration": 0,
+		"cooldown": 10,
+		"uniques": ["Gain [200]% of action cost as [Science]"],
+		"quote": "Quote: Prophet Vision"
+	}
+]

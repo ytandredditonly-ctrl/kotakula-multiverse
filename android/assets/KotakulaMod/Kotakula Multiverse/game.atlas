@@ -1,0 +1,188 @@
+
+game.png
+size: 2048, 2048
+format: RGBA8888
+filter: MipMapLinearLinear, MipMapLinearLinear
+repeat: none
+FactionIcons/Humanist
+  rotate: false
+  xy: 524, 1044
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+FactionIcons/Technocrat
+  rotate: false
+  xy: 532, 780
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+Illustrations/ChooseHumanist
+  rotate: false
+  xy: 4, 1316
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+Illustrations/ChooseTechnocrat
+  rotate: false
+  xy: 4, 796
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+ImprovementIcons/Alchemist Garden
+  rotate: false
+  xy: 524, 1572
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ImprovementIcons/Crystal Mine
+  rotate: false
+  xy: 524, 1308
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ImprovementIcons/Ley Line
+  rotate: false
+  xy: 788, 1308
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ImprovementIcons/Moon Well
+  rotate: false
+  xy: 788, 1044
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ImprovementIcons/Moon Well (Water)
+  rotate: false
+  xy: 1052, 1308
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ImprovementIcons/Ossuary
+  rotate: false
+  xy: 1316, 1308
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ImprovementIcons/Silicon Quarry
+  rotate: false
+  xy: 1580, 1044
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ImprovementIcons/Star Catcher
+  rotate: false
+  xy: 268, 268
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ImprovementIcons/Titan Altar
+  rotate: false
+  xy: 532, 516
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+OtherIcons/SpyEye
+  rotate: false
+  xy: 268, 532
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ResourceIcons/Coffee
+  rotate: false
+  xy: 4, 532
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ResourceIcons/Dragon Bone
+  rotate: false
+  xy: 788, 1572
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ResourceIcons/Mana Crystals
+  rotate: false
+  xy: 1052, 1572
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ResourceIcons/Mandrake
+  rotate: false
+  xy: 4, 4
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ResourceIcons/Moonlily
+  rotate: false
+  xy: 1316, 1572
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ResourceIcons/Moonsilver
+  rotate: false
+  xy: 1052, 1044
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ResourceIcons/Rare Earths
+  rotate: false
+  xy: 1580, 1572
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ResourceIcons/Silicon
+  rotate: false
+  xy: 1580, 1308
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ResourceIcons/Stardust
+  rotate: false
+  xy: 268, 4
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ResourceIcons/Titan Blood
+  rotate: false
+  xy: 796, 780
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+StatIcons/Faith#Technocrat
+  rotate: false
+  xy: 4, 268
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+StatIcons/Science#Humanist
+  rotate: false
+  xy: 1316, 1044
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1

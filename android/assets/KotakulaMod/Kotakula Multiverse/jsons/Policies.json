@@ -1,0 +1,1096 @@
+[
+	{
+		"name": "Steam",
+		"faction": "Technocrat",
+		"era": "Ancient era",
+		"priorities": {
+			"Domination": 2,
+			"Cultural": 3,
+			"Interuniverse Flight": 3,
+			"Gates of Paradise": 3,
+			"Faction Victory": 2,
+			"Time": 2
+		},
+		"uniques": ["[+3 Production] [in capital]", "[+10]% [Production] [in capital]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Steam"
+			}
+		],
+		"policies": [
+			{
+				"name": "Steam Hammer",
+				"row": 1,
+				"column": 1,
+				"uniques": ["[+15]% Production when constructing [Wonders] buildings [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Steam Hammer"
+					}
+				]
+			},
+			{
+				"name": "Pressure Gauge",
+				"row": 1,
+				"column": 3,
+				"uniques": ["[+1 Production, +1 Science] from every [Workshop]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Pressure Gauge"
+					}
+				]
+			},
+			{
+				"name": "Capital Boiler",
+				"row": 2,
+				"column": 1,
+				"requires": ["Steam Hammer"],
+				"uniques": ["[+2 Science, +2 Culture] [in capital]", "[+1 Production] per [4] population [in capital]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Capital Boiler"
+					}
+				]
+			},
+			{
+				"name": "Gear Bureaucracy",
+				"row": 2,
+				"column": 3,
+				"requires": ["Pressure Gauge"],
+				"uniques": ["[-25]% maintenance cost for [Buildings] buildings [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Gear Bureaucracy"
+					}
+				]
+			},
+			{
+				"name": "Industrial Leap",
+				"row": 3,
+				"column": 2,
+				"requires": ["Capital Boiler", "Gear Bureaucracy"],
+				"uniques": ["Free [Great Engineer] appears", "[+25]% Great Person generation [in capital]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Industrial Leap"
+					}
+				]
+			},
+			{
+				"name": "Steam Complete",
+				"uniques": ["[+1 Production] from [Mine] tiles [in all cities]", "[+15]% [Production] [in capital]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Steam Complete"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "Runic Magic",
+		"faction": "Humanist",
+		"era": "Ancient era",
+		"priorities": {
+			"Domination": 2,
+			"Cultural": 3,
+			"Interuniverse Flight": 3,
+			"Gates of Paradise": 3,
+			"Faction Victory": 2,
+			"Time": 2
+		},
+		"uniques": ["[+3 Production] [in capital]", "[+10]% [Production] [in capital]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Runic Magic"
+			}
+		],
+		"policies": [
+			{
+				"name": "Builder Rune",
+				"row": 1,
+				"column": 1,
+				"uniques": ["[+15]% Production when constructing [Wonders] buildings [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Builder Rune"
+					}
+				]
+			},
+			{
+				"name": "Smith Rune",
+				"row": 1,
+				"column": 3,
+				"uniques": ["[+1 Production, +1 Science] from every [Workshop]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Smith Rune"
+					}
+				]
+			},
+			{
+				"name": "Capital Rune Circle",
+				"row": 2,
+				"column": 1,
+				"requires": ["Builder Rune"],
+				"uniques": ["[+2 Science, +2 Culture] [in capital]", "[+1 Production] per [4] population [in capital]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Capital Rune Circle"
+					}
+				]
+			},
+			{
+				"name": "Rune of Endurance",
+				"row": 2,
+				"column": 3,
+				"requires": ["Smith Rune"],
+				"uniques": ["[+25]% Strength for cities"],
+				"civilopediaText": [
+					{
+						"text": "Description: Rune of Endurance"
+					}
+				]
+			},
+			{
+				"name": "Great Rune",
+				"row": 3,
+				"column": 2,
+				"requires": ["Capital Rune Circle", "Rune of Endurance"],
+				"uniques": ["Free [Great Engineer] appears", "[+25]% Great Person generation [in capital]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Great Rune"
+					}
+				]
+			},
+			{
+				"name": "Runic Magic Complete",
+				"uniques": ["[+1 Production] from [Mine] tiles [in all cities]", "[+15]% [Production] [in capital]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Runic Magic Complete"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "Eco",
+		"faction": "Technocrat",
+		"era": "Ancient era",
+		"priorities": {
+			"Domination": 2,
+			"Cultural": 3,
+			"Interuniverse Flight": 2,
+			"Gates of Paradise": 2,
+			"Faction Victory": 2,
+			"Time": 3
+		},
+		"uniques": ["[+1 Food, +1 Culture] [in all cities]", "Only available <before adopting [Diesel]>"],
+		"civilopediaText": [
+			{
+				"text": "Description: Eco"
+			}
+		],
+		"policies": [
+			{
+				"name": "Solar Panels",
+				"row": 1,
+				"column": 1,
+				"uniques": ["[+10]% growth [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Solar Panels"
+					}
+				]
+			},
+			{
+				"name": "Bike Lanes",
+				"row": 1,
+				"column": 3,
+				"uniques": ["[+1] Movement <for [Civilian] units>", "[+1] Sight <for [Civilian] units>"],
+				"civilopediaText": [
+					{
+						"text": "Description: Bike Lanes"
+					}
+				]
+			},
+			{
+				"name": "Eco Villages",
+				"row": 2,
+				"column": 1,
+				"requires": ["Solar Panels"],
+				"uniques": [
+					"[+50]% Production when constructing [Settler] units [in all cities]",
+					"[+1 Happiness] from every [Granary]"
+				],
+				"civilopediaText": [
+					{
+						"text": "Description: Eco Villages"
+					}
+				]
+			},
+			{
+				"name": "Recycling",
+				"row": 2,
+				"column": 3,
+				"requires": ["Bike Lanes"],
+				"uniques": ["[-25]% construction time for [All] improvements"],
+				"civilopediaText": [
+					{
+						"text": "Description: Recycling"
+					}
+				]
+			},
+			{
+				"name": "Green Loan",
+				"row": 3,
+				"column": 2,
+				"requires": ["Eco Villages", "Recycling"],
+				"uniques": [
+					"[-25]% Gold cost of acquiring tiles [in all cities]",
+					"[+1] Happiness from each type of luxury resource"
+				],
+				"civilopediaText": [
+					{
+						"text": "Description: Green Loan"
+					}
+				]
+			},
+			{
+				"name": "Eco Complete",
+				"uniques": ["Free [Settler] appears", "[+1 Food] [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Eco Complete"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "Elemental Magic",
+		"faction": "Humanist",
+		"era": "Ancient era",
+		"priorities": {
+			"Domination": 2,
+			"Cultural": 3,
+			"Interuniverse Flight": 2,
+			"Gates of Paradise": 2,
+			"Faction Victory": 2,
+			"Time": 3
+		},
+		"uniques": ["[+1 Food, +1 Culture] [in all cities]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Elemental Magic"
+			}
+		],
+		"policies": [
+			{
+				"name": "Water Magic",
+				"row": 1,
+				"column": 1,
+				"uniques": ["[+10]% growth [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Water Magic"
+					}
+				]
+			},
+			{
+				"name": "Air Magic",
+				"row": 1,
+				"column": 3,
+				"uniques": ["[+1] Movement <for [Civilian] units>", "[+1] Sight <for [Civilian] units>"],
+				"civilopediaText": [
+					{
+						"text": "Description: Air Magic"
+					}
+				]
+			},
+			{
+				"name": "Earth Magic",
+				"row": 2,
+				"column": 1,
+				"requires": ["Water Magic"],
+				"uniques": [
+					"[+50]% Production when constructing [Settler] units [in all cities]",
+					"[+1 Production] from every [Granary]"
+				],
+				"civilopediaText": [
+					{
+						"text": "Description: Earth Magic"
+					}
+				]
+			},
+			{
+				"name": "Fire Magic",
+				"row": 2,
+				"column": 3,
+				"requires": ["Air Magic"],
+				"uniques": ["[-25]% construction time for [All] improvements"],
+				"civilopediaText": [
+					{
+						"text": "Description: Fire Magic"
+					}
+				]
+			},
+			{
+				"name": "Fifth Element",
+				"row": 3,
+				"column": 2,
+				"requires": ["Earth Magic", "Fire Magic"],
+				"uniques": [
+					"[-25]% Gold cost of acquiring tiles [in all cities]",
+					"[+1] Happiness from each type of luxury resource"
+				],
+				"civilopediaText": [
+					{
+						"text": "Description: Fifth Element"
+					}
+				]
+			},
+			{
+				"name": "Elemental Magic Complete",
+				"uniques": ["Free [Settler] appears", "[+1 Food] [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Elemental Magic Complete"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "Diesel",
+		"faction": "Technocrat",
+		"era": "Ancient era",
+		"priorities": {
+			"Domination": 5,
+			"Cultural": 0,
+			"Interuniverse Flight": 1,
+			"Gates of Paradise": 1,
+			"Faction Victory": 5,
+			"Time": 1
+		},
+		"uniques": [
+			"KM: [+10]% Strength vs opposing faction",
+			"Earn [100]% of killed [Military] unit's [Strength] as [Culture]",
+			"Only available <before adopting [Eco]>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Diesel"
+			}
+		],
+		"policies": [
+			{
+				"name": "Tank Assembly Line",
+				"row": 1,
+				"column": 1,
+				"uniques": ["[+15]% Production when constructing [Military] units [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Tank Assembly Line"
+					}
+				]
+			},
+			{
+				"name": "Diesel Generators",
+				"row": 1,
+				"column": 3,
+				"uniques": ["New [Military] units start with [15] XP [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Diesel Generators"
+					}
+				]
+			},
+			{
+				"name": "Kotakula PMC",
+				"row": 2,
+				"column": 1,
+				"requires": ["Tank Assembly Line"],
+				"uniques": ["KM: Summons best [Melee] unit every [10] turns <KM: Expires after [20] turns>"],
+				"civilopediaText": [
+					{
+						"text": "Description: Kotakula PMC"
+					}
+				]
+			},
+			{
+				"name": "Logistics",
+				"row": 2,
+				"column": 3,
+				"requires": ["Diesel Generators"],
+				"uniques": ["[-25]% maintenance costs <for [Military] units>", "[-33]% Gold cost of upgrading"],
+				"civilopediaText": [
+					{
+						"text": "Description: Logistics"
+					}
+				]
+			},
+			{
+				"name": "Blitzkrieg",
+				"row": 3,
+				"column": 2,
+				"requires": ["Kotakula PMC", "Logistics"],
+				"uniques": ["[+10]% Strength <for [Military] units> <when attacking>"],
+				"civilopediaText": [
+					{
+						"text": "Description: Blitzkrieg"
+					}
+				]
+			},
+			{
+				"name": "Diesel Complete",
+				"uniques": ["Free [Great General] appears", "KM: [+5]% Strength vs opposing faction"],
+				"civilopediaText": [
+					{
+						"text": "Description: Diesel Complete"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "Summoning",
+		"faction": "Humanist",
+		"era": "Ancient era",
+		"priorities": {
+			"Domination": 5,
+			"Cultural": 0,
+			"Interuniverse Flight": 1,
+			"Gates of Paradise": 1,
+			"Faction Victory": 5,
+			"Time": 1
+		},
+		"uniques": [
+			"KM: [+10]% Strength vs opposing faction",
+			"Earn [100]% of killed [Military] unit's [Strength] as [Faith]"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Summoning"
+			}
+		],
+		"policies": [
+			{
+				"name": "Summon Wolves",
+				"row": 1,
+				"column": 1,
+				"uniques": ["KM: Summons best [Mounted] unit every [10] turns <KM: Expires after [20] turns>"],
+				"civilopediaText": [
+					{
+						"text": "Description: Summon Wolves"
+					}
+				]
+			},
+			{
+				"name": "Blood Pact",
+				"row": 1,
+				"column": 3,
+				"uniques": ["New [Military] units start with [15] XP [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Blood Pact"
+					}
+				]
+			},
+			{
+				"name": "Undead Legion",
+				"row": 2,
+				"column": 1,
+				"requires": ["Summon Wolves"],
+				"uniques": ["KM: Summons best [Melee] unit every [8] turns <KM: Expires after [15] turns>"],
+				"civilopediaText": [
+					{
+						"text": "Description: Undead Legion"
+					}
+				]
+			},
+			{
+				"name": "Mana Feeding",
+				"row": 2,
+				"column": 3,
+				"requires": ["Blood Pact"],
+				"uniques": ["[-25]% maintenance costs <for [Military] units>", "[-33]% Gold cost of upgrading"],
+				"civilopediaText": [
+					{
+						"text": "Description: Mana Feeding"
+					}
+				]
+			},
+			{
+				"name": "Battle Trance",
+				"row": 3,
+				"column": 2,
+				"requires": ["Undead Legion", "Mana Feeding"],
+				"uniques": ["[+10]% Strength <for [Military] units> <when attacking>"],
+				"civilopediaText": [
+					{
+						"text": "Description: Battle Trance"
+					}
+				]
+			},
+			{
+				"name": "Summoning Complete",
+				"uniques": [
+					"Free [Great General] appears",
+					"KM: Summons best [Ranged] unit every [10] turns <KM: Expires after [20] turns>"
+				],
+				"civilopediaText": [
+					{
+						"text": "Description: Summoning Complete"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "Digital",
+		"faction": "Technocrat",
+		"era": "Classical era",
+		"priorities": {
+			"Domination": 1,
+			"Cultural": 3,
+			"Interuniverse Flight": 2,
+			"Gates of Paradise": 2,
+			"Faction Victory": 1,
+			"Time": 2
+		},
+		"uniques": ["[+1 Faith, +1 Gold] [in all cities]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Digital"
+			}
+		],
+		"policies": [
+			{
+				"name": "Subscription",
+				"row": 1,
+				"column": 1,
+				"uniques": ["[+1 Faith] from every [Market]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Subscription"
+					}
+				]
+			},
+			{
+				"name": "Venture Fund",
+				"row": 1,
+				"column": 3,
+				"uniques": ["[+50]% [Faith] [in capital]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Venture Fund"
+					}
+				]
+			},
+			{
+				"name": "Deal of the Century",
+				"row": 2,
+				"column": 1,
+				"requires": ["Subscription"],
+				"uniques": ["[Gold] cost of purchasing items in cities [-20]%"],
+				"civilopediaText": [
+					{
+						"text": "Description: Deal of the Century"
+					}
+				]
+			},
+			{
+				"name": "KPI",
+				"row": 2,
+				"column": 3,
+				"requires": ["Venture Fund"],
+				"uniques": ["KM: Faith actions cost [-25]%"],
+				"civilopediaText": [
+					{
+						"text": "Description: KPI"
+					}
+				]
+			},
+			{
+				"name": "Monopoly",
+				"row": 3,
+				"column": 2,
+				"requires": ["Deal of the Century", "KPI"],
+				"uniques": ["[+3 Gold] from every [Bank]", "KM: [+1] Faith action slots"],
+				"civilopediaText": [
+					{
+						"text": "Description: Monopoly"
+					}
+				]
+			},
+			{
+				"name": "Digital Complete",
+				"uniques": [
+					"Free [Great Merchant] appears",
+					"[+15]% [Faith] [in all cities]",
+					"[+15]% [Gold] [in all cities]"
+				],
+				"civilopediaText": [
+					{
+						"text": "Description: Digital Complete"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "Holy Magic",
+		"faction": "Humanist",
+		"era": "Classical era",
+		"priorities": {
+			"Domination": 1,
+			"Cultural": 3,
+			"Interuniverse Flight": 2,
+			"Gates of Paradise": 2,
+			"Faction Victory": 1,
+			"Time": 2
+		},
+		"uniques": ["[+2 Faith] [in all cities]", "Only available <before adopting [Forbidden Magic]>"],
+		"civilopediaText": [
+			{
+				"text": "Description: Holy Magic"
+			}
+		],
+		"policies": [
+			{
+				"name": "Prayer Book",
+				"row": 1,
+				"column": 1,
+				"uniques": ["[+1 Faith, +1 Happiness] from every [Shrine]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Prayer Book"
+					}
+				]
+			},
+			{
+				"name": "Pilgrimage",
+				"row": 1,
+				"column": 3,
+				"uniques": ["[+50]% [Faith] [in capital]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Pilgrimage"
+					}
+				]
+			},
+			{
+				"name": "Indulgences",
+				"row": 2,
+				"column": 1,
+				"requires": ["Prayer Book"],
+				"uniques": ["May buy [Military] units with [Faith] [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Indulgences"
+					}
+				]
+			},
+			{
+				"name": "Vow",
+				"row": 2,
+				"column": 3,
+				"requires": ["Pilgrimage"],
+				"uniques": ["KM: Faith actions cost [-25]%"],
+				"civilopediaText": [
+					{
+						"text": "Description: Vow"
+					}
+				]
+			},
+			{
+				"name": "Holy Relics",
+				"row": 3,
+				"column": 2,
+				"requires": ["Indulgences", "Vow"],
+				"uniques": ["[+2 Faith, +1 Culture] from every [Business Center]", "KM: [+1] Faith action slots"],
+				"civilopediaText": [
+					{
+						"text": "Description: Holy Relics"
+					}
+				]
+			},
+			{
+				"name": "Holy Magic Complete",
+				"uniques": [
+					"Free [Great Prophet] appears",
+					"[+15]% [Faith] [in all cities]",
+					"[10] HP when healing <for [Military] units>"
+				],
+				"civilopediaText": [
+					{
+						"text": "Description: Holy Magic Complete"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "Atom",
+		"faction": "Technocrat",
+		"era": "Medieval era",
+		"priorities": {
+			"Domination": 1,
+			"Cultural": 2,
+			"Interuniverse Flight": 5,
+			"Gates of Paradise": 5,
+			"Faction Victory": 1,
+			"Time": 2
+		},
+		"uniques": ["[+10]% [Science] [in all cities]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Atom"
+			}
+		],
+		"policies": [
+			{
+				"name": "Lab Journal",
+				"row": 1,
+				"column": 1,
+				"uniques": ["[+1 Science] from every [Library]", "[+1 Science] from every [University]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Lab Journal"
+					}
+				]
+			},
+			{
+				"name": "Research Grant",
+				"row": 1,
+				"column": 3,
+				"uniques": ["[+25]% Great Person generation [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Research Grant"
+					}
+				]
+			},
+			{
+				"name": "Specialists",
+				"row": 2,
+				"column": 1,
+				"requires": ["Lab Journal"],
+				"uniques": ["[+1 Science] from every specialist [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Specialists"
+					}
+				]
+			},
+			{
+				"name": "Half-Life",
+				"row": 2,
+				"column": 3,
+				"requires": ["Research Grant"],
+				"uniques": ["Free [Great Scientist] appears"],
+				"civilopediaText": [
+					{
+						"text": "Description: Half-Life"
+					}
+				]
+			},
+			{
+				"name": "Chain Reaction",
+				"row": 3,
+				"column": 2,
+				"requires": ["Specialists", "Half-Life"],
+				"uniques": ["[+1 Science] per [5] population [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Chain Reaction"
+					}
+				]
+			},
+			{
+				"name": "Atom Complete",
+				"uniques": ["Free Technology", "[+10]% [Science] [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Atom Complete"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "Illusion",
+		"faction": "Humanist",
+		"era": "Medieval era",
+		"priorities": {
+			"Domination": 1,
+			"Cultural": 2,
+			"Interuniverse Flight": 5,
+			"Gates of Paradise": 5,
+			"Faction Victory": 1,
+			"Time": 2
+		},
+		"uniques": ["[+10]% [Science] [in all cities]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Illusion"
+			}
+		],
+		"policies": [
+			{
+				"name": "Hall of Mirrors",
+				"row": 1,
+				"column": 1,
+				"uniques": ["[+1 Science] from every [Library]", "[+1 Culture] from every [University]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Hall of Mirrors"
+					}
+				]
+			},
+			{
+				"name": "Phantoms",
+				"row": 1,
+				"column": 3,
+				"uniques": ["[+25]% Great Person generation [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Phantoms"
+					}
+				]
+			},
+			{
+				"name": "Illusory Specialists",
+				"row": 2,
+				"column": 1,
+				"requires": ["Hall of Mirrors"],
+				"uniques": ["[+1 Science] from every specialist [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Illusory Specialists"
+					}
+				]
+			},
+			{
+				"name": "Invisible Army",
+				"row": 2,
+				"column": 3,
+				"requires": ["Phantoms"],
+				"uniques": ["KM: Reveals [+10]% opposing faction military units", "[+1] Sight <for [Military] units>"],
+				"civilopediaText": [
+					{
+						"text": "Description: Invisible Army"
+					}
+				]
+			},
+			{
+				"name": "Mana Mirage",
+				"row": 3,
+				"column": 2,
+				"requires": ["Illusory Specialists", "Invisible Army"],
+				"uniques": ["[+1 Science] per [5] population [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Mana Mirage"
+					}
+				]
+			},
+			{
+				"name": "Illusion Complete",
+				"uniques": ["Free Technology", "[+10]% [Culture] [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Illusion Complete"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "Quantum",
+		"faction": "Technocrat",
+		"era": "Industrial era",
+		"priorities": {
+			"Domination": 10,
+			"Cultural": 10,
+			"Interuniverse Flight": 15,
+			"Gates of Paradise": 15,
+			"Faction Victory": 10,
+			"Time": 10
+		},
+		"uniques": ["[+10]% [Production] [in all cities]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Quantum"
+			}
+		],
+		"policies": [
+			{
+				"name": "Entanglement",
+				"row": 1,
+				"column": 1,
+				"uniques": ["[+25]% Production when constructing [Spaceship part] units [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Entanglement"
+					}
+				]
+			},
+			{
+				"name": "Schrodingers Cat",
+				"row": 1,
+				"column": 3,
+				"uniques": ["KM: [+10]% Strength vs opposing faction"],
+				"civilopediaText": [
+					{
+						"text": "Description: Schrodingers Cat"
+					}
+				]
+			},
+			{
+				"name": "Teleportation",
+				"row": 2,
+				"column": 1,
+				"requires": ["Entanglement"],
+				"uniques": ["[+1] Movement <for [Military] units>"],
+				"civilopediaText": [
+					{
+						"text": "Description: Teleportation"
+					}
+				]
+			},
+			{
+				"name": "Quantum Spy",
+				"row": 2,
+				"column": 3,
+				"requires": ["Schrodingers Cat"],
+				"uniques": ["KM: Reveals [+10]% opposing faction military units"],
+				"civilopediaText": [
+					{
+						"text": "Description: Quantum Spy"
+					}
+				]
+			},
+			{
+				"name": "Singularity",
+				"row": 3,
+				"column": 2,
+				"requires": ["Teleportation", "Quantum Spy"],
+				"uniques": ["[+20]% [Science] [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Singularity"
+					}
+				]
+			},
+			{
+				"name": "Quantum Complete",
+				"uniques": ["Free [Great Scientist] appears", "Free [Great Engineer] appears"],
+				"civilopediaText": [
+					{
+						"text": "Description: Quantum Complete"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "Forbidden Magic",
+		"faction": "Humanist",
+		"era": "Industrial era",
+		"priorities": {
+			"Domination": 10,
+			"Cultural": 10,
+			"Interuniverse Flight": 15,
+			"Gates of Paradise": 15,
+			"Faction Victory": 10,
+			"Time": 10
+		},
+		"uniques": [
+			"[+15]% [Production] [in all cities]",
+			"[-1 Happiness] [in all cities]",
+			"Only available <before adopting [Holy Magic]>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Forbidden Magic"
+			}
+		],
+		"policies": [
+			{
+				"name": "Necronomicon for Dummies",
+				"row": 1,
+				"column": 1,
+				"uniques": ["[+25]% Production when constructing [Spaceship part] units [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Necronomicon for Dummies"
+					}
+				]
+			},
+			{
+				"name": "Blood Magic",
+				"row": 1,
+				"column": 3,
+				"uniques": ["KM: [+15]% Strength vs opposing faction"],
+				"civilopediaText": [
+					{
+						"text": "Description: Blood Magic"
+					}
+				]
+			},
+			{
+				"name": "Dark Portal",
+				"row": 2,
+				"column": 1,
+				"requires": ["Necronomicon for Dummies"],
+				"uniques": ["[+1] Movement <for [Military] units>"],
+				"civilopediaText": [
+					{
+						"text": "Description: Dark Portal"
+					}
+				]
+			},
+			{
+				"name": "Curse",
+				"row": 2,
+				"column": 3,
+				"requires": ["Blood Magic"],
+				"uniques": ["KM: Gain [50] [Science] when a unit of the opposing faction is killed"],
+				"civilopediaText": [
+					{
+						"text": "Description: Curse"
+					}
+				]
+			},
+			{
+				"name": "Forbidden Ritual",
+				"row": 3,
+				"column": 2,
+				"requires": ["Dark Portal", "Curse"],
+				"uniques": ["[+20]% [Science] [in all cities]"],
+				"civilopediaText": [
+					{
+						"text": "Description: Forbidden Ritual"
+					}
+				]
+			},
+			{
+				"name": "Forbidden Magic Complete",
+				"uniques": [
+					"Free [Great Scientist] appears",
+					"Free [Great Engineer] appears",
+					"KM: Summons best [Armor] unit every [10] turns <KM: Expires after [15] turns>"
+				],
+				"civilopediaText": [
+					{
+						"text": "Description: Forbidden Magic Complete"
+					}
+				]
+			}
+		]
+	}
+]
