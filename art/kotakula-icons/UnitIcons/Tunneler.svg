@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Проходчик: кирка у входа в тоннель -->
+  <path d="M30 98 V62 C30 44 44 34 62 34 C80 34 96 44 96 62 V98 Z" fill="#000"/>
+  <path d="M44 98 V66 C44 54 52 48 62 48 C72 48 82 54 82 66 V98 Z" fill="#fff"/>
+  <g stroke="#000" stroke-width="3"><path d="M50 60 H76"/><path d="M48 76 H78"/><path d="M62 48 V98"/></g>
+  <path d="M4 22 C20 4 46 4 60 20 C44 14 22 14 4 22 Z" fill="#000"/>
+  <rect x="26" y="10" width="8" height="58" rx="3" fill="#000" transform="rotate(-25 30 39)"/>
+</svg>

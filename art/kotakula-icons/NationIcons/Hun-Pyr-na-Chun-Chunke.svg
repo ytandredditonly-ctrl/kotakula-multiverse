@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Хунь-Пырь-на-Чунь-Чуньке: стена с садом над рекой -->
+  <path d="M8 66 V30 H20 V22 H32 V30 H44 V22 H56 V30 H68 V22 H80 V30 H92 V66 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2"><path d="M8 44 H92"/><path d="M30 30 V44"/><path d="M54 30 V44"/><path d="M76 30 V44"/><path d="M20 44 V66"/><path d="M44 44 V66"/><path d="M66 44 V66"/></g>
+  <path d="M50 10 C54 2 64 4 62 12 C70 10 72 20 64 22 C68 28 60 32 56 26 C54 34 44 32 46 24 C38 26 36 16 44 16 C40 8 48 4 50 10 Z" fill="#000"/>
+  <circle cx="54" cy="17" r="4" fill="#fff"/>
+  <path d="M2 78 C14 72 24 82 36 76 C48 70 58 82 70 76 C82 70 90 80 98 76" stroke="#000" stroke-width="6" fill="none"/>
+  <path d="M2 92 C14 86 24 96 36 90 C48 84 58 96 70 90 C82 84 90 94 98 90" stroke="#000" stroke-width="6" fill="none"/>
+</svg>

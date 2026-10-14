@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Ведор: подземный город - вход в шахту со сталактитами и фонарём -->
+  <path d="M4 96 V44 C4 18 26 4 50 4 C74 4 96 18 96 44 V96 Z" fill="#000"/>
+  <path d="M18 96 V50 C18 30 32 18 50 18 C68 18 82 30 82 50 V96 Z" fill="#fff"/>
+  <g fill="#000"><path d="M30 26 L34 40 L38 24 Z"/><path d="M46 19 L50 36 L54 19 Z"/><path d="M62 24 L66 40 L70 27 Z"/></g>
+  <path d="M30 96 L38 66 H62 L70 96 Z" fill="#000"/>
+  <g stroke="#fff" stroke-width="2.5"><path d="M36 80 H64"/><path d="M50 66 V96"/></g>
+  <rect x="47" y="44" width="6" height="4" fill="#000"/>
+  <path d="M44 48 H56 L54 60 H46 Z" fill="#000"/>
+  <path d="M48 52 H52 V56 H48 Z" fill="#fff"/>
+</svg>

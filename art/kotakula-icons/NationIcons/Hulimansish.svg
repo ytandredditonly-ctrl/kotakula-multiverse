@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Хулимансиш: бей и беги - пагода и убегающий воин -->
+  <path d="M34 20 L52 10 L70 20 L64 22 H40 Z" fill="#000"/>
+  <rect x="44" y="22" width="16" height="10" fill="#000"/>
+  <path d="M30 40 L52 28 L74 40 L66 42 H38 Z" fill="#000"/>
+  <rect x="42" y="42" width="20" height="12" fill="#000"/>
+  <path d="M26 60 L52 46 L78 60 L70 62 H34 Z" fill="#000"/>
+  <rect x="38" y="62" width="28" height="30" fill="#000"/>
+  <path d="M48 92 V76 C48 72 56 72 56 76 V92 Z" fill="#fff"/>
+  <rect x="50" y="2" width="4" height="10" fill="#000"/>
+  <circle cx="86" cy="54" r="5" fill="#000"/>
+  <path d="M80 62 L90 62 L96 72 L92 74 L88 68 L88 78 L96 92 L91 94 L84 82 L80 94 L75 92 L80 76 L78 68 L72 72 L70 68 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="3" stroke-linecap="round"><path d="M4 70 H18"/><path d="M8 78 H22"/><path d="M4 86 H18"/></g>
+</svg>

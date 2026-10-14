@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Никитошка Большой: сильный и медленный -->
+  <circle cx="50" cy="14" r="11" fill="#000"/>
+  <path d="M22 30 C30 26 70 26 78 30 L86 56 L76 60 L72 48 L72 70 L66 96 H54 L50 76 L46 96 H34 L28 70 L28 48 L24 60 L14 56 Z" fill="#000"/>
+  <circle cx="12" cy="62" r="9" fill="#000"/>
+  <circle cx="88" cy="62" r="9" fill="#000"/>
+  <path d="M38 38 C44 44 56 44 62 38" stroke="#fff" stroke-width="3" fill="none"/>
+  <path d="M40 54 H60" stroke="#fff" stroke-width="3"/>
+</svg>

@@ -106,7 +106,10 @@ fun GenContext.mergeLoreMod() {
 
     // Images: the lore icons go to the mod as they are (they are packed into the mod atlas with the others)
     val images = File(lore, "Images")
-    images.walkTopDown().filter { it.isFile && it.extension == "png" }.forEach { png ->
+    // ...unless the object has a vector icon in art/kotakula-icons (rendered by KotakulaSvgIcons instead)
+    images.walkTopDown().filter { it.isFile && it.extension == "png" }
+        .filterNot { File(KotakulaSvgIcons.SOURCE_DIR, it.relativeTo(images).invariantSeparatorsPath.removeSuffix(".png") + ".svg").exists() }
+        .forEach { png ->
         png.copyTo(File(outDir, "Images/${png.relativeTo(images).invariantSeparatorsPath}"), overwrite = true)
     }
 }

@@ -88,6 +88,8 @@ class WorldScreen(
 ) : BaseScreen() {
     // Kotakula Multiverse (KC-08): texts and icons follow the viewer's faction - set before any UI is built
     init { com.unciv.models.translations.FactionTextContext.setViewer(viewingCiv) }
+    /** Kotakula: the faction this screen was built for - a rebuild is needed only when the civ itself changes it */
+    private val builtForFaction = com.unciv.models.translations.FactionTextContext.factionFor(viewingCiv)
 
     /** When set, causes the screen to update in the next [render][render] event */
     var shouldUpdate = false
@@ -383,11 +385,15 @@ class WorldScreen(
     // That way, not only do we save a lot of unnecessary updates, we also ensure that all updates are called from the main GL thread
     // and we don't get any silly concurrency problems!
     private fun update() {
-        // Kotakula Multiverse (KC-08): the viewer just picked a faction - rebuild the screen in the new words
+        // Kotakula Multiverse (KC-08): another screen (loading, hotseat "ready?") may have changed the text context -
+        // restore it. Rebuild only when the viewing civ itself just picked a faction: this screen was made in the old words.
+        // The same player goes on, so no "ready?" screen (in hotseat it reset the context and looped forever)
         if (com.unciv.models.translations.FactionTextContext.needsUpdateFor(viewingCiv)) {
             com.unciv.models.translations.FactionTextContext.setViewer(viewingCiv)
-            com.unciv.utils.Concurrency.run("Reload for faction") { game.reloadWorldscreen() }
-            return
+            if (com.unciv.models.translations.FactionTextContext.factionFor(viewingCiv) != builtForFaction) {
+                com.unciv.utils.Concurrency.run("Reload for faction") { game.reloadWorldscreen(skipReadyScreen = true) }
+                return
+            }
         }
 
         if (uiEnabled) {

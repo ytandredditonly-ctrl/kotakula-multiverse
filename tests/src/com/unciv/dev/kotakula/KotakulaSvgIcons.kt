@@ -28,7 +28,7 @@ object KotakulaSvgIcons {
     private fun pixelSize(folder: String) = if (folder == "PolicyIcons") 64 else 128
 
     /** Vanilla construction icons are black and tinted by nothing, everything else is white and tinted by the game */
-    private fun silhouetteColor(folder: String) = if (folder == "BuildingIcons") Color.BLACK else Color.WHITE
+    private fun silhouetteColor(folder: String) = if (folder == "BuildingIcons" || folder == "ImprovementIcons") Color.BLACK else Color.WHITE
 
     data class Target(val folder: String, val name: String, val russian: String)
 
@@ -51,7 +51,8 @@ object KotakulaSvgIcons {
             rendered += target to image
         }
         // These folders only hold rendered SVGs: a PNG without a target any more (renamed or removed object) goes
-        for (folder in targets.map { it.folder }.toSet()) {
+        // (ImprovementIcons and NationIcons also hold the P1 icons of KotakulaIconPainter: not cleaned)
+        for (folder in targets.map { it.folder }.toSet() - setOf("ImprovementIcons", "NationIcons")) {
             val keep = rendered.filter { it.first.folder == folder }.map { "${it.first.name}.png" }.toSet() +
                 // the icons of the lore mod are copied by the generator, not rendered
                 File(GenLore.LORE_PATH, "Images/$folder").list().orEmpty().toSet()
@@ -104,6 +105,12 @@ object KotakulaSvgIcons {
         factionObjects("Beliefs.json", "ReligionIcons")
         for (action in JsonText.readArray(File(jsons, "FactionActions.json")))
             result += Target("FactionActionIcons", action["name"] as String, ru(action["name"] as String))
+        // The nations of the lore mod and everything unique to them (GenLore)
+        val lore = File(GenLore.LORE_PATH, "jsons")
+        for ((file, folder) in listOf("Nations.json" to "NationIcons", "Units.json" to "UnitIcons",
+                "Buildings.json" to "BuildingIcons", "TileImprovements.json" to "ImprovementIcons"))
+            for (obj in JsonText.readArray(File(lore, file)))
+                result += Target(folder, obj["name"] as String, ru(obj["name"] as String))
         return result
     }
 
@@ -149,7 +156,7 @@ object KotakulaSvgIcons {
             for ((index, item) in items.withIndex()) {
                 val x = (index % columns) * cell
                 val y = (index / columns) * cell
-                g.color = if (folder == "BuildingIcons") Color(225, 225, 225) else Color(70, 110, 170)
+                g.color = if (folder == "BuildingIcons" || folder == "ImprovementIcons") Color(225, 225, 225) else Color(70, 110, 170)
                 g.fillOval(x + 10, y + 4, 100, 100)
                 g.drawImage(item.second, x + 22, y + 16, 76, 76, null)
                 g.color = Color.WHITE

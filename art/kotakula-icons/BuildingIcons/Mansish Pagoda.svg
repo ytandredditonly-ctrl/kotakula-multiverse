@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Пагода Хулимансиша -->
+  <rect x="48" y="0" width="4" height="10" fill="#000"/>
+  <path d="M28 20 L50 8 L72 20 L82 18 L74 26 H26 L18 18 Z" fill="#000"/>
+  <rect x="38" y="26" width="24" height="12" fill="#000"/>
+  <path d="M22 44 L50 32 L78 44 L90 42 L80 50 H20 L10 42 Z" fill="#000"/>
+  <rect x="32" y="50" width="36" height="14" fill="#000"/>
+  <path d="M14 70 L50 56 L86 70 L98 68 L88 76 H12 L2 68 Z" fill="#000"/>
+  <rect x="24" y="76" width="52" height="20" fill="#000"/>
+  <path d="M44 96 V84 C44 80 56 80 56 84 V96 Z" fill="#fff"/>
+  <g fill="#fff"><rect x="44" y="29" width="12" height="5"/><rect x="40" y="54" width="20" height="6"/></g>
+</svg>

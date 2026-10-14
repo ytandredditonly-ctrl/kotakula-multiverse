@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Бобрыня: упитанный проповедник с куриной ножкой -->
+  <ellipse cx="44" cy="8" rx="14" ry="4" fill="none" stroke="#000" stroke-width="3.5"/>
+  <circle cx="44" cy="22" r="11" fill="#000"/>
+  <path d="M44 34 C68 34 76 56 74 74 C72 90 60 96 44 96 C28 96 16 90 14 74 C12 56 20 34 44 34 Z" fill="#000"/>
+  <path d="M44 50 V72 M36 58 H52" stroke="#fff" stroke-width="5"/>
+  <path d="M72 50 C78 40 92 40 94 50 C96 58 88 64 80 60 L72 68 L68 64 L76 56 C72 54 70 52 72 50 Z" fill="#000" stroke="#fff" stroke-width="2"/>
+</svg>

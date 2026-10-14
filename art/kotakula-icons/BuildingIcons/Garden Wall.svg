@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Садовая стена: стена с цветами и лозой -->
+  <rect x="4" y="50" width="92" height="46" fill="#000"/>
+  <g stroke="#fff" stroke-width="2"><path d="M4 66 H96"/><path d="M4 82 H96"/><path d="M24 50 V66"/><path d="M50 50 V66"/><path d="M76 50 V66"/><path d="M36 66 V82"/><path d="M64 66 V82"/><path d="M24 82 V96"/><path d="M76 82 V96"/></g>
+  <path d="M10 50 C14 40 20 46 22 38 M48 50 C50 40 56 44 56 34 M80 50 C80 40 88 42 88 32" stroke="#000" stroke-width="3" fill="none"/>
+  <g fill="#000">
+    <path d="M22 30 C26 24 32 28 30 34 C36 34 34 42 28 40 C28 46 20 46 20 40 C14 42 12 34 18 34 C16 28 20 26 22 30 Z"/>
+    <path d="M56 26 C60 20 66 24 64 30 C70 30 68 38 62 36 C62 42 54 42 54 36 C48 38 46 30 52 30 C50 24 54 22 56 26 Z"/>
+    <path d="M88 22 C92 16 98 20 96 26 C100 28 98 34 94 32 C92 38 86 36 86 32 C80 32 80 24 86 24 Z"/>
+  </g>
+  <g fill="#fff"><circle cx="25" cy="35" r="3"/><circle cx="59" cy="31" r="3"/><circle cx="91" cy="27" r="2.5"/></g>
+  <path d="M28 60 C34 56 36 62 42 58" stroke="#fff" stroke-width="2" fill="none"/>
+</svg>

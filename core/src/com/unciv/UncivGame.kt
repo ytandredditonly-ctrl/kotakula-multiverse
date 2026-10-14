@@ -197,7 +197,8 @@ open class UncivGame(val isConsoleMode: Boolean = false) : Game(), PlatformSpeci
      * Sets the returned `WorldScreen` as the only active screen.
      * @param autoPlay pass in the old WorldScreen AutoPlay to retain the state throughout turns. Otherwise leave it is the default.
      */
-    suspend fun loadGame(newGameInfo: GameInfo, autoPlay: AutoPlay = AutoPlay(settings.autoPlay), callFromLoadScreen: Boolean = false): WorldScreen = withThreadPoolContext toplevel@{
+    suspend fun loadGame(newGameInfo: GameInfo, autoPlay: AutoPlay = AutoPlay(settings.autoPlay), callFromLoadScreen: Boolean = false,
+                         skipReadyScreen: Boolean = false): WorldScreen = withThreadPoolContext toplevel@{
         val prevGameInfo = gameInfo
         gameInfo = newGameInfo
 
@@ -233,7 +234,7 @@ open class UncivGame(val isConsoleMode: Boolean = false) : Game(), PlatformSpeci
 
             val moreThanOnePlayer = newGameInfo.civilizations.count { it.playerType == PlayerType.Human } > 1
             val isSingleplayer = !newGameInfo.gameParameters.isOnlineMultiplayer
-            val screenToShow = if (moreThanOnePlayer && isSingleplayer) {
+            val screenToShow = if (moreThanOnePlayer && isSingleplayer && !skipReadyScreen) {
                 PlayerReadyScreen(newWorldScreen)
             } else {
                 newWorldScreen
@@ -257,12 +258,13 @@ open class UncivGame(val isConsoleMode: Boolean = false) : Game(), PlatformSpeci
     }
 
     /** Re-creates the current [worldScreen], if there is any. */
-    suspend fun reloadWorldscreen() {
+    /** @param skipReadyScreen Kotakula: the same player goes on (e.g. just picked a faction), no "ready?" screen in hotseat */
+    suspend fun reloadWorldscreen(skipReadyScreen: Boolean = false) {
         val curWorldScreen = worldScreen
         val curGameInfo = gameInfo
         if (curWorldScreen == null || curGameInfo == null) return
 
-        loadGame(curGameInfo)
+        loadGame(curGameInfo, skipReadyScreen = skipReadyScreen)
     }
 
     /**

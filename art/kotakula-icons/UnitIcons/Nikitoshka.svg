@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Никитошка: хилый и быстрый, бежит по воде -->
+  <circle cx="54" cy="14" r="9" fill="#000"/>
+  <path d="M48 26 H60 L62 48 L76 40 L80 46 L62 58 L66 72 L82 78 L80 84 L60 78 L54 66 L44 80 L34 76 L46 58 L44 42 L32 50 L28 44 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="4" stroke-linecap="round"><path d="M6 32 H24"/><path d="M10 42 H26"/><path d="M6 52 H22"/></g>
+  <path d="M2 92 C12 86 22 96 32 90 C42 84 52 96 62 90 C72 84 82 96 98 90" stroke="#000" stroke-width="4" fill="none"/>
+</svg>

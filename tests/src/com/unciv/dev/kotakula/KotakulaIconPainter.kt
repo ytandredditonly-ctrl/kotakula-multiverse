@@ -95,7 +95,8 @@ object KotakulaIconPainter {
         val g = image.createGraphics()
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
         g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE)
-        g.color = Color.WHITE
+        // Vanilla improvement icons are black (drawn on a circle in the colour of their main yield, white without one)
+        g.color = if (name.startsWith("ImprovementIcons/")) Color.BLACK else Color.WHITE
         g.fill(shape)
         g.dispose()
         save(name, image)

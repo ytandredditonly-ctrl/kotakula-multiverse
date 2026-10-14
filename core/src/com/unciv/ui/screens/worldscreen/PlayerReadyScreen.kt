@@ -11,7 +11,6 @@ import com.unciv.ui.screens.basescreen.BaseScreen
 
 class PlayerReadyScreen(worldScreen: WorldScreen) : BaseScreen() {
     init {
-        com.unciv.models.translations.FactionTextContext.setViewer(null) // Kotakula (KC-08): neutral between hotseat players
         val table = Table()
         table.touchable = Touchable.enabled
         val curCiv = worldScreen.selectedGameView.civView

@@ -1,8 +1,7 @@
 Atlases.json	325c8874
-game.atlas	b078532a
-game.png	6b3f065f
-game2.png	1a81bfe8
-game3.png	b6f2dd8b
+game.atlas	664b6c72
+game.png	9417c34d
+game2.png	e36292e2
 jsons/Beliefs.json	67c9a19c
 jsons/Buildings.json	90dfa77d
 jsons/CityStateTypes.json	7d975741

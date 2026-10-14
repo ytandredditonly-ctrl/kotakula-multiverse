@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Уклонист: лучник в прыжке назад -->
+  <circle cx="60" cy="16" r="9" fill="#000"/>
+  <path d="M52 28 H66 L70 52 L84 62 L80 68 L64 58 L60 74 L72 92 L66 96 L52 78 L46 96 H38 L44 70 L48 50 L36 56 L32 50 Z" fill="#000"/>
+  <path d="M30 14 C14 30 14 58 30 74" stroke="#000" stroke-width="5" fill="none"/>
+  <path d="M30 14 L30 74" stroke="#000" stroke-width="1.8"/>
+  <path d="M30 44 H56" stroke="#000" stroke-width="3"/>
+  <g stroke="#000" stroke-width="4" stroke-linecap="round"><path d="M80 24 H96"/><path d="M84 34 H98"/><path d="M82 44 H94"/></g>
+</svg>

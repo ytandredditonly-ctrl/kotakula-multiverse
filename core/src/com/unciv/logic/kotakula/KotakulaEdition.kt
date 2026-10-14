@@ -14,7 +14,7 @@ import com.unciv.utils.Log
 object KotakulaEdition {
     const val EDITION_NAME = "Unciv: Kotakula Edition"
     const val MOD_NAME = "Kotakula Multiverse"
-    const val MOD_VERSION = "1.2.0"
+    const val MOD_VERSION = "1.2.1"
     const val BUNDLED_MOD_PATH = "KotakulaMod/$MOD_NAME"
     /** List of the bundled files with their CRC32, written by the atlas packer */
     const val INDEX_FILE = "KotakulaFiles.txt"

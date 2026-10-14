@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Грибная пещера: пещера с грибами -->
+  <path d="M2 96 V50 C2 22 24 6 50 6 C76 6 98 22 98 50 V96 Z" fill="#000"/>
+  <path d="M16 96 V54 C16 34 32 22 50 22 C68 22 84 34 84 54 V96 Z" fill="#fff"/>
+  <g fill="#000">
+    <path d="M24 70 C24 58 46 58 46 70 Z"/><rect x="32" y="70" width="6" height="22"/>
+    <path d="M52 62 C52 46 82 46 82 62 Z"/><rect x="63" y="62" width="8" height="30"/>
+    <path d="M40 84 C40 78 52 78 52 84 Z"/><rect x="44" y="84" width="4" height="8"/>
+  </g>
+  <g fill="#fff"><circle cx="60" cy="56" r="3"/><circle cx="72" cy="54" r="2.5"/><circle cx="33" cy="65" r="2"/></g>
+  <rect x="16" y="92" width="68" height="4" fill="#000"/>
+</svg>
