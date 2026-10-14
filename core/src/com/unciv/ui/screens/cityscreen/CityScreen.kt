@@ -146,6 +146,9 @@ class CityScreen(
     private val fireworks: ParticleEffectMapFireworks?
     internal var pauseFireworks = false
 
+    /** Kotakula (6.1): declared before [init], which already builds the layer tabs */
+    private val layerTabs = Table()
+
     init {
         if (isWLTKday && UncivGame.Current.settings.citySoundsVolume > 0) {
             SoundPlayer.play(UncivSound("WLTK"))
@@ -406,8 +409,6 @@ class CityScreen(
     }
 
     /** Kotakula (6.1): tabs of the three layers above the map; citizens can work every opened layer */
-    private val layerTabs = Table()
-
     private fun addLayerTabs() {
         if (!cityView.hasLayers()) {
             shownLayer = MapLayer.Surface

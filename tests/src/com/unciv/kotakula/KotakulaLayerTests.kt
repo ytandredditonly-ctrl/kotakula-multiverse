@@ -361,4 +361,16 @@ class KotakulaLayerTests {
             Assert.assertFalse(terrain.name, view.isCityColumn())
         }
     }
+    /** Regression (1.3.0): the new game screen refills one Ruleset when the base changes - the flags must follow */
+    @Test
+    fun rulesetFlagsFollowARefilledRuleset() {
+        val refilled = com.unciv.models.ruleset.Ruleset()
+        refilled.add(com.unciv.models.ruleset.RulesetCache[com.unciv.models.metadata.BaseRuleset.Civ_V_GnK.fullName]!!)
+        Assert.assertFalse(refilled.hasFactions)
+        Assert.assertFalse(refilled.hasLayers)
+        refilled.clear()
+        refilled.add(game.ruleset)
+        Assert.assertTrue(refilled.hasFactions)
+        Assert.assertTrue(refilled.hasLayers)
+    }
 }

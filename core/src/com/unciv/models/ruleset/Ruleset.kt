@@ -36,6 +36,7 @@ import com.unciv.models.translations.tr
 import com.unciv.ui.screens.civilopediascreen.ICivilopediaText
 import com.unciv.utils.Log
 import org.jetbrains.annotations.VisibleForTesting
+import yairm210.purity.annotations.Cache
 import yairm210.purity.annotations.Readonly
 import kotlin.collections.set
 
@@ -193,14 +194,22 @@ class Ruleset {
         }.toSet()
     }
 
+    // Kotakula: cached flags, reset by [add], [clear] and [load] - the new game screen refills one Ruleset when the base changes
+    @Transient @Cache private var hasFactionsCache: Boolean? = null
+    @Transient @Cache private var hasLayersCache: Boolean? = null
+    private fun resetKotakulaCaches() { hasFactionsCache = null; hasLayersCache = null }
+
     /** Kotakula Multiverse: does this ruleset use factions (KC-01)? True when any tech, unit, building or policy branch has one. */
-    val hasFactions: Boolean by lazy {
-        technologies.values.any { it.faction != null } || units.values.any { it.faction != null }
-            || buildings.values.any { it.faction != null } || policyBranches.values.any { it.faction != null }
-    }
+    @get:Readonly
+    val hasFactions: Boolean
+        get() = hasFactionsCache ?: (technologies.values.any { it.faction != null } || units.values.any { it.faction != null }
+            || buildings.values.any { it.faction != null } || policyBranches.values.any { it.faction != null })
+            .also { hasFactionsCache = it }
 
     /** Kotakula (KL-09): does this ruleset have terrains of the Underground or the Sky? */
-    val hasLayers: Boolean by lazy { terrains.values.any { it.layer != "Surface" } }
+    @get:Readonly
+    val hasLayers: Boolean
+        get() = hasLayersCache ?: terrains.values.any { it.layer != "Surface" }.also { hasLayersCache = it }
 
     val roadImprovement: TileImprovement? by lazy { RoadStatus.Road.improvement(this) }
     val railroadImprovement: TileImprovement? by lazy { RoadStatus.Railroad.improvement(this) }
@@ -238,6 +247,7 @@ class Ruleset {
     }
 
     fun add(ruleset: Ruleset) {
+        resetKotakulaCaches() // Kotakula
         beliefs.putAll(ruleset.beliefs)
         ruleset.modOptions.beliefsToRemove
             .flatMap { beliefsToRemove ->
@@ -349,6 +359,7 @@ class Ruleset {
     }
 
     fun clear() {
+        resetKotakulaCaches() // Kotakula
         beliefs.clear()
         buildings.clear()
         difficulties.clear()
@@ -392,6 +403,7 @@ class Ruleset {
     @Readonly fun allICivilopediaText(): Sequence<ICivilopediaText> = allRulesetObjects()
 
     fun load(folderHandle: FileHandle) {
+        resetKotakulaCaches() // Kotakula
         fun RulesetFile.file() = folderHandle.child(filename)
 
         // Note: Most files are loaded using createHashmap, which sets originRuleset automatically.
