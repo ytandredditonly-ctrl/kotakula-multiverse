@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Бункер: укреплённый подвал -->
+  <path d="M6 70 Q50 30 94 70 V92 H6 Z" fill="#000"/>
+  <rect x="34" y="62" width="32" height="8" fill="#fff"/>
+  <path d="M2 94 H98" stroke="#000" stroke-width="4"/>
+  <g stroke="#000" stroke-width="3"><path d="M10 30 L22 44"/><path d="M90 30 L78 44"/></g>
+</svg>

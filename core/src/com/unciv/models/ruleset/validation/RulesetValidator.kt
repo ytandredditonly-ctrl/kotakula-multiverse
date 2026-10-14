@@ -805,6 +805,13 @@ open class RulesetValidator protected constructor(
             }
         }
 
+        // Kotakula: a combined ruleset also knows the tileset configs of its mods (the Kotakula tileset of the base mod)
+        if (ruleset.folderLocation == null) for (mod in ruleset.mods) {
+            val modFolder = com.unciv.models.ruleset.RulesetCache[mod]?.folderLocation?.child("jsons/TileSets") ?: continue
+            if (modFolder.exists()) for (file in modFolder.list())
+                if (file.extension() == "json") configTilesets += file.nameWithoutExtension().removeSuffix("Config")
+        }
+
         // Folder should not contain subdirectories, non-json files, or be empty
         if (folderContentBad)
             lines.add("The Mod tileset config folder contains non-json files or subdirectories", RulesetErrorSeverity.Warning, sourceObject = null)

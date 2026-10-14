@@ -83,10 +83,17 @@ object WorldMapTileUpdater {
         if (worldScreen.bottomUnitTable.selectedUnitIsSwapping) {
             val swapUnitsTileOverlayColor = Color.PURPLE
             for (tileView in unitView.getUnitSwappableTiles())  {
-                tileGroups[tileView]!!.layerOverlay.showHighlight(swapUnitsTileOverlayColor,
+                tileGroups[tileView]?.layerOverlay?.showHighlight(swapUnitsTileOverlayColor,
                     if (UncivGame.Current.settings.singleTapMove) 0.7f else 0.3f)
             }
             // In swapping-mode we don't want to show other overlays
+            return
+        }
+
+        // Kotakula (7.1): the chain of the route to lay, shown dashed until confirmed
+        if (worldScreen.bottomUnitTable.selectedUnitIsLayingRoute) {
+            for ((index, tileView) in unitConnectRoadPaths[unitView].orEmpty().withIndex())
+                tileGroups[tileView]?.layerOverlay?.showHighlight(Color.ORANGE, if (index % 2 == 0) 0.8f else 0.25f)
             return
         }
 
@@ -96,12 +103,12 @@ object WorldMapTileUpdater {
             if (!unitView.rulesetHasRoadImprovement()) return
             val connectRoadTileOverlayColor = Color.RED
             for (tileView in unitView.getValidRoadConnectionTiles())  {
-                tileGroups[tileView]!!.layerOverlay.showHighlight(connectRoadTileOverlayColor, 0.3f)
+                tileGroups[tileView]?.layerOverlay?.showHighlight(connectRoadTileOverlayColor, 0.3f)
             }
 
             if (unitConnectRoadPaths.containsKey(unitView)) {
                 for (tileView in unitConnectRoadPaths[unitView]!!) {
-                    tileGroups[tileView]!!.layerOverlay.showHighlight(Color.ORANGE, 0.8f)
+                    tileGroups[tileView]?.layerOverlay?.showHighlight(Color.ORANGE, 0.8f)
                 }
             }
 
@@ -119,7 +126,7 @@ object WorldMapTileUpdater {
         // Z-Layer: 1
         // Highlight tiles within movement range
         for (tileView in tilesInMoveRange) {
-            val group = tileGroups[tileView]!!
+            val group = tileGroups[tileView] ?: continue // Kotakula: may be on another layer
 
             // Air-units have additional highlights
             if (isAirUnit && !unitView.isPreparingAirSweep()) {
@@ -154,7 +161,7 @@ object WorldMapTileUpdater {
         if (unitView.cannotMove() && isAirUnit && !unitView.isPreparingAirSweep()) {
             for (tileView in unitView.getTilesInAttackRange()) {
                 // The tile is within attack range
-                tileGroups[tileView]!!.layerOverlay.showHighlight(Color.RED, 0.3f)
+                tileGroups[tileView]?.layerOverlay?.showHighlight(Color.RED, 0.3f)
             }
         }
 
@@ -162,8 +169,13 @@ object WorldMapTileUpdater {
         // Movement paths
         if (unitMovementPaths.containsKey(unitView)) {
             for (tileView in unitMovementPaths[unitView]!!) {
-                tileGroups[tileView]!!.layerOverlay.showHighlight(Color.SKY, 0.8f)
+                tileGroups[tileView]?.layerOverlay?.showHighlight(Color.SKY, 0.8f)
             }
+            // Kotakula (6.1): the step that changes the layer is marked on the last tile before it
+            val path = listOf(unitView.getTile()) + unitMovementPaths[unitView]!!
+            for ((from, to) in path.zipWithNext())
+                if (from.layer() != to.layer())
+                    tileGroups[from]?.layerMisc?.markLayerChange(up = to.layer().ordinal > from.layer().ordinal)
         }
 
         // Z-Layer: 4
@@ -171,14 +183,14 @@ object WorldMapTileUpdater {
         if (unitView.isAutomatingRoadConnection()) {
             val futureTiles = unitView.getFutureAutomatedRoadConnectionTiles() ?: return
             for (tileView in futureTiles) {
-                tileGroups[tileView]!!.layerOverlay.showHighlight(Color.ORANGE, if (UncivGame.Current.settings.singleTapMove) 0.7f else 0.3f)
+                tileGroups[tileView]?.layerOverlay?.showHighlight(Color.ORANGE, if (UncivGame.Current.settings.singleTapMove) 0.7f else 0.3f)
             }
         }
 
         // Z-Layer: 5
         // Highlight movement destination tile
         if (unitView.isMoving()) {
-            tileGroups[unitView.getMovementDestination()]!!.layerOverlay.showHighlight(Color.WHITE, 0.7f)
+            tileGroups[unitView.getMovementDestination()]?.layerOverlay?.showHighlight(Color.WHITE, 0.7f)
         }
 
         // Z-Layer: 6
@@ -193,7 +205,7 @@ object WorldMapTileUpdater {
                     .distinctBy { it.getTileToAttack() }
 
             for (attackableTile in attackableTiles) {
-                val tileGroupToAttack = tileGroups[attackableTile.getTileToAttack()]!!
+                val tileGroupToAttack = tileGroups[attackableTile.getTileToAttack()] ?: continue // Kotakula: may be on another layer
                 tileGroupToAttack.layerOverlay.showHighlight(colorFromRGB(237, 41, 57))
                 tileGroupToAttack.layerOverlay.showCrosshair(
                     // the targets which cannot be attacked without movements shown as orange-ish
@@ -202,7 +214,7 @@ object WorldMapTileUpdater {
                     else 1f
                 )
                 if (attackableTile.getTileToAttack() == selectedTile)
-                    tileGroups[attackableTile.getTileToAttackFrom()]!!.layerOverlay.showHighlight(Color.SKY, 0.7f)
+                    tileGroups[attackableTile.getTileToAttackFrom()]?.layerOverlay?.showHighlight(Color.SKY, 0.7f)
             }
         }
 
@@ -213,7 +225,7 @@ object WorldMapTileUpdater {
             val unit = unitView.getUnit()
             CityLocationTileRanker.getBestTilesToFoundCity(unit, 5, minimumValue = 50f).tileRankMap.asSequence()
                 .filter { it.key.isExplored(unit.civ) }.sortedByDescending { it.value }.take(3).forEach {
-                    tileGroups[tileMapView.getTile(it.key)]!!.layerOverlay.showGoodCityLocationIndicator()
+                    tileGroups[tileMapView.getTile(it.key)]?.layerOverlay?.showGoodCityLocationIndicator()
                 }
         }
     }
@@ -228,7 +240,7 @@ object WorldMapTileUpdater {
         for (foreignCivView in worldScreen.selectedGameView.civView.getKnownCivs()) {
             for (cityView in foreignCivView.cities()) {
                 if (spyView.canMoveTo(cityView)) {
-                    tileGroups[cityView.getCenterTile()]!!.layerOverlay.showHighlight(Color.CYAN, .7f)
+                    tileGroups[cityView.getCenterTile()]?.layerOverlay?.showHighlight(Color.CYAN, .7f)
                 }
             }
         }
@@ -237,7 +249,7 @@ object WorldMapTileUpdater {
     private fun WorldMapHolder.updateBombardableTilesForSelectedCity(city: City) {
         if (!city.canBombard()) return
         for (tileView in TargetHelper.getBombardableTiles(city).map { tileMapView.getTile(it) }) {
-            val group = tileGroups[tileView]!!
+            val group = tileGroups[tileView] ?: continue // Kotakula: may be on another layer
             group.layerOverlay.showHighlight(colorFromRGB(237, 41, 57))
             group.layerOverlay.showCrosshair()
         }

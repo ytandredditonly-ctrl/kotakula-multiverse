@@ -151,6 +151,27 @@ class ConnectRoadOverlayButtonData(val unitView: MapUnitView, val tileView: Tile
     }
 }
 
+/** Kotakula (7.1): the "Lay route" confirmation button on the target tile */
+class LayRouteOverlayButtonData(val unitView: MapUnitView, val tileView: TileView) : OverlayButtonData {
+    override fun createButton(worldMapHolder: WorldMapHolder): Actor {
+        val button = Group()
+        button.setSize(buttonSize, buttonSize)
+        button.addActor(ImageGetter.getUnitActionPortrait("LayRoute", buttonSize * 0.8f).apply { center(button) })
+        val unitIcon = UnitIconGroup(unitView, smallerCircleSizes)
+        unitIcon.y = buttonSize - unitIcon.height
+        button.addActor(unitIcon)
+        button.onActivation(UncivSound.Silent) {
+            unitView.tryLayRoute(tileView)
+            SoundPlayer.play(UncivSound("wagon"))
+            worldMapHolder.worldScreen.shouldUpdate = true
+            worldMapHolder.removeUnitActionOverlay()
+            worldMapHolder.worldScreen.bottomUnitTable.selectedUnitIsLayingRoute = false
+        }
+        button.keyShortcuts.add(KeyboardBinding.LayRoute)
+        return button
+    }
+}
+
 // Contains the data required to draw a "move spy" button
 class MoveSpyOverlayButtonData(val spyView: SpyView, val cityView: ForeignCityView?) : OverlayButtonData {
     override fun createButton(worldMapHolder: WorldMapHolder): Actor {

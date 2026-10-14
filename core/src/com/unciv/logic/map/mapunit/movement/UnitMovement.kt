@@ -9,6 +9,8 @@ import com.unciv.logic.civilization.diplomacy.RelationshipLevel
 import com.unciv.logic.map.BFS
 import com.unciv.logic.map.HexCoord
 import com.unciv.logic.map.HexMath
+import com.unciv.logic.map.MapLayer
+import com.unciv.logic.kotakula.layers.LayerRules
 import com.unciv.logic.map.MapPathing
 import com.unciv.logic.map.pathingmap.PathingMap
 import com.unciv.logic.map.mapunit.MapUnit
@@ -57,6 +59,20 @@ class UnitMovement(val unit: MapUnit) {
 
     @Readonly fun isUnknownTileWeShouldAssumeToBePassable(tile: Tile) = !unit.civ.hasExplored(tile)
 
+    /** Kotakula: the experimental A* path finding knows one TileMap only, so games with layers use the classic one */
+    private val useAStarPathfinding: Boolean
+        @Readonly get() = UncivGame.Current.settings.useAStarPathfinding && !unit.civ.gameInfo.hasLayers()
+
+    /** Kotakula (KL-15, KL-16): does the movement graph of this unit include layer changes right now? */
+    @Readonly
+    private fun usesLayers(): Boolean = LayerRules.mayUseLayers(unit) && unit.currentTile.tileMap.hasLayers()
+
+    /** Kotakula (KL-16): the tiles one step away - neighbors on the layer plus the tiles of other layers reachable by a transition */
+    @Readonly
+    fun getMovementNeighbors(tile: Tile): Sequence<Tile> =
+        if (!usesLayers()) tile.neighbors
+        else tile.neighbors + LayerRules.layerNeighbors(unit, tile)
+
     /**
      * Gets the tiles the unit could move to at [position] with [unitMovement].
      * Does not consider if tiles can actually be entered, use canMoveTo for that.
@@ -70,9 +86,11 @@ class UnitMovement(val unit: MapUnit) {
         tilesToIgnoreBitset: BitSet? = null,
         canPassThroughCache: ArrayList<Boolean?> = ArrayList(),
         movementCostCache: HashMap<Int, Float> = HashMap(),
-        includeOtherEscortUnit: Boolean = true
+        includeOtherEscortUnit: Boolean = true,
+        /** Kotakula: the tile at [position] - positions alone do not say the layer */
+        startingTile: Tile? = null
     ): PathsToTilesWithinTurn = timeThis("getMovementToTilesAtPosition") {
-        if (UncivGame.Current.settings.useAStarPathfinding) {
+        if (useAStarPathfinding) {
             if (!considerZoneOfControl) require(includeOtherEscortUnit)
             val pathingMap = if (!considerZoneOfControl) aStarPathingWithoutZoneControl
                 else if (includeOtherEscortUnit || !unit.isEscorting()) aStarPathing
@@ -83,7 +101,9 @@ class UnitMovement(val unit: MapUnit) {
 
         val currentUnitTile = unit.currentTile
         // This is for performance, because this is called all the time
-        val unitTile = if (position == currentUnitTile.position) currentUnitTile else currentUnitTile.tileMap[position]
+        val unitTile = startingTile
+            ?: if (position == currentUnitTile.position) currentUnitTile else currentUnitTile.tileMap[position]
+        val withLayers = usesLayers() // Kotakula (KL-16)
         distanceToTiles[unitTile] = ParentTileAndTotalMovement(unitTile, unitTile, 0f)
 
         // If I can't move my only option is to stay...
@@ -105,14 +125,15 @@ class UnitMovement(val unit: MapUnit) {
             for (tileToCheck in tilesToCheck) {
                 // Loop-invariant across this tile's neighbors: was looked up twice per neighbor below.
                 val tileToCheckMovement = distanceToTiles[tileToCheck]!!.totalMovement
-                for (neighbor in tileToCheck.neighbors) {
+                val neighbors = if (withLayers) getMovementNeighbors(tileToCheck) else tileToCheck.neighbors // Kotakula (KL-16)
+                for (neighbor in neighbors) {
                     // ignore this tile
-                    if (tilesToIgnoreBitset != null && tilesToIgnoreBitset.get(neighbor.zeroBasedIndex)) continue // ignore this tile
+                    if (tilesToIgnoreBitset != null && tilesToIgnoreBitset.get(neighbor.globalIndex)) continue // ignore this tile
                     var totalDistanceToTile: Float = when {
                         !neighbor.isExplored(unit.civ) ->
                             tileToCheckMovement + 1f  // If we don't know then we just guess it to be 1.
 
-                        !canPassThroughCache.getOrPut(neighbor.zeroBasedIndex){
+                        !canPassThroughCache.getOrPut(neighbor.globalIndex){
                             canPassThrough(neighbor)
                         } -> unitMovement // Can't go here.
                         // The reason that we don't just "return" is so that when calculating how to reach an enemy,
@@ -154,8 +175,10 @@ class UnitMovement(val unit: MapUnit) {
     @Readonly
     fun getShortestPath(destination: Tile, avoidDamagingTerrain: Boolean = false): List<Tile> = timeThis<List<Tile>>("getShortestPath")  {
         if (unit.cache.cannotMove) return listOf()
-        if (UncivGame.Current.settings.useAStarPathfinding)
+        if (useAStarPathfinding)
             return aStarPathing.getShortestPath(destination) ?: listOf()
+        // Kotakula (KL-15): a tile of a layer the unit can never stand on cannot be reached
+        if (destination.layer != MapLayer.Surface && !LayerRules.canUnitBeOnLayer(unit, destination.layer)) return listOf()
 
         // First try and find a path without damaging terrain
         if (!avoidDamagingTerrain && unit.civ.passThroughImpassableUnlocked && unit.baseUnit.isLandUnit) {
@@ -163,7 +186,7 @@ class UnitMovement(val unit: MapUnit) {
             if (damageFreePath.isNotEmpty()) return damageFreePath
         }
 
-        if (destination.neighbors.none { isUnknownTileWeShouldAssumeToBePassable(it) || canPassThrough(it) }) {
+        if (getMovementNeighbors(destination).none { isUnknownTileWeShouldAssumeToBePassable(it) || canPassThrough(it) }) {
             // edge case where this all of the tiles around the destination are
             // explored and known the unit can't pass through any of thoes tiles so we know a priori that no path exists
             pathfindingCache.setShortestPathCache(destination, listOf())
@@ -174,7 +197,7 @@ class UnitMovement(val unit: MapUnit) {
             return cachedPath
 
         val currentTile = unit.getTile()
-        if (currentTile.position == destination.position) {
+        if (currentTile == destination) { // Kotakula: compare tiles - positions repeat on the layers
             // edge case that's needed, so that workers will know that they can reach their own tile. *sigh*
             pathfindingCache.setShortestPathCache(destination, listOf(currentTile))
             return listOf(currentTile)
@@ -188,7 +211,7 @@ class UnitMovement(val unit: MapUnit) {
         val unitMaxMovement = unit.getMaxMovement().toFloat()
         val newTilesToCheck = ArrayList<Tile>()
         val visitedTilesBitset = BitSet(currentTile.tileMap.tileList.size)
-        visitedTilesBitset.set(currentTile.zeroBasedIndex)
+        visitedTilesBitset.set(currentTile.globalIndex) // Kotakula: indices unique over all layers
         val civilization = unit.civ
 
         val passThroughCacheNew = ArrayList<Boolean?>(currentTile.tileMap.tileList.size)
@@ -219,7 +242,8 @@ class UnitMovement(val unit: MapUnit) {
                         false,
                         visitedTilesBitset,
                         passThroughCacheNew,
-                        movementCostCache
+                        movementCostCache,
+                        startingTile = tileToCheck // Kotakula: the position alone does not say the layer
                     )
                 }
                 for (reachableTile in distanceToTilesThisTurn.keys) {
@@ -260,11 +284,11 @@ class UnitMovement(val unit: MapUnit) {
             }
 
             // add newTilesToCheck to visitedTiles so we do not path over these tiles in a later iteration
-            for (tile in newTilesToCheck) visitedTilesBitset.set(tile.zeroBasedIndex)
+            for (tile in newTilesToCheck) visitedTilesBitset.set(tile.globalIndex)
             // no need to check tiles that are surrounded by reachable tiles, only need to check the edgemost tiles.
             // Because anything we can reach from intermediate tiles, can be more easily reached by the edgemost tiles,
             // since we'll have to pass through an edgemost tile in order to reach the destination anyway
-            tilesToCheck = newTilesToCheck.filterNot { tile -> tile.neighbors.all { visitedTilesBitset.get(it.zeroBasedIndex) } }
+            tilesToCheck = newTilesToCheck.filterNot { tile -> getMovementNeighbors(tile).all { visitedTilesBitset.get(it.globalIndex) } }
 
             distance++
         }
@@ -571,6 +595,9 @@ class UnitMovement(val unit: MapUnit) {
             // This fixes a bug where tiles in the fog of war would always only cost 1 mp
             if (!unit.civ.gameInfo.gameParameters.godMode)
                 passingMovementSpent += MovementCost.getMovementCostBetweenAdjacentTiles(unit, previousTile, tile)
+            // Kotakula (7.2): changing the layer through a Grav Elevator or Axis Mundi gives movement back
+            if (previousTile.layer != tile.layer)
+                passingMovementSpent -= LayerRules.transitMovementBonus(tile, unit.civ)
 
             // In case something goes wrong, cache the last tile we were able to end on
             // We can assume we can pass through this tile, as we would have broken earlier
@@ -705,7 +732,7 @@ class UnitMovement(val unit: MapUnit) {
     }
 
     @Readonly
-    private fun isCityCenterCannotEnter(tile: Tile) = tile.isCityCenter()
+    private fun isCityCenterCannotEnter(tile: Tile) = LayerRules.isCityColumnOrCenter(tile) // Kotakula (4.4): the whole center column
         && tile.getOwner() != unit.civ
         && !tile.getCity()!!.hasJustBeenConquered
 
@@ -729,6 +756,8 @@ class UnitMovement(val unit: MapUnit) {
         EscortCannotMove,
         TileIsNotEmpty,
         NoAirUnitTransport,
+        /** Kotakula (KL-15): the layer is not open to the civilization or not for this kind of unit */
+        LayerInaccessible,
     }
 
     @Readonly
@@ -811,12 +840,18 @@ class UnitMovement(val unit: MapUnit) {
 
     @Readonly
     fun cannotPassThroughReason(tile: Tile, includeOtherEscortUnit: Boolean = true): CannotMoveToReason? {
+        // Kotakula (KL-15): only the layers the civilization opened, flying units never underground, burrowing never in the sky
+        if (tile.layer != MapLayer.Surface && !LayerRules.canUnitBeOnLayer(unit, tile.layer))
+            return CannotMoveToReason.LayerInaccessible
         if (tile.isImpassible()) {
             // special exception - ice tiles are technically impassible, but some units can move through them anyway
             // helicopters can pass through impassable tiles like mountains
             if (!unit.cache.canPassThroughImpassableTiles && !(unit.cache.canEnterIceTiles && tile.terrainFeatureObjects.any { it.isIce })
                 // carthage-like uniques sometimes allow passage through impassible tiles
-                && !(unit.civ.passThroughImpassableUnlocked && unit.civ.passableImpassables.contains(tile.lastTerrain.name)))
+                && !(unit.civ.passThroughImpassableUnlocked && unit.civ.passableImpassables.contains(tile.lastTerrain.name))
+                // Kotakula (4.3): Open Sky for flying units, Solid Rock for burrowing ones
+                && !(unit.cache.isFlying && tile.terrainHasUnique(UniqueType.KMPassableForFlying))
+                && !(unit.cache.isBurrowing && tile.terrainHasUnique(UniqueType.KMPassableForBurrowing)))
                 return CannotMoveToReason.TerrainImpassable
         }
         if (tile.isLand
@@ -878,7 +913,7 @@ class UnitMovement(val unit: MapUnit) {
         movementCostCache: HashMap<Int, Float>? = null,
         includeOtherEscortUnit: Boolean = true
     ): PathsToTilesWithinTurn {
-        if (UncivGame.Current.settings.useAStarPathfinding) {
+        if (useAStarPathfinding) {
             if (!considerZoneOfControl) require(includeOtherEscortUnit)
             val pathingMap = if (!considerZoneOfControl) aStarPathingWithoutZoneControl
                 else if (includeOtherEscortUnit || !unit.isEscorting()) aStarPathing
@@ -903,7 +938,7 @@ class UnitMovement(val unit: MapUnit) {
      */
     @Readonly
     fun getRoadPath(destinationTile: Tile): List<Tile>? =
-        if (UncivGame.Current.settings.useAStarPathfinding)
+        if (useAStarPathfinding)
             roadPathing.getShortestPath(destinationTile)?.let { listOf(unit.currentTile) + it }
         else MapPathing.getRoadPath(unit.civ, unit.getTile(), destinationTile)
 

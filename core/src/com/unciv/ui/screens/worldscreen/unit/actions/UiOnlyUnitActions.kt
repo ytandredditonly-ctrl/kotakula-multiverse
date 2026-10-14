@@ -20,6 +20,7 @@ object UiOnlyUnitActions {
     fun getUnitActions(unit: MapUnit): Sequence<UiUnitAction> = sequenceOf(
         getConstructImprovementAction(unit),
         getConnectRoadAction(unit),
+        getLayRouteAction(unit),
         getPromoteAction(unit),
         getShowUnitDestinationAction(unit),
         getSwapAction(unit)
@@ -38,7 +39,7 @@ object UiOnlyUnitActions {
     private fun getShowUnitDestinationAction(unit: MapUnit): UiUnitAction? {
         if (!unit.isMoving()) return null
         return UiUnitAction(UiUnitActionType.ShowUnitDestination) {
-            GUI.getMap().setCenterPosition(unit.getMovementDestination().position, true)
+            GUI.getMap().setCenterPosition(unit.getMovementDestination().layerKey, true) // Kotakula: layer key
         }
     }
 
@@ -87,6 +88,19 @@ object UiOnlyUnitActions {
             action = {
                 worldScreen.bottomUnitTable.selectedUnitIsConnectingRoad =
                     !worldScreen.bottomUnitTable.selectedUnitIsConnectingRoad
+                worldScreen.shouldUpdate = true
+            }
+        )
+    }
+
+    /** Kotakula (7.1): "Lay route to..." for the route builders on the Underground and the Sky */
+    private fun getLayRouteAction(unit: MapUnit): UiUnitAction? {
+        if (!com.unciv.logic.kotakula.layers.LayerRoutes.canLayRoutes(unit)) return null
+        val worldScreen = GUI.getWorldScreen()
+        return UiUnitAction(UiUnitActionType.LayRoute,
+            isCurrentAction = unit.action == com.unciv.logic.kotakula.layers.LayerRoutes.ACTION,
+            action = {
+                worldScreen.bottomUnitTable.selectedUnitIsLayingRoute = !worldScreen.bottomUnitTable.selectedUnitIsLayingRoute
                 worldScreen.shouldUpdate = true
             }
         )

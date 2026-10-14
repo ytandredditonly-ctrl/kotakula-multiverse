@@ -10,6 +10,7 @@ object KotakulaTurnHooks {
 
     /** Start of [civ]'s turn, after the vanilla start-of-turn processing */
     fun onTurnStart(civ: Civilization) {
+        com.unciv.logic.kotakula.layers.LayerTurn.onTurnStart(civ) // three-layer map: works without factions too
         if (!FactionRules.isFactionGame(civ.gameInfo) || civ.isSpectator()) return
         FactionAssignment.onTurnStart(civ)
         NewbieTruce.onTurnStart(civ)

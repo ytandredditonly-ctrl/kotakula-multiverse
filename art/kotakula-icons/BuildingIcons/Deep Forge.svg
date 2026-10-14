@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Глубинная кузня: наковальня в пещере -->
+  <path d="M4 40 Q50 0 96 40 V96 H4 Z" fill="#000"/>
+  <path d="M16 96 V44 Q50 16 84 44 V96 Z" fill="#fff"/>
+  <path d="M28 62 H74 L66 72 H58 V84 H70 V90 H32 V84 H44 V72 H36 Z" fill="#000"/>
+  <path d="M22 32 L28 44 M50 24 V36 M78 32 L72 44" stroke="#000" stroke-width="3"/>
+</svg>

@@ -90,6 +90,8 @@ enum class KeyboardBinding(
     ToggleImprovementDisplay(Category.WorldScreen, KeyCharAndCode.UNKNOWN),
     ZoomIn(Category.WorldScreen, Input.Keys.NUMPAD_ADD),
     ZoomOut(Category.WorldScreen, Input.Keys.NUMPAD_SUBTRACT),
+    ShowLayerAbove(Category.WorldScreen, "Show the layer above", Input.Keys.PAGE_UP), // Kotakula (6.1)
+    ShowLayerBelow(Category.WorldScreen, "Show the layer below", Input.Keys.PAGE_DOWN),
 
     // Map Panning - separate to get own expander. Map editor use will need to check this - it's arrows only
     PanUp(Category.MapPanning, Input.Keys.UP),
@@ -139,9 +141,13 @@ enum class KeyboardBinding(
     DisbandUnit(Category.UnitActions,"Disband unit", KeyCharAndCode.DEL),
     GiftUnit(Category.UnitActions,"Gift unit", KeyCharAndCode.UNKNOWN),
     Skip(Category.UnitActions, 'z'),
-    ShowAdditionalActions(Category.UnitActions,"Show more", Input.Keys.PAGE_DOWN),
-    HideAdditionalActions(Category.UnitActions,"Back", Input.Keys.PAGE_UP),
+    // Kotakula (6.1): PageUp/PageDown switch the layers of the three-layer map, the action pages moved to ] and [
+    ShowAdditionalActions(Category.UnitActions,"Show more", ']'),
+    HideAdditionalActions(Category.UnitActions,"Back", '['),
     AddInCapital(Category.UnitActions, "Add in capital", 'g'),
+    LayerUp(Category.UnitActions, "Ascend", 'q'), // Kotakula (6.1)
+    LayerDown(Category.UnitActions, "Descend", 'v'),
+    LayRoute(Category.UnitActions, "Lay route", 'b'),
 
     // The AutoPlayMenu reuses the AutoPlay binding, under Worldscreen above - otherwise clear labeling would be tricky
     AutoPlayMenuEndTurn(Category.AutoPlayMenu, "AutoPlay End Turn", 't'),

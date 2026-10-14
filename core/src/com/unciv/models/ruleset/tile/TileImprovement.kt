@@ -108,6 +108,7 @@ class TileImprovement : RulesetStatsObject() {
     override fun makeLink() = "Improvement/$name"
 
     override fun getCivilopediaTextLines(ruleset: Ruleset): List<FormattedLine> =
+        com.unciv.logic.kotakula.layers.LayerRules.civilopediaLayerLines(terrainsCanBeBuiltOn, ruleset) + // Kotakula (6.1): layer label
         ImprovementDescriptions.getCivilopediaTextLines(this, ruleset)
 
     override fun getSortGroup(ruleset: Ruleset) = when {

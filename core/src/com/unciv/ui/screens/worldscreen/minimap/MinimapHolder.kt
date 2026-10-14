@@ -29,6 +29,9 @@ class MinimapHolder(val mapHolder: WorldMapHolder) : Table() {
     private var maximized = false
     private var lastCutoutSetting = false
     lateinit var minimap: Minimap
+    /** Kotakula (6.1): the layer switch under the minimap, and the layer the minimap was built for */
+    val layerSwitch = com.unciv.ui.kotakula.LayerSwitchTable(mapHolder)
+    private var lastLayer = mapHolder.activeLayer
 
     /** Button, next to the minimap, to toggle the unit movement map overlay. */
     val movementsImageButton = MapOverlayToggleButton(
@@ -74,7 +77,9 @@ class MinimapHolder(val mapHolder: WorldMapHolder) : Table() {
         val civ: Civilization? = civInfo.takeUnless { GUI.getWorldScreen().selectedGameView.spectatorMode }
         val newMinimapSize = worldScreen.game.settings.minimapSize
         val cutoutSetting = worldScreen.game.settings.androidCutout
-        if (newMinimapSize == minimapSize && civ?.exploredRegion?.shouldUpdateMinimap() != true && cutoutSetting == lastCutoutSetting) return
+        if (newMinimapSize == minimapSize && civ?.exploredRegion?.shouldUpdateMinimap() != true && cutoutSetting == lastCutoutSetting
+            && lastLayer == mapHolder.activeLayer) return // Kotakula (6.1): the minimap shows the active layer
+        lastLayer = mapHolder.activeLayer
         lastCutoutSetting = cutoutSetting
         minimapSize = newMinimapSize
         maximized = false
@@ -93,6 +98,11 @@ class MinimapHolder(val mapHolder: WorldMapHolder) : Table() {
         val alignment = if (worldScreen.game.settings.androidCutout) Align.topRight else Align.bottomRight
         stack.addInTable(getMaximizeToggleButton(civInfo, alignment)).size(40f).align(alignment) // more click area
         add(stack).bottom()
+        if (mapHolder.tileMap.hasLayers()) { // Kotakula (6.1): three buttons under the minimap
+            row()
+            add()
+            add(layerSwitch).growX()
+        }
 
         pack()
         if (stage != null) x = stage.width - width
@@ -192,6 +202,7 @@ class MinimapHolder(val mapHolder: WorldMapHolder) : Table() {
 
     fun update(civInfo: Civilization) {
         rebuildIfSizeChanged(civInfo)
+        layerSwitch.update(civInfo)
         isVisible = UncivGame.Current.settings.showMinimap
         if (isVisible) {
             minimap.update(civInfo)

@@ -88,6 +88,41 @@ class TileView internal constructor(private val tile: Tile, val tileMapView: Til
 
     // Data retrieval
     @Readonly fun position() = tile.position
+    /** Kotakula: the layer of the tile and its layer key ([com.unciv.logic.map.MapLayer.toKey]) */
+    @Readonly fun layer() = tile.layer
+    @Readonly fun layerKey() = tile.layerKey
+    /** Kotakula (7.4): the layer route (Tunnel, Cloud Bridge...) the viewer sees here, drawn like a road */
+    @Readonly fun layerRouteName(): String? {
+        if (tile.layer == com.unciv.logic.map.MapLayer.Surface || tile.improvementIsPillaged) return null
+        val shown = getShownImprovement() ?: return null
+        return shown.takeIf { tile.ruleset.tileImprovements[it]?.hasUnique(com.unciv.models.ruleset.unique.UniqueType.KMMakesTilePassable) == true }
+    }
+    /** Kotakula (4.4): one of the tiles above or below a city center */
+    @Readonly fun isCityColumn(): Boolean = com.unciv.logic.kotakula.layers.LayerRules.isCityColumn(tile)
+    /** Kotakula (7.4): extra images of a city column - the city on the other layers and the transition buildings */
+    @Readonly fun layerCityImages(): List<String> {
+        if (!tile.tileMap.hasLayers()) return emptyList()
+        val city = tile.getCity() ?: return emptyList()
+        if (city.location != tile.position) return emptyList()
+        val images = ArrayList<String>()
+        if (tile.layer != com.unciv.logic.map.MapLayer.Surface) images += "City center-${tile.layer.name}"
+        val built = city.cityConstructions
+        when {
+            built.isBuilt("Grav Elevator") || built.isBuilt("Axis Mundi") -> images += "Transition-Axis"
+            else -> for ((building, image) in transitionBuildingImages) if (built.isBuilt(building)) images += image
+        }
+        return images
+    }
+
+    /** Kotakula (6.1): is the column of this tile a layer transition (natural, improvement or city building)? */
+    @Readonly fun isLayerTransition(): Boolean = tile.tileMap.hasLayers() && com.unciv.logic.kotakula.layers.LayerRules.isTransition(tile)
+    /** Kotakula (6.1): a visible unit on a layer [above] or below this tile in its column, for the column markers */
+    @Readonly fun visibleUnitInColumn(above: Boolean): ForeignMapUnitView? {
+        if (viewer == null || !tile.tileMap.hasLayers()) return null
+        val others = tile.column().filter { if (above) it.layer.ordinal > tile.layer.ordinal else it.layer.ordinal < tile.layer.ordinal }
+        val unit = others.filter { it.isVisible(viewer) }.flatMap { it.getUnits().toList() }.firstOrNull { isVisible(it) } ?: return null
+        return toForeignMapUnitView(unit)
+    }
     /** Ideally this function should not exist - you should never be able to get a tileview of an unexplored tile
      * However, currently the way the map works is we set up a tilegroup for all players and use the tileview for that tile
      * That means that *in order to allow clicking on an unexplored tile* we currently need to accept tileviews of unexplored tiles
@@ -168,6 +203,9 @@ class TileView internal constructor(private val tile: Tile, val tileMapView: Til
     @Readonly fun providesResources(viewingCiv: CivView): Boolean = tile.providesResources(viewingCiv.unwrap())
 
     @Readonly fun getTileMap(): TileMapView = tileMapView
+
+    private val transitionBuildingImages = linkedMapOf("Mine Lift" to "Transition-Lift", "Aerostat Station" to "Transition-Aerostat",
+        "Cloud Gate" to "Transition-Cloud Gate", "Earth Portal" to "Transition-Earth Portal")
 
     companion object {
         /** For icon/preview rendering of a single tile that has no backing [TileMap]. */

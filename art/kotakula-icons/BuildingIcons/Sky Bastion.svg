@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Небесный бастион: стена, которая смотрит вверх -->
+  <path d="M12 94 V40 H24 V30 H36 V40 H44 V30 H56 V40 H64 V30 H76 V40 H88 V94 Z" fill="#000"/>
+  <path d="M50 4 L60 18 H54 V26 H46 V18 H40 Z" fill="#000"/>
+  <g fill="#fff"><rect x="26" y="56" width="10" height="16"/><rect x="64" y="56" width="10" height="16"/></g>
+</svg>

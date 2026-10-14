@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Мировая ось: столп от корней до облаков -->
+  <rect x="42" y="16" width="16" height="66" fill="#000"/>
+  <g fill="#000"><circle cx="36" cy="16" r="10"/><circle cx="50" cy="10" r="12"/><circle cx="64" cy="16" r="10"/></g>
+  <g stroke="#000" stroke-width="4" fill="none"><path d="M44 80 Q30 88 18 96"/><path d="M50 82 V98"/><path d="M56 80 Q70 88 82 96"/></g>
+  <g fill="#fff"><circle cx="50" cy="40" r="3"/><circle cx="50" cy="56" r="3"/></g>
+</svg>

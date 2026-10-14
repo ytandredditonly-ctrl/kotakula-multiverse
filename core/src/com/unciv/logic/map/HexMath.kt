@@ -370,7 +370,10 @@ object HexMath {
     }
 
     fun tilesAndNeighborUniqueIndex(tile: Tile, neighbor: Tile): Int {
-        return tile.zeroBasedIndex * 6 +  // each tile has 6 neighbors
+        // Kotakula: indices unique over all layers, two more slots for the layer changes (up and down)
+        if (tile.tileMap !== neighbor.tileMap)
+            return tile.globalIndex * 8 + 6 + (if (neighbor.layer.ordinal > tile.layer.ordinal) 1 else 0)
+        return tile.globalIndex * 8 +  // each tile has 6 neighbors
                 tile.tileMap.getNeighborTileClockPosition(tile, neighbor) / 2 - 1 // min: 2, max: 12, step 2; Divide by 2 and it's numbers 1-6, -1 to get 0-5
     }
 

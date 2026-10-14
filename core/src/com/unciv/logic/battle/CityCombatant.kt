@@ -15,13 +15,14 @@ import yairm210.purity.annotations.Readonly
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
-class CityCombatant(val city: City) : ICombatant {
+/** @param layerTile Kotakula (4.4): the tile of the center column the city is fought on, if it is not the center itself */
+class CityCombatant(val city: City, private val layerTile: Tile? = null) : ICombatant {
     override fun getMaxHealth(): Int {
         return city.getMaxHealth()
     }
     override fun getHealth(): Int = city.health
     @Readonly override fun getCivInfo(): Civilization = city.civ
-    override fun getTile(): Tile = city.getCenterTile()
+    override fun getTile(): Tile = layerTile ?: city.getCenterTile()
     override fun getName(): String = city.name
     @Readonly override fun isDefeated(): Boolean = city.health == 1
     override fun isVisibleTo(to: Civilization): Boolean = true
@@ -63,8 +64,10 @@ class CityCombatant(val city: City) : ICombatant {
         // Industrial - 32.4, Modern - 51, Atomic - 72.5, All - 118.3
 
         // Garrisoned unit gives up to 20% of strength to city, health-dependant
-        if (cityTile.militaryUnit != null)
-            strength += cityTile.militaryUnit!!.baseUnit.strength * (cityTile.militaryUnit!!.health / 100f) * modConstants.cityStrengthFromGarrison
+        // Kotakula (4.4): a unit on any tile of the center column garrisons the city, one bonus however many there are
+        val garrison = city.getGarrison()
+        if (garrison != null)
+            strength += garrison.baseUnit.strength * (garrison.health / 100f) * modConstants.cityStrengthFromGarrison
 
         var buildingsStrength = city.getStrength()
         val gameContext = GameContext(getCivInfo(), city, ourCombatant = this, theirCombatant = theirCombatant, combatAction = combatAction)
@@ -77,6 +80,15 @@ class CityCombatant(val city: City) : ICombatant {
         var extraStrength = 0
         city.forEachMatchingUnique(UniqueType.StrengthAmount, gameContext) { extraStrength += it.params[0].toInt() }
         strength += extraStrength
+
+        // Kotakula (3.6, 4.4): Bunker and Sky Bastion against attacks from their layer
+        if (combatAction == CombatAction.Defend && theirCombatant != null) {
+            val attackerLayer = theirCombatant.getTile().layer.name
+            var layerPercent = 0f
+            city.cityConstructions.builtBuildingUniqueMap.getMatchingUniques(UniqueType.KMCityStrengthVsLayer, city.state)
+                .filter { it.params[1] == attackerLayer }.forEach { layerPercent += it.params[0].toFloat() }
+            if (layerPercent != 0f) strength *= 1 + layerPercent / 100f
+        }
 
         return strength.roundToInt()
     }

@@ -32,7 +32,7 @@ open class UnitOverviewTabHelpers {
         GUI.getMap().setCenterPosition(position, forceSelectUnit = unit)
     }
 
-    protected fun showWorldScreenAt(unit: MapUnitView) = showWorldScreenAt(unit.getTile().position(), unit)
+    protected fun showWorldScreenAt(unit: MapUnitView) = showWorldScreenAt(unit.getTile().layerKey(), unit) // Kotakula: layer key
     protected fun showWorldScreenAt(tile: TileView) = showWorldScreenAt(tile.position(), null)
 
     @Readonly

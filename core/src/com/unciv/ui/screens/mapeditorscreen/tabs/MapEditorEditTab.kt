@@ -34,6 +34,8 @@ class MapEditorEditTab(
     private val editorScreen: MapEditorScreen,
     headerHeight: Float
 ): Table(BaseScreen.skin), TabbedPager.IPageExtensions {
+    /** Kotakula (5.5): the brushes only offer terrains of the edited layer */
+    val editedLayer get() = editorScreen.editedLayer
     private val subTabs: TabbedPager
     private val brushTable = Table(skin)
     private val brushSlider: UncivSlider

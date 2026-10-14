@@ -103,4 +103,7 @@ enum class UnitActionType(val value: String) {
     GiftUnit("Gift unit"),
     Skip("Skip turn"),
     AddInCapital("Add in capital"),
+    /** Kotakula (KL-06): change the layer of the three-layer map */
+    LayerUp("Ascend"),
+    LayerDown("Descend"),
 }

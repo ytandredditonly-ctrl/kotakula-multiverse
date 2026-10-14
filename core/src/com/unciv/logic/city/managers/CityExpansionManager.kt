@@ -59,7 +59,8 @@ class CityExpansionManager : IsPartOfGameInfoSerialization {
     }
 
     @Readonly
-    fun canBuyTile(tile: Tile): Boolean {
+    fun canBuyTile(layerTile: Tile): Boolean {
+        val tile = layerTile.surfaceTile() // Kotakula (4.4): columns are bought whole
         return when {
             city.isPuppet || city.isBeingRazed -> false
             tile.getOwner() != null -> false
@@ -69,7 +70,8 @@ class CityExpansionManager : IsPartOfGameInfoSerialization {
         }
     }
 
-    fun buyTile(tile: Tile) {
+    fun buyTile(layerTile: Tile) {
+        val tile = layerTile.surfaceTile() // Kotakula (4.4): columns are bought whole
         val goldCost = getGoldCostOfTile(tile)
 
         class TriedToBuyNonContiguousTileException(msg: String) : Exception(msg)
@@ -99,6 +101,7 @@ class CityExpansionManager : IsPartOfGameInfoSerialization {
             if (city.matchesFilter(unique.params[1]))
                 cost *= unique.params[0].toPercent()
         }
+        if (tile.tileMap.hasLayers()) cost *= 1.25 // Kotakula (4.4): a column costs 1.25 times a tile
 
         return cost.roundToInt()
     }
@@ -121,7 +124,7 @@ class CityExpansionManager : IsPartOfGameInfoSerialization {
 
     //region state-changing functions
     fun reset() {
-        for (tile in city.getTiles())
+        for (tile in city.getSurfaceTiles().toList()) // Kotakula: one call per column
             relinquishOwnership(tile)
 
         // The only way to create a city inside an owned tile is if it's in your territory
@@ -150,18 +153,21 @@ class CityExpansionManager : IsPartOfGameInfoSerialization {
      * things like worked tiles, locked tiles, and stats.
      * @param tile The tile to relinquish
      */
-    fun relinquishOwnership(tile: Tile) {
+    fun relinquishOwnership(layerTile: Tile) {
+        val tile = layerTile.surfaceTile() // Kotakula (KL-07): territory is held as whole columns
         city.tiles = city.tiles.withoutItem(tile.position)
-        for (city in city.civ.cities) {
-            if (city.isWorked(tile)) {
-                city.stopWorkingTile(tile)
-                city.population.autoAssignPopulation()
+        for (columnTile in tile.column()) {
+            for (city in city.civ.cities) {
+                if (city.isWorked(columnTile)) {
+                    city.stopWorkingTile(columnTile)
+                    city.population.autoAssignPopulation()
+                }
             }
+
+            columnTile.improvementFunctions.removeCreatesOneImprovementMarker()
+
+            columnTile.setOwningCity(null)
         }
-
-        tile.improvementFunctions.removeCreatesOneImprovementMarker()
-
-        tile.setOwningCity(null)
 
         city.civ.cache.updateOurTiles()
         city.cityStats.update()
@@ -177,21 +183,23 @@ class CityExpansionManager : IsPartOfGameInfoSerialization {
      *
      * @param tile The tile to take over
      */
-    fun takeOwnership(tile: Tile) {
+    fun takeOwnership(layerTile: Tile) {
+        val tile = layerTile.surfaceTile() // Kotakula (KL-07): territory is held as whole columns
         check(!tile.isCityCenter()) { "Trying to found a city in a tile that already has one" }
         if (tile.getCity() != null)
             tile.getCity()!!.expansion.relinquishOwnership(tile)
 
-        if (tile.isBarbarianEncampment())
-            tile.removeImprovement()
+        for (columnTile in tile.column())
+            if (columnTile.isBarbarianEncampment())
+                columnTile.removeImprovement()
 
         city.tiles = city.tiles.withItem(tile.position)
-        tile.setOwningCity(city)
+        for (columnTile in tile.column()) columnTile.setOwningCity(city)
         city.population.autoAssignPopulation()
         city.civ.cache.updateOurTiles()
         city.cityStats.update()
 
-        for (unit in tile.getUnits().toList()) // toListed because we're modifying
+        for (unit in tile.column().flatMap { it.getUnits() }.toList()) // toListed because we're modifying; Kotakula: whole column
             if (!unit.civ.diplomacyFunctions.canPassThroughTiles(city.civ))
                 unit.movement.teleportToClosestMoveableTile()
             else if (unit.civ == city.civ && unit.isSleeping()) {

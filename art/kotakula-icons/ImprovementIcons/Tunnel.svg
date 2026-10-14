@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Тоннель: проход с крепью -->
+  <path d="M10 92 V40 A40 36 0 0 1 90 40 V92 Z" fill="#000"/>
+  <path d="M26 92 V48 A24 22 0 0 1 74 48 V92 Z" fill="#fff"/>
+  <rect x="30" y="50" width="6" height="42" fill="#000"/><rect x="64" y="50" width="6" height="42" fill="#000"/><rect x="30" y="46" width="40" height="6" fill="#000"/>
+</svg>

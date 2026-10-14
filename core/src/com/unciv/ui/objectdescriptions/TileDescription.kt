@@ -61,7 +61,9 @@ object TileDescription {
         val shownImprovement = tileView.getShownImprovement()
         if (shownImprovement != null) {
             val pillageText = if (tileView.improvementIsPillaged) " (Pillaged!)" else ""
-            lineList += FormattedLine("[$shownImprovement]$pillageText", link = "Improvement/$shownImprovement")
+            // Kotakula (5.3.5): barbarian camps of the layers are called Goblin Lair and Harpy Nest
+            val shownName = com.unciv.logic.kotakula.layers.LayerRules.layerCampName(shownImprovement, tileView.layer(), tileView.getRuleset())
+            lineList += FormattedLine("[$shownName]$pillageText", link = "Improvement/$shownImprovement")
         }
 
         if (tileView.improvementInProgress != null && isViewableToPlayer) {

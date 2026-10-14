@@ -320,7 +320,8 @@ enum class UniqueParameterType(
             Constants.coastal, Constants.river, "Open terrain", "Rough terrain", "Water resource",
             "resource", "Foreign Land", "Foreign", "Friendly Land", "Friendly", "Enemy Land", "Enemy", "your", "Unowned",
             "Terrain Feature", "Featureless", Constants.freshWaterFilter, "non-fresh water", "Natural Wonder",
-            Constants.impassable, "Land", "Water"
+            Constants.impassable, "Land", "Water",
+            "Underground", "Surface", "Sky" // Kotakula (KL-10)
         ) + ResourceType.entries.map { it.name + " resource" } + Constants.all
 
         override fun getErrorSeverity(parameterText: String, ruleset: Ruleset) = getErrorSeverityForFilter(parameterText, ruleset)
@@ -548,6 +549,20 @@ enum class UniqueParameterType(
         severityDefault = UniqueType.UniqueParameterErrorSeverity.RulesetInvariant
     ) {
         override val staticKnownValues = setOf("Technocrat", "Humanist")
+    },
+
+    /** Kotakula: a layer of the three-layer map ([com.unciv.logic.map.MapLayer]) */
+    MapLayerName("layer", "Underground", "`Underground`, `Surface` or `Sky`",
+        severityDefault = UniqueType.UniqueParameterErrorSeverity.RulesetInvariant
+    ) {
+        override val staticKnownValues = setOf("Underground", "Surface", "Sky")
+    },
+
+    /** Kotakula: direction of a layer transition, [UniqueType.KMTransition] */
+    LayerDirection("layerDirection", "Down", "`Up`, `Down` or `All`",
+        severityDefault = UniqueType.UniqueParameterErrorSeverity.RulesetInvariant
+    ) {
+        override val staticKnownValues = setOf("Up", "Down", "All")
     },
 
     /** [UniqueType.ConditionalTech] and others, no central implementation */

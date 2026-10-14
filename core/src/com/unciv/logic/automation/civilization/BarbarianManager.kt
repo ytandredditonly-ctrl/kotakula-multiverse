@@ -43,9 +43,9 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
 
         val existingEncampmentLocations = encampments.asSequence().map { it.position }.toHashSet()
 
-        for (tile in tileMap.values) {
-            if (tile.isBarbarianEncampment() && !existingEncampmentLocations.contains(tile.position)) {
-                encampments.add(BarbarianEncampment(tile.position))
+        for (tile in gameInfo.allTiles()) { // Kotakula (KL-22): camps of all layers, keyed by layer keys
+            if (tile.isBarbarianEncampment() && !existingEncampmentLocations.contains(tile.layerKey)) {
+                encampments.add(BarbarianEncampment(tile.layerKey))
             }
         }
 
@@ -56,7 +56,7 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
     fun updateEncampments() {
         // Check if camps were destroyed
         for (encampment in encampments.toList()) { // tolist to avoid concurrent modification
-            if (!tileMap[encampment.position].isBarbarianEncampment()) {
+            if (!gameInfo.getTileByKey(encampment.position).isBarbarianEncampment()) { // Kotakula: layer keys
                 encampment.wasDestroyed()
             }
             // Check if the ghosts are ready to depart
@@ -66,6 +66,7 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
 
         // Possibly place a new encampment
         placeBarbarianEncampment()
+        placeLayerEncampments() // Kotakula (KL-22, 5.3.5)
 
         for (encampment in encampments) encampment.update()
     }
@@ -103,7 +104,7 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
         // Camps can't spawn within 7 tiles of each other or within 4 tiles of major civ capitals
         val tooCloseToCapitals = gameInfo.civilizations.filterNot { it.isBarbarian || it.isSpectator() || it.cities.isEmpty() || it.isCityState || it.getCapital() == null }
             .flatMap { it.getCapital()!!.getCenterTile().getTilesInDistance(4) }.toSet()
-        val tooCloseToCamps = encampments
+        val tooCloseToCamps = encampments.filter { !com.unciv.logic.map.MapLayer.isLayerKey(it.position) } // Kotakula: surface camps
             .flatMap { tileMap[it.position].getTilesInDistance(
                     if (it.destroyed) 4 else 7
             ) }.toSet()
@@ -149,6 +150,29 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
     }
 
     /**
+     * Kotakula (KL-22, 5.3.5): camps on the Underground and in the Sky - half as many as on the Surface, in the fog,
+     * 7 tiles apart. They exist from the start, but only spawn units once a civilization has opened their layer.
+     */
+    private fun placeLayerEncampments() {
+        if (!gameInfo.hasLayers()) return
+        val surfaceCamps = encampments.count { !it.destroyed && !com.unciv.logic.map.MapLayer.isLayerKey(it.position) }
+        val allViewableTiles = gameInfo.civilizations.asSequence().filterNot { it.isBarbarian || it.isSpectator() }
+            .flatMap { it.viewableTiles }.toHashSet()
+        val rng = gameInfo.getBarbarianCivilization().state.stateBasedRandom("BarbarianManager.placeLayerEncampments", encampments.hashCode())
+        for (layer in com.unciv.logic.map.MapLayer.extraLayers) {
+            val map = gameInfo.map(layer) ?: continue
+            val layerCamps = encampments.filter { com.unciv.logic.map.MapLayer.layerOfKey(it.position) == layer }
+            if (layerCamps.count { !it.destroyed } >= surfaceCamps / 2) continue
+            val campTiles = layerCamps.map { gameInfo.getTileByKey(it.position) }
+            val tile = map.values.filter {
+                it !in allViewableTiles && !it.isImpassible() && it.resource == null && it.improvement == null
+                    && it.getOwner() == null && campTiles.none { camp -> camp.aerialDistanceTo(it) < 7 }
+            }.randomOrNull(rng) ?: continue
+            createNewCamp(tile, rng)
+        }
+    }
+
+    /**
      * [CivilizationInfo.addNotification][Add a notification] to every civilization that have
      * adopted Honor policy and have explored the [tile] where the Barbarian Encampment has spawned.
      */
@@ -156,8 +180,8 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
         for (civ in gameInfo.civilizations) {
             if (!civ.hasExplored(tile)) continue
             if (!civ.hasUnique(UniqueType.NotifiedOfBarbarianEncampments)) continue
-            civ.addNotification("A new barbarian encampment has spawned!", tile.position, NotificationCategory.War, NotificationIcon.War)
-            civ.setLastSeenImprovement(tile.position, tile.improvement)
+            civ.addNotification("A new barbarian encampment has spawned!", tile.layerKey, NotificationCategory.War, NotificationIcon.War) // Kotakula: layer key
+            civ.setLastSeenImprovement(tile.layerKey, tile.improvement) // Kotakula: layer key
         }
     }
 
@@ -167,7 +191,7 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
             .filter { it.isBarbarianCampEquivalent(tile.stateThisTile) }
         val improvement = candidates.randomOrNull(rng)?.name ?: Constants.barbarianEncampment
         tile.setImprovement(improvement)
-        val newCamp = BarbarianEncampment(tile.position)
+        val newCamp = BarbarianEncampment(tile.layerKey) // Kotakula: layer key
         newCamp.gameInfo = gameInfo
         encampments.add(newCamp)
     }
@@ -186,7 +210,7 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
             // Empty camp - spawn a defender
             if (tile.militaryUnit == null)
                 // Try spawning a unit on this tile, return null if unsuccessful
-                return spawnUnit(tile.position, false)
+                return spawnUnit(tile, false)
 
             // Don't spawn wandering barbs too early
             if (gameInfo.turns < 10)
@@ -212,19 +236,19 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
 
         val rng = gameInfo.getBarbarianCivilization().state.stateBasedRandom("BarbarianManager.spawnBarbarian")
         // Attempt to spawn a barbarian on a valid tile
-        return spawnUnit(tile.position, validTiles.random(rng).isWater, allegiance) 
+        return spawnUnit(tile, validTiles.random(rng).isWater, allegiance)
     }
 
     /** Attempts to spawn a barbarian on [position], returns true if successful and false if unsuccessful. */
     private fun spawnUnit(
-        position: HexCoord,
+        tile: Tile, // Kotakula: the tile says the layer too
         naval: Boolean,
         allegiance: Civilization = gameInfo.getBarbarianCivilization()
     ): MapUnit? {
         updateBarbarianTech()
         val unitToSpawn = chooseBarbarianUnit(naval)
             ?: return null // return null if we didn't find a unit
-        val spawnedUnit = gameInfo.tileMap.placeUnitNearTile(position, unitToSpawn, allegiance)
+        val spawnedUnit = tile.tileMap.placeUnitNearTile(tile.position, unitToSpawn, allegiance)
         return spawnedUnit
     }
 

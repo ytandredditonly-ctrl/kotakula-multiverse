@@ -156,6 +156,13 @@ class CityStatsTable(private val cityScreen: CityScreen) : Table() {
         lowerTable.add(unassignedPopLabel).row()
         lowerTable.add(turnsToExpansionString.toLabel()).row()
         lowerTable.add(turnsToPopString.toLabel()).row()
+        // Kotakula (6.1): the yields of the worked tiles by layer
+        val byLayer = cityView.getStatsFromTilesByLayer()
+        if (byLayer.size > 1 || byLayer.keys.any { it != com.unciv.logic.map.MapLayer.Surface })
+            for (layer in listOf(com.unciv.logic.map.MapLayer.Sky, com.unciv.logic.map.MapLayer.Surface, com.unciv.logic.map.MapLayer.Underground)) {
+                val stats = byLayer[layer] ?: continue
+                lowerTable.add("{${layer.name}}: $stats".toLabel(fontSize = 14)).row()
+            }
 
         val tableWithIcons = Table() // Each row has a SINGLE actor
         tableWithIcons.defaults().pad(2f)

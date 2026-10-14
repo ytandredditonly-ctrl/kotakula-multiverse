@@ -125,6 +125,11 @@ object Conditionals {
             UniqueType.ConditionalCivFilter -> checkOnCiv { matchesFilter(conditional.params[0], state) }
             UniqueType.ConditionalFaction -> checkOnCiv { com.unciv.logic.kotakula.FactionRules.contentFaction(this)?.name == conditional.params[0] }
             UniqueType.ConditionalKMCanAffordGodsGift -> checkOnCiv { com.unciv.logic.kotakula.FactionPantheons.canAffordGift(this) }
+            // Kotakula (KL-10, KL-14): three-layer map
+            UniqueType.ConditionalOnLayer -> state.relevantTile?.layer?.name == conditional.params[0]
+            UniqueType.ConditionalLayerUnlocked -> checkOnCiv {
+                com.unciv.logic.kotakula.layers.LayerRules.hasAccess(this, com.unciv.logic.map.MapLayer.fromString(conditional.params[0]) ?: com.unciv.logic.map.MapLayer.Surface)
+            }
             UniqueType.ConditionalWar -> checkOnCiv { isAtWar() }
             UniqueType.ConditionalNotWar -> checkOnCiv { !isAtWar() }
             UniqueType.ConditionalWithResource -> state.getResourceAmount(conditional.params[0]) > 0

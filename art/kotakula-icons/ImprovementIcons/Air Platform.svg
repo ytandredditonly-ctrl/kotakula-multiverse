@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Воздушная платформа: металлический настил -->
+  <rect x="6" y="40" width="88" height="18" fill="#000"/>
+  <g stroke="#fff" stroke-width="3"><path d="M22 42 V56"/><path d="M38 42 V56"/><path d="M54 42 V56"/><path d="M70 42 V56"/></g>
+  <path d="M16 58 L10 84 M84 58 L90 84" stroke="#000" stroke-width="5"/>
+  <path d="M30 24 C40 14 60 14 70 24" stroke="#000" stroke-width="4" fill="none"/>
+</svg>

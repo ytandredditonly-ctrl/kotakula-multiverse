@@ -41,6 +41,7 @@ object KotakulaModGenerator {
             generateVictories()
             generateEvents()
             generateMisc()
+            generateLayers() // the three-layer map (docs/kotakula/layers.md) extends the files written above
             mergeLoreMod()
             renameUnitTypeFilters(File(outDir, "jsons"))
             generateIconPlaceholders(File("../.."))

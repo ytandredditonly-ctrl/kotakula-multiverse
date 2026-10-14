@@ -46,9 +46,18 @@ class CityView(city: City,
     }
 
     // Data retrieval
-    @Readonly fun isInRange(tileView: TileView): Boolean = tileView.unwrap() in city.tilesInRange
+    @Readonly fun isInRange(tileView: TileView): Boolean = tileView.unwrap().surfaceTile() in city.tilesInRange // Kotakula: columns
+    /** Kotakula (KL-20, 4.4): may the city work this tile - open layer, passable, not the column of the center */
+    @Readonly fun isWorkableLayerTile(tileView: TileView): Boolean = com.unciv.logic.kotakula.layers.LayerRules.isWorkable(city, tileView.unwrap())
+    /** Kotakula: is the city in a world with the Underground and the Sky? */
+    @Readonly fun hasLayers(): Boolean = city.getCenterTile().tileMap.hasLayers()
+    /** Kotakula: the per-layer part of the tile yields (6.1) */
+    @Readonly fun getStatsFromTilesByLayer() = city.cityStats.statsFromTilesByLayer
 
     @Readonly fun centerTile(): TileView = gameView.tileMapView.getTile(city.getCenterTile())
+    /** Kotakula: the tile of the center column on [layer] */
+    @Readonly fun centerTile(layer: com.unciv.logic.map.MapLayer): TileView =
+        gameView.tileMapView.getTile(city.getCenterTile().layerTile(layer) ?: city.getCenterTile())
     @Readonly fun getTiles(): Sequence<TileView> = city.getTiles().map { gameView.tileMapView.getTile(it) }
     @Readonly fun tileView(tile: Tile): TileView = gameView.tileMapView.getTile(tile)
 

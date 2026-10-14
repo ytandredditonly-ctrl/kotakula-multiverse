@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Искусственный остров: остров на опорах -->
+  <path d="M10 44 H90 L66 80 H34 Z" fill="#000"/>
+  <rect x="10" y="34" width="80" height="10" fill="#000"/>
+  <g stroke="#fff" stroke-width="3"><path d="M30 50 L40 72"/><path d="M50 48 V76"/><path d="M70 50 L60 72"/></g>
+  <path d="M44 20 H56 V34 H44 Z M40 14 H60 V20 H40 Z" fill="#000"/>
+</svg>

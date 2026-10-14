@@ -52,7 +52,7 @@ object KotakulaSvgIcons {
         }
         // These folders only hold rendered SVGs: a PNG without a target any more (renamed or removed object) goes
         // (ImprovementIcons and NationIcons also hold the P1 icons of KotakulaIconPainter: not cleaned)
-        for (folder in targets.map { it.folder }.toSet() - setOf("ImprovementIcons", "NationIcons")) {
+        for (folder in targets.map { it.folder }.toSet() - setOf("ImprovementIcons", "NationIcons", "ResourceIcons")) {
             val keep = rendered.filter { it.first.folder == folder }.map { "${it.first.name}.png" }.toSet() +
                 // the icons of the lore mod are copied by the generator, not rendered
                 File(GenLore.LORE_PATH, "Images/$folder").list().orEmpty().toSet()
@@ -105,6 +105,8 @@ object KotakulaSvgIcons {
         factionObjects("Beliefs.json", "ReligionIcons")
         for (action in JsonText.readArray(File(jsons, "FactionActions.json")))
             result += Target("FactionActionIcons", action["name"] as String, ru(action["name"] as String))
+        // The three-layer map (layers.md): objects of the layers, the unit action buttons and the layer icons
+        result += layerIconTargets(::ru)
         // The nations of the lore mod and everything unique to them (GenLore)
         val lore = File(GenLore.LORE_PATH, "jsons")
         for ((file, folder) in listOf("Nations.json" to "NationIcons", "Units.json" to "UnitIcons",

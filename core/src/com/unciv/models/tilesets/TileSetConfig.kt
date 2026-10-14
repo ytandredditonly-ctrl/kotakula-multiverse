@@ -15,6 +15,10 @@ class TileSetConfig {
     var tileScale: Float = 1f
     var tileScales: HashMap<String, Float> = HashMap()
     var ruleVariants: HashMap<String, Array<String>> = HashMap()
+    /** Kotakula (7.4): fog of war colour per layer of the three-layer map (`Underground`, `Sky`); the others use [fogOfWarColor] */
+    var fogOfWarColorByLayer: HashMap<String, Color> = HashMap()
+
+    fun fogOfWarColorFor(layer: String): Color = fogOfWarColorByLayer[layer] ?: fogOfWarColor
 
     fun clone(): TileSetConfig {
         val toReturn = TileSetConfig()
@@ -26,6 +30,7 @@ class TileSetConfig {
         toReturn.tileScale = tileScale
         toReturn.tileScales = tileScales
         toReturn.ruleVariants.putAll(ruleVariants.map { Pair(it.key, it.value.clone()) })
+        toReturn.fogOfWarColorByLayer.putAll(fogOfWarColorByLayer)
         return toReturn
     }
 
@@ -42,5 +47,6 @@ class TileSetConfig {
         for ((tileSetString, renderOrder) in other.ruleVariants) {
             ruleVariants[tileSetString] = renderOrder
         }
+        fogOfWarColorByLayer.putAll(other.fogOfWarColorByLayer)
     }
 }

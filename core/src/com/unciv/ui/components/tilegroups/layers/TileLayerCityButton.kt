@@ -50,7 +50,7 @@ class TileLayerCityButton(tileGroup: TileGroup, size: Float) : TileLayer(tileGro
         }
 
         if (viewingCiv == null) return
-        if (cityView == null || !tileGroup.tileView.isCityCenter()) return
+        if (cityView == null || !tileGroup.tileView.isCityCenter() && !tileGroup.tileView.isCityColumn()) return // Kotakula (6.1): plate on all layers
 
         // Create wrapper + city button if not yet present
         if (cityButton == null) {

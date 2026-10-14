@@ -74,11 +74,25 @@ object Nuke {
 
         if (attacker.isDefeated()) return
 
-        attacker.unit.attacksSinceTurnStart.add(targetTile.position)
+        attacker.unit.attacksSinceTurnStart.add(targetTile.layerKey) // Kotakula: layer keys
 
         for (tile in hitTiles) {
             // Handle complicated effects
             doNukeExplosionForTile(attacker, tile, nukeStrength, targetTile == tile)
+        }
+        // Kotakula (4.5, 7.3): the columns in the blast - the Sky in full (its Clouds blow away), the Underground at 50% without fallout
+        if (targetTile.tileMap.hasLayers()) for (surfaceTile in hitTiles.toList()) {
+            surfaceTile.layerTile(com.unciv.logic.map.MapLayer.Sky)?.let { skyTile ->
+                doNukeExplosionForTile(attacker, skyTile, nukeStrength, targetTile == surfaceTile)
+                if (skyTile.baseTerrain == com.unciv.logic.kotakula.layers.LayerTerrains.clouds
+                    && skyTile.ruleset.terrains.containsKey(com.unciv.logic.kotakula.layers.LayerTerrains.openSky)) {
+                    skyTile.baseTerrain = com.unciv.logic.kotakula.layers.LayerTerrains.openSky
+                    skyTile.setTerrainTransients()
+                }
+            }
+            surfaceTile.layerTile(com.unciv.logic.map.MapLayer.Underground)?.let { undergroundTile ->
+                doNukeExplosionForTile(attacker, undergroundTile, nukeStrength, targetTile == surfaceTile, damageFactor = 0.5f, fallout = false)
+            }
         }
 
 
@@ -196,7 +210,11 @@ object Nuke {
         attacker: MapUnitCombatant,
         tile: Tile,
         nukeStrength: Int,
-        isGroundZero: Boolean
+        isGroundZero: Boolean,
+        /** Kotakula (4.5): 0.5 in the Underground */
+        damageFactor: Float = 1f,
+        /** Kotakula (4.5): no fallout in the Underground */
+        fallout: Boolean = true
     ) {
         // https://forums.civfanatics.com/resources/unit-guide-modern-future-units-g-k.25628/
         // https://www.carlsguides.com/strategy/civilization5/units/aircraft-nukes.ph
@@ -216,7 +234,7 @@ object Nuke {
 
         // Damage city and reduce its population
         val city = tile.getCity()
-        if (city != null && tile.position.toHexCoord() == city.location.toHexCoord()) {
+        if (city != null && tile.isCityCenter()) { // Kotakula: the center itself, not its column
             val attackContext = GameContext(attacker.getCivInfo(), ourCombatant = attacker, theirCombatant = CityCombatant(city), tile = tile)
             buildingModifier = city.getAggregateModifier(UniqueType.GarrisonDamageFromNukes)
             doNukeExplosionDamageToCity(city, nukeStrength, damageModifierFromMissingResource, attackContext)
@@ -235,7 +253,7 @@ object Nuke {
                 nukeStrength == 1 -> 30 + rng.nextInt(40) + rng.nextInt(40)
                 // Level 0 does not exist in Civ5 (it treats units same as level 2)
                 else -> 20 + rng.nextInt(30)
-            } * buildingModifier * damageModifierFromMissingResource + 1f.ulp).toInt()
+            } * buildingModifier * damageModifierFromMissingResource * damageFactor + 1f.ulp).toInt()
             if (unit.isCivilian()) {
                 if (unit.health - damage <= 40) unit.destroy()  // Civ5: NUKE_NON_COMBAT_DEATH_THRESHOLD = 60
             } else {
@@ -247,6 +265,7 @@ object Nuke {
 
         // Pillage improvements, pillage roads, add fallout
         if (tile.isCityCenter()) return  // Never touch city centers - if they survived
+        if (!fallout) return // Kotakula (4.5)
 
         val tileRng = tileContext.stateBasedRandom("Nuke.doExplosionForTile")
         if (tile.terrainHasUnique(UniqueType.DestroyableByNukesChance)) {

@@ -589,7 +589,8 @@
 			"Can move after attacking",
 			"No defensive terrain bonus",
 			"[+15]% Strength <vs [Armor] units>",
-			"Never appears as a Barbarian unit"
+			"Never appears as a Barbarian unit",
+			"KM: Burrowing"
 		],
 		"attackSound": "tankshot",
 		"civilopediaText": [
@@ -863,7 +864,8 @@
 			"No defensive terrain bonus",
 			"[+15]% Strength <vs [Armor] units>",
 			"Never appears as a Barbarian unit",
-			"Ignores terrain cost"
+			"Ignores terrain cost",
+			"KM: Burrowing"
 		],
 		"attackSound": "tankshot",
 		"civilopediaText": [
@@ -1011,7 +1013,8 @@
 			"No defensive terrain bonus",
 			"[+15]% Strength <vs [Armor] units>",
 			"Never appears as a Barbarian unit",
-			"[+20]% Strength <when attacking>"
+			"[+20]% Strength <when attacking>",
+			"KM: Flying"
 		],
 		"attackSound": "gdrAttack",
 		"civilopediaText": [
@@ -1469,7 +1472,8 @@
 			"Can move after attacking",
 			"No defensive terrain bonus",
 			"[15] HP when healing",
-			"Never appears as a Barbarian unit"
+			"Never appears as a Barbarian unit",
+			"KM: Flying"
 		],
 		"attackSound": "tankshot",
 		"civilopediaText": [
@@ -1744,7 +1748,8 @@
 			"No defensive terrain bonus",
 			"[15] HP when healing",
 			"Never appears as a Barbarian unit",
-			"Ignores terrain cost"
+			"Ignores terrain cost",
+			"KM: Flying"
 		],
 		"attackSound": "tankshot",
 		"civilopediaText": [
@@ -1895,7 +1900,8 @@
 			"No defensive terrain bonus",
 			"[15] HP when healing",
 			"Never appears as a Barbarian unit",
-			"[+20]% Strength <when attacking>"
+			"[+20]% Strength <when attacking>",
+			"KM: Flying"
 		],
 		"attackSound": "gdrAttack",
 		"civilopediaText": [
@@ -2279,6 +2285,90 @@
 			"Religious Unit"
 		],
 		"movement": 3
+	},
+	{
+		"name": "Tunnel Borer",
+		"faction": "Technocrat",
+		"unitType": "Civilian",
+		"movement": 2,
+		"strength": 0,
+		"cost": 90,
+		"requiredTech": "Metallurgy",
+		"uniques": [
+			"KM: Burrowing",
+			"Can build [Tunnel] improvements on tiles",
+			"Can build [Mine Shaft] improvements on tiles",
+			"Can build [Excavation] improvements on tiles",
+			"[-50]% construction time for [Tunnel] improvements <in [non-[Impassable]] tiles>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Tunnel Borer"
+			}
+		]
+	},
+	{
+		"name": "Sky Engineer",
+		"faction": "Technocrat",
+		"unitType": "Civilian",
+		"movement": 2,
+		"strength": 0,
+		"cost": 90,
+		"requiredTech": "Aeronautics",
+		"uniques": [
+			"KM: Flying",
+			"Can build [Air Platform] improvements on tiles",
+			"Can build [Aerostat Mast] improvements on tiles",
+			"Can build [Artificial Island] improvements on tiles",
+			"[-50]% construction time for [Air Platform] improvements <in [non-[Impassable]] tiles>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Sky Engineer"
+			}
+		]
+	},
+	{
+		"name": "Cloud Weaver",
+		"faction": "Humanist",
+		"unitType": "Civilian",
+		"movement": 2,
+		"strength": 0,
+		"cost": 90,
+		"requiredTech": "Rune Carving",
+		"uniques": [
+			"KM: Flying",
+			"Can build [Cloud Bridge] improvements on tiles",
+			"Can build [Cloud Stair] improvements on tiles",
+			"Can build [Raise Island] improvements on tiles",
+			"[-50]% construction time for [Cloud Bridge] improvements <in [non-[Impassable]] tiles>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Cloud Weaver"
+			}
+		]
+	},
+	{
+		"name": "Earth Shaper",
+		"faction": "Humanist",
+		"unitType": "Civilian",
+		"movement": 2,
+		"strength": 0,
+		"cost": 90,
+		"requiredTech": "High Elementalism",
+		"uniques": [
+			"KM: Burrowing",
+			"Can build [Magic Passage] improvements on tiles",
+			"Can build [Sinkhole] improvements on tiles",
+			"Can build [Dig Grotto] improvements on tiles",
+			"[-50]% construction time for [Magic Passage] improvements <in [non-[Impassable]] tiles>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Earth Shaper"
+			}
+		]
 	},
 	{
 		"name": "Tunneler",

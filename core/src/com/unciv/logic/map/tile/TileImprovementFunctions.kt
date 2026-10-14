@@ -97,6 +97,8 @@ class TileImprovementFunctions(val tile: Tile) {
             // Can only remove features or improvement if that feature/improvement is actually there
             improvement.name.startsWith(Constants.remove) -> tile.terrainFeatures.any { Constants.remove + it == improvement.name }
                 || Constants.remove + tile.improvement == improvement.name
+            // Kotakula (KL-13, 4.2, 4.4, 7.1): rules of the three-layer map - transitions, city columns, terraforming
+            !com.unciv.logic.kotakula.layers.LayerImprovements.mayBuildHere(tile, improvement, gameContext.civInfo) -> false
             // Can only build roads if on land and they are better than the current road
             improvement.isRoad() -> !tile.isWater
                     && RoadStatus.ofImprovement(improvement)!! > tile.roadStatus
@@ -202,7 +204,7 @@ class TileImprovementFunctions(val tile: Tile) {
             for (civ in tile.tileMap.gameInfo.civilizations) {
                 if (civ.isDefeated() || !civ.isMajorCiv()) continue
                 if (civ == civToActivateBroaderEffects || tile.isVisible(civ))
-                    civ.setLastSeenImprovement(tile.position, improvement?.name)
+                    civ.setLastSeenImprovement(tile.layerKey, improvement?.name) // Kotakula: layer key
             }
         }
 
@@ -253,6 +255,9 @@ class TileImprovementFunctions(val tile: Tile) {
         if (improvementFieldHasChanged) {
             updateVisibility()
         }
+        // Kotakula (7.1): terraforming changes the terrain forever and leaves no improvement behind
+        if (improvement.hasUnique(UniqueType.KMTurnsTileInto))
+            com.unciv.logic.kotakula.layers.LayerImprovements.terraform(tile, improvement, civToActivateBroaderEffects)
 
         if (improvement.hasUnique(UniqueType.RemovesFeaturesIfBuilt)) {
             // Remove terrainFeatures that a Worker can remove

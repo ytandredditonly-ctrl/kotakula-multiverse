@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Портал в недра: каменная дверь -->
+  <path d="M14 94 V30 L50 8 L86 30 V94 Z" fill="#000"/>
+  <rect x="34" y="40" width="32" height="54" fill="#fff"/>
+  <rect x="38" y="44" width="24" height="50" fill="#000"/>
+  <circle cx="56" cy="70" r="3" fill="#fff"/>
+  <g stroke="#fff" stroke-width="3"><path d="M20 50 H30"/><path d="M70 60 H80"/></g>
+</svg>

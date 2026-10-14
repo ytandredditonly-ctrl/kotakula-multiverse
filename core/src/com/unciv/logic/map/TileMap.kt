@@ -66,6 +66,13 @@ class TileMap(initialCapacity: Int = 10) : IsPartOfGameInfoSerialization {
     /** Optional freeform text a mod map creator can set for their "customers" */
     var description = ""
 
+    /** Kotakula (KL-02): which layer of the three-layer map this is. Neighbors are only searched within one TileMap */
+    var layer = MapLayer.Surface
+
+    /** Kotakula (KL-02): the maps of the other layers of the scenario or map file; `null` on maps without layers.
+     *  Only the surface map stores them - in a running game they live in [GameInfo.undergroundMap] and [GameInfo.skyMap]. */
+    var layerMaps: ArrayList<TileMap>? = null
+
     //endregion
     //region Fields, Transient
 
@@ -125,6 +132,10 @@ class TileMap(initialCapacity: Int = 10) : IsPartOfGameInfoSerialization {
     @Transient
     /** Continent IDs sorted by size descending */
     val continentsSortedBySize = ArrayList<Int>()
+
+    /** Kotakula (KL-02): all three layers by [MapLayer.ordinal] once linked by [linkLayers]; empty without layers */
+    @Transient
+    var linkedLayers: Array<TileMap?> = arrayOfNulls(0)
 
     //endregion
     //region Constructors
@@ -209,8 +220,41 @@ class TileMap(initialCapacity: Int = 10) : IsPartOfGameInfoSerialization {
 
         toReturn.description = description
         toReturn.tileUniqueMapCache = tileUniqueMapCache
+        toReturn.layer = layer
+        toReturn.layerMaps = layerMaps?.mapTo(ArrayList()) { it.clone() }
 
         return toReturn
+    }
+
+    /** Kotakula (KL-02): this map and the maps of the other layers, linked so that tiles find their columns.
+     *  Pass the three maps of one world; afterwards [Tile.layerTile] works on all of them. */
+    fun linkLayers(underground: TileMap?, sky: TileMap?) {
+        if (underground == null && sky == null) {
+            linkedLayers = arrayOfNulls(0)
+            return
+        }
+        val all = arrayOfNulls<TileMap>(MapLayer.entries.size)
+        underground?.layer = MapLayer.Underground
+        sky?.layer = MapLayer.Sky
+        layer = MapLayer.Surface
+        all[MapLayer.Underground.ordinal] = underground
+        all[MapLayer.Surface.ordinal] = this
+        all[MapLayer.Sky.ordinal] = sky
+        for (map in all) map?.linkedLayers = all
+    }
+
+    /** Kotakula: does this world have the extra layers? */
+    @Readonly fun hasLayers() = linkedLayers.isNotEmpty()
+
+    /** Kotakula (KL-03): the map of [layer] in this world, `null` if the world has no such layer */
+    @Readonly fun layerMap(layer: MapLayer): TileMap? =
+        if (layer == this.layer) this else linkedLayers.getOrNull(layer.ordinal)
+
+    /** Kotakula: the tile of [key] (see [MapLayer.toKey]) in this world */
+    @Readonly fun getByKey(key: HexCoord): Tile? {
+        val map = layerMap(MapLayer.layerOfKey(key)) ?: return null
+        val position = MapLayer.positionOfKey(key)
+        return map.getOrNull(position.x, position.y)
     }
 
     @Readonly operator fun contains(vector: Vector2) = contains(vector.x.toInt(), vector.y.toInt())
@@ -545,6 +589,9 @@ class TileMap(initialCapacity: Int = 10) : IsPartOfGameInfoSerialization {
         val rulesetIncompatibilities = HashSet<String>()
         for (set in values.map { it.getRulesetIncompatibility(ruleset) })
             rulesetIncompatibilities.addAll(set)
+        // Kotakula (5.5): the layers stored with the map
+        for (layerMap in layerMaps.orEmpty())
+            for (tile in layerMap.values) rulesetIncompatibilities.addAll(tile.getRulesetIncompatibility(ruleset, layerMap.layer))
 
         // All the rest is to find missing nations
         try { // This can fail if the map contains a resource that isn't in the ruleset, in Tile.tileResource
@@ -611,9 +658,11 @@ class TileMap(initialCapacity: Int = 10) : IsPartOfGameInfoSerialization {
         for (tileInfo in values) {
             tileMatrix[tileInfo.position.x - leftX][tileInfo.position.y - bottomY] = tileInfo
         }
+        val globalIndexOffset = layer.indexOrder * tileList.size // Kotakula (KL-04): unique tile index over all layers
         for ((index, tileInfo) in values.withIndex()) {
             tileInfo.tileMap = this
             tileInfo.zeroBasedIndex = index
+            tileInfo.globalIndex = index + globalIndexOffset
             tileInfo.ruleset = this.ruleset!!
         }
         for (tileInfo in values) {

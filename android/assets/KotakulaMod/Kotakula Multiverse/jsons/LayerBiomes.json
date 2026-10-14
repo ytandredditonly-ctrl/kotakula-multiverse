@@ -1,0 +1,112 @@
+[
+	{
+		"name": "Sand Caves",
+		"layer": "Underground",
+		"surfaceFilter": "Desert",
+		"priority": 1,
+		"uniques": ["[+1 Gold] <in [Cave] tiles>", "[-1 Food] <in [Fungal Grotto] tiles>"]
+	},
+	{
+		"name": "Ice Caves",
+		"layer": "Underground",
+		"surfaceFilter": "Tundra or Snow",
+		"priority": 1,
+		"uniques": ["[+1 Science] <in [Cave] tiles>", "KM: Makes tile passable <in [Underground Lake] tiles>"]
+	},
+	{
+		"name": "Root Grottoes",
+		"layer": "Underground",
+		"surfaceFilter": "Forest or Jungle",
+		"priority": 2,
+		"uniques": ["[+1 Food] <in [Fungal Grotto] tiles>", "[+1 Food] <in [Cave] tiles>"]
+	},
+	{
+		"name": "Flooded Caves",
+		"layer": "Underground",
+		"surfaceFilter": "Marsh",
+		"priority": 2,
+		"uniques": ["[+1 Food] <in [Cave] tiles>", "KM: Movement cost [2] <in [Cave] tiles>"]
+	},
+	{
+		"name": "Deep Caves",
+		"layer": "Underground",
+		"surfaceFilter": "Hill or Mountain",
+		"priority": 1,
+		"uniques": ["[+1 Production] <in [Cave] tiles>"]
+	},
+	{
+		"name": "Salt Caves",
+		"layer": "Underground",
+		"surfaceFilter": "Coast or Ocean",
+		"priority": 1,
+		"uniques": ["[+1 Gold] <in [Cave] tiles>", "[+1 Gold] <in [Underground Lake] tiles>"]
+	},
+	{
+		"name": "Catacombs",
+		"layer": "Underground",
+		"surfaceFilter": "City center",
+		"priority": 5
+	},
+	{
+		"name": "Poisoned Caves",
+		"layer": "Underground",
+		"surfaceFilter": "Fallout",
+		"priority": 9,
+		"uniques": ["[-1 Food, -1 Production]", "Units ending their turn on this terrain take [5] damage"]
+	},
+	{
+		"name": "Mirage Clouds",
+		"layer": "Sky",
+		"surfaceFilter": "Desert",
+		"priority": 1,
+		"uniques": ["[-1 Food, +1 Culture] <in [Clouds] tiles>"]
+	},
+	{
+		"name": "Snow Clouds",
+		"layer": "Sky",
+		"surfaceFilter": "Tundra or Snow",
+		"priority": 1,
+		"uniques": ["[-1 Food, +1 Science] <in [Clouds] tiles>"]
+	},
+	{
+		"name": "Mist Clouds",
+		"layer": "Sky",
+		"surfaceFilter": "Forest or Jungle or Marsh",
+		"priority": 2,
+		"uniques": ["[+1 Food] <in [Clouds] tiles>", "[+1 Food] <in [Floating Island] tiles>"]
+	},
+	{
+		"name": "Rain Clouds",
+		"layer": "Sky",
+		"surfaceFilter": "Coast or Ocean",
+		"priority": 1,
+		"uniques": ["[+1 Food] <in [Clouds] tiles>", "[+1 Science] <in [Storm Front] tiles>"]
+	},
+	{
+		"name": "High Winds",
+		"layer": "Sky",
+		"surfaceFilter": "Mountain",
+		"priority": 2,
+		"uniques": ["[+1 Science] <in [Clouds] tiles>", "KM: Flying units spend [50]% movement here"]
+	},
+	{
+		"name": "City Haze",
+		"layer": "Sky",
+		"surfaceFilter": "City center",
+		"priority": 5
+	},
+	{
+		"name": "Smog",
+		"layer": "Sky",
+		"surfaceFilter": "Near city with [Factory] or [Golem Workshop]",
+		"priority": 6,
+		"uniques": ["[-1 Food]"]
+	},
+	{
+		"name": "Toxic Clouds",
+		"layer": "Sky",
+		"surfaceFilter": "Fallout",
+		"priority": 9,
+		"uniques": ["[-1 Food, -1 Production]", "Units ending their turn on this terrain take [5] damage"]
+	}
+]

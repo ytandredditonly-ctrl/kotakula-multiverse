@@ -195,7 +195,7 @@ class WorldScreen(
         val tileToCenterOn: HexCoord =
                 when {
                     viewingCiv.getCapital() != null -> viewingCiv.getCapital()!!.location.toHexCoord()
-                    viewingCiv.units.getCivUnits().any() -> viewingCiv.units.getCivUnits().first().getTile().position
+                    viewingCiv.units.getCivUnits().any() -> viewingCiv.units.getCivUnits().first().getTile().layerKey // Kotakula: layer key
                     else -> HexCoord.Zero
                 }
 
@@ -311,7 +311,26 @@ class WorldScreen(
         globalShortcuts.add(KeyboardBinding.ToggleResourceDisplay) { minimapWrapper.resourceImageButton.toggle() }
         globalShortcuts.add(KeyboardBinding.ToggleImprovementDisplay) { minimapWrapper.improvementsImageButton.toggle() }
 
+        // Kotakula (6.1): PageUp / PageDown show the layer above / below
+        globalShortcuts.add(KeyboardBinding.ShowLayerAbove) { com.unciv.ui.kotakula.LayerSwitchTable.step(mapHolder, up = true, viewingCiv) }
+        globalShortcuts.add(KeyboardBinding.ShowLayerBelow) { com.unciv.ui.kotakula.LayerSwitchTable.step(mapHolder, up = false, viewingCiv) }
+
         globalShortcuts.add(KeyboardBinding.DeveloperConsole, action = ::openDeveloperConsole)
+    }
+
+    /** Kotakula (6.1): called by [WorldMapHolder.setActiveLayer] - minimap, switch and tiles follow the new layer */
+    fun onActiveLayerChanged() {
+        shouldUpdate = true
+    }
+
+    /** Kotakula (6.1): the selected unit changed its layer (Ascend, Descend, a path through a transition) - follow it */
+    private var followedUnitLayer: Pair<com.unciv.view.MapUnitView, com.unciv.logic.map.MapLayer>? = null
+    private fun followSelectedUnitLayer() {
+        val unit = bottomUnitTable.selectedUnit ?: return
+        val layer = unit.getTile().layer()
+        val previous = followedUnitLayer
+        followedUnitLayer = unit to layer
+        if (previous != null && previous.first == unit && previous.second != layer) mapHolder.setActiveLayer(layer)
     }
 
     @Readonly
@@ -402,6 +421,7 @@ class WorldScreen(
             updateSelectedCiv()
 
             bottomUnitTable.update()
+            followSelectedUnitLayer() // Kotakula (6.1)
 
             minimapWrapper.update(getGameViewConsideringForOfWar().civView.getCiv())
             bottomTileInfoTable.civView = getGameViewConsideringForOfWar().civView

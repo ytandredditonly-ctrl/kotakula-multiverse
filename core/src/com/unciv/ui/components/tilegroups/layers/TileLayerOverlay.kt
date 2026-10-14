@@ -20,7 +20,7 @@ class TileLayerOverlay(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup,
     private fun getFog() = ImageGetter.getImage(strings.crosshatchHexagon).setHexagonSize().apply {
         color = Color.WHITE.cpy().apply { a = 0.2f }
     }
-    private fun getUnexplored() = ImageGetter.getImage(strings.unexploredTile).setHexagonSize()
+    private fun getUnexplored() = ImageGetter.getImage(strings.unexploredTileFor(tileGroup.tileView.layer())).setHexagonSize() // Kotakula (7.4)
 
     fun showCrosshair(alpha: Float = 1f) {
         if (crosshair == null) {

@@ -29,7 +29,9 @@ class BarbarianEncampment() : IsPartOfGameInfoSerialization {
         if (countdown > 0) // Not yet
             countdown--
         // Countdown at 0, try to spawn a barbarian
-        else if (!destroyed && gameInfo.barbarians.spawnBarbarian(gameInfo.tileMap[position]) != null) { 
+        // Kotakula (KL-22): a camp of a layer nobody has opened yet is quiet
+        else if (!destroyed && com.unciv.logic.kotakula.layers.LayerRules.isOpenedByAnyone(gameInfo, com.unciv.logic.map.MapLayer.layerOfKey(position))
+            && gameInfo.barbarians.spawnBarbarian(gameInfo.getTileByKey(position)) != null) { 
             // Successful
             spawnedUnits++
             resetCountdown()

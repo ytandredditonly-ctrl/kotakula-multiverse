@@ -147,8 +147,16 @@ class MapUnitView internal constructor(
         unit.movement.headTowards(tileView.unwrap())
         return true
     }
+    /** Kotakula (7.1): the chain of a route to [tileView], `null` if there is none */
+    fun getLayRoutePath(tileView: TileView): List<TileView>? =
+        com.unciv.logic.kotakula.layers.LayerRoutes.findRoutePath(unit, tileView.unwrap())?.map { gameView.tileMapView.getTile(it) }
+    /** Kotakula (7.1): starts "Lay route to [tileView]" */
+    fun tryLayRoute(tileView: TileView): Boolean {
+        com.unciv.logic.kotakula.layers.LayerRoutes.start(unit, tileView.unwrap())
+        return true
+    }
     fun trySetMoveToAction(tileView: TileView): Boolean {
-        val position = tileView.position()
+        val position = tileView.unwrap().layerKey // Kotakula: layer key
         unit.action = "moveTo ${position.x},${position.y}"
         return true
     }

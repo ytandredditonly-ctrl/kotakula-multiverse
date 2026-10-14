@@ -220,10 +220,19 @@ class City : IsPartOfGameInfoSerialization, INamed {
     @Readonly fun canBombard() = getBombardRange() > 0 && !attackedThisTurn && !isInResistance()
     @Readonly fun getCenterTile(): Tile = centerTile
     @Readonly fun getCenterTileOrNull(): Tile? = if (::centerTile.isInitialized) centerTile else null
-    @Readonly fun getTiles(): Sequence<Tile> = tiles.asSequence().map { tileMap[it] }
-    @Readonly fun getWorkableTiles() = tilesInRange.asSequence().filter { it.getOwner() == civ }
-    @Readonly fun getWorkedTiles(): Sequence<Tile> = workedTiles.asSequence().map { tileMap[it] }
-    @Readonly fun isWorked(tile: Tile) = workedTiles.contains(tile.position)
+    /** Kotakula (KL-07): the territory is stored as columns - this gives the tiles of all layers of the owned columns */
+    @Readonly fun getTiles(): Sequence<Tile> =
+        if (!tileMap.hasLayers()) tiles.asSequence().map { tileMap[it] }
+        else tiles.asSequence().flatMap { tileMap[it].column() }
+    /** Kotakula: the owned surface tiles only, one per column */
+    @Readonly fun getSurfaceTiles(): Sequence<Tile> = tiles.asSequence().map { tileMap[it] }
+    /** Kotakula (KL-20, 4.4): tiles of all layers open to the civilization, except the column of the center and impassable layer tiles */
+    @Readonly fun getWorkableTiles() =
+        if (!tileMap.hasLayers()) tilesInRange.asSequence().filter { it.getOwner() == civ }
+        else tilesInRange.asSequence().filter { it.getOwner() == civ }.flatMap { it.column() }
+            .filter { com.unciv.logic.kotakula.layers.LayerRules.isWorkable(this, it) }
+    @Readonly fun getWorkedTiles(): Sequence<Tile> = workedTiles.asSequence().map { civ.gameInfo.getTileByKey(it) } // Kotakula: layer keys
+    @Readonly fun isWorked(tile: Tile) = workedTiles.contains(tile.layerKey) // Kotakula: layer keys
 
     @Readonly fun isCapital(): Boolean = cityConstructions.builtBuildingUniqueMap.hasUnique(UniqueType.IndicatesCapital, state)
     @Readonly fun isCoastal(): Boolean = centerTile.isAdjacentToCoast()
@@ -277,8 +286,8 @@ class City : IsPartOfGameInfoSerialization, INamed {
     @Readonly fun isGarrisoned() = getGarrison() != null
     @Readonly
     fun getGarrison(): MapUnit? =
-            getCenterTile().militaryUnit?.takeIf {
-                it.civ == this.civ && it.canGarrison()
+            getCenterTile().column().firstNotNullOfOrNull { tile -> // Kotakula (4.4): a unit on any tile of the center column garrisons the city
+                tile.militaryUnit?.takeIf { it.civ == this.civ && it.canGarrison() }
             }
 
     @Readonly fun hasFlag(flag: CityFlags) = flagsCountdown.containsKey(flag.name)
@@ -400,20 +409,20 @@ class City : IsPartOfGameInfoSerialization, INamed {
     //region state-changing functions
     fun lockTile(tile: Tile): Boolean {
         require(isWorked(tile)) { "Cannot lock tile ${tile.position} — not worked by $name" }
-        return lockedTiles.add(tile.position)
+        return lockedTiles.add(tile.layerKey)
     }
-    fun unlockTile(tile: Tile): Boolean = lockedTiles.remove(tile.position)
+    fun unlockTile(tile: Tile): Boolean = lockedTiles.remove(tile.layerKey)
 
     fun workTile(tile: Tile): Boolean {
         require(getWorkableTiles().contains(tile)) { "Tile ${tile.position} is not workable by $name" }
         if (isWorked(tile)) return false
-        workedTiles = workedTiles.withItem(tile.position)
+        workedTiles = workedTiles.withItem(tile.layerKey)
         return true
     }
     fun stopWorkingTile(tile: Tile): Boolean {
         if (!isWorked(tile)) return false
         unlockTile(tile)
-        workedTiles = workedTiles.withoutItem(tile.position)
+        workedTiles = workedTiles.withoutItem(tile.layerKey)
         return true
     }
     fun clearWorkedTiles() {

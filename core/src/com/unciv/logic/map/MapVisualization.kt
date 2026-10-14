@@ -12,13 +12,13 @@ class MapVisualization(val gameInfo: GameInfo, val viewingCiv: Civilization) {
     @Readonly fun isUnitPastVisible(unit: MapUnit): Boolean {
         if (unit.civ == viewingCiv)
             return true
-        val checkPositions = sequenceOf(unit.movementMemories.asSequence().map { it.position }, sequenceOf(unit.getTile().position)).flatten()
-        return checkPositions.all { gameInfo.tileMap[it] in viewingCiv.viewableTiles }
+        val checkPositions = sequenceOf(unit.movementMemories.asSequence().map { it.position }, sequenceOf(unit.getTile().layerKey)).flatten()
+        return checkPositions.all { gameInfo.getTileByKey(it) in viewingCiv.viewableTiles } // Kotakula: layer keys
                 && unit.isVisibleTo(viewingCiv)
         // Past should always be visible for own units. Past should be visible for foreign units if the unit is visible and both its current tile and previous tiles are visible.
     }
 
     /** @return Whether an attack by a unit to a target should be visible to the player. */
-    @Readonly fun isAttackVisible(attacker: Civilization, source: HexCoord, target: HexCoord) = (attacker == viewingCiv || gameInfo.tileMap[source] in viewingCiv.viewableTiles || gameInfo.tileMap[target] in viewingCiv.viewableTiles)
+    @Readonly fun isAttackVisible(attacker: Civilization, source: HexCoord, target: HexCoord) = (attacker == viewingCiv || gameInfo.getTileByKey(source) in viewingCiv.viewableTiles || gameInfo.getTileByKey(target) in viewingCiv.viewableTiles)
     // Attacks by the player civ should always be visible, and attacks by foreign civs should be visible if either the tile they targeted or the attacker's tile are visible. E.G. Civ V shows bombers coming out of the Fog of War.
 }

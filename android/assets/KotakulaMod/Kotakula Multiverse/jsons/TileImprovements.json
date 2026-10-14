@@ -479,6 +479,259 @@
 		"shortcutKey": "P"
 	},
 	{
+		"name": "Mine Shaft",
+		"faction": "Technocrat",
+		"terrainsCanBeBuiltOn": ["Grassland", "Plains", "Desert", "Tundra", "Snow", "Hill"],
+		"turnsToBuild": 6,
+		"techRequired": "Metallurgy",
+		"uniques": ["KM: Transition [Down]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Mine Shaft"
+			}
+		]
+	},
+	{
+		"name": "Tunnel",
+		"faction": "Technocrat",
+		"terrainsCanBeBuiltOn": ["Solid Rock", "Cave", "Fungal Grotto"],
+		"turnsToBuild": 8,
+		"techRequired": "Metallurgy",
+		"uniques": ["KM: Makes tile passable", "Only available <for [Tunnel Borer] units>"],
+		"civilopediaText": [
+			{
+				"text": "Description: Tunnel"
+			}
+		]
+	},
+	{
+		"name": "Aerostat Mast",
+		"faction": "Technocrat",
+		"terrainsCanBeBuiltOn": ["Grassland", "Plains", "Desert", "Tundra", "Snow", "Hill"],
+		"turnsToBuild": 6,
+		"techRequired": "Aeronautics",
+		"uniques": ["KM: Transition [Up]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Aerostat Mast"
+			}
+		]
+	},
+	{
+		"name": "Air Platform",
+		"faction": "Technocrat",
+		"terrainsCanBeBuiltOn": ["Open Sky", "Clouds", "Storm Front"],
+		"turnsToBuild": 8,
+		"techRequired": "Aeronautics",
+		"uniques": ["KM: Makes tile passable", "Only available <for [Sky Engineer] units>"],
+		"civilopediaText": [
+			{
+				"text": "Description: Air Platform"
+			}
+		]
+	},
+	{
+		"name": "Cloud Stair",
+		"faction": "Humanist",
+		"terrainsCanBeBuiltOn": ["Grassland", "Plains", "Desert", "Tundra", "Snow", "Hill"],
+		"turnsToBuild": 6,
+		"techRequired": "Rune Carving",
+		"uniques": ["KM: Transition [Up]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Cloud Stair"
+			}
+		]
+	},
+	{
+		"name": "Cloud Bridge",
+		"faction": "Humanist",
+		"terrainsCanBeBuiltOn": ["Open Sky", "Clouds", "Storm Front"],
+		"turnsToBuild": 8,
+		"techRequired": "Rune Carving",
+		"uniques": ["KM: Makes tile passable", "Only available <for [Cloud Weaver] units>"],
+		"civilopediaText": [
+			{
+				"text": "Description: Cloud Bridge"
+			}
+		]
+	},
+	{
+		"name": "Sinkhole",
+		"faction": "Humanist",
+		"terrainsCanBeBuiltOn": ["Grassland", "Plains", "Desert", "Tundra", "Snow", "Hill"],
+		"turnsToBuild": 6,
+		"techRequired": "High Elementalism",
+		"uniques": ["KM: Transition [Down]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Sinkhole"
+			}
+		]
+	},
+	{
+		"name": "Magic Passage",
+		"faction": "Humanist",
+		"terrainsCanBeBuiltOn": ["Solid Rock", "Cave", "Fungal Grotto"],
+		"turnsToBuild": 8,
+		"techRequired": "High Elementalism",
+		"uniques": ["KM: Makes tile passable", "Only available <for [Earth Shaper] units>"],
+		"civilopediaText": [
+			{
+				"text": "Description: Magic Passage"
+			}
+		]
+	},
+	{
+		"name": "Mushroom Farm",
+		"terrainsCanBeBuiltOn": ["Fungal Grotto"],
+		"turnsToBuild": 6,
+		"civilopediaText": [
+			{
+				"text": "Description: Mushroom Farm"
+			}
+		],
+		"food": 1
+	},
+	{
+		"name": "Deep Mine",
+		"terrainsCanBeBuiltOn": ["Cave"],
+		"turnsToBuild": 8,
+		"civilopediaText": [
+			{
+				"text": "Description: Deep Mine"
+			}
+		],
+		"production": 1
+	},
+	{
+		"name": "Sky Garden",
+		"terrainsCanBeBuiltOn": ["Floating Island"],
+		"turnsToBuild": 6,
+		"uniques": ["Cannot be built on [resource] tiles"],
+		"civilopediaText": [
+			{
+				"text": "Description: Sky Garden"
+			}
+		],
+		"food": 1,
+		"gold": 1
+	},
+	{
+		"name": "Sky Quarry",
+		"turnsToBuild": 8,
+		"uniques": ["Can only be built to improve a resource"],
+		"civilopediaText": [
+			{
+				"text": "Description: Sky Quarry"
+			}
+		],
+		"production": 1
+	},
+	{
+		"name": "Cloud Loom",
+		"turnsToBuild": 6,
+		"uniques": ["Can only be built to improve a resource"],
+		"civilopediaText": [
+			{
+				"text": "Description: Cloud Loom"
+			}
+		],
+		"gold": 1
+	},
+	{
+		"name": "Storm Rod",
+		"terrainsCanBeBuiltOn": ["Storm Front"],
+		"turnsToBuild": 8,
+		"uniques": ["KM: Units here take no terrain damage"],
+		"civilopediaText": [
+			{
+				"text": "Description: Storm Rod"
+			}
+		],
+		"production": 1
+	},
+	{
+		"name": "Excavation",
+		"terrainsCanBeBuiltOn": ["Solid Rock"],
+		"turnsToBuild": 12,
+		"techRequired": "Metallurgy",
+		"uniques": ["KM: Turns the tile into [Cave]", "Only available <for [Tunnel Borer] units>"],
+		"civilopediaText": [
+			{
+				"text": "Description: Excavation"
+			}
+		]
+	},
+	{
+		"name": "Dig Grotto",
+		"terrainsCanBeBuiltOn": ["Solid Rock"],
+		"turnsToBuild": 12,
+		"techRequired": "High Elementalism",
+		"uniques": ["KM: Turns the tile into [Fungal Grotto]", "Only available <for [Earth Shaper] units>"],
+		"civilopediaText": [
+			{
+				"text": "Description: Dig Grotto"
+			}
+		]
+	},
+	{
+		"name": "Artificial Island",
+		"terrainsCanBeBuiltOn": ["Open Sky", "Clouds"],
+		"turnsToBuild": 12,
+		"techRequired": "Aeronautics",
+		"uniques": ["KM: Turns the tile into [Floating Island]", "Only available <for [Sky Engineer] units>"],
+		"civilopediaText": [
+			{
+				"text": "Description: Artificial Island"
+			}
+		]
+	},
+	{
+		"name": "Raise Island",
+		"terrainsCanBeBuiltOn": ["Open Sky", "Clouds"],
+		"turnsToBuild": 12,
+		"techRequired": "Rune Carving",
+		"uniques": ["KM: Turns the tile into [Floating Island]", "Only available <for [Cloud Weaver] units>"],
+		"civilopediaText": [
+			{
+				"text": "Description: Raise Island"
+			}
+		]
+	},
+	{
+		"name": "Transit Node",
+		"faction": "Technocrat",
+		"terrainsCanBeBuiltOn": ["Grassland", "Plains", "Desert", "Tundra", "Snow", "Hill"],
+		"turnsToBuild": 10,
+		"techRequired": "Aeronautics",
+		"uniques": [
+			"KM: Transition [All]",
+			"Only available <when [Underground] layer is unlocked> <when [Sky] layer is unlocked>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Transit Node"
+			}
+		]
+	},
+	{
+		"name": "Elemental Axis",
+		"faction": "Humanist",
+		"terrainsCanBeBuiltOn": ["Grassland", "Plains", "Desert", "Tundra", "Snow", "Hill"],
+		"turnsToBuild": 10,
+		"techRequired": "High Elementalism",
+		"uniques": [
+			"KM: Transition [All]",
+			"Only available <when [Underground] layer is unlocked> <when [Sky] layer is unlocked>"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Elemental Axis"
+			}
+		]
+	},
+	{
 		"name": "Chun Garden",
 		"uniqueTo": "Hun-Pyr-na-Chun-Chunke",
 		"terrainsCanBeBuiltOn": ["Grassland", "Plains", "Jungle"],

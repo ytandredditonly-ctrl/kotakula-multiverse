@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Гравилифт: лифт без тросов -->
+  <rect x="38" y="6" width="24" height="88" fill="#000"/>
+  <rect x="44" y="34" width="12" height="18" fill="#fff"/>
+  <g fill="#000"><path d="M50 2 L62 14 H38 Z"/><path d="M50 98 L62 86 H38 Z"/></g>
+  <g stroke="#000" stroke-width="4" fill="none"><path d="M20 30 Q30 50 20 70"/><path d="M80 30 Q70 50 80 70"/><path d="M8 24 Q22 50 8 76"/><path d="M92 24 Q78 50 92 76"/></g>
+</svg>

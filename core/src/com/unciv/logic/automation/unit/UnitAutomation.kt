@@ -77,6 +77,9 @@ object UnitAutomation {
             return AirUnitAutomation.automateBomber(unit)
         }
 
+        // Kotakula (6.2): one unit explores each newly opened layer
+        if (com.unciv.logic.kotakula.layers.LayerAutomation.tryLayerExplore(unit)) return
+
         // Accompany settlers
         if (tryAccompanySettlerOrGreatPerson(unit)) return
 

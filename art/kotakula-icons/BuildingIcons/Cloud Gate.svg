@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Облачные врата: арка, за которой облако -->
+  <path d="M18 92 V44 A32 32 0 0 1 82 44 V92 H68 V46 A18 18 0 0 0 32 46 V92 Z" fill="#000"/>
+  <g fill="#000"><circle cx="44" cy="66" r="8"/><circle cx="56" cy="62" r="9"/><rect x="38" y="66" width="24" height="10" rx="5"/></g>
+</svg>

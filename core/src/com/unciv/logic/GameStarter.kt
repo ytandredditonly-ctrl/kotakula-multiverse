@@ -116,6 +116,10 @@ class GameStarter private constructor(
             gameInfo.historyStartTurn = 0
             tileMap.setTransients(ruleset) // if we're starting from a map with pre-placed units, they need the civs to exist first
             tileMap.setStartingLocationsTransients()
+            // Kotakula (section 5): layers of a map file, or generated after the Surface and its resources
+            if (ruleset.hasLayers && tileMap.layerMaps == null && !com.unciv.logic.kotakula.layers.LayerWorld.disabledForMeasurement)
+                com.unciv.logic.kotakula.layers.LayerWorld.generateLayers(tileMap, ruleset)
+            com.unciv.logic.kotakula.layers.LayerWorld.takeLayersFromSurface(gameInfo)
 
             gameInfo.difficulty = gameSetupInfo.gameParameters.difficulty
 
@@ -125,6 +129,12 @@ class GameStarter private constructor(
 
         runAndMeasure("addCivStartingUnits") {
             addCivStartingUnits()
+        }
+
+        runAndMeasure("layerFairStarts") { // Kotakula (5.4)
+            val starts = gameInfo.civilizations.filter { it.isMajorCiv() }
+                .mapNotNull { tileMap.startingLocationsByNation[it.civID]?.firstOrNull() }
+            com.unciv.logic.kotakula.layers.LayerWorld.ensureFairStarts(gameInfo, starts)
         }
 
         runAndMeasure("Policies") {

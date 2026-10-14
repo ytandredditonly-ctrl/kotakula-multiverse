@@ -57,6 +57,16 @@ class TileSetStrings(
     val hexagonList by lazy { listOf(hexagon) } // since it's orFallback, needs to be lazy
     val crosshatchHexagon by lazy { orFallback { tileSetLocation + "CrosshatchHexagon" } }
     val unexploredTile by lazy { orFallback { tileSetLocation + "UnexploredTile" } }
+
+    // Kotakula (7.4): images of the three-layer map - from this tileset, else from the Kotakula tileset of the mod
+    private fun layerImage(name: String): String =
+        listOf(tileSetLocation + name, "TileSets/Kotakula/" + name).firstOrNull { ImageGetter.imageExists(it) } ?: (tileSetLocation + name)
+    val layerMarkerUp by lazy { layerImage("LayerMarkerUp") }
+    val layerMarkerDown by lazy { layerImage("LayerMarkerDown") }
+    val transitionIcon by lazy { layerImage("TransitionIcon") }
+    fun unexploredTileFor(layer: com.unciv.logic.map.MapLayer): String =
+        if (layer == com.unciv.logic.map.MapLayer.Surface) unexploredTile
+        else layerImage("UnexploredTile-${layer.name}").takeIf { ImageGetter.imageExists(it) } ?: unexploredTile
     val crosshair by lazy { orFallback { getString(tileSetLocation, "Crosshair") } }
     val highlight by lazy { orFallback { getString(tileSetLocation, "Highlight") } }
     val roadsMap = RoadStatus.entries

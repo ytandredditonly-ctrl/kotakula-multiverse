@@ -674,5 +674,218 @@
 		"impassable": true,
 		"unbuildable": true,
 		"weight": 10
+	},
+	{
+		"name": "Cave",
+		"type": "Land",
+		"layer": "Underground",
+		"movementCost": 1,
+		"defenceBonus": 0.25,
+		"RGB": [107, 90, 74],
+		"uniques": ["Doesn't generate naturally", "[+1 Production] <in tiles adjacent to [Magma Chamber] tiles>"],
+		"civilopediaText": [
+			{
+				"text": "Description: Cave"
+			}
+		],
+		"production": 1
+	},
+	{
+		"name": "Fungal Grotto",
+		"type": "Land",
+		"layer": "Underground",
+		"movementCost": 1,
+		"RGB": [124, 255, 176],
+		"uniques": ["Doesn't generate naturally", "[+1 Production] <in tiles adjacent to [Magma Chamber] tiles>"],
+		"civilopediaText": [
+			{
+				"text": "Description: Fungal Grotto"
+			}
+		],
+		"food": 2
+	},
+	{
+		"name": "Underground Lake",
+		"type": "Land",
+		"layer": "Underground",
+		"impassable": true,
+		"movementCost": 2,
+		"RGB": [28, 43, 58],
+		"uniques": ["Doesn't generate naturally"],
+		"civilopediaText": [
+			{
+				"text": "Description: Underground Lake"
+			}
+		],
+		"food": 1,
+		"gold": 1
+	},
+	{
+		"name": "Magma Chamber",
+		"type": "Land",
+		"layer": "Underground",
+		"impassable": true,
+		"movementCost": 1,
+		"RGB": [255, 106, 26],
+		"uniques": ["Doesn't generate naturally"],
+		"civilopediaText": [
+			{
+				"text": "Description: Magma Chamber"
+			}
+		]
+	},
+	{
+		"name": "Solid Rock",
+		"type": "Land",
+		"layer": "Underground",
+		"impassable": true,
+		"movementCost": 3,
+		"defenceBonus": 0.5,
+		"RGB": [58, 52, 48],
+		"uniques": ["Doesn't generate naturally", "KM: Passable for burrowing units"],
+		"civilopediaText": [
+			{
+				"text": "Description: Solid Rock"
+			}
+		]
+	},
+	{
+		"name": "Open Sky",
+		"type": "Land",
+		"layer": "Sky",
+		"impassable": true,
+		"movementCost": 1,
+		"RGB": [169, 216, 255],
+		"uniques": ["Doesn't generate naturally", "KM: Passable for flying units"],
+		"civilopediaText": [
+			{
+				"text": "Description: Open Sky"
+			}
+		]
+	},
+	{
+		"name": "Clouds",
+		"type": "Land",
+		"layer": "Sky",
+		"movementCost": 1,
+		"defenceBonus": -0.1,
+		"RGB": [255, 255, 255],
+		"uniques": ["Doesn't generate naturally"],
+		"civilopediaText": [
+			{
+				"text": "Description: Clouds"
+			}
+		],
+		"food": 1
+	},
+	{
+		"name": "Floating Island",
+		"type": "Land",
+		"layer": "Sky",
+		"movementCost": 1,
+		"defenceBonus": 0.25,
+		"RGB": [123, 201, 111],
+		"uniques": ["Doesn't generate naturally"],
+		"civilopediaText": [
+			{
+				"text": "Description: Floating Island"
+			}
+		],
+		"food": 1,
+		"production": 1,
+		"culture": 1
+	},
+	{
+		"name": "Storm Front",
+		"type": "Land",
+		"layer": "Sky",
+		"movementCost": 2,
+		"RGB": [75, 85, 104],
+		"uniques": ["Doesn't generate naturally", "Units ending their turn on this terrain take [10] damage"],
+		"civilopediaText": [
+			{
+				"text": "Description: Storm Front"
+			}
+		],
+		"science": 1
+	},
+	{
+		"name": "Crystal Vein",
+		"type": "TerrainFeature",
+		"layer": "Underground",
+		"occursOn": ["Cave"],
+		"RGB": [159, 216, 255],
+		"uniques": ["Doesn't generate naturally", "KM: Overlay feature", "[+1 Science]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Crystal Vein"
+			}
+		]
+	},
+	{
+		"name": "Jet Stream",
+		"type": "TerrainFeature",
+		"layer": "Sky",
+		"occursOn": ["Clouds", "Open Sky"],
+		"uniques": ["Doesn't generate naturally", "KM: Overlay feature", "KM: Flying units spend [33]% movement here"],
+		"civilopediaText": [
+			{
+				"text": "Description: Jet Stream"
+			}
+		]
+	},
+	{
+		"name": "Cave Entrance",
+		"type": "TerrainFeature",
+		"occursOn": ["Plains", "Grassland", "Tundra", "Desert"],
+		"uniques": ["Doesn't generate naturally", "KM: Overlay feature", "KM: Transition [Down]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Cave Entrance"
+			}
+		]
+	},
+	{
+		"name": "Updraft",
+		"type": "TerrainFeature",
+		"occursOn": ["Grassland", "Plains", "Desert", "Tundra", "Snow"],
+		"uniques": ["Doesn't generate naturally", "KM: Overlay feature", "KM: Transition [Up]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Updraft"
+			}
+		]
+	},
+	{
+		"name": "Heart of the Mountain",
+		"type": "NaturalWonder",
+		"layer": "Underground",
+		"impassable": true,
+		"occursOn": ["Cave"],
+		"weight": 0,
+		"uniques": ["Doesn't generate naturally"],
+		"civilopediaText": [
+			{
+				"text": "Description: Heart of the Mountain"
+			}
+		],
+		"production": 3,
+		"science": 2
+	},
+	{
+		"name": "Celestial Throne",
+		"type": "NaturalWonder",
+		"layer": "Sky",
+		"impassable": true,
+		"occursOn": ["Floating Island"],
+		"weight": 0,
+		"uniques": ["Doesn't generate naturally"],
+		"civilopediaText": [
+			{
+				"text": "Description: Celestial Throne"
+			}
+		],
+		"culture": 3,
+		"faith": 2
 	}
 ]

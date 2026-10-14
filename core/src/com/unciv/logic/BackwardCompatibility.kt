@@ -26,6 +26,10 @@ object BackwardCompatibility {
      */
     fun GameInfo.removeMissingModReferences() {
         tileMap.removeMissingTerrainModReferences(ruleset)
+        // Kotakula: the layer maps too - or drop them if the ruleset has no layers any more
+        if (!ruleset.hasLayers) { undergroundMap = null; skyMap = null }
+        undergroundMap?.removeMissingTerrainModReferences(ruleset)
+        skyMap?.removeMissingTerrainModReferences(ruleset)
 
         removeUnitsAndPromotions()
         removeMissingGreatPersonPoints()
@@ -66,7 +70,7 @@ object BackwardCompatibility {
     }
 
     private fun GameInfo.removeUnitsAndPromotions() {
-        for (tile in tileMap.values) {
+        for (tile in allTiles()) { // Kotakula: all layers
             for (unit in tile.getUnits().toList()) {
                 if (!ruleset.units.containsKey(unit.name)) tile.removeUnit(unit)
 
@@ -91,7 +95,7 @@ object BackwardCompatibility {
 
     private fun GameInfo.removeOldPillagedImprovements() {
         if (!ruleset.tileImprovements.containsKey(Constants.repair))
-            for (tile in tileMap.values) {
+            for (tile in allTiles()) { // Kotakula: all layers
                 if (tile.roadIsPillaged) {
                     tile.removeRoad()
                 }

@@ -94,6 +94,7 @@ class TileResource : RulesetStatsObject(), GameResource {
     override fun makeLink() = "Resource/$name"
 
     override fun getCivilopediaTextLines(ruleset: Ruleset) =
+        com.unciv.logic.kotakula.layers.LayerRules.civilopediaLayerLines(terrainsCanBeFoundOn, ruleset) + // Kotakula (6.1): layer label
         ResourceDescriptions.getCivilopediaTextLines(this, ruleset)
 
     override fun getSortGroup(ruleset: Ruleset) = resourceType.ordinal

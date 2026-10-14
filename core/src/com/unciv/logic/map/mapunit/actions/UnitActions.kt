@@ -89,7 +89,9 @@ object UnitActions {
         UnitActionType.RemoveHeresy to UnitActionsReligion::getRemoveHeresyActions,
         UnitActionType.TriggerUnique to UnitActionsFromUniques::getTriggerUniqueActions,
         UnitActionType.AddInCapital to UnitActionsFromUniques::getAddInCapitalActions,
-        UnitActionType.GiftUnit to UnitActions::getGiftActions
+        UnitActionType.GiftUnit to UnitActions::getGiftActions,
+        UnitActionType.LayerUp to UnitActions::getLayerUpActions, // Kotakula (KL-06)
+        UnitActionType.LayerDown to UnitActions::getLayerDownActions
     )
 
     private suspend fun SequenceScope<UnitAction>.addUnmappedUnitActions(unit: MapUnit) {
@@ -219,6 +221,17 @@ object UnitActions {
             action = { unit.action = UnitActionType.SleepUntilHealed.value }
                 .takeIf { !unit.isSleepingUntilHealed() && unit.canHealInCurrentTile() }
         ))
+    }
+
+    /** Kotakula (KL-06, 4.2): the buttons appear only where the layer can be changed now */
+    private fun getLayerUpActions(unit: MapUnit, tile: Tile) = getLayerChangeActions(unit, tile, up = true)
+    private fun getLayerDownActions(unit: MapUnit, tile: Tile) = getLayerChangeActions(unit, tile, up = false)
+    private fun getLayerChangeActions(unit: MapUnit, tile: Tile, up: Boolean) = sequence {
+        val layer = (if (up) tile.layer.up() else tile.layer.down()) ?: return@sequence
+        if (tile.layerTile(layer) == null) return@sequence
+        if (com.unciv.logic.kotakula.layers.LayerRules.cannotChangeLayerReason(unit, layer) != null) return@sequence
+        yield(UnitAction(if (up) UnitActionType.LayerUp else UnitActionType.LayerDown,
+            action = { com.unciv.logic.kotakula.layers.LayerRules.changeLayer(unit, layer) }))
     }
 
     private fun getGiftActions(unit: MapUnit, tile: Tile) = sequence {

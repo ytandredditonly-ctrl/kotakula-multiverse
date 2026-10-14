@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Насыпать остров: остров из облака -->
+  <path d="M12 46 H88 L62 86 H38 Z" fill="#000"/>
+  <g fill="#000"><circle cx="28" cy="38" r="12"/><circle cx="50" cy="30" r="16"/><circle cx="72" cy="38" r="12"/></g>
+  <g stroke="#fff" stroke-width="3"><path d="M40 60 L46 76"/><path d="M60 60 L54 76"/></g>
+</svg>

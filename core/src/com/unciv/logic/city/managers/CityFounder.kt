@@ -56,6 +56,7 @@ class CityFounder {
         if (civInfo.gameInfo.ruleset.tileImprovements.containsKey(Constants.cityCenter))
             tile.setImprovement(Constants.cityCenter, civInfo)
         tile.stopWorkingOnImprovement()
+        com.unciv.logic.kotakula.layers.LayerBiomes.onCityFounded(city) // Kotakula (4.4, 7.3): passable center column, city biomes
 
         val ruleset = civInfo.gameInfo.ruleset
         city.workedTiles = hashSetOf() //reassign 1st working tile

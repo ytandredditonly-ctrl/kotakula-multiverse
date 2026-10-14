@@ -293,7 +293,7 @@ class MapUnit : IsPartOfGameInfoSerialization {
     fun getMovementDestination(): Tile {
         val destination = action!!.replace("moveTo ", "").split(",").dropLastWhile { it.isEmpty() }
         val destinationVector = HexCoord(destination[0].toFloat().toInt(), destination[1].toFloat().toInt())
-        return currentTile.tileMap[destinationVector]
+        return civ.gameInfo.getTileByKey(destinationVector) // Kotakula: the destination may be a layer key
     }
 
     @Readonly fun isAutomated() = automated
@@ -626,6 +626,9 @@ class MapUnit : IsPartOfGameInfoSerialization {
 
     @Readonly
     fun getDamageFromTerrain(tile: Tile = currentTile): Int {
+        // Kotakula (3.2, 3.5): flying units ignore the Storm Front and the Toxic Clouds, a Storm Rod protects everyone
+        if (tile.layer == com.unciv.logic.map.MapLayer.Sky && cache.isFlying) return 0
+        if (tile.getUnpillagedTileImprovement()?.hasUnique(UniqueType.KMNoTerrainDamage) == true) return 0
         return tile.allTerrains.sumOf { it.damagePerTurn }
     }
 
@@ -847,6 +850,11 @@ class MapUnit : IsPartOfGameInfoSerialization {
                 getTile().getTilesInDistance(getVisibilityRange()).toHashSet() // it's that simple
             else -> getTile().getViewableTilesList(getVisibilityRange()).toHashSet()
         }
+        // Kotakula (KL-18): a flying unit in the Sky also sees the Surface within 1 tile below it
+        if (cache.isFlying && getTile().layer == com.unciv.logic.map.MapLayer.Sky) {
+            val below = getTile().layerTile(com.unciv.logic.map.MapLayer.Surface)
+            if (below != null) { viewableTiles.add(below); viewableTiles.addAll(below.neighbors) }
+        }
 
         // Set equality automatically determines if anything changed - https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-abstract-set/equals.html
 
@@ -924,7 +932,7 @@ class MapUnit : IsPartOfGameInfoSerialization {
             val gotTo = movement.headTowards(destinationTile)
             if (gotTo == currentTile) { // We didn't move at all
                 // pathway blocked? Are we still at the same spot as start of turn?
-                if (movementMemories.last().position == currentTile.position)
+                if (movementMemories.last().position == currentTile.layerKey) // Kotakula: layer keys
                     action = null
                 return
             }
@@ -959,7 +967,7 @@ class MapUnit : IsPartOfGameInfoSerialization {
         currentMovement = 0f
         civ.units.removeUnit(this)
         if (::currentTile.isInitialized) {
-            val currentPosition = getTile().position
+            val currentPosition = getTile().layerKey // Kotakula: layer keys
             civ.attacksSinceTurnStart.addAll(attacksSinceTurnStart.asSequence().map { Civilization.HistoricalAttackMemory(this.name, currentPosition, it.toHexCoord()) })
             removeFromTile()
             civ.cache.updateViewableTiles()
@@ -1196,7 +1204,7 @@ class MapUnit : IsPartOfGameInfoSerialization {
 
     /** Add the current position and the most recent movement type to [movementMemories]. Called once at end and once at start of turn, and at unit creation. */
     fun addMovementMemory() {
-        movementMemories.add(UnitMovementMemory(getTile().position, mostRecentMoveType))
+        movementMemories.add(UnitMovementMemory(getTile().layerKey, mostRecentMoveType)) // Kotakula: layer keys
         while (movementMemories.size > 2) { // O(n) but n == 2.
             // Keep at most one arrow segment— A lot of the time even that won't be rendered because the two positions will be the same.
             // When in the unit's turn— I.E. For a player unit— The last two entries will be from .endTurn() followed by from .startTurn(), so the segment from .movementMemories will have zero length. Instead, what gets seen will be the segment from the end of .movementMemories to the unit's current position.

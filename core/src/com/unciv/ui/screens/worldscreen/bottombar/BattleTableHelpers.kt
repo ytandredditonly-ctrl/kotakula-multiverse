@@ -159,7 +159,7 @@ object BattleTableHelpers {
     ) {
         fun getMapActorsForCombatant(combatant: CombatantView): Sequence<Actor> =
             sequence {
-                val tileGroup = mapHolder.tileGroups[combatant.getTile()]!!
+                val tileGroup = mapHolder.tileGroups[combatant.getTile()] ?: return@sequence // Kotakula: may be on another layer
                 if (combatant.isCity()) {
                     val icon = tileGroup.layerImprovement.improvementIcon
                     if (icon != null) yield (icon)
@@ -183,8 +183,9 @@ object BattleTableHelpers {
             .nor()  // normalize vector to length of "1"
             .scl(moveActorsDisplacement)
 
-        val attackerGroup = mapHolder.tileGroups[attacker.getTile()]!!
-        val defenderGroup = mapHolder.tileGroups[defender.getTile()]!!
+        // Kotakula: combat between the layers (aircraft hitting the Sky) is not animated on the shown layer
+        val attackerGroup = mapHolder.tileGroups[attacker.getTile()] ?: return
+        val defenderGroup = mapHolder.tileGroups[defender.getTile()] ?: return
         val hideDefenderDamage = defender.isDefeated() &&
                 attacker.getTile().position() == defender.getTile().position()
 

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Облачный амбар: амбар на облаке -->
+  <path d="M30 56 V30 L50 14 L70 30 V56 Z" fill="#000"/>
+  <rect x="44" y="38" width="12" height="18" fill="#fff"/>
+  <g fill="#000"><circle cx="28" cy="70" r="12"/><circle cx="50" cy="64" r="14"/><circle cx="72" cy="70" r="12"/><rect x="16" y="70" width="68" height="14" rx="7"/></g>
+</svg>

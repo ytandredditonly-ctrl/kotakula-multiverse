@@ -45,8 +45,8 @@ class GameView(gameInfo: GameInfo, override val viewer: Civilization, spectatorM
         val unitAttacks = wrapped.civilizations.asSequence().flatMap { civ ->
             civ.units.getCivUnits().flatMap { unit ->
                 unit.attacksSinceTurnStart.asSequence()
-                    .filter { mapVisualization.isAttackVisible(civ, unit.getTile().position, it) }
-                    .map { unit.getTile().position to it }
+                    .filter { mapVisualization.isAttackVisible(civ, unit.getTile().layerKey, it) }
+                    .map { unit.getTile().layerKey to it } // Kotakula: layer keys
             }
         }
         val civilizationAttacks = wrapped.civilizations.asSequence().flatMap { civ ->

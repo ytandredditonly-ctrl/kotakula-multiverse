@@ -1189,6 +1189,45 @@ enum class UniqueType(
         docDescription = "Gold equal to 50% of the current Faith, and 25% of the Faith is lost"),
     ConditionalKMCanAffordGodsGift("KM: when the gift to the god is affordable", UniqueTarget.Conditional),
 
+    // Three-layer map (docs/kotakula/layers.md, KL-xx). See logic/kotakula/layers
+    KMUnlocksLayer("KM: Unlocks [layer] layer", UniqueTarget.Global,
+        docDescription = "On a tech: after researching it the civilization's units may stand on the layer and its cities work its tiles (KL-11)"),
+    KMFlying("KM: Flying", UniqueTarget.Unit,
+        docDescription = "The unit may be on the Surface and in the Sky, changes between them on any tile, crosses Open Sky, " +
+            "uses Jet Streams and takes no damage from Storm Fronts. Cannot enter the Underground"),
+    KMBurrowing("KM: Burrowing", UniqueTarget.Unit,
+        docDescription = "The unit may be on the Surface and in the Underground, changes between them on any land tile " +
+            "and crosses Solid Rock (3 movement). Cannot enter the Sky"),
+    KMTransition("KM: Transition [layerDirection]", UniqueTarget.Improvement, UniqueTarget.Terrain, UniqueTarget.Building,
+        docDescription = "A surface tile with this improvement or feature (or a city with this building) lets land units change the layer: " +
+            "`Down` to the Underground, `Up` to the Sky, `All` to both and directly between them (KL-13, 7.2)"),
+    KMMakesTilePassable("KM: Makes tile passable", UniqueTarget.Improvement, UniqueTarget.Terrain,
+        docDescription = "Removes the impassability of the tile. On an improvement it also works as a road (Tunnel, Cloud Bridge, Air Platform)"),
+    KMLayerRoutesAsRailroads("KM: Layer routes work as railroads", UniqueTarget.Global,
+        docDescription = "Improvements with `KM: Makes tile passable` move like a railroad for the civilization's units (7.1)"),
+    KMPassableForFlying("KM: Passable for flying units", UniqueTarget.Terrain,
+        docDescription = "This impassable terrain can be crossed by units with `KM: Flying` (Open Sky)"),
+    KMPassableForBurrowing("KM: Passable for burrowing units", UniqueTarget.Terrain,
+        docDescription = "This impassable terrain can be crossed by units with `KM: Burrowing` (Solid Rock)"),
+    KMFlyingMovementCost("KM: Flying units spend [positiveAmount]% movement here", UniqueTarget.Terrain,
+        docDescription = "Jet Stream, High Winds: movement cost of the tile for units with `KM: Flying`"),
+    KMMovementCost("KM: Movement cost [positiveAmount]", UniqueTarget.Terrain,
+        docDescription = "Biomes (7.3): the tile costs this much movement instead of its terrain's cost, e.g. Flooded Caves"),
+    KMOverlayFeature("KM: Overlay feature", UniqueTarget.Terrain,
+        docDescription = "This terrain feature keeps movement cost, defence and passability of the terrain below it"),
+    KMLayerDeposits("KM: [relativeAmount]% of deposits lie in the [layer] layer on [terrainFilter] tiles with [amount] extra", UniqueTarget.Resource,
+        docDescription = "Map generation (5.3): this share of the resource's deposits is moved from the Surface to the layer, each deposit bigger by the amount"),
+    KMTurnsTileInto("KM: Turns the tile into [baseTerrain]", UniqueTarget.Improvement,
+        docDescription = "Terraforming (7.1): when finished, the tile becomes the terrain forever, loses its resource and the improvement disappears. " +
+            "Limited to 3 terraformed tiles per city of the civilization"),
+    KMNoTerrainDamage("KM: Units here take no terrain damage", UniqueTarget.Improvement),
+    KMCityStrengthVsLayer("KM: [relativeAmount]% City Strength against attacks from the [layer] layer", UniqueTarget.Building),
+    KMLayerTransitMovement("KM: Units changing the layer here gain [amount] Movement", UniqueTarget.Building),
+    ConditionalOnLayer("on [layer] layer", UniqueTarget.Conditional,
+        docDescription = "True for a unit or tile on the layer (KL-10)"),
+    ConditionalLayerUnlocked("when [layer] layer is unlocked", UniqueTarget.Conditional,
+        docDescription = "True if the civilization has access to the layer (KL-14)"),
+
     // endregion
 
     ///////////////////////////////////////////// region 99 DEPRECATED /////////////////////////////////////////////

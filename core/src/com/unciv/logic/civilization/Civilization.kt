@@ -259,6 +259,11 @@ class Civilization : IsPartOfGameInfoSerialization {
     /** Kotakula Multiverse: faith actions (KC-12), spy reveals (KC-13) and other faction state */
     var factionState = FactionCivState()
 
+    /** Kotakula (KL-05): layers of the three-layer map this civilization has access to. Always contains the Surface.
+     *  Recomputed from the techs with `KM: Unlocks [layer] layer`, see [com.unciv.logic.kotakula.layers.LayerRules.updateUnlockedLayers] */
+    @Transient
+    var unlockedLayers: Set<com.unciv.logic.map.MapLayer> = setOf(com.unciv.logic.map.MapLayer.Surface)
+
     /**
      * Container class to represent a historical attack recently performed by this civilization.
      *
@@ -1001,6 +1006,7 @@ class Civilization : IsPartOfGameInfoSerialization {
         questManager.setTransients(this)
         religionManager.setTransients(this) // needs to be before tech, since tech setTransients looks at all uniques
         tech.setTransients(this)
+        com.unciv.logic.kotakula.layers.LayerRules.updateUnlockedLayers(this, notify = false) // Kotakula (KL-05)
         ruinsManager.setTransients(this)
         espionageManager.setTransients(this)
         victoryManager.civInfo = this
@@ -1188,7 +1194,11 @@ class Civilization : IsPartOfGameInfoSerialization {
      */
     fun addNotification(text: String, actions: Iterable<NotificationAction>?, category: NotificationCategory, vararg notificationIcons: String) {
         if (playerType == PlayerType.AI) return // no point in lengthening the saved game info if no one will read it
-        notifications.add(Notification(text, notificationIcons, actions, category))
+        // Kotakula (6.1): "[Underground] Your Worker was attacked" - events on a layer tile start with the layer
+        val layerKey = actions?.firstNotNullOfOrNull { (it as? LocationAction)?.location?.takeIf { key -> com.unciv.logic.map.MapLayer.isLayerKey(key) } }
+        val shownText = if (layerKey == null || text.contains('{')) text
+            else "{${com.unciv.logic.map.MapLayer.layerOfKey(layerKey).name} (tag)} {$text}"
+        notifications.add(Notification(shownText, notificationIcons, actions, category))
     }
     // endregion
 

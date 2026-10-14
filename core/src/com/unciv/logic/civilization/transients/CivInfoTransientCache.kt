@@ -194,6 +194,7 @@ class CivInfoTransientCache(val civInfo: Civilization) {
     fun updateOurTiles():Unit = timeThis("CivInfoTransientCache.updateOurTiles")  {
         ourTilesAndNeighboringTiles = civInfo.cities.asSequence()
             .flatMap { it.getTiles() } // our owned tiles, still distinct
+            .filter { com.unciv.logic.kotakula.layers.LayerRules.hasAccess(civInfo, it.layer) } // Kotakula (KL-18): cities see the layers open to the civilization
             .flatMap { sequenceOf(it) + it.neighbors }
             // now we got a mix of owned, unowned and competitor-owned tiles, and **duplicates**
             // but Sequence.toSet is just as good at making them distinct as any other operation
@@ -206,7 +207,7 @@ class CivInfoTransientCache(val civInfo: Civilization) {
     private fun setNewViewableTiles() {
         // while spectating (or defeated in singleplayer, which grants the same rights) all map is visible
         if (civInfo.hasSpectatorVision() || DebugUtils.VISIBLE_MAP) {
-            civInfo.viewableTiles = civInfo.gameInfo.tileMap.values.toSet()
+            civInfo.viewableTiles = civInfo.gameInfo.allTiles().toSet() // Kotakula: all layers
             return
         }
 
@@ -223,7 +224,8 @@ class CivInfoTransientCache(val civInfo: Civilization) {
 
         for (otherCiv in civInfo.getKnownCivs()) {
             if (otherCiv.allyCiv == civInfo || otherCiv == civInfo.allyCiv) {
-                newViewableTiles.addAll(otherCiv.cities.asSequence().flatMap { it.getTiles() })
+                newViewableTiles.addAll(otherCiv.cities.asSequence().flatMap { it.getTiles() }
+                    .filter { com.unciv.logic.kotakula.layers.LayerRules.hasAccess(civInfo, it.layer) }) // Kotakula (KL-18)
             }
         }
 
@@ -236,7 +238,7 @@ class CivInfoTransientCache(val civInfo: Civilization) {
         if (civInfo.playerType == PlayerType.AI) return // don't bother for AI, they don't really use the info anyway
 
         for (tile in civInfo.viewableTiles)
-            civInfo.setLastSeenImprovement(tile.position, tile.improvement)
+            civInfo.setLastSeenImprovement(tile.layerKey, tile.improvement) // Kotakula: layer key
     }
 
     /** Discovers Natural Wonders in [tiles]. Used by sight updates, "Reveals the entire map", and DevConsole. */

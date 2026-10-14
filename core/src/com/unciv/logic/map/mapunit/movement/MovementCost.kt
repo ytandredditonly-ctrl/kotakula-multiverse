@@ -3,6 +3,8 @@ package com.unciv.logic.map.mapunit.movement
 import com.unciv.Constants
 import com.unciv.logic.automation.Timers.Companion.timeThis
 import com.unciv.logic.civilization.Civilization
+import com.unciv.logic.kotakula.layers.LayerRules
+import com.unciv.logic.map.MapLayer
 import com.unciv.logic.map.mapunit.MapUnit
 import com.unciv.logic.map.mapunit.MapUnitCache
 import com.unciv.logic.map.tile.RoadStatus
@@ -47,6 +49,9 @@ object MovementCost {
 
         if (unit.cache.cannotMove) return 100f
 
+        // Kotakula (KL-15, 4.2.3): changing the layer costs 1 movement point
+        if (from.tileMap !== to.tileMap) return 1f
+
         if (from.isLand != to.isLand && unit.baseUnit.isLandUnit && !unit.cache.canMoveOnWater)
             return if (from.isWater && to.isLand) unit.cache.costToDisembark ?: 100f
             else unit.cache.costToEmbark ?: 100f
@@ -70,6 +75,11 @@ object MovementCost {
         if (from.getUnpillagedRoad() == RoadStatus.Railroad && to.getUnpillagedRoad() == RoadStatus.Railroad)
             return RoadStatus.Railroad.movement + extraCost
 
+        // Kotakula (3.5, 7.1): layer routes are roads, after Electricity or Dragonology railroads
+        if (to.layer != MapLayer.Surface && LayerRules.hasRoute(to) && LayerRules.hasRoute(from))
+            return (if (civ.hasUnique(UniqueType.KMLayerRoutesAsRailroads)) RoadStatus.Railroad.movement
+                else civ.tech.movementSpeedOnRoads) + extraCost
+
         // Each of these two function calls `hasUnique(UniqueType.CityStateTerritoryAlwaysFriendly)`
         // when entering territory of a city state
         val areConnectedByRoad = from.hasConnection(civ) && to.hasConnection(civ)
@@ -87,7 +97,15 @@ object MovementCost {
 
         // Cities reduce terrain cost to 1
         val terrainCost = if (to.isCityCenter()) 1f
+            else if (to.layer != MapLayer.Surface && to.terrainHasUnique(UniqueType.KMMovementCost)) // Kotakula (7.3): Flooded Caves
+                to.getTerrainMatchingUniques(UniqueType.KMMovementCost).maxOf { it.params[0].toFloat() }
             else to.lastTerrain.movementCost.toFloat()
+
+        // Kotakula (3.2, 7.3): Jet Stream and High Winds speed up flying units
+        if (unit.cache.isFlying && to.layer == MapLayer.Sky) {
+            val percent = to.getTerrainMatchingUniques(UniqueType.KMFlyingMovementCost).minOfOrNull { it.params[0].toFloat() }
+            if (percent != null) return terrainCost * percent / 100f + extraCost
+        }
 
         if (unit.cache.noTerrainMovementUniques)
             return terrainCost + extraCost

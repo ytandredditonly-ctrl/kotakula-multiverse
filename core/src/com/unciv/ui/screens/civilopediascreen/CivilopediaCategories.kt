@@ -109,7 +109,14 @@ enum class CivilopediaCategories (
         getImage = null,
         KeyboardBinding.PediaTutorials,
         "OtherIcons/ExclamationMark",
-        { ruleset, _ -> ruleset.getCivilopediaTutorials() }
+        { ruleset, _ -> ruleset.getCivilopediaTutorials().filter { (it as? com.unciv.models.ruleset.Tutorial)?.category != LAYERS_CATEGORY } }
+    ),
+    /** Kotakula (6.1): the three-layer map - the articles of the mechanic and the biomes */
+    Layers ("Layers",
+        getImage = null,
+        KeyboardBinding.None,
+        "OtherIcons/Terrains",
+        { ruleset, _ -> ruleset.tutorials.values.filter { it.category == LAYERS_CATEGORY } + ruleset.layerBiomes.values }
     ),
     Victory ("Victory Types",
         CivilopediaImageGetters.victoryType,
@@ -152,6 +159,9 @@ enum class CivilopediaCategories (
     );
 
     companion object {
+        /** Kotakula: the Tutorials.json category of the articles about the layers */
+        const val LAYERS_CATEGORY = "Layers"
+
         @Readonly fun fromLink(name: String): CivilopediaCategories? =
             entries.firstOrNull { it.name == name }
             ?: entries.firstOrNull { it.label == name }

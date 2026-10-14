@@ -90,6 +90,8 @@ class CityStats(val city: City) {
     var happinessList = LinkedHashMap<String, Float>()
 
     var statsFromTiles = Stats()
+    /** Kotakula (6.1): [statsFromTiles] split by the layer of the tiles, for the city screen */
+    var statsFromTilesByLayer: Map<com.unciv.logic.map.MapLayer, Stats> = emptyMap()
 
     var currentCityStats: Stats = Stats()  // This is so we won't have to calculate this multiple times - takes a lot of time, especially on phones
 
@@ -368,9 +370,11 @@ class CityStats(val city: City) {
 
     fun updateTileStats():Unit = timeThis("updateTileStats") {
         val stats = Stats()
+        val statsByLayer = java.util.EnumMap<com.unciv.logic.map.MapLayer, Stats>(com.unciv.logic.map.MapLayer::class.java) // Kotakula (6.1)
         val workedTiles = city.tilesInRange.asSequence()
+            .flatMap { if (it.tileMap.hasLayers()) it.column().asSequence() else sequenceOf(it) } // Kotakula (KL-20): tiles of all layers
             .filter {
-                city.location.toHexCoord() == it.position
+                city.location.toHexCoord() == it.position && it.layer == com.unciv.logic.map.MapLayer.Surface
                         || city.isWorked(it)
                         || it.owningCity == city && (it.getUnpillagedTileImprovement()
                     ?.hasUnique(UniqueType.TileProvidesYieldWithoutPopulation, it.stateThisTile) == true
@@ -384,8 +388,10 @@ class CityStats(val city: City) {
             }
             val tileStats = tile.stats.getTileStats(city, city.civ)
             stats.add(tileStats)
+            statsByLayer.getOrPut(tile.layer) { Stats() }.add(tileStats)
         }
         statsFromTiles = stats
+        statsFromTilesByLayer = statsByLayer
     }
 
 

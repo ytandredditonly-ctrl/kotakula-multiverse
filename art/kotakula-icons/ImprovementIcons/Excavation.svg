@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Выработка: скала превращается в пещеру -->
+  <path d="M4 96 V30 L30 10 L70 14 L96 36 V96 Z" fill="#000"/>
+  <path d="M24 96 V60 A26 22 0 0 1 76 60 V96 Z" fill="#fff"/>
+  <path d="M40 74 L60 54 M54 50 L66 62" stroke="#000" stroke-width="5"/>
+</svg>

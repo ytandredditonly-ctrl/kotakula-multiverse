@@ -28,6 +28,9 @@ import com.unciv.ui.components.input.KeyCharAndCode
 import com.unciv.ui.components.input.KeyShortcutDispatcherVeto
 import com.unciv.ui.components.input.KeyboardPanningListener
 import com.unciv.ui.components.input.onChange
+import com.unciv.ui.components.input.onClick
+import com.unciv.ui.components.extensions.toTextButton
+import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.unciv.ui.components.tilegroups.TileGroup
 import com.unciv.ui.images.ImageGetter
 import com.unciv.ui.images.ImageWithCustomSize
@@ -70,6 +73,15 @@ class MapEditorScreen(map: TileMap? = null) : BaseScreen(), RecreateOnResize {
     var tileMap: TileMap
     /** Flag indicating the map should be saved */
     var isDirty = false
+
+    /** Kotakula (5.5): the layer of the three-layer map being edited */
+    var editedLayer = com.unciv.logic.map.MapLayer.Surface
+        private set
+    /** Kotakula (5.5): the map of [editedLayer] - the layers of a map file live in [TileMap.layerMaps] of the surface */
+    val editedTileMap: TileMap
+        get() = if (editedLayer == com.unciv.logic.map.MapLayer.Surface) tileMap
+            else tileMap.layerMaps?.firstOrNull { it.layer == editedLayer } ?: tileMap
+    private val layerSwitch = Table()
 
     /** The parameters to use for new maps, and the UI-shown mod list (which can be applied to the active map) */
     val newMapParameters = getDefaultParameters()
@@ -212,9 +224,10 @@ class MapEditorScreen(map: TileMap? = null) : BaseScreen(), RecreateOnResize {
 
         tileMap.setTransients(ruleset,false)
         tileMap.setStartingLocationsTransients()
+        linkLayerMaps() // Kotakula (5.5)
         UncivGame.Current.translations.translationActiveMods = ruleset.mods
 
-        val newHolder = EditorMapHolder(this, tileMap) {
+        val newHolder = EditorMapHolder(this, editedTileMap) {
             tileClickHandler?.invoke(it)
         }
         newHolder.mapPanningSpeed = UncivGame.Current.settings.mapPanningSpeed
@@ -237,6 +250,7 @@ class MapEditorScreen(map: TileMap? = null) : BaseScreen(), RecreateOnResize {
             zoomController!!.setPosition(10f, 10f)
             stage.addActor(zoomController)
         }
+        updateLayerSwitch() // Kotakula (5.5)
 
         return newHolder
     }
@@ -256,6 +270,7 @@ class MapEditorScreen(map: TileMap? = null) : BaseScreen(), RecreateOnResize {
     fun loadMap(map: TileMap, newRuleset: Ruleset? = null, selectPage: Int = 0) {
         clearOverlayImages()
         mapHolder.remove()
+        editedLayer = com.unciv.logic.map.MapLayer.Surface // Kotakula (5.5)
         tileMap = map
         descriptionTextField.text = map.description
         ruleset = newRuleset ?: RulesetCache.getComplexRuleset(map.mapParameters)
@@ -264,6 +279,50 @@ class MapEditorScreen(map: TileMap? = null) : BaseScreen(), RecreateOnResize {
         isDirty = false
         Gdx.input.inputProcessor = stage
         tabs.selectPage(selectPage)  // must be done _after_ resetting inputProcessor!
+    }
+
+    /** Kotakula (5.5): the layer maps of the file get their transients and find their columns */
+    private fun linkLayerMaps() {
+        val layerMaps = tileMap.layerMaps
+        if (layerMaps == null || !ruleset.hasLayers) {
+            tileMap.linkLayers(null, null)
+            if (editedLayer != com.unciv.logic.map.MapLayer.Surface) editedLayer = com.unciv.logic.map.MapLayer.Surface
+            return
+        }
+        tileMap.linkLayers(layerMaps.firstOrNull { it.layer == com.unciv.logic.map.MapLayer.Underground },
+            layerMaps.firstOrNull { it.layer == com.unciv.logic.map.MapLayer.Sky })
+        for (map in layerMaps) {
+            map.mapParameters = tileMap.mapParameters
+            map.setTransients(ruleset, false)
+        }
+    }
+
+    /** Kotakula (5.5): edit another layer; a map without layers gets generated ones first (section 5) */
+    fun switchLayer(layer: com.unciv.logic.map.MapLayer) {
+        if (layer == editedLayer) return
+        recreateMapHolder {
+            if (layer != com.unciv.logic.map.MapLayer.Surface && tileMap.layerMaps == null) {
+                tileMap.setTransients(ruleset, false)
+                com.unciv.logic.kotakula.layers.LayerWorld.generateLayers(tileMap, ruleset)
+            }
+            editedLayer = layer
+        }
+    }
+
+    private fun updateLayerSwitch() {
+        layerSwitch.clear()
+        layerSwitch.remove()
+        if (!ruleset.hasLayers) return
+        layerSwitch.defaults().pad(3f)
+        for (layer in listOf(com.unciv.logic.map.MapLayer.Sky, com.unciv.logic.map.MapLayer.Surface, com.unciv.logic.map.MapLayer.Underground)) {
+            val button = layer.name.toTextButton()
+            if (layer == editedLayer) button.color = com.badlogic.gdx.graphics.Color.GOLD
+            else button.onClick { switchLayer(layer) }
+            layerSwitch.add(button)
+        }
+        layerSwitch.pack()
+        layerSwitch.setPosition(10f, stage.height - layerSwitch.height - 10f)
+        stage.addActor(layerSwitch)
     }
 
     fun getMapCloneForSave() =

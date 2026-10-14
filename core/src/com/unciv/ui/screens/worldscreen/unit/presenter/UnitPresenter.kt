@@ -31,6 +31,9 @@ class UnitPresenter(private val unitTable: UnitTable, private val worldScreen: W
     // Whether the (first) selected unit is in road-connecting mode
     var selectedUnitIsConnectingRoad = false
 
+    // Kotakula (7.1): whether the (first) selected unit is in "lay route to" mode
+    var selectedUnitIsLayingRoute = false
+
     override val position: HexCoord?
         get() = selectedUnit?.getTile()?.position()
 
@@ -43,6 +46,7 @@ class UnitPresenter(private val unitTable: UnitTable, private val worldScreen: W
         }
         selectedUnitIsSwapping = false
         selectedUnitIsConnectingRoad = false
+        selectedUnitIsLayingRoute = false
     }
 
     override fun update() {

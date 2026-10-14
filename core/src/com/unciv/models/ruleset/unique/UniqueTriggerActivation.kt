@@ -1016,7 +1016,7 @@ object UniqueTriggerActivation {
                 return {
                     for (explorableTile in explorableTiles) {
                         explorableTile.setExplored(civInfo, true)
-                        civInfo.setLastSeenImprovement(explorableTile.position, explorableTile.improvement)
+                        civInfo.setLastSeenImprovement(explorableTile.layerKey, explorableTile.improvement) // Kotakula: layer key
                         positions += explorableTile.position
                     }
 

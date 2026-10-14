@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Облакоткач: фигура с веретеном и облаком -->
+  <circle cx="34" cy="22" r="11" fill="#000"/>
+  <path d="M14 94 L18 46 Q34 36 50 46 L54 94 Z" fill="#000"/>
+  <path d="M52 56 L74 40" stroke="#000" stroke-width="6"/>
+  <ellipse cx="78" cy="38" rx="5" ry="12" fill="#000" transform="rotate(40 78 38)"/>
+  <g fill="#000"><circle cx="70" cy="76" r="10"/><circle cx="84" cy="72" r="12"/><circle cx="92" cy="82" r="7"/><rect x="62" y="80" width="34" height="10" rx="5"/></g>
+  <path d="M78 46 C84 56 70 60 76 68" stroke="#000" stroke-width="3" fill="none"/>
+</svg>

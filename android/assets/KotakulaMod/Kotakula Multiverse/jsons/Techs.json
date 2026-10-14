@@ -226,7 +226,8 @@
 				"faction": "Technocrat",
 				"row": 2,
 				"prerequisites": ["Engineering", "Drill"],
-				"quote": "Quote: Metallurgy"
+				"quote": "Quote: Metallurgy",
+				"uniques": ["KM: Unlocks [Underground] layer"]
 			},
 			{
 				"name": "Clockwork",
@@ -252,7 +253,8 @@
 				"faction": "Humanist",
 				"row": 2,
 				"prerequisites": ["Hydromancy", "Oath of Blades"],
-				"quote": "Quote: Rune Carving"
+				"quote": "Quote: Rune Carving",
+				"uniques": ["KM: Unlocks [Sky] layer"]
 			},
 			{
 				"name": "Alchemy",
@@ -531,7 +533,8 @@
 				"faction": "Technocrat",
 				"row": 8,
 				"prerequisites": ["Scientific Management", "Railroads"],
-				"quote": "Quote: Aeronautics"
+				"quote": "Quote: Aeronautics",
+				"uniques": ["KM: Unlocks [Sky] layer"]
 			},
 			{
 				"name": "Lunar Rites",
@@ -545,7 +548,8 @@
 				"faction": "Humanist",
 				"row": 5,
 				"prerequisites": ["Crystallomancy", "Geomancy"],
-				"quote": "Quote: High Elementalism"
+				"quote": "Quote: High Elementalism",
+				"uniques": ["KM: Unlocks [Underground] layer"]
 			},
 			{
 				"name": "Levitation",
@@ -568,7 +572,8 @@
 				"faction": "Technocrat",
 				"row": 2,
 				"prerequisites": ["Petrochemistry", "Scientific Management"],
-				"quote": "Quote: Electricity"
+				"quote": "Quote: Electricity",
+				"uniques": ["KM: Layer routes work as railroads"]
 			},
 			{
 				"name": "Radio",
@@ -589,7 +594,8 @@
 				"faction": "Humanist",
 				"row": 2,
 				"prerequisites": ["Lunar Rites", "Magic Scholasticism"],
-				"quote": "Quote: Dragonology"
+				"quote": "Quote: Dragonology",
+				"uniques": ["KM: Layer routes work as railroads"]
 			},
 			{
 				"name": "Great Echo",

@@ -51,8 +51,14 @@ object CivilianUnitAutomation {
                 mapUnit.movement.moveToTile(tilesCanMoveTo.minByOrNull { it.value.totalMovement }!!.key)
         }
 
+        if (mapUnit.action == com.unciv.logic.kotakula.layers.LayerRoutes.ACTION) // Kotakula (7.1): "Lay route to..."
+            return com.unciv.logic.kotakula.layers.LayerRoutes.automate(mapUnit)
+
         if (unit.isAutomatingRoadConnection())
             return mapUnit.civ.getWorkerAutomation().roadToAutomation.automateConnectRoad(mapUnit, dangerousTiles)
+
+        // Kotakula (6.2): route builders connect the cities through their layer
+        if (com.unciv.logic.kotakula.layers.LayerAutomation.automateRouteBuilder(mapUnit)) return
 
         if (unit.hasUniqueToBuildImprovements())
             return mapUnit.civ.getWorkerAutomation().automateWorkerAction(mapUnit, dangerousTiles)

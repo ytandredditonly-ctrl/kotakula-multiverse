@@ -66,6 +66,13 @@ class MapUnitCache(private val mapUnit: MapUnit) {
     var hasUniqueToBuildImprovements = false    // not canBuildImprovements to avoid confusion
     var hasUniqueToCreateWaterImprovements = false
 
+    /** Kotakula (4.3): `KM: Flying` - Surface and Sky, changes layer on any tile */
+    var isFlying = false
+        private set
+    /** Kotakula (4.3): `KM: Burrowing` - Surface and Underground, changes layer on any land tile */
+    var isBurrowing = false
+        private set
+
     var hasStrengthBonusInRadiusUnique = false
     var hasCitadelPlacementUnique = false
     
@@ -81,6 +88,8 @@ class MapUnitCache(private val mapUnit: MapUnit) {
         roughTerrainPenalty = mapUnit.hasUnique(UniqueType.RoughTerrainPenalty)
         cannotMove = mapUnit.hasUnique(UniqueType.CannotMove) || mapUnit.baseUnit.movement == 0
         canMoveOnWater = mapUnit.hasUnique(UniqueType.CanMoveOnWater)
+        isFlying = mapUnit.hasUnique(UniqueType.KMFlying) // Kotakula (4.3)
+        isBurrowing = mapUnit.hasUnique(UniqueType.KMBurrowing)
 
         doubleMovementInTerrain.clear()
         mapUnit.forEachMatchingUnique(UniqueType.DoubleMovementOnTerrain,
@@ -149,7 +158,9 @@ class MapUnitCache(private val mapUnit: MapUnit) {
             UniqueType.DamagesContainingUnits,
             UniqueType.LandUnitEmbarkation,
             UniqueType.LandUnitsCrossTerrainAfterUnitGained,
-            UniqueType.EnemyUnitsSpendExtraMovement
+            UniqueType.EnemyUnitsSpendExtraMovement,
+            UniqueType.KMFlying, // Kotakula (4.3)
+            UniqueType.KMBurrowing,
             )
     }
 }

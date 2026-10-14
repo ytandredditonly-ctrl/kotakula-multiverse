@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Глубинная шахта: кирка и вагонетка -->
+  <path d="M20 14 Q50 4 80 14 L76 20 Q50 12 24 20 Z" fill="#000"/>
+  <path d="M50 14 L36 60" stroke="#000" stroke-width="7"/>
+  <path d="M16 62 H84 L76 84 H24 Z" fill="#000"/>
+  <g fill="#000"><circle cx="32" cy="90" r="6"/><circle cx="68" cy="90" r="6"/></g>
+</svg>

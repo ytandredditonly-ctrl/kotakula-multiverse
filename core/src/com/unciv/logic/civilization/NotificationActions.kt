@@ -36,7 +36,7 @@ interface NotificationAction : IsPartOfGameInfoSerialization {
 }
 
 /** A notification action that shows map places. */
-class LocationAction(private val location: HexCoord = HexCoord.Zero) : NotificationAction {
+class LocationAction(internal val location: HexCoord = HexCoord.Zero) : NotificationAction {
     override fun execute(worldScreen: WorldScreen) {
         worldScreen.mapHolder.setCenterPosition(location, selectUnit = false)
     }
@@ -145,13 +145,13 @@ class MapUnitAction(
     private val location: HexCoord = HexCoord.Zero,
     private val id: Int = Constants.NO_ID
 ) : NotificationAction {
-    constructor(unit: MapUnit) : this(unit.currentTile.position.toHexCoord(), unit.id)
+    constructor(unit: MapUnit) : this(unit.currentTile.layerKey, unit.id) // Kotakula: layer key
     override fun execute(worldScreen: WorldScreen) {
         val unit = if (id != Constants.NO_ID)
             worldScreen.selectedCiv.units.getUnitById(id)
         else null
         if (unit != null) {
-            val unitLocation = unit.currentTile.position.toHexCoord()
+            val unitLocation = unit.currentTile.layerKey // Kotakula: layer key
             worldScreen.mapHolder.setCenterPosition(unitLocation, forceSelectUnit = worldScreen.selectedGameView.getForeignMapUnitView(unit).tryGetMapUnitView())
         }
         else {

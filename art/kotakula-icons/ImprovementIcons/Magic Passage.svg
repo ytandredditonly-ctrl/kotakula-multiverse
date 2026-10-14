@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Магический ход: рунная тропа -->
+  <path d="M6 80 Q50 50 94 80" stroke="#000" stroke-width="14" fill="none"/>
+  <g stroke="#fff" stroke-width="3" fill="none"><path d="M24 66 L30 74 L24 78"/><path d="M48 60 V72 M44 64 H52"/><path d="M70 66 L76 74 M76 66 L70 74"/></g>
+  <path d="M50 10 L56 26 L72 28 L58 36 L62 52 L50 42 L38 52 L42 36 L28 28 L44 26 Z" fill="#000"/>
+</svg>

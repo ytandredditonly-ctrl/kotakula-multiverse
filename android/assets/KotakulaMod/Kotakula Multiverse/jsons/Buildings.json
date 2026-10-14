@@ -1246,6 +1246,145 @@
 		]
 	},
 	{
+		"name": "Deep Forge",
+		"cost": 150,
+		"maintenance": 1,
+		"uniques": [
+			"Only available <when [Underground] layer is unlocked>",
+			"[+1 Production] from [Underground] tiles [in this city]"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Deep Forge"
+			}
+		]
+	},
+	{
+		"name": "Bunker",
+		"cost": 120,
+		"maintenance": 1,
+		"uniques": [
+			"Only available <when [Underground] layer is unlocked>",
+			"KM: [+50]% City Strength against attacks from the [Underground] layer"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Bunker"
+			}
+		]
+	},
+	{
+		"name": "Cloud Granary",
+		"cost": 150,
+		"maintenance": 1,
+		"uniques": ["Only available <when [Sky] layer is unlocked>", "[+1 Food] from [Sky] tiles [in this city]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Cloud Granary"
+			}
+		]
+	},
+	{
+		"name": "Sky Bastion",
+		"cost": 120,
+		"maintenance": 1,
+		"uniques": [
+			"Only available <when [Sky] layer is unlocked>",
+			"KM: [+50]% City Strength against attacks from the [Sky] layer"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Sky Bastion"
+			}
+		]
+	},
+	{
+		"name": "Mine Lift",
+		"faction": "Technocrat",
+		"cost": 100,
+		"maintenance": 1,
+		"uniques": ["Only available <when [Underground] layer is unlocked>", "KM: Transition [Down]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Mine Lift"
+			}
+		]
+	},
+	{
+		"name": "Aerostat Station",
+		"faction": "Technocrat",
+		"cost": 100,
+		"maintenance": 1,
+		"uniques": ["Only available <when [Sky] layer is unlocked>", "KM: Transition [Up]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Aerostat Station"
+			}
+		]
+	},
+	{
+		"name": "Cloud Gate",
+		"faction": "Humanist",
+		"cost": 100,
+		"maintenance": 1,
+		"uniques": ["Only available <when [Sky] layer is unlocked>", "KM: Transition [Up]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Cloud Gate"
+			}
+		]
+	},
+	{
+		"name": "Earth Portal",
+		"faction": "Humanist",
+		"cost": 100,
+		"maintenance": 1,
+		"uniques": ["Only available <when [Underground] layer is unlocked>", "KM: Transition [Down]"],
+		"civilopediaText": [
+			{
+				"text": "Description: Earth Portal"
+			}
+		]
+	},
+	{
+		"name": "Grav Elevator",
+		"faction": "Technocrat",
+		"cost": 300,
+		"maintenance": 2,
+		"uniques": [
+			"Only available <when [Underground] layer is unlocked> <when [Sky] layer is unlocked>",
+			"Only available <in cities with a [Mine Lift]>",
+			"Only available <in cities with a [Aerostat Station]>",
+			"KM: Transition [All]",
+			"KM: Units changing the layer here gain [1] Movement",
+			"[+10]% [Production] [in this city]"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Grav Elevator"
+			}
+		]
+	},
+	{
+		"name": "Axis Mundi",
+		"faction": "Humanist",
+		"cost": 300,
+		"maintenance": 2,
+		"uniques": [
+			"Only available <when [Underground] layer is unlocked> <when [Sky] layer is unlocked>",
+			"Only available <in cities with a [Cloud Gate]>",
+			"Only available <in cities with a [Earth Portal]>",
+			"KM: Transition [All]",
+			"KM: Units changing the layer here gain [1] Movement",
+			"[+10]% [Production] [in this city]"
+		],
+		"civilopediaText": [
+			{
+				"text": "Description: Axis Mundi"
+			}
+		]
+	},
+	{
 		"name": "Mushroom Cave",
 		"replaces": "Granary",
 		"uniqueTo": "Vedor",

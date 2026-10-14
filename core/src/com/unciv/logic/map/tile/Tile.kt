@@ -93,6 +93,9 @@ class Tile : IsPartOfGameInfoSerialization {
     var history: TileHistory = TileHistory()
 
     private var continent = -1
+
+    /** Kotakula (7.3): turns a Mine has stood on this surface tile - at 20 the Solid Rock below becomes a Cave */
+    var layerMineTurns = 0
     //endregion
 
     //region Transient fields
@@ -101,6 +104,10 @@ class Tile : IsPartOfGameInfoSerialization {
 
     @Transient
     var zeroBasedIndex: Int = 0
+
+    /** Kotakula (KL-04): index unique over all layers of the world: [zeroBasedIndex] on the surface, shifted on the other layers */
+    @Transient
+    var globalIndex: Int = 0
 
     @Transient
     lateinit var ruleset: Ruleset  // a tile can be a tile with a ruleset, even without a map.
@@ -178,6 +185,33 @@ class Tile : IsPartOfGameInfoSerialization {
     @Transient
         /** For map generation use only */
     var hasVegetation: Boolean = false
+
+    /** Kotakula (KL-04): the layer of this tile, taken from its map (not serialized) */
+    val layer: MapLayer
+        @Readonly get() = if (isTilemapInitialized()) tileMap.layer else MapLayer.Surface
+
+    /** Kotakula: position that also encodes the layer, see [MapLayer.toKey] */
+    val layerKey: HexCoord
+        @Readonly get() = MapLayer.toKey(position, layer)
+
+    /** Kotakula (KL-04): the tile of the same column on [layer], `null` if the world has no such layer */
+    @Readonly
+    fun layerTile(layer: MapLayer): Tile? {
+        if (layer == this.layer) return this
+        val map = tileMap.layerMap(layer) ?: return null
+        return map.getOrNull(position.x, position.y)
+    }
+
+    /** Kotakula (KL-04): the tile of the column one layer higher */
+    @Readonly fun above(): Tile? = layer.up()?.let { layerTile(it) }
+    /** Kotakula (KL-04): the tile of the column one layer lower */
+    @Readonly fun below(): Tile? = layer.down()?.let { layerTile(it) }
+    /** Kotakula (KL-04): the tiles of the column from bottom to top - three in a world with layers, else just this tile */
+    @Readonly fun column(): List<Tile> =
+        if (!isTilemapInitialized() || !tileMap.hasLayers()) listOf(this)
+        else MapLayer.entries.mapNotNull { layerTile(it) }
+    /** Kotakula: the surface tile of this column */
+    @Readonly fun surfaceTile(): Tile = layerTile(MapLayer.Surface) ?: this
 
     val latitude: Int
         get() = HexMath.getLatitude(position)
@@ -259,6 +293,8 @@ class Tile : IsPartOfGameInfoSerialization {
         toReturn.hasBottomRightRiver = hasBottomRightRiver
         toReturn.hasBottomRiver = hasBottomRiver
         toReturn.continent = continent
+        toReturn.layerMineTurns = layerMineTurns
+        toReturn.globalIndex = globalIndex
         toReturn.exploredBy = exploredBy
         toReturn.history = history.clone()
         // Setting even though it's transient - where it's needed, it's a real performance saver
@@ -321,7 +357,11 @@ class Tile : IsPartOfGameInfoSerialization {
 
     @Readonly fun isCityCenter(): Boolean = isCityCenterInternal
     @Readonly fun isNaturalWonder(): Boolean = naturalWonder != null
-    @Readonly fun isImpassible() = lastTerrain.impassable
+    @Readonly fun isImpassible() = lastTerrain.impassable && !isMadePassable()
+    /** Kotakula (KL-13): a layer route (Tunnel, Cloud Bridge...) or a biome lifts the impassability of the terrain */
+    @Readonly fun isMadePassable(): Boolean =
+        getUnpillagedTileImprovement()?.hasUnique(UniqueType.KMMakesTilePassable) == true
+            || terrainHasUnique(UniqueType.KMMakesTilePassable)
 
     @Readonly fun isBarbarianEncampment(): Boolean =
         tileImprovement?.isBarbarianCampEquivalent(stateThisTile) == true
@@ -396,7 +436,7 @@ class Tile : IsPartOfGameInfoSerialization {
     @Readonly
     fun getShownImprovement(viewingCiv: Civilization?): String? =
         if (viewingCiv == null || viewingCiv.playerType == PlayerType.AI || viewingCiv.isSpectator()) improvement
-        else viewingCiv.getLastSeenImprovement(position)
+        else viewingCiv.getLastSeenImprovement(layerKey) // Kotakula: layer key
 
     /** Returns true if this tile has fallout or an equivalent terrain feature */
     @Readonly fun hasFalloutEquivalent(): Boolean = terrainFeatures.any { ruleset.terrains[it]!!.hasUnique(UniqueType.NullifyYields)}
@@ -504,7 +544,7 @@ class Tile : IsPartOfGameInfoSerialization {
     @Readonly
     fun isLocked(): Boolean {
         val workingCity = getWorkingCity()
-        return workingCity != null && workingCity.lockedTiles.contains(position)
+        return workingCity != null && workingCity.lockedTiles.contains(layerKey) // Kotakula: layer keys
     }
 
     @Readonly
@@ -587,6 +627,7 @@ class Tile : IsPartOfGameInfoSerialization {
             "Water resource" -> return isWater && observingCiv != null && observingCiv.canSeeResource(tileResource)
             "Featureless" -> return terrainFeatures.isEmpty()
             "Open terrain" -> return allTerrains.all { !it.isRough } // special case - if *one* terrain is open, we don't care, we need *all*
+            "Underground", "Surface", "Sky" -> return layer.name == filter // Kotakula (KL-10): layer tile filters
             Constants.freshWaterFilter ->
                 return isAdjacentTo(Constants.freshWater, observingCiv)
         }
@@ -749,7 +790,7 @@ class Tile : IsPartOfGameInfoSerialization {
         val tileOwner = getOwner()
         // comparing the CivInfo objects is cheaper than comparing strings
         if (tileOwner == null || tileOwner == civInfo) return true
-        if (isCityCenter() && civInfo.isAtWarWith(tileOwner)
+        if ((isCityCenter() || com.unciv.logic.kotakula.layers.LayerRules.isCityColumn(this)) && civInfo.isAtWarWith(tileOwner) // Kotakula (4.4)
                 && !getCity()!!.hasJustBeenConquered) return false
         return civInfo.diplomacyFunctions.canPassThroughTiles(tileOwner)
     }
@@ -757,6 +798,7 @@ class Tile : IsPartOfGameInfoSerialization {
     @Readonly
     fun hasConnection(civInfo: Civilization) =
         getUnpillagedRoad() != RoadStatus.None || forestOrJungleAreRoads(civInfo)
+            || com.unciv.logic.kotakula.layers.LayerRules.hasRoute(this) // Kotakula (3.5): layer routes connect like roads
 
     @Readonly
     fun hasRoadConnection(civInfo: Civilization, mustBeUnpillaged: Boolean) =
@@ -789,7 +831,7 @@ class Tile : IsPartOfGameInfoSerialization {
                     && isFriendlyTerritory(civInfo)
 
     @Readonly
-    fun getRulesetIncompatibility(ruleset: Ruleset): HashSet<String> {
+    fun getRulesetIncompatibility(ruleset: Ruleset, layer: MapLayer = this.layer): HashSet<String> {
         val out = HashSet<String>()
         if (!ruleset.terrains.containsKey(baseTerrain))
             out.add("Base terrain [$baseTerrain] does not exist in ruleset!")
@@ -801,6 +843,10 @@ class Tile : IsPartOfGameInfoSerialization {
             out.add("Improvement [$improvement] does not exist in ruleset!")
         if (naturalWonder != null && !ruleset.terrains.containsKey(naturalWonder))
             out.add("Natural Wonder [$naturalWonder] does not exist in ruleset!")
+        // Kotakula (KL-09, 5.5): a terrain may only lie on its own layer
+        val terrainLayer = ruleset.terrains[baseTerrain]?.layer
+        if (terrainLayer != null && terrainLayer != layer.name)
+            out.add("Terrain [$baseTerrain] belongs to the [$terrainLayer] layer, not to the [${layer.name}] layer!")
         return out
     }
 
@@ -898,7 +944,7 @@ class Tile : IsPartOfGameInfoSerialization {
         }
         owningCity = city
         stateThisTile = GameContext(tile = this, city = city, gameInfo = tileMap.gameInfo)
-        isCityCenterInternal = getCity()?.location?.toHexCoord() == position
+        isCityCenterInternal = getCity()?.location?.toHexCoord() == position && layer == MapLayer.Surface // Kotakula: the column tiles are not centers
     }
 
     /**
@@ -956,9 +1002,11 @@ class Tile : IsPartOfGameInfoSerialization {
 
         updateUniqueMap()
 
+        // Kotakula: overlay features (layer biomes, Jet Stream, transitions) keep the terrain below as the "last" one
+        val lastSolidFeature = terrainFeatureObjects.lastOrNull { !it.isOverlayFeature }
         lastTerrain = when {
-            terrainFeatures.isNotEmpty() -> ruleset.terrains[terrainFeatures.last()]
-                ?: getBaseTerrain()  // defense against rare edge cases involving baseTerrain Hill deprecation
+            lastSolidFeature != null -> lastSolidFeature
+            terrainFeatures.isNotEmpty() && terrainFeatureObjects.size < terrainFeatures.size -> getBaseTerrain()  // defense against rare edge cases involving baseTerrain Hill deprecation
             naturalWonder != null -> getNaturalWonder()
             else -> getBaseTerrain()
         }

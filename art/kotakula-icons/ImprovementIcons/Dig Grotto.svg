@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Выкопать грот: пещера с грибом -->
+  <path d="M4 96 V30 L30 10 L70 14 L96 36 V96 Z" fill="#000"/>
+  <path d="M20 96 V58 A30 26 0 0 1 80 58 V96 Z" fill="#fff"/>
+  <path d="M34 72 A16 12 0 0 1 66 72 Z" fill="#000"/><rect x="46" y="72" width="8" height="20" fill="#000"/>
+</svg>

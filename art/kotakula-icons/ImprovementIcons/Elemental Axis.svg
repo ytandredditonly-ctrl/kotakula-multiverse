@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Ось стихий -->
+  <rect x="42" y="18" width="16" height="64" fill="#000"/>
+  <circle cx="50" cy="14" r="12" fill="#000"/><circle cx="50" cy="14" r="5" fill="#fff"/>
+  <path d="M30 96 Q50 70 70 96 Z" fill="#000"/>
+  <g stroke="#000" stroke-width="3"><path d="M24 30 L34 38"/><path d="M76 30 L66 38"/><path d="M22 54 H34"/><path d="M78 54 H66"/></g>
+</svg>

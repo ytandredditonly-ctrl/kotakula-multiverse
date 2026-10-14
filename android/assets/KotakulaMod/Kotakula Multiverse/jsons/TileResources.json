@@ -101,9 +101,8 @@
 		"name": "Horses",
 		"resourceType": "Strategic",
 		"revealedBy": "Animal Husbandry",
-		"terrainsCanBeFoundOn": ["Plains", "Grassland", "Hill"],
+		"terrainsCanBeFoundOn": ["Plains", "Grassland", "Hill", "Floating Island"],
 		"production": 1,
-		"improvement": "Pasture",
 		"improvementStats": {
 			"production": 1
 		},
@@ -115,7 +114,8 @@
 			"Minor deposits generated with weight [10] <in [{Plains} {Hill}] tiles> <in tiles without [Forest]> <in tiles without [Jungle]>",
 			"Minor deposits generated with weight [100] <in [{Featureless} {Grassland}] tiles> <in [Fresh Water] tiles>",
 			"Minor deposits generated with weight [20] <in [{Featureless} {Grassland}] tiles> <in tiles without [Fresh Water]>",
-			"Minor deposits generated with weight [30] <in [{Featureless} {Plains}] tiles>"
+			"Minor deposits generated with weight [30] <in [{Featureless} {Plains}] tiles>",
+			"KM: [20]% of deposits lie in the [Sky] layer on [Floating Island] tiles with [0] extra"
 		],
 		"majorDepositAmount": {
 			"sparse": 4,
@@ -126,15 +126,20 @@
 			"sparse": 1,
 			"default": 2,
 			"abundant": 3
-		}
+		},
+		"improvedBy": ["Pasture", "Sky Quarry"],
+		"civilopediaText": [
+			{
+				"text": "Description: Horses in the layer"
+			}
+		]
 	},
 	{
 		"name": "Iron",
 		"resourceType": "Strategic",
 		"revealedBy": "Iron Working",
-		"terrainsCanBeFoundOn": ["Grassland", "Plains", "Desert", "Tundra", "Snow", "Hill", "Marsh"],
+		"terrainsCanBeFoundOn": ["Grassland", "Plains", "Desert", "Tundra", "Snow", "Hill", "Marsh", "Cave"],
 		"production": 1,
-		"improvement": "Mine",
 		"uniques": [
 			"Guaranteed with Strategic Balance resource option",
 			"Generated with weight [45] <in [{Featureless} {Tundra}] tiles>",
@@ -149,7 +154,8 @@
 			"Minor deposits generated with weight [20] <in [{Featureless} {Plains}] tiles>",
 			"Minor deposits generated with weight [10] <in [{Featureless} {Desert}] tiles>",
 			"Minor deposits generated with weight [10] <in [{Featureless} {Tundra}] tiles>",
-			"Minor deposits generated with weight [10] <in [{Featureless} {Snow}] tiles>"
+			"Minor deposits generated with weight [10] <in [{Featureless} {Snow}] tiles>",
+			"KM: [20]% of deposits lie in the [Underground] layer on [Cave] tiles with [0] extra"
 		],
 		"majorDepositAmount": {
 			"sparse": 4,
@@ -160,16 +166,16 @@
 			"sparse": 1,
 			"default": 2,
 			"abundant": 3
-		}
+		},
+		"improvedBy": ["Mine", "Deep Mine"]
 	},
 	{
 		"name": "Coal",
 		"faction": "Technocrat",
 		"resourceType": "Strategic",
 		"revealedBy": "Steam Engine",
-		"terrainsCanBeFoundOn": ["Grassland", "Plains", "Hill", "Jungle", "Forest", "Marsh"],
+		"terrainsCanBeFoundOn": ["Grassland", "Plains", "Hill", "Jungle", "Forest", "Marsh", "Cave"],
 		"production": 1,
-		"improvement": "Mine",
 		"improvementStats": {
 			"production": 1
 		},
@@ -184,7 +190,8 @@
 			"Minor deposits generated with weight [20] <in [{Plains} {Hill}] tiles>",
 			"Minor deposits generated with weight [30] <in [{Desert} {Hill}] tiles>",
 			"Minor deposits generated with weight [30] <in [{Tundra} {Hill}] tiles>",
-			"Minor deposits generated with weight [30] <in [{Snow} {Hill}] tiles>"
+			"Minor deposits generated with weight [30] <in [{Snow} {Hill}] tiles>",
+			"KM: [30]% of deposits lie in the [Underground] layer on [Cave] tiles with [2] extra"
 		],
 		"majorDepositAmount": {
 			"sparse": 5,
@@ -200,7 +207,8 @@
 			{
 				"text": "Description: Coal"
 			}
-		]
+		],
+		"improvedBy": ["Mine", "Deep Mine"]
 	},
 	{
 		"name": "Oil",
@@ -282,9 +290,8 @@
 		"faction": "Technocrat",
 		"resourceType": "Strategic",
 		"revealedBy": "Atomic Theory",
-		"terrainsCanBeFoundOn": ["Marsh", "Jungle", "Forest", "Tundra", "Snow"],
+		"terrainsCanBeFoundOn": ["Marsh", "Jungle", "Forest", "Tundra", "Snow", "Cave"],
 		"production": 1,
-		"improvement": "Mine",
 		"improvementStats": {
 			"production": 1
 		},
@@ -294,7 +301,8 @@
 			"Generated with weight [70] <in [Forest] tiles> <in tiles without [Hill]>",
 			"Minor deposits generated with weight [10] <in [Forest] tiles>",
 			"Minor deposits generated with weight [10] <in [{Featureless} {Tundra}] tiles>",
-			"Minor deposits generated with weight [10] <in [{Featureless} {Snow}] tiles>"
+			"Minor deposits generated with weight [10] <in [{Featureless} {Snow}] tiles>",
+			"KM: [30]% of deposits lie in the [Underground] layer on [Cave] tiles with [2] extra"
 		],
 		"majorDepositAmount": {
 			"sparse": 2,
@@ -310,7 +318,8 @@
 			{
 				"text": "Description: Uranium"
 			}
-		]
+		],
+		"improvedBy": ["Mine", "Deep Mine"]
 	},
 	{
 		"name": "Furs",
@@ -654,17 +663,17 @@
 		"faction": "Technocrat",
 		"resourceType": "Strategic",
 		"revealedBy": "Microelectronics",
-		"terrainsCanBeFoundOn": ["Hill", "Desert", "Tundra"],
+		"terrainsCanBeFoundOn": ["Hill", "Desert", "Tundra", "Cave"],
 		"production": 1,
 		"science": 1,
-		"improvement": "Silicon Quarry",
 		"improvementStats": {
 			"production": 1
 		},
 		"uniques": [
 			"Generated with weight [15] <in [{Featureless} {Tundra}] tiles>",
 			"Generated with weight [39] <in [Hill] tiles>",
-			"Minor deposits generated with weight [10] <in [{Featureless} {Desert}] tiles>"
+			"Minor deposits generated with weight [10] <in [{Featureless} {Desert}] tiles>",
+			"KM: [30]% of deposits lie in the [Underground] layer on [Cave] tiles with [2] extra"
 		],
 		"majorDepositAmount": {
 			"sparse": 5,
@@ -680,7 +689,8 @@
 			{
 				"text": "Description: Silicon"
 			}
-		]
+		],
+		"improvedBy": ["Silicon Quarry", "Deep Mine"]
 	},
 	{
 		"name": "Coffee",
@@ -735,9 +745,8 @@
 		"faction": "Humanist",
 		"resourceType": "Strategic",
 		"revealedBy": "Crystallomancy",
-		"terrainsCanBeFoundOn": ["Grassland", "Plains", "Hill", "Jungle", "Forest", "Marsh"],
+		"terrainsCanBeFoundOn": ["Grassland", "Plains", "Hill", "Jungle", "Forest", "Marsh", "Floating Island"],
 		"production": 1,
-		"improvement": "Crystal Mine",
 		"improvementStats": {
 			"production": 1
 		},
@@ -752,7 +761,8 @@
 			"Minor deposits generated with weight [20] <in [{Plains} {Hill}] tiles>",
 			"Minor deposits generated with weight [30] <in [{Desert} {Hill}] tiles>",
 			"Minor deposits generated with weight [30] <in [{Tundra} {Hill}] tiles>",
-			"Minor deposits generated with weight [30] <in [{Snow} {Hill}] tiles>"
+			"Minor deposits generated with weight [30] <in [{Snow} {Hill}] tiles>",
+			"KM: [30]% of deposits lie in the [Sky] layer on [Floating Island] tiles with [2] extra"
 		],
 		"majorDepositAmount": {
 			"sparse": 5,
@@ -768,7 +778,8 @@
 			{
 				"text": "Description: Mana Crystals"
 			}
-		]
+		],
+		"improvedBy": ["Crystal Mine", "Sky Quarry"]
 	},
 	{
 		"name": "Moonsilver",
@@ -850,9 +861,8 @@
 		"faction": "Humanist",
 		"resourceType": "Strategic",
 		"revealedBy": "Astral Magic",
-		"terrainsCanBeFoundOn": ["Marsh", "Jungle", "Forest", "Tundra", "Snow"],
+		"terrainsCanBeFoundOn": ["Marsh", "Jungle", "Forest", "Tundra", "Snow", "Floating Island"],
 		"production": 1,
-		"improvement": "Star Catcher",
 		"improvementStats": {
 			"production": 1
 		},
@@ -862,7 +872,8 @@
 			"Generated with weight [70] <in [Forest] tiles> <in tiles without [Hill]>",
 			"Minor deposits generated with weight [10] <in [Forest] tiles>",
 			"Minor deposits generated with weight [10] <in [{Featureless} {Tundra}] tiles>",
-			"Minor deposits generated with weight [10] <in [{Featureless} {Snow}] tiles>"
+			"Minor deposits generated with weight [10] <in [{Featureless} {Snow}] tiles>",
+			"KM: [30]% of deposits lie in the [Sky] layer on [Floating Island] tiles with [2] extra"
 		],
 		"majorDepositAmount": {
 			"sparse": 2,
@@ -878,24 +889,25 @@
 			{
 				"text": "Description: Stardust"
 			}
-		]
+		],
+		"improvedBy": ["Star Catcher", "Sky Quarry"]
 	},
 	{
 		"name": "Titan Blood",
 		"faction": "Humanist",
 		"resourceType": "Strategic",
 		"revealedBy": "Flesh Magic",
-		"terrainsCanBeFoundOn": ["Hill", "Desert", "Tundra"],
+		"terrainsCanBeFoundOn": ["Hill", "Desert", "Tundra", "Floating Island"],
 		"production": 1,
 		"science": 1,
-		"improvement": "Titan Altar",
 		"improvementStats": {
 			"production": 1
 		},
 		"uniques": [
 			"Generated with weight [15] <in [{Featureless} {Tundra}] tiles>",
 			"Generated with weight [39] <in [Hill] tiles>",
-			"Minor deposits generated with weight [10] <in [{Featureless} {Desert}] tiles>"
+			"Minor deposits generated with weight [10] <in [{Featureless} {Desert}] tiles>",
+			"KM: [30]% of deposits lie in the [Sky] layer on [Floating Island] tiles with [2] extra"
 		],
 		"majorDepositAmount": {
 			"sparse": 5,
@@ -911,7 +923,8 @@
 			{
 				"text": "Description: Titan Blood"
 			}
-		]
+		],
+		"improvedBy": ["Titan Altar", "Sky Quarry"]
 	},
 	{
 		"name": "Mandrake",
@@ -960,5 +973,32 @@
 				"text": "Description: Moonlily"
 			}
 		]
+	},
+	{
+		"name": "Glowcaps",
+		"resourceType": "Luxury",
+		"terrainsCanBeFoundOn": ["Fungal Grotto"],
+		"improvement": "Mushroom Farm",
+		"uniques": ["Doesn't generate naturally"],
+		"civilopediaText": [
+			{
+				"text": "Description: Glowcaps"
+			}
+		],
+		"food": 1,
+		"gold": 1
+	},
+	{
+		"name": "Cloud Silk",
+		"resourceType": "Luxury",
+		"terrainsCanBeFoundOn": ["Clouds"],
+		"improvement": "Cloud Loom",
+		"uniques": ["Doesn't generate naturally"],
+		"civilopediaText": [
+			{
+				"text": "Description: Cloud Silk"
+			}
+		],
+		"gold": 2
 	}
 ]

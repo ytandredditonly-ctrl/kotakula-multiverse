@@ -36,6 +36,12 @@ class FactionCivState : IsPartOfGameInfoSerialization {
     /** Gods and startups: the one pivot of the game was used */
     var pivotUsed = false
 
+    /** Three-layer map (7.1): tiles terraformed by this civilization, at most 3 per city */
+    var layerTerraformedTiles = 0
+
+    /** Three-layer map (6.2): layers the AI has finished exploring - its explorer is back to normal duty */
+    var layersExplored = HashSet<String>()
+
     fun clone(): FactionCivState {
         val toReturn = FactionCivState()
         toReturn.activeFaithActions.putAll(activeFaithActions)
@@ -47,6 +53,8 @@ class FactionCivState : IsPartOfGameInfoSerialization {
         toReturn.industrialBeliefGranted = industrialBeliefGranted
         toReturn.pantheonTurn = pantheonTurn
         toReturn.pivotUsed = pivotUsed
+        toReturn.layerTerraformedTiles = layerTerraformedTiles
+        toReturn.layersExplored.addAll(layersExplored)
         return toReturn
     }
 }

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Небесный карьер -->
+  <g fill="#000"><rect x="10" y="50" width="34" height="26"/><rect x="50" y="36" width="40" height="40"/><rect x="24" y="78" width="56" height="16"/></g>
+  <g stroke="#fff" stroke-width="3"><path d="M50 56 H90"/><path d="M70 36 V76"/></g>
+  <path d="M14 30 L36 8 M18 10 L32 28" stroke="#000" stroke-width="5"/>
+</svg>

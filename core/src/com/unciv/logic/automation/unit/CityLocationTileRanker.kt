@@ -142,6 +142,12 @@ object CityLocationTileRanker {
             newCityTile.forEachTileAtDistance(i) { nearbyTile ->
                 tiles++
                 tileValue += rankTile(nearbyTile, civ, onCoast, newUniqueLuxuryResources, baseTileMap, unexploredTilePrior) * (3f / (i + 1))
+                // Kotakula (6.2): explored tiles of the other layers count 50% before the layer is open, 100% after
+                if (nearbyTile.tileMap.hasLayers()) for (layerTile in nearbyTile.column()) {
+                    if (layerTile === nearbyTile || !civ.hasExplored(layerTile) || layerTile.isImpassible()) continue
+                    val layerWeight = if (com.unciv.logic.kotakula.layers.LayerRules.hasAccess(civ, layerTile.layer)) 1f else 0.5f
+                    tileValue += rankTile(layerTile, civ, onCoast, newUniqueLuxuryResources, baseTileMap) * layerWeight * (3f / (i + 1))
+                }
                 //Tiles close to the city can be worked more quickly, and thus should gain higher weight.
             }
         }

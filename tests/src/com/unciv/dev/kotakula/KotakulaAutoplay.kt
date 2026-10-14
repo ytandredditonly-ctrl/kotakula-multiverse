@@ -44,6 +44,13 @@ object KotakulaAutoplay {
         val fiveBranchTurns: MutableMap<Faction, MutableList<Int>> = mutableMapOf(),
         /** Most branches completed by one civilization of the faction during the game */
         val maxBranches: MutableMap<Faction, Int> = mutableMapOf(),
+        /** Three-layer map L13: major civilizations with an opened layer at turn 200 (or the end), and those working a tile of it */
+        var layerCivs: Int = 0,
+        var layerCivsWorking: Int = 0,
+        /** L12: average milliseconds per game turn, save size in bytes and used memory in MB at the end */
+        var msPerTurn: Double = Double.NaN,
+        var saveBytes: Int = 0,
+        var memoryMb: Long = 0,
     )
 
     @JvmStatic
@@ -59,6 +66,7 @@ object KotakulaAutoplay {
                 "--size" -> size = args[++i]
                 "--max-turns" -> maxTurns = args[++i].toInt()
                 "--seed" -> startSeed = args[++i].toLong()
+                "--no-layers" -> com.unciv.logic.kotakula.layers.LayerWorld.disabledForMeasurement = true
                 else -> throw IllegalArgumentException("Unknown argument ${args[i]}")
             }
             i++
@@ -99,11 +107,19 @@ object KotakulaAutoplay {
         try {
             val gameInfo = start(seed, size)
             val samples = ArrayList<Double>()
+            val startTime = System.currentTimeMillis()
+            var layersSampled = false
             while (gameInfo.victoryData == null && gameInfo.turns < maxTurns) {
                 gameInfo.nextTurn()
                 sample(gameInfo, result, samples)
+                if (!layersSampled && gameInfo.turns >= 200) { sampleLayers(gameInfo, result); layersSampled = true }
             }
+            if (!layersSampled) sampleLayers(gameInfo, result)
             result.turns = gameInfo.turns
+            result.msPerTurn = (System.currentTimeMillis() - startTime).toDouble() / gameInfo.turns.coerceAtLeast(1)
+            result.saveBytes = UncivFiles.gameInfoToString(gameInfo, forceZip = false).length
+            System.gc()
+            result.memoryMb = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / (1024 * 1024)
             if (System.getenv("KOTAKULA_DEBUG") != null) for (civ in majors(gameInfo))
                 println("DEBUG ${civ.civName} ${civ.faction}: cities ${civ.cities.size}, policies ${civ.policies.getAdoptedPolicies().size} " +
                     "(${civ.policies.getAdoptedPolicies().sorted()}), culture/turn ${civ.stats.statsForNextTurn.culture}, " +
@@ -122,6 +138,16 @@ object KotakulaAutoplay {
             ex.printStackTrace()
         }
         return result
+    }
+
+    /** L13: does every major civilization with an opened layer work at least one tile of it? */
+    private fun sampleLayers(gameInfo: GameInfo, result: GameResult) {
+        for (civ in majors(gameInfo)) {
+            val layers = civ.unlockedLayers.filter { it != com.unciv.logic.map.MapLayer.Surface }
+            if (layers.isEmpty()) continue
+            result.layerCivs++
+            if (civ.cities.any { city -> city.getWorkedTiles().any { it.layer in layers } }) result.layerCivsWorking++
+        }
     }
 
     private fun majors(gameInfo: GameInfo): List<Civilization> =
@@ -196,7 +222,12 @@ object KotakulaAutoplay {
             append("| Средний ход научной победы (полёт / врата) | 330–380, разница ≤ 15 | ${num(flight)} / ${num(gates)} |\n")
             append("| Доля фракционных побед | 20–50% | ${pct(factionWins, finished.size)} |\n")
             append("| Доля призванных юнитов в армии гумов | ≤ 25% | ${if (summoned.isNaN()) "—" else String.format(Locale.ROOT, "%.1f%%", summoned * 100)} |\n")
-            append("| Средний ход завершения 5 веток (технари / гумы) | разница ≤ 15 | ${num(fiveT)} / ${num(fiveH)} |\n\n")
+            append("| Средний ход завершения 5 веток (технари / гумы) | разница ≤ 15 | ${num(fiveT)} / ${num(fiveH)} |\n")
+            // Three-layer map (layers.md 6.5: L12, L13)
+            val layerCivs = results.sumOf { it.layerCivs }
+            append("| L13: цивилизации с открытым слоем, обрабатывающие его клетку (ход 200) | ≥ 80% | ${pct(results.sumOf { it.layerCivsWorking }, layerCivs)} (из $layerCivs) |\n")
+            append("| L12: мс на ход / сейв, КБ / память, МБ | см. 6.3 | ${num(results.map { it.msPerTurn }.average())} / " +
+                "${num(results.map { it.saveBytes / 1024.0 }.average())} / ${num(results.map { it.memoryMb.toDouble() }.average())} |\n\n")
             append("Типы побед: ")
             append(finished.groupingBy { it.victoryType }.eachCount().entries.joinToString(", ") { "${it.key} — ${it.value}" }.ifEmpty { "—" })
             append(". Без победы до лимита: ${results.count { it.crashed == null && it.victoryType == "none" }}.\n")

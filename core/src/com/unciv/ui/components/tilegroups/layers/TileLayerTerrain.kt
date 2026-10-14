@@ -1,6 +1,7 @@
 package com.unciv.ui.components.tilegroups.layers
 
 import com.badlogic.gdx.graphics.Color
+import com.unciv.logic.map.MapLayer
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.unciv.UncivGame
 import com.unciv.view.CivView
@@ -56,7 +57,8 @@ class TileLayerTerrain(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup,
         val viewableResource = if (!UncivGame.Current.settings.showPixelImprovements) null
             else tileView.getViewableResource(if (isForceVisible) null else viewingCiv)
 
-        val resourceAndImprovementSequence = if (viewableResource == null && shownImprovement == null)
+        val layerCityImages = tileView.layerCityImages() // Kotakula (7.4): the city on the other layers, transition buildings
+        val resourceAndImprovementSequence = if (viewableResource == null && shownImprovement == null && layerCityImages.isEmpty())
             emptySequence()
         else sequence {
             if (viewableResource != null)  yield(viewableResource.name)
@@ -65,6 +67,7 @@ class TileLayerTerrain(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup,
                     yield("$shownImprovement-Pillaged")
                 else yield(shownImprovement)
             }
+            yieldAll(layerCityImages)
         }
 
         val terrainImages = when {
@@ -236,24 +239,33 @@ class TileLayerTerrain(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup,
         val isViewable = isViewable(viewingCiv)
         val tileView = tileGroup.tileView
         val colorPillagedTile = isViewable && tileView.isPillaged() && !usePillagedImprovementImage(tileView)
+        val layer = tileView.layer()
+        val fogOfWarColor = strings.tileSetConfig.fogOfWarColorFor(layer.name) // Kotakula (7.4): own fog per layer
 
         val baseTerrainColor = when {
             colorPillagedTile && strings.tileSetConfig.useColorAsBaseTerrain -> tileView.getBaseTerrain()
                 .getColor().lerp(Color.BROWN, 0.6f)
             colorPillagedTile -> Color.WHITE.cpy().lerp(Color.BROWN, 0.6f)
             strings.tileSetConfig.useColorAsBaseTerrain && !isViewable -> tileView.getBaseTerrain()
-                .getColor().lerp(strings.tileSetConfig.fogOfWarColor, 0.6f)
+                .getColor().lerp(fogOfWarColor, 0.6f)
             strings.tileSetConfig.useColorAsBaseTerrain -> tileView.getBaseTerrain()
                 .getColor()
-            !isViewable -> Color.WHITE.cpy().lerp(strings.tileSetConfig.fogOfWarColor, 0.6f)
+            !isViewable -> Color.WHITE.cpy().lerp(fogOfWarColor, 0.6f)
             else -> Color.WHITE.cpy()
         }
 
         val color = when {
             colorPillagedTile -> Color.WHITE.cpy().lerp(Color.RED.cpy(), 0.5f)
             !isViewable -> Color.WHITE.cpy()
-                .lerp(strings.tileSetConfig.fogOfWarColor, 0.6f)
+                .lerp(fogOfWarColor, 0.6f)
             else -> Color.WHITE.cpy()
+        }
+
+        // Kotakula (6.1): the Underground in a dark palette (40% darker), the Sky in a light one
+        when (layer) {
+            MapLayer.Underground -> for (c in listOf(baseTerrainColor, color)) c.mul(0.6f, 0.6f, 0.6f, 1f)
+            MapLayer.Sky -> for (c in listOf(baseTerrainColor, color)) c.lerp(1f, 1f, 1f, c.a, 0.15f)
+            MapLayer.Surface -> {}
         }
 
         for ((index, image) in tileBaseImages.withIndex())

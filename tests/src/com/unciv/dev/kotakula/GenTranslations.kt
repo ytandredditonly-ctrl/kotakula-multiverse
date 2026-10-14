@@ -17,6 +17,7 @@ fun readTranslationFile(file: File): LinkedHashMap<String, String> {
 /** Russian texts of the engine changes (KC-xx) and of the new uniques (section 1.4) */
 fun GenContext.addEngineTranslations() {
     val t = translations
+    addLayerEngineTranslations()
     t.section("Engine: factions (KC-01..KC-06)")
     t.add("Technocrats", "Технари")
     t.add("Humanists", "Гуманитарии")

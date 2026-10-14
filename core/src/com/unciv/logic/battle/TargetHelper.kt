@@ -41,6 +41,8 @@ object TargetHelper {
             // Nukes ignore line of sight when checking range, and don't require a visible enemy on the target tile
             val tilesInAttackRange =
                 if (unit.baseUnit.isMelee()) reachableTile.neighbors
+                else if (unit.baseUnit.isAirUnit() && !unit.isNuclearWeapon()) // Kotakula (4.5): aircraft also hit the Sky
+                    com.unciv.logic.kotakula.layers.LayerBattle.airTargetTiles(reachableTile.getTilesInDistance(rangeOfAttack))
                 else if (unit.baseUnit.isAirUnit() || unit.isNuclearWeapon() || unit.hasUnique(UniqueType.IndirectFire, checkCivInfoUniques = true))
                     reachableTile.getTilesInDistance(rangeOfAttack)
                 else reachableTile.tileMap.getViewableTiles(reachableTile.position, rangeOfAttack, true).asSequence()
@@ -164,7 +166,7 @@ object TargetHelper {
     /** Get a list of visible tiles which have something attackable */
     @Readonly
     fun getBombardableTiles(city: City): Sequence<Tile> =
-            city.getCenterTile().getTilesInDistance(city.getBombardRange())
+            com.unciv.logic.kotakula.layers.LayerBattle.bombardRangeTiles(city, city.getBombardRange()) // Kotakula (4.4): all open layers
                     .filter { it.isVisible(city.civ) && containsAttackableEnemy(it, CityCombatant(city)) }
 
 }

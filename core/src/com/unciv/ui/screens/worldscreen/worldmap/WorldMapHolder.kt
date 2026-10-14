@@ -32,6 +32,7 @@ import com.unciv.ui.components.tilegroups.WorldTileGroup
 import com.unciv.ui.components.tilegroups.citybutton.CityButton
 import com.unciv.ui.components.widgets.UnitIconGroup
 import com.unciv.ui.components.widgets.ZoomableScrollPane
+import com.unciv.ui.images.ImageGetter
 import com.unciv.ui.screens.basescreen.UncivStage
 import com.unciv.ui.screens.worldscreen.UndoHandler.Companion.recordUndoCheckpoint
 import com.unciv.ui.screens.worldscreen.WorldScreen
@@ -47,7 +48,19 @@ class WorldMapHolder(
     internal val tileMap: TileMap
 ) : ZoomableScrollPane(20f, 20f) {
     internal var selectedTile: TileView? = null
-    val tileGroups = HashMap<TileView, WorldTileGroup>()
+
+    /** Kotakula (6.1): the layer of the three-layer map that is drawn - only one at a time */
+    var activeLayer = MapLayer.Surface
+        private set
+    /** Kotakula (6.3): the graphics of a layer are created the first time it is shown */
+    private val layerTileGroups = HashMap<MapLayer, HashMap<TileView, WorldTileGroup>>()
+    private val layerTileGroupMaps = HashMap<MapLayer, TileGroupMap<WorldTileGroup>>()
+    /** Tile groups of the [activeLayer] */
+    val tileGroups: HashMap<TileView, WorldTileGroup>
+        get() = layerTileGroups.getOrPut(activeLayer) { HashMap() }
+    /** Kotakula: the map of the [activeLayer] */
+    val activeTileMap: TileMap
+        get() = tileMap.layerMap(activeLayer) ?: tileMap
 
     /** Holds buttons created by [OverlayButtonData] implementations */
     internal val unitActionOverlays: ArrayList<Actor> = ArrayList()
@@ -56,7 +69,8 @@ class WorldMapHolder(
 
     internal val unitConnectRoadPaths: HashMap<MapUnitView, List<TileView>> = HashMap()
 
-    private lateinit var tileGroupMap: TileGroupMap<WorldTileGroup>
+    private val tileGroupMap: TileGroupMap<WorldTileGroup>
+        get() = layerTileGroupMaps[activeLayer]!!
 
     lateinit var currentTileSetStrings: TileSetStrings
 
@@ -94,20 +108,61 @@ class WorldMapHolder(
     internal fun addTiles() {
         val tileSetStrings = TileSetStrings(worldScreen.gameInfo.ruleset, worldScreen.game.settings)
         currentTileSetStrings = tileSetStrings
-        val tileMapView = worldScreen.selectedGameView.tileMapView
-        val tileGroupsNew = tileMap.values.map { WorldTileGroup(tileMapView.getTile(it), tileSetStrings) }
-        tileGroupMap = TileGroupMap(this, tileGroupsNew, continuousScrollingX)
-
-        for (tileGroup in tileGroupsNew) tileGroups[tileGroup.tileView] = tileGroup
-
-        addClickListener()
+        buildLayer(activeLayer)
 
         actor = tileGroupMap
         setSize(worldScreen.stage.width, worldScreen.stage.height)
         layout() // Fit the scroll pane to the contents - otherwise, setScroll won't work!
     }
 
-    private fun addClickListener() {
+    /** Kotakula (6.3): creates the tile groups of [layer] - lazily, when it is shown for the first time */
+    private fun buildLayer(layer: MapLayer) {
+        val map = tileMap.layerMap(layer) ?: return
+        val tileMapView = worldScreen.selectedGameView.tileMapView
+        val tileGroupsNew = map.values.map { WorldTileGroup(tileMapView.getTile(it), currentTileSetStrings) }
+        val groupMap = TileGroupMap(this, tileGroupsNew, continuousScrollingX)
+        val groups = HashMap<TileView, WorldTileGroup>(tileGroupsNew.size)
+        for (tileGroup in tileGroupsNew) groups[tileGroup.tileView] = tileGroup
+        layerTileGroups[layer] = groups
+        layerTileGroupMaps[layer] = groupMap
+        addClickListener(groupMap)
+    }
+
+    /**
+     * Kotakula (6.1): shows [layer] instead of the current one, keeping zoom and scroll position (the layers have the same
+     * geometry). Returns `false` if this world has no such layer.
+     */
+    fun setActiveLayer(layer: MapLayer): Boolean {
+        if (layer == activeLayer) return true
+        if (tileMap.layerMap(layer) == null) return false
+        val scrollXBefore = scrollX
+        val scrollYBefore = scrollY
+        removeUnitActionOverlay()
+        selectedTile = null
+        activeLayer = layer
+        if (layerTileGroupMaps[layer] == null) buildLayer(layer)
+        actor = tileGroupMap
+        layout()
+        scrollX = scrollXBefore
+        scrollY = scrollYBefore
+        updateVisualScroll()
+        worldScreen.onActiveLayerChanged()
+        return true
+    }
+
+    /** Kotakula (6.1): the Sky is drawn on a light blue background instead of the black void */
+    override fun draw(batch: Batch?, parentAlpha: Float) {
+        if (activeLayer == MapLayer.Sky && batch != null) {
+            val previous = batch.color.cpy()
+            batch.color = skyBackground.cpy().apply { a *= parentAlpha }
+            batch.draw(ImageGetter.getWhiteDotDrawable().region, x, y, width, height)
+            batch.color = previous
+        }
+        super.draw(batch, parentAlpha)
+    }
+    private val skyBackground = Color.valueOf("A9D8FF")
+
+    private fun addClickListener(tileGroupMap: TileGroupMap<WorldTileGroup>) {
         // ActivationListener-like listener to allow us to create only one listener for the entire worldmapholder instead of one per tile
         val listener = object : UncivActorGestureListener() {
             override fun tap(event: InputEvent?, x: Float, y: Float, count: Int, button: Int) {
@@ -164,13 +219,14 @@ class WorldMapHolder(
         val previousSelectedCity = unitTable.selectedCity
         val previousSelectedUnitIsSwapping = unitTable.selectedUnitIsSwapping
         val previousSelectedUnitIsConnectingRoad = unitTable.selectedUnitIsConnectingRoad
+        val previousSelectedUnitIsLayingRoute = unitTable.selectedUnitIsLayingRoute // Kotakula (7.1)
         val movingSpyOnMap = unitTable.selectedSpy != null
         if (!movingSpyOnMap)
             unitTable.tileSelected(tileView)
         val newSelectedUnit = unitTable.selectedUnit
 
         if (previousSelectedCity != null && tileView != previousSelectedCity.getCenterTile() && !movingSpyOnMap)
-            tileGroups[previousSelectedCity.getCenterTile()]!!.layerCityButton.moveUp()
+            tileGroups[previousSelectedCity.getCenterTile()]?.layerCityButton?.moveUp() // Kotakula: may be on another layer
 
         if (previousSelectedUnitViews.isNotEmpty()) {
             val isTileDifferent = previousSelectedUnitViews.any { it.getTile() != tileView }
@@ -180,6 +236,8 @@ class WorldMapHolder(
             // Todo: valid tiles for actions should be handled internally, not here.
             val canPerformActionsOnTile = if (previousSelectedUnitIsSwapping) {
                 previousSelectedUnitViews.first().canSwapTo(tileView)
+            } else if (previousSelectedUnitIsLayingRoute) {
+                true
             } else if(previousSelectedUnitIsConnectingRoad) {
                 true
             } else {
@@ -192,6 +250,7 @@ class WorldMapHolder(
             if (isTileDifferent && isPlayerTurn && canPerformActionsOnTile && existsUnitNotPreparingAirSweep) {
                 when {
                     previousSelectedUnitIsSwapping -> addTileOverlaysWithUnitSwapping(previousSelectedUnitViews.first(), tileView)
+                    previousSelectedUnitIsLayingRoute -> addTileOverlaysWithUnitRouteLaying(previousSelectedUnitViews.first(), tileView)
                     previousSelectedUnitIsConnectingRoad -> addTileOverlaysWithUnitRoadConnecting(previousSelectedUnitViews.first(), tileView)
                     else -> addTileOverlaysWithUnitMovement(previousSelectedUnitViews, tileView) // Long-running task
                 }
@@ -361,6 +420,8 @@ class WorldMapHolder(
         targetTileView: TileView,
         pathToTile: List<TileView>
     ) {
+        // Kotakula: a path that changes the layer is not animated - its tiles are not all on the shown layer
+        if (previousTileView !in tileGroups || targetTileView !in tileGroups || pathToTile.any { it !in tileGroups }) return
         val tileGroup = tileGroups[previousTileView]!!
 
         // Steal the current sprites to our new group
@@ -378,7 +439,7 @@ class WorldMapHolder(
                 Actions.run {
                     // Disable the final tile, so we won't have one image "merging into" the other
                     // Can only be done after the new group has been updated, to get the spriteGroup
-                    val targetTileSpriteSlot = tileGroups[targetTileView]!!.layerUnitArt.getSpriteSlot(selectedUnit)
+                    val targetTileSpriteSlot = tileGroups[targetTileView]?.layerUnitArt?.getSpriteSlot(selectedUnit)
                     targetTileSpriteSlot?.spriteGroup?.isVisible = false
                 },
                 *pathToTile.map { tileView ->
@@ -390,7 +451,7 @@ class WorldMapHolder(
                 }.toTypedArray(),
                 Actions.run {
                     // Re-enable the final tile
-                    val targetTileSpriteSlot = tileGroups[targetTileView]!!.layerUnitArt.getSpriteSlot(selectedUnit)
+                    val targetTileSpriteSlot = tileGroups[targetTileView]?.layerUnitArt?.getSpriteSlot(selectedUnit)
                     targetTileSpriteSlot?.spriteGroup?.isVisible = true
                     worldScreen.shouldUpdate = true
                 },
@@ -508,6 +569,22 @@ class WorldMapHolder(
         }
     }
 
+    /** Kotakula (7.1): show the chain of the route as a dashed path and offer "Lay route" */
+    private fun addTileOverlaysWithUnitRouteLaying(selectedUnitView: MapUnitView, tileView: TileView) {
+        Concurrency.run("LayRoute") {
+            val path = selectedUnitView.getLayRoutePath(tileView)
+            launchOnGLThread {
+                if (path == null) {
+                    addTileOverlays(tileView)
+                } else {
+                    unitConnectRoadPaths[selectedUnitView] = path
+                    addTileOverlays(tileView, LayRouteOverlayButtonData(selectedUnitView, tileView))
+                }
+                worldScreen.shouldUpdate = true
+            }
+        }
+    }
+
     private fun addMovingSpyOverlay(spyView: SpyView, tileView: TileView) {
         val cityView = tileView.owningCity()
         val targetCityView: ForeignCityView? = if (tileView.isCityCenter() && cityView != null && spyView.canMoveTo(cityView)) cityView else null
@@ -542,7 +619,7 @@ class WorldMapHolder(
             table.add(unitIconGroup)
         }
 
-        addOverlayOnTileGroup(tileGroups[tileView]!!, table)
+        addOverlayOnTileGroup(tileGroups[tileView] ?: return, table) // Kotakula: may be on another layer
         if (UncivGame.Current.settings.unitMovementButtonAnimation) {
             table.color.a = 0f
             table.addAction(Actions.moveBy(0f, 48f, 0.15f, Interpolation.smooth))
@@ -632,7 +709,11 @@ class WorldMapHolder(
      * @return `true` if scroll position was changed, `false` otherwise
      */
     fun setCenterPosition(vector: HexCoord, immediately: Boolean = false, selectUnit: Boolean = true, forceSelectUnit: MapUnitView? = null): Boolean {
-        val tileGroup = tileGroups.values.firstOrNull { it.tileView.position() == vector } ?: return false
+        // Kotakula (6.1): a layer key switches the view to its layer first
+        val layer = MapLayer.layerOfKey(vector)
+        if (layer != activeLayer) setActiveLayer(layer)
+        val position = MapLayer.positionOfKey(vector)
+        val tileGroup = tileGroups.values.firstOrNull { it.tileView.position() == position } ?: return false
         selectedTile = tileGroup.tileView
         if (selectUnit || forceSelectUnit != null)
             worldScreen.bottomUnitTable.tileSelected(selectedTile!!, forceSelectUnit)
@@ -743,7 +824,6 @@ class WorldMapHolder(
     }
 
     // For debugging purposes
-    override fun draw(batch: Batch?, parentAlpha: Float) = super.draw(batch, parentAlpha)
     override fun act(delta: Float) = super.act(delta)
     override fun clear() = super.clear()
 }

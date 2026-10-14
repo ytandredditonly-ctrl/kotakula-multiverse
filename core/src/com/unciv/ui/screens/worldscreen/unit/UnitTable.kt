@@ -81,6 +81,7 @@ class UnitTable(val worldScreen: WorldScreen) : Table() {
     var selectedUnitIsSwapping by unitPresenter::selectedUnitIsSwapping
 
     var selectedUnitIsConnectingRoad by unitPresenter::selectedUnitIsConnectingRoad
+    var selectedUnitIsLayingRoute by unitPresenter::selectedUnitIsLayingRoute // Kotakula (7.1)
 
     var nameLabelText: String
         get() = unitNameLabel.text.toString()
@@ -129,7 +130,7 @@ class UnitTable(val worldScreen: WorldScreen) : Table() {
             onClick {
                 presenter.position?.let {
                     worldScreen.mapHolder.setCenterPosition(
-                        it.toHexCoord(),
+                        com.unciv.logic.map.MapLayer.toKey(it.toHexCoord(), worldScreen.mapHolder.activeLayer), // Kotakula
                         immediately = false,
                         selectUnit = false
                     )
@@ -143,6 +144,7 @@ class UnitTable(val worldScreen: WorldScreen) : Table() {
     /** Sending no unit clears the selected units entirely */
     fun selectUnit(unitView: MapUnitView? = null, append: Boolean = false) {
         presenter = if (unitView != null) unitPresenter else summaryPresenter
+        if (unitView != null) worldScreen.mapHolder.setActiveLayer(unitView.getTile().layer()) // Kotakula (6.1): show the layer of the unit
         unitPresenter.selectUnit(unitView, append)
         resetUnitTable()
     }

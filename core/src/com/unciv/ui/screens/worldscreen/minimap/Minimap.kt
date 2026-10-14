@@ -179,14 +179,14 @@ class Minimap(val mapHolder: WorldMapHolder, minimapSize: Int, private val civIn
     }
 
     private fun createMinimapTiles(tileSize: Float): List<MinimapTile> {
-        val tiles = ArrayList<MinimapTile>(mapHolder.tileMap.tileList.size / 5) // at most 4 resizes
+        val tiles = ArrayList<MinimapTile>(mapHolder.activeTileMap.tileList.size / 5) // at most 4 resizes
         val pad = if (mapHolder.tileMap.mapParameters.shape != MapShape.rectangular)
             mapHolder.tileMap.mapParameters.mapSize.radius * tileSize * 1.5f
         else
             (mapHolder.tileMap.mapParameters.mapSize.width - 1f) * tileSize * 0.75f
         val leftSide =
                 if (civInfo != null) civInfo.exploredRegion.getMinimapLeft(tileSize) else -Float.MAX_VALUE
-        for (tileInfo in mapHolder.tileMap.values) {
+        for (tileInfo in mapHolder.activeTileMap.values) { // Kotakula (6.1): the active layer
             if (civInfo?.exploredRegion?.isPositionInRegion(tileInfo.position) == false) continue
             val minimapTile = MinimapTile(tileInfo, tileSize)
             if (minimapTile.image.x < leftSide)
@@ -204,7 +204,7 @@ class Minimap(val mapHolder: WorldMapHolder, minimapSize: Int, private val civIn
                 // tileLayer is at (0,0) with no transform so Minimap coordinates == tileLayer coordinates
                 val image = tileLayer.hit(x, y, true) as? Image ?: return
                 val tile = imageToTile[image]?.tile ?: return
-                mapHolder.setCenterPosition(tile.position)
+                mapHolder.setCenterPosition(tile.layerKey) // Kotakula: layer key
             }
         }
         addListener(listener)

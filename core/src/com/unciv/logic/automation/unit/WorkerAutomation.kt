@@ -592,6 +592,7 @@ class WorkerAutomation(
             // the old fort building logic was found to be detrimental (PR #14309), but let's keep the forts we got around for a bit
             value /= 2
         }
+        value += com.unciv.logic.kotakula.layers.LayerAutomation.improvementBonus(tile, improvement, civInfo) // Kotakula (6.2): transitions near cities
         return value
     }
 

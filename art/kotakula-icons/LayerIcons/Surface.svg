@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Поверхность: холмы и солнце -->
+  <circle cx="72" cy="28" r="14" fill="#000"/>
+  <path d="M2 90 Q24 46 46 74 Q66 40 98 80 V96 H2 Z" fill="#000"/>
+</svg>

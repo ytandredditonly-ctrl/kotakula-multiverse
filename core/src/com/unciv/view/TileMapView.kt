@@ -15,14 +15,15 @@ class TileMapView(private val tileMap: TileMap,
                   /** Null in map editor */ viewer: Civilization?,
                   spectatorMode: Boolean = false,
                   val gameView: GameView? = null) : View<TileMap>(tileMap, viewer, spectatorMode) {
-    @Cache private val tileViews: Array<TileView?> by lazy { arrayOfNulls(tileMap.tileList.size) }
+    // Kotakula: one slot per tile of every layer, indexed by Tile.globalIndex
+    @Cache private val tileViews: Array<TileView?> by lazy { arrayOfNulls(tileMap.tileList.size * (if (tileMap.hasLayers()) 3 else 1)) }
 
     /** Note that since this requires the original Tile, this CAN return tiles that are NOT visible to the viewing civ
      * This is currently required for the map since to even create the empty tiles we need to know it exists
      * I don't have a good solution for this data leak at the moment 
      * since calculating paths to tiles that don't exist will currently break pathfinding */
     @Readonly fun getTile(tile: Tile): TileView {
-        val idx = tile.zeroBasedIndex
+        val idx = tile.globalIndex // Kotakula: unique over the layers
         return tileViews[idx] ?: TileView(tile, this, viewer, spectatorMode).also { tileViews[idx] = it }
     }
 
@@ -32,7 +33,8 @@ class TileMapView(private val tileMap: TileMap,
     }
 
     /** Returns the [TileView] at [position], or `null` if it isn't explored by [viewer]. */
-    @Readonly fun getTile(position: HexCoord): TileView? = tileMap[position].toViewIfExplored()
+    // Kotakula: [position] may be a layer key (MapLayer.toKey)
+    @Readonly fun getTile(position: HexCoord): TileView? = (tileMap.getByKey(position) ?: tileMap[position]).toViewIfExplored()
 
     /** Position of [position] normalized to the map's non-wrapped bounds, for world-wrap rendering. */
     @Readonly fun getUnwrappedPosition(position: HexCoord): HexCoord = tileMap.getUnwrappedPosition(position)

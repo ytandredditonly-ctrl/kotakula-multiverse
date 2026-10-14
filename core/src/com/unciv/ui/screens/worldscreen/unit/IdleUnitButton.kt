@@ -48,7 +48,7 @@ class IdleUnitButton (
                 unitToSelect = idleUnits[index]
             }
 
-            tileMapHolder.setCenterPosition(unitToSelect.getTile().position())
+            tileMapHolder.setCenterPosition(unitToSelect.getTile().layerKey()) // Kotakula: layer key
             unitTable.selectUnit(unitToSelect)
             unitTable.worldScreen.shouldUpdate = true
         }

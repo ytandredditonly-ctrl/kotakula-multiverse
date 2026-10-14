@@ -48,6 +48,21 @@ class Terrain : RulesetStatsObject() {
     @Transient
     var damagePerTurn = 0
 
+    /** Kotakula (KL-09): the layer of the three-layer map this terrain lies on: `Underground`, `Surface` (default) or `Sky` */
+    var layer: String = "Surface"
+
+    /** Kotakula (7.3): a biome of [com.unciv.models.ruleset.LayerBiome] - a hidden feature workers cannot remove.
+     *  Set by the engine for terrains made from LayerBiomes.json */
+    @Transient
+    var isLayerBiome = false
+
+    @get:Readonly
+    val mapLayer: com.unciv.logic.map.MapLayer by lazy { com.unciv.logic.map.MapLayer.fromString(layer) ?: com.unciv.logic.map.MapLayer.Surface }
+
+    /** Kotakula: an overlay feature (layer biome, Jet Stream, Crystal Vein, layer transitions) does not take over
+     *  movement cost, defence and passability of the terrain below it */
+    val isOverlayFeature: Boolean by lazy { isLayerBiome || hasUnique(UniqueType.KMOverlayFeature) }
+
     val isRough: Boolean by lazy { hasUnique(UniqueType.RoughTerrain) }
     val isMountain by lazy { hasUnique(UniqueType.OccursInChains) }
     val isHill by lazy { hasUnique(UniqueType.OccursInGroups) }
@@ -86,6 +101,10 @@ class Terrain : RulesetStatsObject() {
         if (type == TerrainType.NaturalWonder) {
             textList += FormattedLine("Natural Wonder", header=3, color="#3A0")
         }
+        if (layer != "Surface") // Kotakula (6.1): layer label
+            textList += FormattedLine("Layer: [$layer]", link = "Layers/Three-layer map")
+        if (isLayerBiome)
+            textList += FormattedLine("Layer biome")
 
         val stats = cloneStats()
         if (!stats.isEmpty() || overrideStats) {

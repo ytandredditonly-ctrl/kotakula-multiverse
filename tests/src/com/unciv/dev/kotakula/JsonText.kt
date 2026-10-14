@@ -84,6 +84,7 @@ object JsonText {
 
     /** Reads a lenient Unciv json file into Kotlin maps/lists */
     fun read(file: File): Any? = toKotlin(JsonReader().parse(file.readText(Charsets.UTF_8)))
+    fun parse(text: String): Any? = toKotlin(JsonReader().parse(text))
 
     fun readArray(file: File): MutableList<JObj> {
         @Suppress("UNCHECKED_CAST")

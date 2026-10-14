@@ -350,6 +350,8 @@ class TechManager : IsPartOfGameInfoSerialization {
         }
 
         updateTransientBooleans()
+        if (civInfo.gameInfo.hasLayers()) // Kotakula (KL-05, 4.1): layer access from techs
+            com.unciv.logic.kotakula.layers.LayerRules.updateUnlockedLayers(civInfo, notify = showNotification && !civInfo.isSpectator())
 
         // In the case of a player hurrying research, this civ's resource availability may now be out of date
         // - e.g. when an owned tile by luck already has an appropriate improvement or when a tech provides a resource.

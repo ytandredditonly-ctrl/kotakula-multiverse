@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.utils.Align
+import com.unciv.logic.map.MapLayer
 import com.unciv.GUI
 import com.unciv.UncivGame
 import com.unciv.models.TutorialTrigger
@@ -54,6 +55,8 @@ class CityScreen(
     ambiencePlayer: CityAmbiencePlayer? = null
 ): BaseScreen(), RecreateOnResize {
     companion object {
+        /** Kotakula (6.1): the layer shown in the city screen, kept while paging between cities */
+        var shownLayer = MapLayer.Surface
         /** Distance from stage edges to floating widgets */
         const val posFromEdge = 5f
 
@@ -160,6 +163,7 @@ class CityScreen(
         stage.addActor(tileTable)
         stage.addActor(cityPickerTable)  // add late so it's top in Z-order and doesn't get covered in cramped portrait
         stage.addActor(exitCityButton)
+        addLayerTabs() // Kotakula (6.1)
 
         cityView.updateCityStats()
         updateSync() // NOT async since that gives a "visual flash" when entering the city
@@ -365,7 +369,7 @@ class CityScreen(
     private fun addTiles() {
         val viewRange = max(cityView.getExpandRange(), cityView.getWorkRange())
         val tileSetStrings = TileSetStrings(cityView.getRuleset(), game.settings)
-        val cityTileGroups = cityView.centerTile().getVisibleTilesInDistance(viewRange)
+        val cityTileGroups = cityView.centerTile(shownLayer).getVisibleTilesInDistance(viewRange) // Kotakula: the shown layer
                 .filter { viewingCiv.hasExplored(it) }
                 .map { CityTileGroup(cityView, it, tileSetStrings, false, isSpying) }
 
@@ -393,12 +397,41 @@ class CityScreen(
         val tileMapGroup = TileGroupMap(mapScrollPane, tileGroups, tileGroupsToUnwrap = tilesToUnwrap)
         mapScrollPane.actor = tileMapGroup
         mapScrollPane.setSize(stage.width, stage.height)
-        stage.addActor(mapScrollPane)
+        if (mapScrollPane.stage == null) stage.addActor(mapScrollPane) // Kotakula: the map is rebuilt for another layer
 
         mapScrollPane.layout() // center scrolling
         mapScrollPane.scrollPercentX = 0.5f
         mapScrollPane.scrollPercentY = 0.5f
         mapScrollPane.updateVisualScroll()
+    }
+
+    /** Kotakula (6.1): tabs of the three layers above the map; citizens can work every opened layer */
+    private val layerTabs = Table()
+
+    private fun addLayerTabs() {
+        if (!cityView.hasLayers()) {
+            shownLayer = MapLayer.Surface
+            return
+        }
+        layerTabs.clear()
+        layerTabs.defaults().pad(3f)
+        for (layer in listOf(MapLayer.Sky, MapLayer.Surface, MapLayer.Underground)) {
+            val button = layer.name.toTextButton()
+            if (layer == shownLayer) button.color = Color.GOLD
+            else button.onClick { showLayer(layer) }
+            layerTabs.add(button)
+        }
+        layerTabs.pack()
+        layerTabs.setPosition(stage.width / 2, stage.height - 60f, Align.top)
+        stage.addActor(layerTabs)
+    }
+
+    private fun showLayer(layer: MapLayer) {
+        shownLayer = layer
+        tileGroups.clear()
+        addTiles()
+        addLayerTabs()
+        updateAsync()
     }
 
     // We contain a map...

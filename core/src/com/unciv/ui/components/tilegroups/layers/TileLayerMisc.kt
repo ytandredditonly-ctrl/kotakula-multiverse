@@ -506,10 +506,57 @@ class TileLayerMisc(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup, si
     fun dimPopulation(dim: Boolean) { workedIcon?.color?.a = if (dim) 0.4f else 1f }
 
 
+    /** Kotakula (6.1): column markers (units on another layer of the column) and the transition sign */
+    private val layerSigns = ArrayList<Actor>()
+
+    private fun updateLayerSigns(viewingCiv: CivView?) {
+        for (sign in layerSigns) removeOwnedActor(sign)
+        layerSigns.clear()
+        if (tileGroup !is WorldTileGroup || viewingCiv == null) return
+        val tileView = tileGroup.tileView
+        if (!tileView.isExplored()) return
+        val markerSize = tileGroup.width * 0.16f
+        fun addSign(image: String, color: Color, x: Float, y: Float) {
+            if (!ImageGetter.imageExists(image)) return
+            val sign = ImageGetter.getImage(image).apply {
+                touchable = Touchable.disabled
+                setSize(markerSize, markerSize)
+                this.color = color
+                setPosition(tileX + x, tileY + y)
+            }
+            layerSigns += sign
+            addOwnedActor(sign)
+        }
+        tileView.visibleUnitInColumn(above = true)?.let {
+            addSign(strings.layerMarkerUp, it.civ().getOuterColor().cpy(), tileGroup.width * 0.72f, tileGroup.height * 0.62f)
+        }
+        tileView.visibleUnitInColumn(above = false)?.let {
+            addSign(strings.layerMarkerDown, it.civ().getOuterColor().cpy(), tileGroup.width * 0.72f, tileGroup.height * 0.22f)
+        }
+        if (tileView.isLayerTransition())
+            addSign(strings.transitionIcon, Color.WHITE, tileGroup.width * 0.12f, tileGroup.height * 0.62f)
+    }
+
+    /** Kotakula (6.1): the path preview changes the layer here */
+    fun markLayerChange(up: Boolean) {
+        val image = if (up) strings.layerMarkerUp else strings.layerMarkerDown
+        if (!ImageGetter.imageExists(image)) return
+        val sign = ImageGetter.getImage(image).apply {
+            touchable = Touchable.disabled
+            setSize(tileGroup.width * 0.4f, tileGroup.width * 0.4f)
+            color = Color.SKY
+            setPosition(tileX + (tileGroup.width - width) / 2, tileY + (tileGroup.height - height) / 2)
+        }
+        layerSigns += sign
+        addOwnedActor(sign)
+        determineVisibility()
+    }
+
     override fun doUpdate(viewingCiv: CivView?) {
         if (tileGroup !is WorldTileGroup || DebugUtils.SHOW_TILE_COORDS || DebugUtils.SHOW_SETTLER_SCORES)
             updateStartingLocationIcon(true)
         updateArrows()
+        updateLayerSigns(viewingCiv)
     }
 
     override fun determineVisibility() {
@@ -518,6 +565,7 @@ class TileLayerMisc(tileGroup: TileGroup, size: Float) : TileLayer(tileGroup, si
                 || arrows.isNotEmpty()
                 || startingLocationIcons.isNotEmpty()
                 || terrainOverlay != null
+                || layerSigns.isNotEmpty()
     }
 
     fun reset() {

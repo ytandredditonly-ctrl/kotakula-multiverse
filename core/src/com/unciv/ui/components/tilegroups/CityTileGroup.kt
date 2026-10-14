@@ -72,6 +72,18 @@ class CityTileGroup(val cityView: CityView, tileView: TileView, tileSetStrings: 
                 }
             }
 
+            // Kotakula (4.4): the tiles above and below the center belong to the city but are not worked
+            tileView.isCityColumn() -> {
+                icon = ImageGetter.getImage("TileIcons/CityCenter")
+                setDimmed(0.6f)
+            }
+
+            // Kotakula (KL-20): a layer the civilization has not opened, or an impassable layer tile
+            !cityView.isWorkableLayerTile(tileView) -> {
+                setDimmed(1f)
+                layerYield.dimYields(true)
+            }
+
             // Out of city range
             !cityView.isInRange(tileView) -> {
                 setDimmed(1f)

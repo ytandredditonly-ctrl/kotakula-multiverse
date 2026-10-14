@@ -20,6 +20,8 @@ import com.unciv.logic.civilization.managers.TechManager
 import com.unciv.logic.civilization.managers.TurnManager
 import com.unciv.logic.civilization.managers.VictoryManager
 import com.unciv.logic.github.Github.repoNameToFolderName
+import com.unciv.logic.map.HexCoord
+import com.unciv.logic.map.MapLayer
 import com.unciv.logic.map.MapShape
 import com.unciv.logic.map.TileMap
 import com.unciv.logic.map.tile.Tile
@@ -42,6 +44,7 @@ import com.unciv.utils.DebugUtils
 import com.unciv.utils.debug
 import com.unciv.utils.pseudoRandomUuid
 import yairm210.purity.annotations.Cache
+import yairm210.purity.annotations.LocalState
 import yairm210.purity.annotations.Readonly
 import java.security.MessageDigest
 import java.security.SecureRandom
@@ -109,6 +112,10 @@ class GameInfo : IsPartOfGameInfoSerialization, HasGameInfoSerializationVersion 
     var religions: HashMap<String, Religion> = hashMapOf()
     var difficulty = "Chieftain" // difficulty is game-wide, think what would happen if 2 human players could play on different difficulties?
     var tileMap: TileMap = TileMap()
+    /** Kotakula (KL-03): the Underground layer of the three-layer map, `null` in games without layers */
+    var undergroundMap: TileMap? = null
+    /** Kotakula (KL-03): the Sky layer of the three-layer map, `null` in games without layers */
+    var skyMap: TileMap? = null
     var gameParameters = GameParameters()
     var turns = 0
     var oneMoreTurnMode = false
@@ -201,6 +208,8 @@ class GameInfo : IsPartOfGameInfoSerialization, HasGameInfoSerializationVersion 
     fun clone(): GameInfo {
         val toReturn = GameInfo()
         toReturn.tileMap = tileMap.clone()
+        toReturn.undergroundMap = undergroundMap?.clone()
+        toReturn.skyMap = skyMap?.clone()
         toReturn.civilizations = civilizations.asSequence()
             .map { it.clone() }
             .toCollection(ArrayList(civilizations.size))
@@ -224,6 +233,32 @@ class GameInfo : IsPartOfGameInfoSerialization, HasGameInfoSerializationVersion 
         return toReturn
     }
 
+    /** Kotakula (KL-03): the map of [layer]; `null` for a layer this game does not have */
+    @Readonly
+    fun map(layer: MapLayer): TileMap? = when (layer) {
+        MapLayer.Surface -> tileMap
+        MapLayer.Underground -> undergroundMap
+        MapLayer.Sky -> skyMap
+    }
+
+    /** Kotakula: does this game have the Underground and the Sky? */
+    @Readonly fun hasLayers() = undergroundMap != null || skyMap != null
+
+    /** Kotakula: the maps of all layers this game has, the surface first */
+    @Readonly fun allTileMaps(): List<TileMap> {
+        @LocalState val result = ArrayList<TileMap>(3)
+        result.add(tileMap)
+        if (undergroundMap != null) result.add(undergroundMap!!)
+        if (skyMap != null) result.add(skyMap!!)
+        return result
+    }
+
+    /** Kotakula: all tiles of all layers */
+    @Readonly fun allTiles(): Sequence<Tile> = allTileMaps().asSequence().flatMap { it.values }
+
+    /** Kotakula: the tile of a layer key (see [MapLayer.toKey]) - surface positions give surface tiles */
+    @Readonly fun getTileByKey(key: HexCoord): Tile = tileMap.getByKey(key) ?: tileMap[MapLayer.positionOfKey(key)]
+
     @Synchronized // Important - duplicate unit ID's have been observed during debugging.
     fun getNextUnitId(): Int {
         return ++lastUnitId
@@ -232,7 +267,7 @@ class GameInfo : IsPartOfGameInfoSerialization, HasGameInfoSerializationVersion 
     /** ***Only*** for [BackwardCompatibility.ensureUnitIds] */
     fun ensureLastUnitId() {
         if (lastUnitId != 0) return
-        lastUnitId = tileMap.values.asSequence()
+        lastUnitId = allTiles() // Kotakula: units of all layers
             .flatMap { it.getUnits() }.maxOfOrNull { it.id }?.coerceAtLeast(0) ?: 0
     }
 
@@ -400,6 +435,7 @@ class GameInfo : IsPartOfGameInfoSerialization, HasGameInfoSerializationVersion 
             if (playerIndex == 0) {
                 recordRankingStats()
                 turns++
+                com.unciv.logic.kotakula.layers.LayerTurn.onNewGameTurn(this) // Kotakula (7.3, KL-21)
                 if (DebugUtils.SIMULATE_UNTIL_TURN != 0)
                     debug("Starting simulation of turn %s", turns)
             }
@@ -565,10 +601,10 @@ class GameInfo : IsPartOfGameInfoSerialization, HasGameInfoSerializationVersion 
         if (tiles.size < 3) {
             for (tile in tiles) {
                 val unitName = tile.militaryUnit!!.name
-                thisPlayer.addNotification("An enemy [$unitName] was spotted $inOrNear our territory", tile.position, NotificationCategory.War, NotificationIcon.War, unitName)
+                thisPlayer.addNotification("An enemy [$unitName] was spotted $inOrNear our territory", tile.layerKey, NotificationCategory.War, NotificationIcon.War, unitName) // Kotakula: layer key
             }
         } else {
-            val positions = tiles.asSequence().map { it.position }
+            val positions = tiles.asSequence().map { it.layerKey } // Kotakula: layer keys
             thisPlayer.addNotification("[${tiles.size}] enemy units were spotted $inOrNear our territory", LocationAction(positions.map { it }), NotificationCategory.War, NotificationIcon.War)
         }
     }
@@ -772,6 +808,7 @@ class GameInfo : IsPartOfGameInfoSerialization, HasGameInfoSerializationVersion 
         setGlobalTransients()
 
         tileMap.setTransients(ruleset)
+        val layersGenerated = com.unciv.logic.kotakula.layers.LayerWorld.setTransients(this) // Kotakula (KL-03, KL-08)
 
         // Temporary - All games saved in 4.12.15 turned into 'hexagonal non world wrapped'
         // Here we attempt to fix that
@@ -811,6 +848,7 @@ class GameInfo : IsPartOfGameInfoSerialization, HasGameInfoSerializationVersion 
         migrateToTileHistory()
         migrateGreatGeneralPools()
         ensureUnitIds()
+        if (layersGenerated) com.unciv.logic.kotakula.layers.LayerWorld.notifyLayersAdded(this) // Kotakula (KL-08)
     }
 
     fun setGlobalTransients() {

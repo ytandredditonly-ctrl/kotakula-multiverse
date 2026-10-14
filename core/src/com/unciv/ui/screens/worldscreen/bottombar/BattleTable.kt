@@ -401,10 +401,12 @@ class BattleTable(val worldScreen: WorldScreen) : Table() {
                     Actions.removeActor()
                     )
                 )
-                val targetTileGroup = worldScreen.mapHolder.tileGroups[targetTileView]!!
-                nukeCircle.x = targetTileGroup.x
-                nukeCircle.y = targetTileGroup.y
-                worldScreen.mapHolder.addActorToTileGroupMap(nukeCircle)
+                val targetTileGroup = worldScreen.mapHolder.tileGroups[targetTileView] // Kotakula: may be on another layer
+                if (targetTileGroup != null) {
+                    nukeCircle.x = targetTileGroup.x
+                    nukeCircle.y = targetTileGroup.y
+                    worldScreen.mapHolder.addActorToTileGroupMap(nukeCircle)
+                }
 
                 worldScreen.mapHolder.removeUnitActionOverlay() // the overlay was one of attacking
                 worldScreen.shouldUpdate = true

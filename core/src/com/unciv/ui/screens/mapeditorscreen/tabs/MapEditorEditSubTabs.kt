@@ -58,6 +58,7 @@ class MapEditorEditTerrainTab(
 
     private fun allTerrains() = ruleset.terrains.values.asSequence()
         .filter { it.type.isBaseTerrain }
+        .filter { it.layer == editTab.editedLayer.name } // Kotakula (5.5): terrains of the edited layer
         .filterNot { it.hasUnique(UniqueType.ExcludedFromMapEditor, GameContext.IgnoreConditionals) }
     private fun getTerrains() = allTerrains()
         .map { FormattedLine(it.name, it.name, "Terrain/${it.name}", size = 32) }
@@ -100,6 +101,7 @@ class MapEditorEditFeaturesTab(
 
     private fun allowedFeatures() = ruleset.terrains.values.asSequence()
         .filter { it.type == TerrainType.TerrainFeature }
+        .filter { !it.isLayerBiome && it.layer == editTab.editedLayer.name } // Kotakula (5.5): biomes are computed, not painted
         .filterNot { it.hasUnique(UniqueType.ExcludedFromMapEditor, GameContext.IgnoreConditionals) }
     private fun getFeatures() = allowedFeatures()
         .map { FormattedLine(it.name, it.name, "Terrain/${it.name}", size = 32) }
@@ -134,6 +136,7 @@ class MapEditorEditWondersTab(
 
     private fun allowedWonders() = ruleset.terrains.values.asSequence()
         .filter { it.type == TerrainType.NaturalWonder }
+        .filter { it.layer == editTab.editedLayer.name } // Kotakula (5.5)
         .filterNot { it.hasUnique(UniqueType.ExcludedFromMapEditor, GameContext.IgnoreConditionals) }
     private fun getWonders() = allowedWonders()
         .map { FormattedLine(it.name, it.name, "Terrain/${it.name}", size = 32) }

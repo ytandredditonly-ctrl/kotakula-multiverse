@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Провал -->
+  <ellipse cx="50" cy="60" rx="44" ry="26" fill="#000"/>
+  <ellipse cx="50" cy="58" rx="32" ry="16" fill="#fff"/>
+  <ellipse cx="50" cy="60" rx="24" ry="11" fill="#000"/>
+</svg>

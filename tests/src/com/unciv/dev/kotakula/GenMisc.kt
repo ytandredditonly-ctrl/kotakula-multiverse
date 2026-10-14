@@ -157,6 +157,8 @@ fun GenContext.generateMisc() {
         "author" to "Kotakula",
         "modUrl" to "",
         "topics" to listOf("Rulesets"),
+        // layers.md 7.4: the Kotakula tileset draws the Underground and the Sky, FantasyHex everything else
+        "tileset" to "Kotakula",
     ))
 
     // Section 12.2: branch priorities from the leaders' focuses

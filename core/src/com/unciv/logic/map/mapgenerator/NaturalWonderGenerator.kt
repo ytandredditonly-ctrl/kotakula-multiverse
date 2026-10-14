@@ -36,7 +36,7 @@ class NaturalWonderGenerator(val ruleset: Ruleset, val randomness: MapGeneration
         val chosenWonders = mutableListOf<Terrain>()
         val wonderCandidateTiles = mutableMapOf<Terrain, Collection<Tile>>()
         val allNaturalWonders = ruleset.terrains.values
-                .filter { it.type == TerrainType.NaturalWonder }.toMutableList()
+                .filter { it.type == TerrainType.NaturalWonder && it.layer == "Surface" }.toMutableList() // Kotakula: layer wonders come with the layers (5.3)
         val spawned = mutableListOf<Terrain>()
 
         while (allNaturalWonders.isNotEmpty() && chosenWonders.size < numberToSpawn) {

@@ -271,6 +271,7 @@ class ConstructionAutomation(val cityConstructions: CityConstructions) {
         value += getMilitaryBuildingValue(building)
         value += getVictoryBuildingValue(building)
         value += getOnetimeUniqueBonuses(building)
+        value += com.unciv.logic.kotakula.layers.LayerAutomation.buildingValue(city, building) // Kotakula (6.2)
         return value
     }
 

@@ -115,8 +115,20 @@ class CapitalConnectionsFinder(private val civInfo: Civilization) {
               (it.isCityCenter() || tileFilter(it)) && (owner == null || canEnterBordersOf(owner))
         }
         bfs.stepToEnd()
-        val reachedCities = openBordersCivCities.filter {
-            bfs.hasReachedTile(it.getCenterTile()) && cityFilter(it)
+        // Kotakula (3.5): cities linked by a network of Tunnels, Magic Passages, Platforms or Cloud Bridges count as connected by road
+        val layerBfsList = if (transportType != CapitalConnectionMedium.Road) emptyList()
+            else civInfo.unlockedLayers.filter { it != com.unciv.logic.map.MapLayer.Surface }.mapNotNull { layer ->
+                val start = cityToConnectFrom.getCenterTile().layerTile(layer) ?: return@mapNotNull null
+                BFS(start) {
+                    val owner = it.getOwner()
+                    (com.unciv.logic.kotakula.layers.LayerRules.isCityColumn(it) || com.unciv.logic.kotakula.layers.LayerRules.hasRoute(it))
+                        && (owner == null || canEnterBordersOf(owner))
+                }.apply { stepToEnd() }
+            }
+        val reachedCities = openBordersCivCities.filter { city ->
+            (bfs.hasReachedTile(city.getCenterTile()) || layerBfsList.any { layerBfs ->
+                city.getCenterTile().layerTile(layerBfs.startingPoint.layer)?.let { layerBfs.hasReachedTile(it) } == true
+            }) && cityFilter(city)
         }
         for (reachedCity in reachedCities) {
             addCityIfFirstEncountered(reachedCity)

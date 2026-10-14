@@ -73,6 +73,13 @@ enum class UnitOverviewTabColumn(
         override fun getEntryString(item: MapUnitView): String? = getActionText(item)?.tr() // to retain the icon for e.g. unit action
     },
 
+    /** Kotakula (6.1): the layer of the three-layer map the unit is on */
+    Layer {
+        override fun isVisible(viewingPlayer: CivView) = viewingPlayer.getCiv().gameInfo.hasLayers()
+        override fun getEntryValue(item: MapUnitView) = item.getTile().layer().ordinal
+        override fun getEntryString(item: MapUnitView) = item.getTile().layer().name.tr()
+    },
+
     Strength(Fonts.strength.toString(), "Strength", true) {
         override val defaultSort get() = SortableGrid.SortDirection.Descending
         override fun getEntryValue(item: MapUnitView) = item.getBaseUnit().strength

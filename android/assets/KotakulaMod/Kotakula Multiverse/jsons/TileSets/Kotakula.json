@@ -1,0 +1,23 @@
+{
+	"fallbackTileSet": "FantasyHex",
+	"fogOfWarColorByLayer": {
+		"Underground": {
+			"r": 0,
+			"g": 0,
+			"b": 0,
+			"a": 1
+		},
+		"Sky": {
+			"r": 0.85,
+			"g": 0.9,
+			"b": 1,
+			"a": 1
+		}
+	},
+	"ruleVariants": {
+		"Cave+Ice Caves": ["Cave-Ice"],
+		"Cave+Sand Caves": ["Cave-Sand"],
+		"Clouds+Mirage Clouds": ["Clouds-Mirage"],
+		"Clouds+Snow Clouds": ["Clouds-Snow"]
+	}
+}

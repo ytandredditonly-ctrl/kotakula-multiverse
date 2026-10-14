@@ -102,7 +102,9 @@ enum class RulesetFile(
     Quests("Quests.json", getINamed = { quests.values.asSequence() }),
     Ruins("Ruins.json", { ruinRewards.values.asSequence() }),
     /** Kotakula Multiverse (KC-12) */
-    FactionActions("FactionActions.json", { factionActions.values.asSequence() });
+    FactionActions("FactionActions.json", { factionActions.values.asSequence() }),
+    /** Kotakula (7.3): biomes of the three-layer map */
+    LayerBiomes("LayerBiomes.json", { layerBiomes.values.asSequence() });
 }
 
 class Ruleset {
@@ -158,6 +160,8 @@ class Ruleset {
     val events = LinkedHashMap<String, Event>()
     /** Kotakula Multiverse (KC-12): faith actions */
     val factionActions = LinkedHashMap<String, FactionAction>()
+    /** Kotakula (7.3) */
+    val layerBiomes = LinkedHashMap<String, LayerBiome>()
     var modOptions = ModOptions()
     //endregion
 
@@ -194,6 +198,9 @@ class Ruleset {
         technologies.values.any { it.faction != null } || units.values.any { it.faction != null }
             || buildings.values.any { it.faction != null } || policyBranches.values.any { it.faction != null }
     }
+
+    /** Kotakula (KL-09): does this ruleset have terrains of the Underground or the Sky? */
+    val hasLayers: Boolean by lazy { terrains.values.any { it.layer != "Surface" } }
 
     val roadImprovement: TileImprovement? by lazy { RoadStatus.Road.improvement(this) }
     val railroadImprovement: TileImprovement? by lazy { RoadStatus.Railroad.improvement(this) }
@@ -331,6 +338,7 @@ class Ruleset {
         personalities.putAll(ruleset.personalities)
         events.putAll(ruleset.events)
         factionActions.putAll(ruleset.factionActions)
+        layerBiomes.putAll(ruleset.layerBiomes)
         modOptions.uniques.addAll(ruleset.modOptions.uniques)
         modOptions.constants.merge(ruleset.modOptions.constants)
 
@@ -370,6 +378,7 @@ class Ruleset {
         personalities.clear()
         events.clear()
         factionActions.clear()
+        layerBiomes.clear()
     }
 
     @Readonly
@@ -558,6 +567,13 @@ class Ruleset {
         val factionActionsFile = RulesetFile.FactionActions.file()
         if (factionActionsFile.exists())
             factionActions += createHashmap(json().fromJsonFile(Array<FactionAction>::class.java, factionActionsFile))
+
+        val layerBiomesFile = RulesetFile.LayerBiomes.file() // Kotakula (7.3)
+        if (layerBiomesFile.exists()) {
+            val biomes = createHashmap(json().fromJsonFile(Array<LayerBiome>::class.java, layerBiomesFile))
+            layerBiomes += biomes
+            for (biome in biomes.values) terrains[biome.name] = biome.toTerrain(this)
+        }
 
         // Tutorials exist per builtin ruleset or mod, but there's also a global file that should always be loaded in a game.
         // Note we can't rely on UncivGame.Current here, so we do the same thing getBuiltinRulesetFileHandle in RulesetCache does.

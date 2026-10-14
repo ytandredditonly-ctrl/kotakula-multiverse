@@ -105,12 +105,12 @@ object Battle {
         debug("%s %s attacked %s %s", attacker.getCivInfo().civID, attacker.getName(), defender.getCivInfo().civID, defender.getName())
         val attackedTile = defender.getTile()
         if (attacker is MapUnitCombatant) {
-            attacker.unit.attacksSinceTurnStart.add(attackedTile.position)
+            attacker.unit.attacksSinceTurnStart.add(attackedTile.layerKey) // Kotakula: layer keys
         } else {
             attacker.getCivInfo().attacksSinceTurnStart.add(Civilization.HistoricalAttackMemory(
                 null,
-                attacker.getTile().position,
-                attackedTile.position
+                attacker.getTile().layerKey,
+                attackedTile.layerKey
             ))
         }
 
@@ -138,7 +138,7 @@ object Battle {
             postBattleNotifications(attacker, defender, attackedTile, attacker.getTile(), damageDealt)
 
         if (defender.getCivInfo().isBarbarian && attackedTile.isBarbarianEncampment())
-            defender.getCivInfo().gameInfo.barbarians.campAttacked(attackedTile.position)
+            defender.getCivInfo().gameInfo.barbarians.campAttacked(attackedTile.layerKey) // Kotakula: layer key
 
         // This needs to come BEFORE the move-to-tile, because if we haven't conquered it we can't move there =)
         handleCityDefeated(defender, attacker)
@@ -248,7 +248,7 @@ object Battle {
             )
             attacker.unit.destroy() // Remove the barbarian
         } else
-            conquerCity(defender.city, attacker)
+            conquerCity(defender.city, attacker, defender.getTile()) // Kotakula (4.4): the column tile the attacker enters
     }
 
     private fun triggerCombatUniques(attacker: ICombatant, defender: ICombatant, attackedTile: Tile) {
@@ -558,7 +558,7 @@ object Battle {
         val attackerIcon = if (attacker is CityCombatant) NotificationIcon.City else attacker.getName()
         val defenderIcon = if (defender is CityCombatant) NotificationIcon.City else defender.getName()
 
-        val locations = LocationAction(attackedTile.position, attackerTile?.position)
+        val locations = LocationAction(attackedTile.layerKey, attackerTile?.layerKey) // Kotakula: layer keys
         defender.getCivInfo().addNotification(notificationString, locations, NotificationCategory.War, attackerIcon, battleActionIcon, defenderIcon)
     }
 
@@ -690,17 +690,18 @@ object Battle {
             attacker.unit.action = null // but not, for instance, if it's Set Up - then it should definitely keep the action!
     }
 
-    private fun conquerCity(city: City, attacker: MapUnitCombatant) {
+    private fun conquerCity(city: City, attacker: MapUnitCombatant, enteredTile: Tile = city.getCenterTile()) {
         val attackerCiv = attacker.getCivInfo()
 
         attackerCiv.addNotification("We have conquered the city of [${city.name}]!", city.location, NotificationCategory.War, NotificationIcon.War)
 
         city.hasJustBeenConquered = true
-        city.getCenterTile().apply {
+        enteredTile.apply {
             if (militaryUnit != null) militaryUnit!!.destroy()
             if (civilianUnit != null) BattleUnitCapture.captureCivilianUnit(attacker, MapUnitCombatant(civilianUnit!!), checkDefeat = false)
             for (airUnit in airUnits.toList()) airUnit.destroy()
         }
+        com.unciv.logic.kotakula.layers.LayerBattle.evictFromColumn(city, enteredTile) // Kotakula (4.4, L6)
 
         val gameContext = GameContext(civInfo = attackerCiv, city=city, unit = attacker.unit, ourCombatant = attacker, attackedTile = city.getCenterTile())
         for (unique in attacker.getMatchingUniques(UniqueType.CaptureCityPlunder, gameContext, true)) {
@@ -763,6 +764,8 @@ object Battle {
     @Readonly
     fun getMapCombatantOfTile(tile: Tile): ICombatant? {
         if (tile.isCityCenter()) return CityCombatant(tile.getCity()!!)
+        // Kotakula (4.4): the tiles above and below a center are the city too - one health and strength for the whole column
+        if (com.unciv.logic.kotakula.layers.LayerRules.isCityColumn(tile)) return CityCombatant(tile.getCity()!!, tile)
         if (tile.militaryUnit != null) return MapUnitCombatant(tile.militaryUnit!!)
         if (tile.civilianUnit != null) return MapUnitCombatant(tile.civilianUnit!!)
         return null
