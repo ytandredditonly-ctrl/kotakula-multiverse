@@ -346,4 +346,19 @@ class KotakulaLayerTests {
         Assert.assertEquals(goal, path.last())
         Assert.assertTrue("The path goes through the Underground: $path", path.any { it.layer == MapLayer.Underground })
     }
+    /** Regression (1.3.0 crashed on start): Civilopedia and font icons draw single tiles without a backing map */
+    @Test
+    fun singleTileViewsHaveNoLayerData() {
+        for (terrain in game.ruleset.terrains.values) {
+            val tile = Tile()
+            tile.ruleset = game.ruleset
+            tile.baseTerrain = if (terrain.type.isBaseTerrain) terrain.name else "Plains"
+            tile.setTerrainTransients()
+            val view = com.unciv.view.TileView.forSingleTile(tile)
+            Assert.assertTrue(terrain.name, view.layerCityImages().isEmpty())
+            Assert.assertFalse(terrain.name, view.isLayerTransition())
+            Assert.assertNull(terrain.name, view.layerRouteName())
+            Assert.assertFalse(terrain.name, view.isCityColumn())
+        }
+    }
 }

@@ -101,7 +101,7 @@ class TileView internal constructor(private val tile: Tile, val tileMapView: Til
     @Readonly fun isCityColumn(): Boolean = com.unciv.logic.kotakula.layers.LayerRules.isCityColumn(tile)
     /** Kotakula (7.4): extra images of a city column - the city on the other layers and the transition buildings */
     @Readonly fun layerCityImages(): List<String> {
-        if (!tile.tileMap.hasLayers()) return emptyList()
+        if (!tile.isTilemapInitialized() || !tile.tileMap.hasLayers()) return emptyList()
         val city = tile.getCity() ?: return emptyList()
         if (city.location != tile.position) return emptyList()
         val images = ArrayList<String>()
@@ -115,10 +115,10 @@ class TileView internal constructor(private val tile: Tile, val tileMapView: Til
     }
 
     /** Kotakula (6.1): is the column of this tile a layer transition (natural, improvement or city building)? */
-    @Readonly fun isLayerTransition(): Boolean = tile.tileMap.hasLayers() && com.unciv.logic.kotakula.layers.LayerRules.isTransition(tile)
+    @Readonly fun isLayerTransition(): Boolean = tile.isTilemapInitialized() && tile.tileMap.hasLayers() && com.unciv.logic.kotakula.layers.LayerRules.isTransition(tile)
     /** Kotakula (6.1): a visible unit on a layer [above] or below this tile in its column, for the column markers */
     @Readonly fun visibleUnitInColumn(above: Boolean): ForeignMapUnitView? {
-        if (viewer == null || !tile.tileMap.hasLayers()) return null
+        if (viewer == null || !tile.isTilemapInitialized() || !tile.tileMap.hasLayers()) return null
         val others = tile.column().filter { if (above) it.layer.ordinal > tile.layer.ordinal else it.layer.ordinal < tile.layer.ordinal }
         val unit = others.filter { it.isVisible(viewer) }.flatMap { it.getUnits().toList() }.firstOrNull { isVisible(it) } ?: return null
         return toForeignMapUnitView(unit)
