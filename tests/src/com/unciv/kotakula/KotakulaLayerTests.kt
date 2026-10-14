@@ -373,4 +373,13 @@ class KotakulaLayerTests {
         Assert.assertTrue(refilled.hasFactions)
         Assert.assertTrue(refilled.hasLayers)
     }
+    /** Regression (autoplay crash): barbarian camps of the layers are stored by layer key and must be found by it */
+    @Test
+    fun layerBarbarianCampsAreFoundByKey() {
+        addLayers()
+        val camp = game.gameInfo.undergroundMap!![HexCoord(2, 1)]
+        game.gameInfo.barbarians.setTransients(game.gameInfo)
+        game.gameInfo.barbarians.encampments.add(com.unciv.logic.automation.civilization.BarbarianEncampment(camp.layerKey))
+        Assert.assertEquals(listOf(camp), game.gameInfo.barbarians.getEncampmentTiles())
+    }
 }

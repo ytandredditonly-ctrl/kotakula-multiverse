@@ -288,5 +288,5 @@ class BarbarianManager : IsPartOfGameInfoSerialization {
     }
 
     /** Return a _mutable_ List of encampment tiles, allowing in-place sort */
-    fun getEncampmentTiles() = encampments.mapTo(mutableListOf()) { gameInfo.tileMap[it.position] }
+    fun getEncampmentTiles() = encampments.mapTo(mutableListOf()) { gameInfo.getTileByKey(it.position) } // Kotakula: layer keys
 }

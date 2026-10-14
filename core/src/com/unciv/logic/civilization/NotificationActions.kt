@@ -182,13 +182,13 @@ class PromoteUnitAction(
 ) : NotificationAction {
     @Suppress("unused")
     constructor() : this("", HexCoord.Zero, Constants.NO_ID)
-    constructor(unit: MapUnit) : this(unit.name, unit.currentTile.position, unit.id)
+    constructor(unit: MapUnit) : this(unit.name, unit.currentTile.layerKey, unit.id) // Kotakula: layer key
 
     override fun execute(worldScreen: WorldScreen) {
         val unit = if (id != Constants.NO_ID) {
             worldScreen.selectedCiv.units.getUnitById(id)
         } else {
-            val tile = worldScreen.gameInfo.tileMap[location]
+            val tile = worldScreen.gameInfo.getTileByKey(location) // Kotakula: layer key
             tile.militaryUnit?.takeIf { it.name == name && it.civ == worldScreen.selectedCiv }
         } ?: return
         worldScreen.game.pushScreen { PromotionPickerScreen(worldScreen.selectedGameView.getMapUnitView(unit)) }
