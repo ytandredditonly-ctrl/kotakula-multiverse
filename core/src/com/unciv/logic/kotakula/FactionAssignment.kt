@@ -108,6 +108,7 @@ object FactionAssignment {
             civ.addNotification(text, NotificationCategory.General, "FactionIcons/${faction.name}")
         }
 
+        WorldSplit.onFactionChosen(civ) // game setting "World split"
         EternalWar.onFactionChosen(civ)
         checkFactionPresence(civ.gameInfo)
     }

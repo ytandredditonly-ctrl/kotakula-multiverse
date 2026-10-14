@@ -325,6 +325,21 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "KM: All units fully heal"
 	Applicable to: Triggerable
 
+??? example  "KM: Bring a gift to the god"
+	Pays 30 x (era number + 1) Faith for [+20]% [Faith] [in all cities] during 10 turns
+
+	Applicable to: Triggerable
+
+??? example  "KM: Pretend not to hear the god"
+	[-2 Happiness] during 10 turns
+
+	Applicable to: Triggerable
+
+??? example  "KM: Take the investors' money"
+	Gold equal to 50% of the current Faith, and 25% of the Faith is lost
+
+	Applicable to: Triggerable
+
 ## UnitTriggerable uniques
 !!! note ""
 
@@ -744,7 +759,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "[relativeAmount]% construction time for [improvementFilter] improvements"
 	Example: "[+20]% construction time for [All Road] improvements"
 
-	Applicable to: Global, Unit
+	Applicable to: Global, FollowerBelief, Unit
 
 ??? example  "Can build [improvementFilter] improvements at a [relativeAmount]% rate"
 	Example: "Can build [All Road] improvements at a [+20]% rate"
@@ -985,7 +1000,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "Receive [relativeAmount]% Gold from Barbarian encampments and pillaging Cities"
 	Example: "Receive [+20]% Gold from Barbarian encampments and pillaging Cities"
 
-	Applicable to: Global
+	Applicable to: Global, FollowerBelief
 
 ??? example  "When conquering an encampment, earn [amount] Gold and recruit a Barbarian unit"
 	Example: "When conquering an encampment, earn [3] Gold and recruit a Barbarian unit"
@@ -1109,7 +1124,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Example: "[+20]% Strength"
 
-	Applicable to: Global, Unit
+	Applicable to: Global, FollowerBelief, Unit
 
 ??? example  "[relativeAmount] Strength"
 	Example: "[+20] Strength"
@@ -1136,7 +1151,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "[amount] Movement"
 	Example: "[3] Movement"
 
-	Applicable to: Global, Unit
+	Applicable to: Global, FollowerBelief, Unit
 
 ??? example  "[amount] Sight"
 	Example: "[3] Sight"
@@ -1316,7 +1331,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Example: "KM: Summons best [Water] unit every [3] turns"
 
-	Applicable to: Global
+	Applicable to: Global, FollowerBelief
 
 ??? example  "KM: Faith actions cost [relativeAmount]%"
 	Discounts stack, but the total is limited to -50%
@@ -1333,7 +1348,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "KM: Pillaging yields [positiveAmount]x"
 	Example: "KM: Pillaging yields [3]x"
 
-	Applicable to: Global
+	Applicable to: Global, FollowerBelief
 
 ??? example  "KM: Holy city bonus"
 	[+10]% [Production] and [+10]% [Gold] in the holy city of the civilization's religion
@@ -1342,6 +1357,42 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 ??? example  "[amount] City Strength [cityFilter]"
 	Example: "[3] City Strength [in all cities]"
+
+	Applicable to: Global, FollowerBelief
+
+??? example  "KM: Smite [positiveAmount] damage with [positiveAmount]% chance"
+	At the start of each turn every unit of the opposing faction within 3 tiles of your cities may take the damage. It never dies from it (1 HP left)
+
+	Example: "KM: Smite [3] damage with [3]% chance"
+
+	Applicable to: Global, FollowerBelief
+
+??? example  "KM: Chaos gift every [positiveAmount] turns"
+	Every N turns a random stat of Production, Gold, Culture, Science, Faith: 25 x (era number + 1) of it
+
+	Example: "KM: Chaos gift every [3] turns"
+
+	Applicable to: Global, FollowerBelief
+
+??? example  "KM: [stats] in all cities per other living civilization of your faction"
+	Example: "KM: [+1 Gold, +2 Production] in all cities per other living civilization of your faction"
+
+	Applicable to: Global, FollowerBelief
+
+??? example  "KM: Pivot"
+	Once per game, before founding a religion, the pantheon can be replaced by any free one of the faction
+
+	Applicable to: Global
+
+??? example  "KM: Unlocks [layer] layer"
+	On a tech: after researching it the civilization's units may stand on the layer and its cities work its tiles (KL-11)
+
+	Example: "KM: Unlocks [Underground] layer"
+
+	Applicable to: Global
+
+??? example  "KM: Layer routes work as railroads"
+	Improvements with `KM: Makes tile passable` move like a railroad for the civilization's units (7.1)
 
 	Applicable to: Global
 
@@ -1749,6 +1800,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Global, FollowerBelief
 
+??? example  "[relativeAmount]% construction time for [improvementFilter] improvements"
+	Example: "[+20]% construction time for [All Road] improvements"
+
+	Applicable to: Global, FollowerBelief, Unit
+
 ??? example  "[relativeAmount]% maintenance cost for [buildingFilter] buildings [cityFilter]"
 	Multiple bonuses stack multiplicatively: +50% + +50% = x1.5 * x1.5 = +125%
 
@@ -1802,6 +1858,11 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Global, FollowerBelief, Improvement
 
+??? example  "Receive [relativeAmount]% Gold from Barbarian encampments and pillaging Cities"
+	Example: "Receive [+20]% Gold from Barbarian encampments and pillaging Cities"
+
+	Applicable to: Global, FollowerBelief
+
 ??? example  "[relativeAmount]% Natural religion spread [cityFilter]"
 	Multiple bonuses stack multiplicatively: +50% + +50% = x1.5 * x1.5 = +125%
 
@@ -1823,6 +1884,18 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 	Meant to be used together with conditionals, like "Unavailable &lt;after generating a Great Prophet&gt;".
 
 	Applicable to: Tech, Policy, FounderBelief, FollowerBelief, Building, Unit, Promotion, Improvement, Ruins, Event, EventChoice, Victory
+
+??? example  "[relativeAmount]% Strength"
+	Multiple bonuses stack additively: +50% + +50% = +100%
+
+	Example: "[+20]% Strength"
+
+	Applicable to: Global, FollowerBelief, Unit
+
+??? example  "[amount] Movement"
+	Example: "[3] Movement"
+
+	Applicable to: Global, FollowerBelief, Unit
 
 ??? example  "Earn [amount]% of [mapUnitFilter] unit's [costOrStrength] as [stockpile] when killed within 4 tiles of a city following this religion"
 	Example: "Earn [3]% of [Wounded] unit's [Cost] as [Mana] when killed within 4 tiles of a city following this religion"
@@ -1856,6 +1929,49 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 ??? example  "KM: Gain [amount] [civWideStat] when a unit of the opposing faction is killed"
 	Example: "KM: Gain [3] [Gold] when a unit of the opposing faction is killed"
+
+	Applicable to: Global, FollowerBelief
+
+??? example  "KM: Summons best [unitType] unit every [positiveAmount] turns"
+	In the capital (or the city with the source building) the strongest unit of the type the civilization can build appears. Add &lt;KM: Expires after [N] turns&gt; to limit its lifetime
+
+	Example: "KM: Summons best [Water] unit every [3] turns"
+
+	Applicable to: Global, FollowerBelief
+
+??? example  "KM: Pillaging yields [positiveAmount]x"
+	Example: "KM: Pillaging yields [3]x"
+
+	Applicable to: Global, FollowerBelief
+
+??? example  "[amount] City Strength [cityFilter]"
+	Example: "[3] City Strength [in all cities]"
+
+	Applicable to: Global, FollowerBelief
+
+??? example  "KM: Smite [positiveAmount] damage with [positiveAmount]% chance"
+	At the start of each turn every unit of the opposing faction within 3 tiles of your cities may take the damage. It never dies from it (1 HP left)
+
+	Example: "KM: Smite [3] damage with [3]% chance"
+
+	Applicable to: Global, FollowerBelief
+
+??? example  "KM: Chaos gift every [positiveAmount] turns"
+	Every N turns a random stat of Production, Gold, Culture, Science, Faith: 25 x (era number + 1) of it
+
+	Example: "KM: Chaos gift every [3] turns"
+
+	Applicable to: Global, FollowerBelief
+
+??? example  "KM: Free trial [stats] for [positiveAmount] turns then [stats]"
+	In the cities following the pantheon: the first stats for N turns after the pantheon was taken, then the second ones forever
+
+	Example: "KM: Free trial [+1 Gold, +2 Production] for [3] turns then [+1 Gold, +2 Production]"
+
+	Applicable to: FollowerBelief
+
+??? example  "KM: [stats] in all cities per other living civilization of your faction"
+	Example: "KM: [+1 Gold, +2 Production] in all cities per other living civilization of your faction"
 
 	Applicable to: Global, FollowerBelief
 
@@ -2077,6 +2193,23 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Building, Unit
 
+??? example  "KM: Transition [layerDirection]"
+	A surface tile with this improvement or feature (or a city with this building) lets land units change the layer: `Down` to the Underground, `Up` to the Sky, `All` to both and directly between them (KL-13, 7.2)
+
+	Example: "KM: Transition [Down]"
+
+	Applicable to: Building, Terrain, Improvement
+
+??? example  "KM: [relativeAmount]% City Strength against attacks from the [layer] layer"
+	Example: "KM: [+20]% City Strength against attacks from the [Underground] layer"
+
+	Applicable to: Building
+
+??? example  "KM: Units changing the layer here gain [amount] Movement"
+	Example: "KM: Units changing the layer here gain [3] Movement"
+
+	Applicable to: Building
+
 ## UnitAction uniques
 !!! note ""
 
@@ -2130,7 +2263,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "[relativeAmount]% construction time for [improvementFilter] improvements"
 	Example: "[+20]% construction time for [All Road] improvements"
 
-	Applicable to: Global, Unit
+	Applicable to: Global, FollowerBelief, Unit
 
 ??? example  "Can build [improvementFilter] improvements at a [relativeAmount]% rate"
 	Example: "Can build [All Road] improvements at a [+20]% rate"
@@ -2282,7 +2415,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Example: "[+20]% Strength"
 
-	Applicable to: Global, Unit
+	Applicable to: Global, FollowerBelief, Unit
 
 ??? example  "[relativeAmount] Strength"
 	Example: "[+20] Strength"
@@ -2319,7 +2452,7 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 ??? example  "[amount] Movement"
 	Example: "[3] Movement"
 
-	Applicable to: Global, Unit
+	Applicable to: Global, FollowerBelief, Unit
 
 ??? example  "[amount] Sight"
 	Example: "[3] Sight"
@@ -2754,6 +2887,20 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Building, Unit
 
+??? example  "KM: Flying"
+	The unit may be on the Surface and in the Sky, changes between them on any tile, crosses Open Sky, uses Jet Streams and takes no damage from Storm Fronts. Cannot enter the Underground
+
+	Due to performance considerations, this unique is cached, thus conditionals that may change within a turn may not work.
+
+	Applicable to: Unit
+
+??? example  "KM: Burrowing"
+	The unit may be on the Surface and in the Underground, changes between them on any land tile and crosses Solid Rock (3 movement). Cannot enter the Sky
+
+	Due to performance considerations, this unique is cached, thus conditionals that may change within a turn may not work.
+
+	Applicable to: Unit
+
 ## UnitType uniques
 ??? example  "Will not be displayed in Civilopedia"
 	Supports conditionals that need only a Game as context and nothing else.
@@ -3093,6 +3240,47 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Triggerable, Terrain, Speed, ModOptions, MetaModifier
 
+??? example  "KM: Transition [layerDirection]"
+	A surface tile with this improvement or feature (or a city with this building) lets land units change the layer: `Down` to the Underground, `Up` to the Sky, `All` to both and directly between them (KL-13, 7.2)
+
+	Example: "KM: Transition [Down]"
+
+	Applicable to: Building, Terrain, Improvement
+
+??? example  "KM: Makes tile passable"
+	Removes the impassability of the tile. On an improvement it also works as a road (Tunnel, Cloud Bridge, Air Platform)
+
+	Applicable to: Terrain, Improvement
+
+??? example  "KM: Passable for flying units"
+	This impassable terrain can be crossed by units with `KM: Flying` (Open Sky)
+
+	Applicable to: Terrain
+
+??? example  "KM: Passable for burrowing units"
+	This impassable terrain can be crossed by units with `KM: Burrowing` (Solid Rock)
+
+	Applicable to: Terrain
+
+??? example  "KM: Flying units spend [positiveAmount]% movement here"
+	Jet Stream, High Winds: movement cost of the tile for units with `KM: Flying`
+
+	Example: "KM: Flying units spend [3]% movement here"
+
+	Applicable to: Terrain
+
+??? example  "KM: Movement cost [positiveAmount]"
+	Biomes (7.3): the tile costs this much movement instead of its terrain's cost, e.g. Flooded Caves
+
+	Example: "KM: Movement cost [3]"
+
+	Applicable to: Terrain
+
+??? example  "KM: Overlay feature"
+	This terrain feature keeps movement cost, defence and passability of the terrain below it
+
+	Applicable to: Terrain
+
 ## Improvement uniques
 ??? example  "[stats]"
 	Example: "[+1 Gold, +2 Production]"
@@ -3296,6 +3484,28 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Nation, Tech, Policy, FounderBelief, FollowerBelief, Building, Unit, UnitType, Promotion, Terrain, Improvement, Resource, Ruins, Speed, Difficulty, EventChoice
 
+??? example  "KM: Transition [layerDirection]"
+	A surface tile with this improvement or feature (or a city with this building) lets land units change the layer: `Down` to the Underground, `Up` to the Sky, `All` to both and directly between them (KL-13, 7.2)
+
+	Example: "KM: Transition [Down]"
+
+	Applicable to: Building, Terrain, Improvement
+
+??? example  "KM: Makes tile passable"
+	Removes the impassability of the tile. On an improvement it also works as a road (Tunnel, Cloud Bridge, Air Platform)
+
+	Applicable to: Terrain, Improvement
+
+??? example  "KM: Turns the tile into [baseTerrain]"
+	Terraforming (7.1): when finished, the tile becomes the terrain forever, loses its resource and the improvement disappears. Limited to 3 terraformed tiles per city of the civilization
+
+	Example: "KM: Turns the tile into [Grassland]"
+
+	Applicable to: Improvement
+
+??? example  "KM: Units here take no terrain damage"
+	Applicable to: Improvement
+
 ## Resource uniques
 ??? example  "Obsolete with [tech]"
 	Example: "Obsolete with [Agriculture]"
@@ -3432,6 +3642,13 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 	Example: "Comment [comment]"
 
 	Applicable to: Nation, Tech, Policy, FounderBelief, FollowerBelief, Building, Unit, UnitType, Promotion, Terrain, Improvement, Resource, Ruins, Speed, Difficulty, EventChoice
+
+??? example  "KM: [relativeAmount]% of deposits lie in the [layer] layer on [terrainFilter] tiles with [amount] extra"
+	Map generation (5.3): this share of the resource's deposits is moved from the Surface to the layer, each deposit bigger by the amount
+
+	Example: "KM: [+20]% of deposits lie in the [Underground] layer on [Fresh Water] tiles with [3] extra"
+
+	Applicable to: Resource
 
 ## Ruins uniques
 ??? example  "Only available"
@@ -4223,6 +4440,23 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 
 	Applicable to: Conditional
 
+??? example  "&lt;KM: when the gift to the god is affordable&gt;"
+	Applicable to: Conditional
+
+??? example  "&lt;on [layer] layer&gt;"
+	True for a unit or tile on the layer (KL-10)
+
+	Example: "&lt;on [Underground] layer&gt;"
+
+	Applicable to: Conditional
+
+??? example  "&lt;when [layer] layer is unlocked&gt;"
+	True if the civilization has access to the layer (KL-14)
+
+	Example: "&lt;when [Underground] layer is unlocked&gt;"
+
+	Applicable to: Conditional
+
 ## TriggerCondition uniques
 !!! note ""
 
@@ -4588,6 +4822,8 @@ Simple unique parameters are explained by mouseover. Complex parameters are expl
 *[foundingOrEnhancing]: `founding` or `enhancing`.
 *[fraction]: Indicates a fractional number, which can be negative.
 *[improvementName]: The name of any improvement excluding 'Cancel improvement order'
+*[layer]: `Underground`, `Surface` or `Sky`.
+*[layerDirection]: `Up`, `Down` or `All`.
 *[leaderTitle]: Provides a leader title that includes the leader's name in parameters.
 *[modFilter]: A Mod name, case-sensitive _or_ a simple wildcard filter beginning and ending in an Asterisk, case-insensitive.
 Note that this must use the Mod name as Unciv displays it, not the Repository name.

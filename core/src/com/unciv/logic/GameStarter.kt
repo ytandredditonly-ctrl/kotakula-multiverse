@@ -48,6 +48,8 @@ class GameStarter private constructor(
     private val rng = GameContext(gameInfo = gameInfo).stateBasedRandom("GameStarter")
     private val ruleset: Ruleset
     private lateinit var tileMap: TileMap
+    /** Kotakula (game setting "World split"): the half each major civilization starts in, true - north */
+    private val splitHalves = HashMap<Civilization, Boolean>()
 
     init {
         if (consoleTimings)
@@ -133,7 +135,8 @@ class GameStarter private constructor(
 
         runAndMeasure("layerFairStarts") { // Kotakula (5.4)
             val starts = gameInfo.civilizations.filter { it.isMajorCiv() }
-                .mapNotNull { tileMap.startingLocationsByNation[it.civID]?.firstOrNull() }
+                .mapNotNull { tileMap.startingLocationsByNation[it.civID]?.firstOrNull() } +
+                gameInfo.factionGameState.splitAlternateStarts.values.map { tileMap[it] } // Kotakula: "World split" reserved starts
             com.unciv.logic.kotakula.layers.LayerWorld.ensureFairStarts(gameInfo, starts)
         }
 
@@ -389,6 +392,7 @@ class GameStarter private constructor(
     }
 
     private fun addCivStartingUnits() {
+        if (com.unciv.logic.kotakula.WorldSplit.isEnabled(gameInfo)) arrangeWorldSplitStartingLocations() // Kotakula
 
         val ruleSet = gameInfo.ruleset
         val tileMap = gameInfo.tileMap
@@ -419,6 +423,10 @@ class GameStarter private constructor(
         }
 
         val startingLocations = getStartingLocations(allCivs, landTilesInBigEnoughGroup, startScores)
+
+        // Kotakula (game setting "World split"): humans choose their side later - reserve a start in the other half
+        if (com.unciv.logic.kotakula.WorldSplit.isEnabled(gameInfo))
+            reserveWorldSplitStarts(startingLocations, landTilesInBigEnoughGroup, startScores)
 
         // no starting units for Barbarians and Spectators
         determineStartingUnitsAndLocations(gameInfo, startingLocations, ruleSet)
@@ -609,7 +617,7 @@ class GameStarter private constructor(
         val startingLocations = HashMap<Civilization, Tile>()
         for (civ in civsOrderedByAvailableLocations) {
 
-            val startingLocation = getCivStartingLocation(civ, freeTiles, startScores)
+            val startingLocation = getCivStartingLocation(civ, freeTiles, startScores, minimumDistanceBetweenStartingLocations)
             startingLocation ?: break
 
             startingLocations[civ] = startingLocation
@@ -627,13 +635,27 @@ class GameStarter private constructor(
         civ: Civilization,
         freeTiles: MutableList<Tile>,
         startScores: HashMap<Tile, Float>,
+        minimumDistanceBetweenStartingLocations: Int = 0,
     ): Tile? {
         var startingLocation = tileMap.startingLocationsByNation[civ.civID]?.randomOrNull(rng)
+        val half = getWorldSplitHalf(civ) // Kotakula: "World split" - the half of this civilization, null - anywhere
         if (startingLocation == null) {
-            startingLocation = tileMap.startingLocationsByNation[Constants.spectator]?.randomOrNull(rng)
+            startingLocation = tileMap.startingLocationsByNation[Constants.spectator]
+                ?.filter { half == null || com.unciv.logic.kotakula.WorldSplit.isInHalf(it, half) }?.randomOrNull(rng)
             if (startingLocation != null) {
                 tileMap.startingLocationsByNation[Constants.spectator]?.remove(startingLocation)
             }
+        }
+        // Kotakula (game setting "World split"): a major civilization starts in the half of its faction.
+        // A full half fails this distance (null), only at the smallest distances the whole map is allowed
+        if (startingLocation == null && half != null) {
+            val halfTiles = freeTiles.filter { com.unciv.logic.kotakula.WorldSplit.isInHalf(it, half) }.toMutableList()
+            if (halfTiles.isNotEmpty()) {
+                // A natural wonder start bias looks over the whole map - it must not leave the half
+                val location = getOneStartingLocation(civ, halfTiles, startScores)
+                return if (com.unciv.logic.kotakula.WorldSplit.isInHalf(location, half)) location else halfTiles.random(rng)
+            }
+            if (minimumDistanceBetweenStartingLocations > 1) return null
         }
         if (startingLocation == null && freeTiles.isNotEmpty())
             startingLocation = getOneStartingLocation(civ, freeTiles, startScores)
@@ -682,5 +704,71 @@ class GameStarter private constructor(
             }
         }
         return preferredTiles.randomOrNull(rng) ?: freeTiles.random(rng)
+    }
+    /**
+     * Kotakula (game setting "World split"): the map generator already gave every nation a balanced region start.
+     * A start in the right half is kept; two civilizations stuck in each other's half swap their starts;
+     * the rest lose the start and get a free one in their half. A human without a side keeps the half of its start.
+     */
+    private fun arrangeWorldSplitStartingLocations() {
+        val majors = gameInfo.civilizations.filter { it.isMajorCiv() && !it.isSpectator() }
+        for (civ in majors) if (!civ.faction.isReal())
+            tileMap.startingLocationsByNation[civ.civID]?.firstOrNull()?.let { splitHalves[civ] = it.latitude > 0 }
+        val wrongHalf = HashMap<Boolean, ArrayDeque<Civilization>>()
+        for (civ in majors) {
+            val north = getWorldSplitHalf(civ) ?: continue
+            val starts = tileMap.startingLocationsByNation[civ.civID]?.toList() ?: continue
+            if (starts.isEmpty()) continue
+            if (starts.any { com.unciv.logic.kotakula.WorldSplit.isInHalf(it, north) }) {
+                for (tile in starts) if (!com.unciv.logic.kotakula.WorldSplit.isInHalf(tile, north)) tileMap.removeStartingLocation(civ.civID, tile)
+            } else wrongHalf.getOrPut(north) { ArrayDeque() } += civ
+        }
+        val wantNorth = wrongHalf[true] ?: ArrayDeque()
+        val wantSouth = wrongHalf[false] ?: ArrayDeque()
+        while (wantNorth.isNotEmpty() && wantSouth.isNotEmpty()) {
+            val a = wantNorth.removeFirst()
+            val b = wantSouth.removeFirst()
+            val startsA = tileMap.startingLocationsByNation[a.civID]!!.toList()
+            val startsB = tileMap.startingLocationsByNation[b.civID]!!.toList()
+            tileMap.removeStartingLocations(a.civID)
+            tileMap.removeStartingLocations(b.civID)
+            // A start on the equator belongs to neither half - such a civilization gets a free start instead
+            for (tile in startsB) if (com.unciv.logic.kotakula.WorldSplit.isInHalf(tile, true)) tileMap.addStartingLocation(a.civID, tile)
+            for (tile in startsA) if (com.unciv.logic.kotakula.WorldSplit.isInHalf(tile, false)) tileMap.addStartingLocation(b.civID, tile)
+        }
+        for (civ in wantNorth + wantSouth) tileMap.removeStartingLocations(civ.civID)
+    }
+
+    /** Kotakula (game setting "World split"): the half of a major civilization - by its faction, random for a human without one */
+    private fun getWorldSplitHalf(civ: Civilization): Boolean? {
+        if (!com.unciv.logic.kotakula.WorldSplit.isEnabled(gameInfo) || !civ.isMajorCiv() || civ.isSpectator()) return null
+        com.unciv.logic.kotakula.WorldSplit.isNorthFor(civ.faction)?.let { return it }
+        return splitHalves.getOrPut(civ) { rng.nextBoolean() }
+    }
+
+    /**
+     * Kotakula (game setting "World split"): every human without a side gets a second start in the other half,
+     * as far from the other starts as the map allows. The starting units move there if the chosen side needs it.
+     */
+    private fun reserveWorldSplitStarts(
+        startingLocations: HashMap<Civilization, Tile>,
+        landTilesInBigEnoughGroup: Map<Tile, Float>,
+        startScores: HashMap<Tile, Float>
+    ) {
+        val taken = startingLocations.values.toMutableList()
+        val wantedDistance = tileMap.tileMatrix.size / 6
+        for ((civ, start) in startingLocations) {
+            if (!civ.isMajorCiv() || civ.isSpectator() || civ.faction.isReal()) continue
+            val otherHalfIsNorth = start.latitude < 0
+            val candidates = getFreeTiles(landTilesInBigEnoughGroup, wantedDistance)
+                .filter { com.unciv.logic.kotakula.WorldSplit.isInHalf(it, otherHalfIsNorth) }
+                .ifEmpty { landTilesInBigEnoughGroup.keys.filter { com.unciv.logic.kotakula.WorldSplit.isInHalf(it, otherHalfIsNorth) } }
+            val alternate = candidates.maxWithOrNull(compareBy<Tile> { tile ->
+                taken.minOf { it.aerialDistanceTo(tile) }.coerceAtMost(wantedDistance)
+            }.thenBy { startScores[it] ?: 0f }) ?: continue
+            taken += alternate
+            removeAncientRuinsNearStartingLocation(alternate)
+            com.unciv.logic.kotakula.WorldSplit.reserveAlternateStart(civ, alternate)
+        }
     }
 }

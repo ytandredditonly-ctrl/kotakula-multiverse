@@ -106,6 +106,7 @@ class GameOptionsTable(
             }).colspan(2).fillX().row()
         }).row()
         addVictoryTypeCheckboxes()
+        if (ruleset.hasFactions) addKotakulaFactionOptions() // Kotakula
 
         val checkboxTable = Table().apply { defaults().left().pad(2.5f) }
         val selectBoxTable = Table()
@@ -615,6 +616,31 @@ class GameOptionsTable(
     fun changeGameParameters(newGameParameters: GameParameters) {
         gameParameters = newGameParameters
         modCheckboxes.changeGameParameters(newGameParameters)
+    }
+
+    /** Kotakula Multiverse: the faction settings - irreconcilability, the newbie truce and the world split */
+    private fun addKotakulaFactionOptions() {
+        val table = Table().apply { defaults().left().pad(2.5f) }
+        fun Table.addHint(text: String) =
+            add(text.toLabel(Color.LIGHT_GRAY, 14).apply { wrap = true }).width(if (isPortrait) 280f else 400f).padLeft(30f).colspan(2).row()
+
+        table.addCheckbox("Irreconcilability", gameParameters.kotakulaIrreconcilable) {
+            gameParameters.kotakulaIrreconcilable = it
+        }
+        table.addHint("The factions are at eternal war. Off: peace with the other faction is possible, its civilizations like you 10 less, your own faction 10 more")
+        table.addCheckbox("World split", gameParameters.kotakulaWorldSplit) {
+            gameParameters.kotakulaWorldSplit = it
+        }
+        table.addHint("The Technocrats start south of the equator, the Humanists north of it")
+
+        table.add("{Newbie truce}:".toLabel()).left().expandX()
+        val slider = UncivSlider(0f, 100f, 5f, initial = gameParameters.kotakulaTruceTurns.toFloat()) {
+            gameParameters.kotakulaTruceTurns = it.toInt()
+        }
+        slider.isDisabled = locked
+        table.add(slider).padTop(10f).row()
+        table.addHint("Turns at Standard speed in which the factions may not attack each other's cities and civilians. Other speeds scale it")
+        add(table).center().row()
     }
 }
 

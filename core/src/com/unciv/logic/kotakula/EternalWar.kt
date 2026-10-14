@@ -29,16 +29,39 @@ object EternalWar {
     const val TRAITOR_OF_FACTION = -20f
     const val TRAITOR_OF_FACTION_DECAY_TURNS = 4
 
-    /** Called after [civA] and [civB] met: if they are on different sides, the eternal war starts at once */
+    /** Opinion of a civilization of the other faction when the game is not irreconcilable */
+    const val OTHER_FACTION_OPINION = -10f
+    /** Opinion of a civilization of the same faction when the game is not irreconcilable */
+    const val SAME_FACTION_OPINION = 10f
+
+    /**
+     * Called after [civA] and [civB] met: if they are on different sides, the eternal war starts at once.
+     * Without irreconcilability (game setting) there is no war, only the faction opinions.
+     */
     fun onCivilizationsMet(civA: Civilization, civB: Civilization) {
+        if (!FactionRules.isIrreconcilable(civA.gameInfo)) return setFactionOpinions(civA, civB)
         if (!FactionRules.areOpposing(civA, civB)) return
         declare(civA, civB)
     }
 
     /** Called when [civ] gets its faction: start the eternal war with everyone of the other side it already knows */
     fun onFactionChosen(civ: Civilization) {
+        val irreconcilable = FactionRules.isIrreconcilable(civ.gameInfo)
         for (otherCiv in civ.getKnownCivs().toList())
-            if (FactionRules.areOpposing(civ, otherCiv)) declare(civ, otherCiv)
+            if (!irreconcilable) setFactionOpinions(civ, otherCiv)
+            else if (FactionRules.areOpposing(civ, otherCiv)) declare(civ, otherCiv)
+    }
+
+    /** Game without irreconcilability: major civilizations like their own faction (+10) and dislike the other one (-10) */
+    private fun setFactionOpinions(civA: Civilization, civB: Civilization) {
+        if (!civA.isMajorCiv() || !civB.isMajorCiv()) return
+        val opinion = when {
+            FactionRules.areOpposing(civA, civB) -> DiplomaticModifiers.OtherFaction to OTHER_FACTION_OPINION
+            FactionRules.areSameFaction(civA, civB) -> DiplomaticModifiers.SameFaction to SAME_FACTION_OPINION
+            else -> return
+        }
+        for ((civ, otherCiv) in listOf(civA to civB, civB to civA))
+            civ.getDiplomacyManager(otherCiv)?.setModifier(opinion.first, opinion.second)
     }
 
     private fun declare(civA: Civilization, civB: Civilization) {
@@ -59,9 +82,10 @@ object EternalWar {
 
     //region Diplomatic restrictions
 
-    /** Is any diplomacy apart from war forbidden between these two? */
+    /** Is any diplomacy apart from war forbidden between these two? Only in irreconcilable games (game setting) */
     @Readonly
-    fun isDiplomacyForbidden(civA: Civilization, civB: Civilization): Boolean = FactionRules.areOpposing(civA, civB)
+    fun isDiplomacyForbidden(civA: Civilization, civB: Civilization): Boolean =
+        FactionRules.areOpposing(civA, civB) && FactionRules.isIrreconcilable(civA.gameInfo)
 
     /** Can [civ] make peace (or a truce/pact/alliance) with [otherCiv]? */
     @Readonly

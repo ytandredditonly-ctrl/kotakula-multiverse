@@ -14,6 +14,7 @@ import com.unciv.logic.kotakula.Faction
 import com.unciv.logic.kotakula.FactionVictory
 import com.unciv.logic.kotakula.Summoning
 import com.unciv.logic.map.MapSize
+import com.unciv.models.metadata.GameParameters
 import com.unciv.models.metadata.GameSettings
 import com.unciv.models.metadata.GameSetupInfo
 import com.unciv.models.metadata.Player
@@ -26,6 +27,9 @@ import kotlin.random.Random
  * Prince, standard speed, all victories) and the balance metrics of the section.
  *
  *     ./gradlew :tests:kotakulaAutoplay -Pkotakula.args="--games 50 --size medium --max-turns 500"
+ *
+ * Faction settings of the new game screen: `--truce N` (Standard-speed turns), `--reconcilable` (no eternal war),
+ * `--world-split`; `--no-layers` plays without the three-layer map.
  *
  * One line per game goes to build/kotakula-autoplay.csv (written as the games finish, so a long run can be watched),
  * the metric table to build/kotakula-autoplay.md.
@@ -59,6 +63,7 @@ object KotakulaAutoplay {
         var size = "medium"
         var maxTurns = 500
         var startSeed = 1L
+        val parameters = GameParameters() // only the Kotakula faction settings are taken from it
         var i = 0
         while (i < args.size) {
             when (args[i]) {
@@ -67,11 +72,15 @@ object KotakulaAutoplay {
                 "--max-turns" -> maxTurns = args[++i].toInt()
                 "--seed" -> startSeed = args[++i].toLong()
                 "--no-layers" -> com.unciv.logic.kotakula.layers.LayerWorld.disabledForMeasurement = true
+                "--truce" -> parameters.kotakulaTruceTurns = args[++i].toInt()
+                "--reconcilable" -> parameters.kotakulaIrreconcilable = false
+                "--world-split" -> parameters.kotakulaWorldSplit = true
                 else -> throw IllegalArgumentException("Unknown argument ${args[i]}")
             }
             i++
         }
 
+        factionSettings = parameters
         Gdx.files = HeadlessFiles()
         val game = UncivGame(true)
         UncivGame.Current = game
@@ -171,6 +180,8 @@ object KotakulaAutoplay {
 
     private val completedFive = HashSet<String>()
 
+    private lateinit var factionSettings: GameParameters
+
     private fun start(seed: Long, size: String): GameInfo {
         completedFive.clear()
         val ruleset = KotakulaTestSupport.ensureLoaded()
@@ -186,6 +197,9 @@ object KotakulaAutoplay {
             numberOfCityStates = 16
             victoryTypes = ArrayList(ruleset.victories.keys)
             this.players = ArrayList(players)
+            kotakulaTruceTurns = factionSettings.kotakulaTruceTurns
+            kotakulaIrreconcilable = factionSettings.kotakulaIrreconcilable
+            kotakulaWorldSplit = factionSettings.kotakulaWorldSplit
         }
         setup.mapParameters.mapSize = when (size) {
             "small" -> MapSize.Small

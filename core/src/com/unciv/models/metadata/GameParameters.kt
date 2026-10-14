@@ -70,6 +70,14 @@ class GameParameters : IsPartOfGameInfoSerialization { // Default values are the
 
     var acceptedModCheckErrors = ""
 
+    // Kotakula Multiverse: faction settings of the new game screen
+    /** Newbie truce in turns at Standard speed, other speeds scale it (section 2.4) */
+    var kotakulaTruceTurns = 25
+    /** Irreconcilability: the eternal war between the factions. Off - peace is possible, opinions -10 / +10 */
+    var kotakulaIrreconcilable = true
+    /** World split: one faction starts south of the equator, the other north of it */
+    var kotakulaWorldSplit = false
+
     fun clone(): GameParameters {
         val parameters = GameParameters()
         parameters.difficulty = difficulty
@@ -111,6 +119,9 @@ class GameParameters : IsPartOfGameInfoSerialization { // Default values are the
         parameters.mods = LinkedHashSet(mods)
         parameters.maxTurns = maxTurns
         parameters.acceptedModCheckErrors = acceptedModCheckErrors
+        parameters.kotakulaTruceTurns = kotakulaTruceTurns // Kotakula
+        parameters.kotakulaIrreconcilable = kotakulaIrreconcilable
+        parameters.kotakulaWorldSplit = kotakulaWorldSplit
         return parameters
     }
 

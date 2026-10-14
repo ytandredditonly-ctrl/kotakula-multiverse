@@ -16,12 +16,16 @@ class FactionGameState : IsPartOfGameInfoSerialization {
     /** Section 11.3: the faction that won the faction victory, [Faction.None] while nobody did */
     var winningFaction = Faction.None
 
+    /** World split (game setting): civID of a human without a side -> the start reserved for it in the other half */
+    var splitAlternateStarts = HashMap<String, com.unciv.logic.map.HexCoord>()
+
     fun clone(): FactionGameState {
         val toReturn = FactionGameState()
         toReturn.factionsAssigned = factionsAssigned
         toReturn.factionPresenceChecked = factionPresenceChecked
         toReturn.factionVictoryDisabled = factionVictoryDisabled
         toReturn.winningFaction = winningFaction
+        toReturn.splitAlternateStarts = HashMap(splitAlternateStarts)
         return toReturn
     }
 }

@@ -74,10 +74,15 @@ object FactionRules {
 
     //region Newbie truce (KC-06)
 
+    /** Truce turns of this game: the Standard-speed length chosen at game creation, scaled to the speed */
     @Readonly
-    fun truceLength(gameInfo: GameInfo): Int =
-        truceTurnsBySpeed[gameInfo.speed.name]
-            ?: (STANDARD_TRUCE_TURNS * gameInfo.speed.modifier).roundToInt()
+    fun truceLength(gameInfo: GameInfo): Int {
+        val standardTurns = gameInfo.gameParameters.kotakulaTruceTurns.coerceAtLeast(0)
+        if (standardTurns == STANDARD_TRUCE_TURNS)
+            truceTurnsBySpeed[gameInfo.speed.name]?.let { return it }
+        val speedScale = truceTurnsBySpeed[gameInfo.speed.name]?.let { it.toFloat() / STANDARD_TRUCE_TURNS } ?: gameInfo.speed.modifier
+        return (standardTurns * speedScale).roundToInt()
+    }
 
     /** The truce lasts for the first [truceLength] turns: `GameInfo.turns` 0 until [truceLength] - 1 */
     @Readonly
@@ -94,6 +99,10 @@ object FactionRules {
     @Readonly
     fun isTruceBetween(civA: Civilization, civB: Civilization): Boolean =
         areOpposing(civA, civB) && isTruceActive(civA.gameInfo)
+
+    /** Irreconcilability (game setting): the eternal war of section 2.3. Off - the factions may make peace */
+    @Readonly
+    fun isIrreconcilable(gameInfo: GameInfo): Boolean = gameInfo.gameParameters.kotakulaIrreconcilable
 
     //endregion
 

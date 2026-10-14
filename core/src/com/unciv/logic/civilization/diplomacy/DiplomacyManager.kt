@@ -134,6 +134,7 @@ enum class DiplomaticModifiers(val text: String) {
     StoleOurAlly("You took the alliance we had with a City-State"),
     // Kotakula Multiverse (section 2.3)
     TraitorOfFaction("You attacked a civilization of our own faction. Traitor!"),
+    OtherFaction("You belong to the other faction"), // Kotakula: game without irreconcilability, constant -10
 
     // Positive
     EstablishedEmbassy("We have an embassy in your capital"),
@@ -156,6 +157,7 @@ enum class DiplomaticModifiers(val text: String) {
     GaveUsGifts("We appreciate your gifts"),
     // Kotakula Multiverse (section 2.3)
     HeroOfFaction("You liberated cities from the other faction. Hero of the faction!"),
+    SameFaction("We belong to the same faction"), // Kotakula: game without irreconcilability, constant +10
     ReturnedCapturedUnits("You returned captured units to us"),
     BelieveSameReligion("We believe in the same religion");
 

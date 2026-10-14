@@ -30,6 +30,17 @@ fun GenContext.addEngineTranslations() {
     t.add("You attacked a civilization of our own faction. Traitor!", "Предатель фракции: вы напали на цивилизацию нашей фракции!")
     t.add("You liberated cities from the other faction. Hero of the faction!", "Герой фракции: вы отбиваете города у другой фракции!")
     t.add("Truce: [amount] turns left", "Перемирие: осталось [amount] ходов")
+    // Game settings of the new game screen
+    t.add("Irreconcilability", "Непримиримость")
+    t.add("The factions are at eternal war. Off: peace with the other faction is possible, its civilizations like you 10 less, your own faction 10 more",
+        "Фракции в вечной войне. Если выключить, с другой фракцией можно заключить мир, её цивилизации относятся к вам на 10 хуже, а своя фракция — на 10 лучше")
+    t.add("World split", "Раскол мира")
+    t.add("The Technocrats start south of the equator, the Humanists north of it", "Технари начинают южнее экватора, гуманитарии — севернее")
+    t.add("Newbie truce", "Перемирие новичков")
+    t.add("Turns at Standard speed in which the factions may not attack each other's cities and civilians. Other speeds scale it",
+        "Ходов на стандартной скорости, в течение которых фракции не могут нападать на города и гражданских юнитов друг друга. На других скоростях пересчитывается")
+    t.add("You belong to the other faction", "Вы из другой фракции")
+    t.add("We belong to the same faction", "Мы из одной фракции")
     val truceEnd = spec.sectionText("### 2.4.").joinToString(" ")
     t.add("The truce is ending. Time to get out the calculators and the staffs",
         Regex("приходит уведомление: «([^»]+)»").find(truceEnd)!!.groupValues[1])
