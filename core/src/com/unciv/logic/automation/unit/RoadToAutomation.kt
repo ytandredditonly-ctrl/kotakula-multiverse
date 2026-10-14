@@ -45,7 +45,7 @@ class RoadToAutomation(val civInfo: Civilization) {
         fun notify(msg: String) =
             unit.civ.addNotification(msg, MapUnitAction(unit), NotificationCategory.Units, NotificationIcon.Construction)
 
-        val destinationTile = unit.civ.gameInfo.tileMap[unit.automatedRoadConnectionDestination!!]
+        val destinationTile = unit.civ.gameInfo.getTileByKey(unit.automatedRoadConnectionDestination!!) // Kotakula: layer routes store a layer key
 
         var pathToDest: List<HexCoord>? = unit.automatedRoadConnectionPath
 

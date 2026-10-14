@@ -152,7 +152,7 @@ object BattleUnitCapture {
                 attacker.getCivInfo().popupAlerts.add(
                     PopupAlert(
                         AlertType.RecapturedCivilian,
-                        capturedUnit.currentTile.position.toPrettyString()
+                        capturedUnit.currentTile.layerKey.toPrettyString() // Kotakula: layer key
                     )
                 )
             }
